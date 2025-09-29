@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Category Filtering for Writing and Video pages
     initCategoryFilter();
+
+    // Clickable Images (for thumbnails)
+    initClickableImages();
 });
 
 // Mobile Navigation
@@ -205,7 +208,9 @@ function initGalleryLightbox() {
     function showLightboxImage() {
         const currentImg = images[currentImageIndex];
         if (currentImg && lightboxImg) {
-            lightboxImg.src = currentImg.src;
+            // Use full resolution image if available, otherwise use thumbnail
+            const fullImageSrc = currentImg.getAttribute('data-full') || currentImg.src;
+            lightboxImg.src = fullImageSrc;
             lightboxImg.alt = currentImg.alt;
 
             // Update caption
@@ -534,4 +539,150 @@ function initPortfolioPreview() {
             }
         });
     }
+}
+
+// Clickable Images Functionality for Thumbnails
+function initClickableImages() {
+    const clickableImages = document.querySelectorAll('.clickable-image');
+
+    clickableImages.forEach(img => {
+        img.style.cursor = 'pointer';
+
+        img.addEventListener('click', function() {
+            const fullImageSrc = this.getAttribute('data-full');
+            console.log('Clickable image clicked. data-full:', fullImageSrc); // Debug log
+            if (fullImageSrc) {
+                // Create a simple image modal
+                showImageModal(fullImageSrc, this.alt);
+            } else {
+                console.error('No data-full attribute found on clicked image');
+            }
+        });
+    });
+}
+
+// Simple Image Modal for clickable images
+function showImageModal(imageSrc, imageAlt) {
+    console.log('Opening modal with image:', imageSrc); // Debug log
+
+    // Create modal elements
+    const modal = document.createElement('div');
+    modal.className = 'image-modal';
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+        position: relative;
+        max-width: 95%;
+        max-height: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `;
+
+    // Loading indicator
+    const loadingDiv = document.createElement('div');
+    loadingDiv.innerHTML = 'Loading...';
+    loadingDiv.style.cssText = `
+        color: white;
+        font-size: 18px;
+        position: absolute;
+    `;
+    modalContent.appendChild(loadingDiv);
+
+    const modalImg = document.createElement('img');
+    modalImg.alt = imageAlt;
+    modalImg.style.cssText = `
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+
+    // Handle image load
+    modalImg.onload = function() {
+        console.log('Image loaded successfully:', imageSrc);
+        loadingDiv.style.display = 'none';
+        modalImg.style.opacity = '1';
+    };
+
+    modalImg.onerror = function() {
+        console.error('Failed to load image:', imageSrc);
+        loadingDiv.innerHTML = 'Failed to load image';
+        loadingDiv.style.color = '#ff6b6b';
+    };
+
+    // Set image source after setting up event handlers
+    modalImg.src = imageSrc;
+
+    const closeBtn = document.createElement('span');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.style.cssText = `
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10001;
+        user-select: none;
+    `;
+
+    // Close functionality
+    function closeModal() {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            if (document.body.contains(modal)) {
+                document.body.removeChild(modal);
+            }
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Keyboard escape
+    const escapeHandler = function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+            document.removeEventListener('keydown', escapeHandler);
+        }
+    };
+    document.addEventListener('keydown', escapeHandler);
+
+    // Assemble and show modal
+    modalContent.appendChild(modalImg);
+    modalContent.appendChild(closeBtn);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+
+    // Fade in the modal
+    setTimeout(() => {
+        modal.style.opacity = '1';
+    }, 10);
 }
