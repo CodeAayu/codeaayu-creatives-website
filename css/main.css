@@ -9,14 +9,41 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    font-size: 100%;
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
-    color: #2c3e50;
+    color: #222; /* Neutral body text color */
     background-color: #fff;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Improved focus management for better accessibility */
+*:focus {
+    outline: 2px solid #111;
+    outline-offset: 2px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #111;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 9999;
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 6px;
 }
 
 .container {
@@ -30,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     margin-bottom: 1rem;
     font-weight: 600;
-    color: #2c3e50;
+    color: #111; /* Neutral heading color */
 }
 
 h1 {
@@ -52,7 +79,7 @@ h4 {
 
 p {
     margin-bottom: 1rem;
-    color: #5a6c7d;
+    color: #444; /* Neutral paragraph color */
     line-height: 1.7;
 }
 
@@ -66,17 +93,17 @@ p {
 }
 
 a {
-    color: #0056b3;
+    color: #111;
     text-decoration: underline;
-    text-decoration-color: rgba(0, 86, 179, 0.3);
+    text-decoration-color: rgba(0, 0, 0, 0.3);
     text-underline-offset: 2px;
     transition: all 0.3s ease;
     font-weight: 500;
 }
 
 a:hover {
-    color: #004085;
-    text-decoration-color: #004085;
+    color: #000;
+    text-decoration-color: #000;
 }
 
 /* Remove underlines from UI elements that shouldn't have them */
@@ -107,30 +134,30 @@ a:hover {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    background: linear-gradient(135deg, #111 0%, #000 100%);
     color: white;
     border: 2px solid transparent;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    background: linear-gradient(135deg, #000 0%, #111 100%);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 .btn-secondary {
     background-color: white;
-    color: #007bff;
-    border: 2px solid #007bff;
-    box-shadow: 0 3px 10px rgba(0, 123, 255, 0.2);
+    color: #111;
+    border: 2px solid #111;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
 
 .btn-secondary:hover {
-    background-color: #007bff;
+    background-color: #111;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Focus states for accessibility */
@@ -139,12 +166,12 @@ a:hover {
 .work-link:focus,
 .video-link:focus,
 a:focus {
-    outline: 3px solid #007bff;
+    outline: 3px solid #111;
     outline-offset: 2px;
 }
 
 .btn:focus {
-    outline-color: rgba(0, 123, 255, 0.5);
+    outline-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Navigation */
@@ -201,7 +228,7 @@ a:focus {
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: #007bff;
+    color: #111;
 }
 
 .nav-toggle {
@@ -221,7 +248,7 @@ a:focus {
 /* Hero Section */
 .hero {
     padding: 100px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
     color: white;
     min-height: 90vh;
     display: flex;
@@ -263,6 +290,7 @@ a:focus {
     margin-bottom: 1.5rem;
     line-height: 1.1;
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    color: #ffffff; /* Ensure no bluish tint on hero title */
 }
 
 .hero-text h2 {
@@ -271,6 +299,7 @@ a:focus {
     margin-bottom: 1.5rem;
     opacity: 0.95;
     line-height: 1.4;
+    color: rgba(255,255,255,0.95);
 }
 
 .hero-text p {
@@ -371,10 +400,10 @@ a:focus {
 }
 
 .work-link {
-    color: #0056b3;
+    color: #111;
     font-weight: 600;
     padding: 8px 16px;
-    background: rgba(0, 86, 179, 0.1);
+    background: rgba(0, 0, 0, 0.06);
     border-radius: 6px;
     transition: all 0.3s ease;
     border: 1px solid transparent;
@@ -382,8 +411,8 @@ a:focus {
 
 .work-link:hover {
     color: white;
-    background: #0056b3;
-    border-color: #0056b3;
+    background: #111;
+    border-color: #111;
     text-decoration: none;
 }
 
@@ -422,11 +451,11 @@ a:focus {
 }
 
 .service-link {
-    color: #0056b3;
+    color: #111;
     font-weight: 600;
     display: inline-block;
     padding: 8px 16px;
-    background: rgba(0, 86, 179, 0.1);
+    background: rgba(0, 0, 0, 0.06);
     border-radius: 6px;
     transition: all 0.3s ease;
     border: 1px solid transparent;
@@ -435,14 +464,14 @@ a:focus {
 
 .service-link:hover {
     color: white;
-    background: #0056b3;
-    border-color: #0056b3;
+    background: #111;
+    border-color: #111;
     text-decoration: none;
 }
 
 /* Call to Action */
 .cta {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
     color: white;
     padding: 80px 0;
     text-align: center;
@@ -461,11 +490,23 @@ a:focus {
 
 /* Page Header */
 .page-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
     color: white;
     padding: 120px 0 60px;
     text-align: center;
 }
+
+/* Ensure readable text on dark sections */
+.page-header h1,
+.page-header h2,
+.page-header p,
+.page-header a { color: #ffffff; }
+
+/* Other dark sections need explicit white text to override global headings */
+.cta h1, .cta h2, .cta p, .cta a { color: #ffffff; }
+.about-cta h1, .about-cta h2, .about-cta p, .about-cta a { color: #ffffff; }
+.portfolio-cta h1, .portfolio-cta h2, .portfolio-cta p, .portfolio-cta a { color: #ffffff; }
+.contact-hero h1, .contact-hero h2, .contact-hero p, .contact-hero a { color: #ffffff; }
 
 .page-header h1 {
     margin-bottom: 1rem;
@@ -492,9 +533,9 @@ a:focus {
 
 .filter-btn {
     padding: 8px 20px;
-    border: 2px solid #007bff;
+    border: 2px solid #111;
     background-color: transparent;
-    color: #007bff;
+    color: #111;
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -502,7 +543,7 @@ a:focus {
 
 .filter-btn.active,
 .filter-btn:hover {
-    background-color: #007bff;
+    background-color: #111;
     color: white;
 }
 
@@ -589,7 +630,7 @@ a:focus {
 }
 
 .featured-label {
-    background-color: #007bff;
+    background-color: #111;
     color: white;
     padding: 4px 12px;
     border-radius: 15px;
@@ -659,7 +700,7 @@ a:focus {
 }
 
 .article-link {
-    color: #007bff;
+    color: #111;
     font-weight: 500;
 }
 
@@ -727,7 +768,7 @@ a:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
     border-radius: 12px;
 }
 
@@ -758,7 +799,7 @@ a:focus {
 
 .channel-placeholder .btn:hover {
     background: white;
-    color: #667eea;
+    color: #111;
 }
 
 .video-meta {
@@ -821,7 +862,7 @@ a:focus {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255,255,255,0.9);
-    color: #007bff;
+    color: #111;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -843,10 +884,10 @@ a:focus {
 }
 
 .video-link {
-    color: #0056b3;
+    color: #111;
     font-weight: 600;
     padding: 8px 16px;
-    background: rgba(0, 86, 179, 0.1);
+    background: rgba(0, 0, 0, 0.06);
     border-radius: 6px;
     transition: all 0.3s ease;
     border: 1px solid transparent;
@@ -856,8 +897,8 @@ a:focus {
 
 .video-link:hover {
     color: white;
-    background: #0056b3;
-    border-color: #0056b3;
+    background: #111;
+    border-color: #111;
     text-decoration: none;
 }
 
@@ -887,7 +928,7 @@ a:focus {
     display: block;
     font-size: 2rem;
     font-weight: 700;
-    color: #007bff;
+    color: #111;
 }
 
 .stat .label {
@@ -911,7 +952,7 @@ a:focus {
 
 /* About Page */
 .about-hero {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
     padding: 100px 0;
     min-height: 70vh;
     display: flex;
@@ -922,7 +963,7 @@ a:focus {
     display: grid;
     grid-template-columns: 400px 1fr;
     gap: 5rem;
-    align-items: center;
+    align-items: stretch; /* Make both columns equal height */
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -931,9 +972,11 @@ a:focus {
     position: relative;
 }
 
+.about-image { height: 100%; }
+
 .about-image img {
     width: 100%;
-    height: 500px;
+    height: 100%; /* Stretch to match text column height */
     object-fit: cover;
     border-radius: 25px;
     box-shadow: 0 25px 50px rgba(0,0,0,0.15);
@@ -951,7 +994,7 @@ a:focus {
     left: 20px;
     right: -20px;
     bottom: -20px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #eaeaea, #ffffff);
     border-radius: 25px;
     z-index: -1;
     opacity: 0.3;
@@ -961,10 +1004,7 @@ a:focus {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #111;
 }
 
 .about-text h2 {
@@ -1093,7 +1133,7 @@ a:focus {
     top: 0;
     bottom: 0;
     width: 2px;
-    background-color: #007bff;
+    background-color: #111;
 }
 
 .timeline-item {
@@ -1106,7 +1146,7 @@ a:focus {
     width: 100px;
     flex-shrink: 0;
     font-weight: 600;
-    color: #007bff;
+    color: #111;
 }
 
 .timeline-content {
@@ -1121,7 +1161,7 @@ a:focus {
     top: 5px;
     width: 12px;
     height: 12px;
-    background-color: #007bff;
+    background-color: #111;
     border-radius: 50%;
 }
 
@@ -1141,7 +1181,7 @@ a:focus {
     max-width: 800px;
     margin: 0 auto 2rem;
     padding: 2rem;
-    border-left: 4px solid #007bff;
+    border-left: 4px solid #111;
     background-color: #f8f9fa;
 }
 
@@ -1152,7 +1192,7 @@ a:focus {
 }
 
 .about-cta {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
     color: white;
     padding: 80px 0;
     text-align: center;
@@ -1349,7 +1389,7 @@ a:focus {
 }
 
 .portfolio-cta {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
     color: white;
     padding: 80px 0;
     text-align: center;
@@ -1369,7 +1409,7 @@ a:focus {
 /* Contact Page */
 /* Contact Hero Section */
 .contact-hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
     color: white;
     padding: 100px 0;
 }
@@ -1457,8 +1497,10 @@ a:focus {
 
 .contact-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr; /* Single column since form is disabled */
+    gap: 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .contact-form-container h2 {
@@ -1495,11 +1537,11 @@ a:focus {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #111;
 }
 
 .contact-info-header {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .contact-info-header h2 {
@@ -1516,9 +1558,9 @@ a:focus {
 
 .contact-details {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
 }
 
 .contact-item {
@@ -1531,23 +1573,24 @@ a:focus {
     border-left: 4px solid transparent;
 }
 
+
 .contact-item:hover {
-    background: #e9f4ff;
-    border-left-color: #007bff;
+    background: #f2f2f2;
+    border-left-color: #111;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .contact-item.featured {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    background: linear-gradient(135deg, #111 0%, #000 100%);
     color: white;
     border-left-color: #fff;
 }
 
 .contact-item.featured:hover {
-    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    background: linear-gradient(135deg, #000 0%, #111 100%);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 .contact-icon {
@@ -1558,7 +1601,7 @@ a:focus {
     justify-content: center;
     width: 50px;
     height: 50px;
-    background: rgba(0, 123, 255, 0.1);
+    background: rgba(0, 0, 0, 0.08);
     border-radius: 50%;
 }
 
@@ -1573,7 +1616,7 @@ a:focus {
 }
 
 .contact-text .contact-link {
-    color: #0056b3;
+    color: #111;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -1582,8 +1625,8 @@ a:focus {
 }
 
 .contact-text .contact-link:hover {
-    color: #004085;
-    border-bottom-color: #004085;
+    color: #000;
+    border-bottom-color: #000;
     text-decoration: none;
 }
 
@@ -1592,8 +1635,13 @@ a:focus {
 }
 
 .contact-item.featured .contact-text .contact-link:hover {
-    color: #e9f4ff;
+    color: #f5f5f5;
 }
+
+/* Ensure text inside dark featured cards is readable */
+.contact-item.featured .contact-text h3 { color: #ffffff; }
+.contact-item.featured .contact-text p { color: rgba(255,255,255,0.9); }
+.contact-item.featured .contact-note { color: rgba(255,255,255,0.75); }
 
 .contact-note {
     font-size: 0.9rem;
@@ -1629,29 +1677,46 @@ a:focus {
 
 .social-grid {
     display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
     gap: 1rem;
+    align-items: stretch;
+}
+
+/* Ensure Contact page grid renders as 2x2 on desktop */
+.social-links-contact .social-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    justify-items: stretch;
 }
 
 .social-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e9ecef;
+    background: #fff;
 }
 
 .social-link:hover {
     background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.social-icon svg {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
 }
 
 .linktree-section {
     margin-top: 3rem;
     text-align: center;
     padding: 2rem;
-    background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+    background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%);
     border-radius: 15px;
-    border: 2px solid rgba(102, 126, 234, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.06);
 }
 
 .linktree-section h3 {
@@ -1680,7 +1745,7 @@ a:focus {
 }
 
 .linktree-qr .btn {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #111, #000);
     color: white;
     border: none;
     font-size: 0.9rem;
@@ -1832,9 +1897,15 @@ a:focus {
 
 /* Footer */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: #000; /* Pure black background */
+    color: #f5f5f5; /* Near-white text for readability */
     padding: 40px 0 20px;
+}
+
+/* Ensure footer headings are white, not the global heading color */
+footer h3,
+footer h4 {
+    color: #ffffff;
 }
 
 .footer-content {
@@ -1849,7 +1920,7 @@ footer {
 }
 
 .footer-info p {
-    color: #ccc;
+    color: #bdbdbd; /* Softer grey for subtext */
 }
 
 .footer-links h4 {
@@ -1865,12 +1936,12 @@ footer {
 }
 
 .footer-links a {
-    color: #ccc;
-    transition: color 0.3s ease;
+    color: #bdbdbd; /* Neutral grey */
+    transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-    color: white;
+    color: #ffffff; /* White on hover */
 }
 
 .footer-social h4 {
@@ -1883,19 +1954,38 @@ footer {
 }
 
 .social-links a {
-    color: #ccc;
-    transition: color 0.3s ease;
+    color: #bdbdbd; /* Neutral grey */
+    transition: color 0.2s ease;
 }
 
 .social-links a:hover {
-    color: #007bff;
+    color: #ffffff; /* Keep monochrome on hover */
+}
+
+/* Footer Follow grid as 2x2 on desktop */
+.footer-social .social-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    gap: 0.75rem 1.25rem;
+}
+
+.footer-social .social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-social .social-links .social-icon svg {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid #555;
-    color: #ccc;
+    border-top: 1px solid #222; /* Subtle divider */
+    color: #bdbdbd; /* Muted caption text */
 }
 
 /* Utility Classes */

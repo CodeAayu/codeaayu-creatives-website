@@ -33,29 +33,79 @@ document.addEventListener('DOMContentLoaded', function() {
 function initMobileNavigation() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const body = document.body;
 
     if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+        // Toggle mobile menu
+        navToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isActive = navToggle.classList.contains('active');
+            
+            if (isActive) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
         });
 
         // Close menu when clicking on a link
         const navLinks = document.querySelectorAll('.nav-menu a');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+                closeMobileMenu();
             });
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+            if (!navToggle.contains(e.target) && !navMenu.contains(e.target) && navMenu.classList.contains('active')) {
+                closeMobileMenu();
             }
         });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        function openMobileMenu() {
+            navToggle.classList.add('active');
+            navMenu.classList.add('active');
+            body.classList.add('nav-open');
+            navToggle.setAttribute('aria-expanded', 'true');
+            navMenu.setAttribute('aria-hidden', 'false');
+            
+            // Focus first menu item for accessibility
+            const firstLink = navMenu.querySelector('a');
+            if (firstLink) {
+                setTimeout(() => firstLink.focus(), 300);
+            }
+        }
+
+        function closeMobileMenu() {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            body.classList.remove('nav-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navMenu.setAttribute('aria-hidden', 'true');
+        }
+
+        // Initialize ARIA attributes
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-controls', 'nav-menu');
+        navMenu.setAttribute('id', 'nav-menu');
+        navMenu.setAttribute('aria-hidden', 'true');
     }
 }
 
@@ -296,11 +346,11 @@ function showNotification(message, type = 'info') {
         position: fixed;
         top: 20px;
         right: 20px;
-        background: ${type === 'success' ? '#d4edda' : type === 'error' ? '#f8d7da' : '#d1ecf1'};
-        color: ${type === 'success' ? '#155724' : type === 'error' ? '#721c24' : '#0c5460'};
+        background: ${type === 'success' ? '#d4edda' : type === 'error' ? '#f8d7da' : '#f2f2f2'};
+        color: ${type === 'success' ? '#155724' : type === 'error' ? '#721c24' : '#111'};
         padding: 15px 20px;
         border-radius: 8px;
-        border: 1px solid ${type === 'success' ? '#c3e6cb' : type === 'error' ? '#f5c6cb' : '#bee5eb'};
+        border: 1px solid ${type === 'success' ? '#c3e6cb' : type === 'error' ? '#f5c6cb' : '#e0e0e0'};
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         z-index: 10000;
         max-width: 400px;
