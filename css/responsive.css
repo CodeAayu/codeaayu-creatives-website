@@ -93,9 +93,15 @@ section {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
-    .portfolio-content {
+    .portfolio-hero-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .contact-hero .hero-content {
@@ -139,6 +145,42 @@ section {
 
     .download-options {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .content-categories {
+        gap: 2rem;
+    }
+
+    .category-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 0;
+    }
+
+    .category-icon {
+        width: auto;
+        margin-bottom: 1rem;
+    }
+
+    .structure-timeline::before {
+        left: 30px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .timeline-marker {
+        width: 60px;
+        height: 60px;
+        align-self: flex-start;
+    }
+
+    .page-number {
+        font-size: 1rem;
     }
 
     .articles-container {
@@ -174,7 +216,8 @@ section {
     }
 
     .timeline-content::before {
-        left: -32px;
+        left: -38px;
+        top: 0.5rem;
     }
 }
 
@@ -423,8 +466,8 @@ section {
     }
 
     .timeline-content::before {
-        left: -40px;
-        top: -25px;
+        left: -30px;
+        top: 0.2rem;
     }
 
     .page-header {
@@ -485,7 +528,7 @@ section {
     }
 
     p {
-        text-align: center;
+        text-align: left; /* Changed from center to left for better mobile readability */
         line-height: 1.6;
         margin-bottom: 1.5rem;
     }
@@ -615,6 +658,16 @@ section {
     .feature-item {
         flex-direction: column;
         text-align: center;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 1.5rem 0 !important;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .feature-item:last-child {
+        border-bottom: none;
     }
 
     .contact-hero {
@@ -669,11 +722,60 @@ section {
     .section-item {
         flex-direction: column;
         text-align: center;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 1.5rem 0 !important;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .sections-grid .section-item:nth-child(6) {
+        border-bottom: none;
     }
 
     .interest-icon,
     .service-icon {
         font-size: 2.5rem;
+    }
+
+    /* Portfolio specific mobile improvements */
+    .portfolio-hero {
+        padding: 60px 0;
+    }
+
+    .portfolio-hero-content {
+        gap: 2rem;
+    }
+
+    .portfolio-overview h2 {
+        font-size: 2.2rem;
+    }
+
+    .portfolio-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .portfolio-cover {
+        max-width: 280px;
+    }
+
+    .btn-large {
+        min-width: 220px;
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+
+    .highlights-grid {
+        gap: 1rem;
+    }
+
+    .highlight-item {
+        padding: 0.8rem 1rem;
+    }
+
+    .highlight-icon {
+        font-size: 1.8rem;
     }
 
     /* Reduce padding for very small screens */
@@ -702,6 +804,40 @@ section {
     .portfolio-viewer,
     .contact-form-container {
         padding: 1rem;
+    }
+
+    /* Portfolio specific improvements for very small screens */
+    .portfolio-hero {
+        padding: 50px 0;
+    }
+
+    .portfolio-overview h2 {
+        font-size: 2rem;
+    }
+
+    .portfolio-subtitle {
+        font-size: 1rem;
+    }
+
+    .portfolio-cover {
+        max-width: 250px;
+    }
+
+    .btn-large {
+        min-width: 200px;
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+
+    .highlight-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+
+    .highlight-icon {
+        font-size: 1.5rem;
     }
 
     .footer-content {

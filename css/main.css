@@ -56,16 +56,39 @@ p {
     line-height: 1.7;
 }
 
+/* Improved contrast for metadata elements */
+.article-meta,
+.video-meta,
+.file-info,
+.detail-item .label,
+.detail-item .value {
+    color: #444 !important; /* Improved contrast from #666 to #444 */
+}
+
 a {
     color: #0056b3;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 86, 179, 0.3);
+    text-underline-offset: 2px;
     transition: all 0.3s ease;
     font-weight: 500;
 }
 
 a:hover {
     color: #004085;
-    text-decoration: underline;
+    text-decoration-color: #004085;
+}
+
+/* Remove underlines from UI elements that shouldn't have them */
+.btn,
+.nav-menu a,
+.logo,
+.work-link,
+.service-link,
+.video-link,
+.social-links a,
+.footer-links a {
+    text-decoration: none !important;
 }
 
 /* Buttons */
@@ -79,7 +102,6 @@ a:hover {
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-decoration: none;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     line-height: 1.2;
 }
@@ -1153,197 +1175,143 @@ a:focus {
     gap: 1rem;
 }
 
-/* Portfolio Page */
-.portfolio-preview {
+/* Portfolio Page - Streamlined */
+.portfolio-hero {
     padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
 }
 
-.portfolio-content {
+.portfolio-hero-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: start;
+    align-items: center;
 }
 
-.portfolio-features {
-    margin-top: 2rem;
-}
-
-.feature-item {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    align-items: start;
-}
-
-.feature-icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-}
-
-.portfolio-viewer {
-    background-color: #f8f9fa;
-    padding: 2rem;
-    border-radius: 12px;
-}
-
-.portfolio-preview-image {
-    position: relative;
-    margin-bottom: 1.5rem;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 8px;
-}
-
-.portfolio-preview-image:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-
-.portfolio-preview-image img {
-    width: 100%;
-    border-radius: 8px;
-}
-
-.preview-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0,123,255,0.9);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 600;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.2);
-}
-
-.preview-overlay:hover {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.05);
-    background-color: rgba(0,123,255,1);
-}
-
-.portfolio-details {
-    display: grid;
-    gap: 0.5rem;
-}
-
-.detail-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.detail-item:last-child {
-    border-bottom: none;
-}
-
-.label {
-    font-weight: 500;
-    color: #495057;
-}
-
-.value {
-    color: #666;
-}
-
-.download-section {
-    background-color: #f8f9fa;
-    padding: 80px 0;
-}
-
-.download-content {
-    text-align: center;
-}
-
-.download-content h2 {
-    margin-bottom: 1rem;
-}
-
-.download-content p {
-    font-size: 1.1rem;
-    margin-bottom: 3rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.download-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.download-card {
-    background-color: white;
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    text-align: center;
-}
-
-.download-card.primary {
-    border: 2px solid #007bff;
-}
-
-.download-card h3 {
+.portfolio-overview h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 1rem;
     color: #333;
 }
 
-.download-card p {
+.portfolio-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.portfolio-document-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.portfolio-cover {
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-cover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.download-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.btn-large {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    min-width: 250px;
+}
+
+.file-info {
+    font-size: 0.9rem;
+    color: #666;
+    opacity: 0.8;
+}
+
+/* Portfolio Highlights */
+.portfolio-highlights {
+    padding: 60px 0;
+}
+
+.portfolio-highlights h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #333;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.highlight-item:hover {
+    background-color: #e9ecef;
+}
+
+.highlight-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.highlight-text {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Additional Download */
+.additional-download {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.download-option {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.download-option h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.download-option p {
+    color: #666;
     margin-bottom: 1.5rem;
 }
 
-.download-features {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    text-align: left;
-}
-
-.download-features span {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.portfolio-sections {
-    padding: 80px 0;
-}
-
-.portfolio-sections h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.sections-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.section-item {
-    display: flex;
-    gap: 1rem;
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-}
-
-.section-number {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #007bff;
-    flex-shrink: 0;
+.download-option .file-info {
+    margin-top: 0.8rem;
+    display: block;
 }
 
 .testimonials {
