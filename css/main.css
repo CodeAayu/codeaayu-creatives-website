@@ -1,5 +1,5 @@
 /* Reset and Base Styles */
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -21,6 +21,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    text-align: center;
 }
 
 /* Improved focus management for better accessibility */
@@ -580,8 +581,8 @@ a:focus {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    color: white;
+    background: rgba(255, 255, 255, 0.95);
+    color: #111;
     padding: 1.5rem;
     transform: translateY(100%);
     transition: transform 0.3s ease;
@@ -1140,6 +1141,7 @@ a:focus {
     display: flex;
     margin-bottom: 3rem;
     position: relative;
+    align-items: flex-start;
 }
 
 .timeline-date {
@@ -1152,6 +1154,8 @@ a:focus {
 .timeline-content {
     padding-left: 2rem;
     position: relative;
+    flex: 1 1 0%;
+    min-width: 0;
 }
 
 .timeline-content::before {
@@ -1416,7 +1420,7 @@ a:focus {
 
 .contact-hero .hero-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
     gap: 3rem;
     align-items: center;
 }
@@ -1435,14 +1439,15 @@ a:focus {
 }
 
 .quick-contact {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: 1rem;
 }
 
 .quick-contact-item {
     display: flex;
     align-items: center;
+    justify-content: center; /* center icon + text together */
     gap: 0.8rem;
     background: rgba(255, 255, 255, 0.1);
     padding: 1rem 1.5rem;
@@ -1452,6 +1457,8 @@ a:focus {
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap; /* keep icon and text on one line */
+    text-align: center;
 }
 
 .quick-contact-item:hover {
@@ -1459,8 +1466,16 @@ a:focus {
     transform: translateY(-2px);
 }
 
+/* Make hero quick-contact icons inline and centered without the contact card circle */
 .quick-contact-item .contact-icon {
     font-size: 1.2rem;
+    width: auto;
+    height: auto;
+    background: transparent;
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-stats {
@@ -1501,6 +1516,7 @@ a:focus {
     gap: 2.5rem;
     max-width: 900px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .contact-form-container h2 {
@@ -1545,20 +1561,20 @@ a:focus {
 }
 
 .contact-info-header h2 {
-    font-size: 2.2rem;
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
     margin-bottom: 1rem;
     color: #333;
 }
 
 .contact-info-header p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 4vw, 1.1rem);
     line-height: 1.7;
     color: #666;
 }
 
 .contact-details {
     display: grid;
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
     gap: 1.25rem 1.5rem;
     margin-bottom: 2.5rem;
 }
@@ -1605,6 +1621,24 @@ a:focus {
     border-radius: 50%;
 }
 
+/* Dynamic wrapping to prevent overflow on contact page */
+.contact-info-header h2,
+.contact-info-header p,
+.contact-text h3,
+.contact-text p,
+.contact-text a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.quick-contact-item,
+.contact-item,
+.contact-text,
+.social-link {
+    min-width: 0;
+}
+
 .contact-item.featured .contact-icon {
     background: rgba(255, 255, 255, 0.2);
 }
@@ -1613,6 +1647,10 @@ a:focus {
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
     font-weight: 600;
+}
+
+.contact-text {
+    text-align: center;
 }
 
 .contact-text .contact-link {
@@ -1660,6 +1698,7 @@ a:focus {
     align-items: center;
     gap: 0.5rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .contact-options .divider {
@@ -1682,9 +1721,9 @@ a:focus {
     align-items: stretch;
 }
 
-/* Ensure Contact page grid renders as 2x2 on desktop */
+/* Contact social grid: auto-fit to prevent overflow on small screens */
 .social-links-contact .social-grid {
-    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     justify-items: stretch;
 }
 
@@ -1777,7 +1816,7 @@ a:focus {
 
 .service-card ul {
     list-style: none;
-    text-align: left;
+    text-align: center;
 }
 
 .service-card li {
