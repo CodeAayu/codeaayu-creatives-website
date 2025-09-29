@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - CodeAayu Creatives</title>
+    <meta name="description" content="Get in touch with Aayush for photography services, content collaboration, or creative projects. Let's create something amazing together.">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/logos/logo-black.png" alt="CodeAayu Creatives Logo" class="logo">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="photography.html">Photography</a></li>
+                    <li><a href="writing.html">Writing</a></li>
+                    <li><a href="video.html">Video</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Contact Hero Section -->
+        <section class="contact-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Let's Create Something Amazing Together</h1>
+                        <p class="hero-subtitle">Ready to bring your creative vision to life? Whether it's photography, content creation, or collaboration - I'd love to hear about your project and make it happen.</p>
+                        <div class="quick-contact">
+                            <a href="mailto:codeaayu@gmail.com" class="quick-contact-item">
+                                <span class="contact-icon">📧</span>
+                                <span>codeaayu@gmail.com</span>
+                            </a>
+                            <a href="https://wa.me/918873643965" target="_blank" class="quick-contact-item">
+                                <span class="contact-icon">💬</span>
+                                <span>WhatsApp Me</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="contact-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">24hr</div>
+                                <div class="stat-label">Response Time</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">4.5⭐</div>
+                                <div class="stat-label">Client Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form & Info -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <h2>Send Me a Message</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="project-type">Project Type</label>
+                                <select id="project-type" name="project-type">
+                                    <option value="">Select a project type</option>
+                                    <option value="photography">Photography Session</option>
+                                    <option value="event">Event Coverage</option>
+                                    <option value="content">Content Creation</option>
+                                    <option value="writing">Writing/Articles</option>
+                                    <option value="collaboration">General Collaboration</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="budget">Budget Range</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select budget range</option>
+                                    <option value="under-10k">Under ₹10,000</option>
+                                    <option value="10k-25k">₹10,000 - ₹25,000</option>
+                                    <option value="25k-50k">₹25,000 - ₹50,000</option>
+                                    <option value="50k-100k">₹50,000 - ₹1,00,000</option>
+                                    <option value="100k-plus">₹1,00,000+</option>
+                                    <option value="discuss">Let's discuss</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="timeline">Timeline</label>
+                                <select id="timeline" name="timeline">
+                                    <option value="">Select timeline</option>
+                                    <option value="asap">ASAP</option>
+                                    <option value="1-week">Within 1 week</option>
+                                    <option value="2-4-weeks">2-4 weeks</option>
+                                    <option value="1-2-months">1-2 months</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, vision, or what you'd like to collaborate on..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <div class="contact-info-header">
+                            <h2>Why Work With Me?</h2>
+                            <p>I'm passionate about creating compelling visual stories and content that resonates. Whether you're looking for stunning photography, engaging content, or creative collaboration, I bring dedication, creativity, and professionalism to every project.</p>
+                        </div>
+
+                        <div class="contact-details">
+                            <div class="contact-item featured">
+                                <div class="contact-icon">📧</div>
+                                <div class="contact-text">
+                                    <h3>Email Me</h3>
+                                    <a href="mailto:codeaayu@gmail.com" class="contact-link">codeaayu@gmail.com</a>
+                                    <p class="contact-note">Best for detailed project discussions</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item featured">
+                                <div class="contact-icon">💬</div>
+                                <div class="contact-text">
+                                    <h3>WhatsApp / Call</h3>
+                                    <div class="contact-options">
+                                        <a href="https://wa.me/918873643965" target="_blank" class="contact-link">WhatsApp</a>
+                                        <span class="divider">•</span>
+                                        <a href="tel:+918873643965" class="contact-link">Call +91-88736-43965</a>
+                                    </div>
+                                    <p class="contact-note">WhatsApp preferred for quick responses</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <div class="contact-text">
+                                    <h3>Location</h3>
+                                    <p>India • Available for travel worldwide</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">⏰</div>
+                                <div class="contact-text">
+                                    <h3>Response Time</h3>
+                                    <p>Usually within 24 hours • Faster for urgent projects</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">💼</div>
+                                <div class="contact-text">
+                                    <h3>Project Types</h3>
+                                    <p>Photography • Content Creation • Writing</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">🎯</div>
+                                <div class="contact-text">
+                                    <h3>Specialties</h3>
+                                    <p>Travel Photography • Brand Content • Visual Storytelling</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links-contact">
+                            <h3>Follow Me</h3>
+                            <div class="social-grid">
+                                <a href="https://instagram.com/codeaayu.creatives" target="_blank" class="social-link instagram">
+                                    <span class="social-icon">📷</span>
+                                    <span class="social-text">Instagram</span>
+                                </a>
+                                <a href="https://medium.com/@Codeaayu" target="_blank" class="social-link medium">
+                                    <span class="social-icon">✍️</span>
+                                    <span class="social-text">Medium</span>
+                                </a>
+                                <a href="https://www.youtube.com/@CodeAayuCreatives" target="_blank" class="social-link youtube">
+                                    <span class="social-icon">🎥</span>
+                                    <span class="social-text">YouTube</span>
+                                </a>
+                                <a href="https://linkedin.com/in/aayushahuja" target="_blank" class="social-link linkedin">
+                                    <span class="social-icon">💼</span>
+                                    <span class="social-text">LinkedIn</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="linktree-section">
+                            <h3>All Links in One Place</h3>
+                            <div class="linktree-qr">
+                                <img src="images/linktree-qr.png" alt="CodeAayu Creatives Linktree QR Code">
+                                <p>Scan to access all my social media and content</p>
+                                <a href="https://linktr.ee/codeaayu.creatives" target="_blank" class="btn btn-primary">Visit Linktree</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Overview -->
+        <section class="services-overview">
+            <div class="container">
+                <h2>What I Offer</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">📸</div>
+                        <h3>Photography Services</h3>
+                        <ul>
+                            <li>Portrait Photography</li>
+                            <li>Event Documentation</li>
+                            <li>Travel Photography</li>
+                            <li>Commercial Photography</li>
+                            <li>Photo Editing & Retouching</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">✍️</div>
+                        <h3>Content Creation</h3>
+                        <ul>
+                            <li>Article Writing</li>
+                            <li>Blog Content</li>
+                            <li>Social Media Content</li>
+                            <li>Creative Writing</li>
+                            <li>Content Strategy</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🤝</div>
+                        <h3>Brand Collaborations & Social Media</h3>
+                        <ul>
+                            <li>Brand Partnerships</li>
+                            <li>Instagram Content Creation</li>
+                            <li>Social Media Strategy</li>
+                            <li>Creative Campaigns</li>
+                            <li>Visual Storytelling</li>
+                            <li>Educational Content</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>What's your typical response time?</h3>
+                        <p>I usually respond to inquiries within 24 hours. For urgent projects, feel free to mention it in your message.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Do you travel for projects?</h3>
+                        <p>Yes! I'm available for travel within India and internationally for the right projects. Travel costs would be discussed separately.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What's included in your photography packages?</h3>
+                        <p>Each package is customized based on your needs, but typically includes planning, shooting, basic editing, and digital delivery. We can discuss specifics based on your project.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Do you offer payment plans?</h3>
+                        <p>Yes, for larger projects I offer flexible payment plans. We can discuss terms that work for both of us.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Can you help with content strategy?</h3>
+                        <p>Absolutely! I can help develop content strategies for social media, blogs, and other platforms based on your goals and audience.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What if I'm not sure what I need?</h3>
+                        <p>No worries! I offer consultation calls where we can discuss your goals and I can recommend the best approach for your project.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>CodeAayu Creatives</h3>
+                    <p>Visual Storyteller & Creative Content Creator</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="photography.html">Photography</a></li>
+                        <li><a href="writing.html">Writing</a></li>
+                        <li><a href="video.html">Video</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Me</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/codeaayu.creatives" target="_blank">Instagram</a>
+                        <a href="https://medium.com/@codeaayu" target="_blank">Medium</a>
+                        <a href="https://youtube.com/@codeaayu" target="_blank">YouTube</a>
+                        <a href="https://linkedin.com/in/aayushahuja" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CodeAayu Creatives. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
