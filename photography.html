@@ -1,336 +1,914 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photography Portfolio - CodeAayu Creatives</title>
-    <meta name="description" content="Explore Aayush's photography portfolio featuring travel, portrait, and street photography with a focus on visual storytelling.">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <title>Photography Portfolio - Aayush Ahuja | CodeAayu Creatives</title>
+    <meta name="description" content="Explore Aayush's photography portfolio featuring travel, portrait, wildlife, and street photography with stunning visual storytelling.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/logos/logo-black.png">
 </head>
 <body>
-    <header class="navbar">
+    <!-- Navigation -->
+    <nav class="nav navbar" id="mainNav">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">
-                    <img src="images/logos/logo-black.png" alt="CodeAayu Creatives Logo" class="logo">
-                </a>
-            </div>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="photography.html" class="active">Photography</a></li>
-                    <li><a href="writing.html">Writing</a></li>
-                    <!-- <li><a href="video.html">Video</a></li> -->
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <a href="index.html" class="nav-logo logo">
+                <span class="logo-text">CodeAayu Creatives</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li class="nav-item has-dropdown">
+                    <a href="index.html" class="nav-link">
+                        Home
+                        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html#home" class="dropdown-link">Hero</a></li>
+                        <li><a href="index.html#about" class="dropdown-link">About</a></li>
+                        <li><a href="index.html#services" class="dropdown-link">Services</a></li>
+                        <li><a href="index.html#work" class="dropdown-link">Work</a></li>
+                        <li><a href="index.html#contact" class="dropdown-link">Contact</a></li>
+                    </ul>
+                </li>
+                <li><a href="photography.html" class="nav-link active">Photography</a></li>
+                <li><a href="writing.html" class="nav-link">Writing</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="nav-toggle mobile-toggle" id="navToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <!-- Page Header -->
-        <section class="page-header">
-            <div class="container">
-                <h1>Photography Portfolio</h1>
-                <p>Visual storytelling through the lens - capturing moments, emotions, and stories</p>
-            </div>
-        </section>
-
-        <!-- Portfolio Filter -->
-        <section class="portfolio-filter">
-            <div class="container">
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="travel">Travel</button>
-                    <button class="filter-btn" data-filter="birds">Birds</button>
-                    <button class="filter-btn" data-filter="animals">Animals</button>
-                    <button class="filter-btn" data-filter="scenic">Scenic</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Photography Gallery -->
-        <section class="photography-gallery">
-            <div class="container">
-                <div class="gallery-grid">
-                    <!-- Travel Photography -->
-                    <div class="gallery-item" data-category="travel">
-                        <img src="images/thumbnails/portfolio/travel-1.jpg" data-full="images/portfolio/travel-1.jpg" alt="Travel Photography - Mountain Landscape">
-                        <div class="gallery-overlay">
-                            <h3>Mountain Serenity</h3>
-                            <p>Travel Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="travel">
-                        <img src="images/thumbnails/portfolio/travel-2.jpg" data-full="images/portfolio/travel-2.jpg" alt="Travel Photography - City Streets">
-                        <div class="gallery-overlay">
-                            <h3>Urban Exploration</h3>
-                            <p>Travel Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="travel">
-                        <img src="images/thumbnails/portfolio/travel-3.jpg" data-full="images/portfolio/travel-3.jpg" alt="Travel Photography - Cultural Scene">
-                        <div class="gallery-overlay">
-                            <h3>Cultural Moments</h3>
-                            <p>Travel Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="travel">
-                        <img src="images/thumbnails/portfolio/travel-4.jpg" data-full="images/portfolio/travel-4.jpg" alt="Travel Photography - Airport Journey">
-                        <div class="gallery-overlay">
-                            <h3>Journey Begins</h3>
-                            <p>Travel Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="travel">
-                        <img src="images/thumbnails/portfolio/travel-5.jpg" data-full="images/portfolio/travel-5.jpg" alt="Travel Photography - Urban Adventure">
-                        <div class="gallery-overlay">
-                            <h3>Urban Adventure</h3>
-                            <p>Travel Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="travel">
-                        <img src="images/thumbnails/portfolio/travel-6.jpg" data-full="images/portfolio/travel-6.jpg" alt="Travel Photography - City Explorer">
-                        <div class="gallery-overlay">
-                            <h3>City Explorer</h3>
-                            <p>Travel Photography</p>
-                        </div>
-                    </div>
-
-                    <!-- Birds Photography -->
-                    <div class="gallery-item" data-category="birds">
-                        <img src="images/thumbnails/portfolio/bird-1.jpg" data-full="images/portfolio/bird-1.jpg" alt="Bird Photography - Nature Bird">
-                        <div class="gallery-overlay">
-                            <h3>Feathered Beauty</h3>
-                            <p>Bird Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="birds">
-                        <img src="images/thumbnails/portfolio/bird-2.jpg" data-full="images/portfolio/bird-2.jpg" alt="Bird Photography - Wildlife">
-                        <div class="gallery-overlay">
-                            <h3>Wildlife Moments</h3>
-                            <p>Bird Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="birds">
-                        <img src="images/thumbnails/portfolio/bird-3.jpg" data-full="images/portfolio/bird-3.jpg" alt="Bird Photography - Flying Bird">
-                        <div class="gallery-overlay">
-                            <h3>Flight Captured</h3>
-                            <p>Bird Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="birds">
-                        <img src="images/thumbnails/portfolio/bird-4.jpg" data-full="images/portfolio/bird-4.jpg" alt="Bird Photography - Bird Couple">
-                        <div class="gallery-overlay">
-                            <h3>Nature's Romance</h3>
-                            <p>Bird Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="birds">
-                        <img src="images/thumbnails/portfolio/bird-5.jpg" data-full="images/portfolio/bird-5.jpg" alt="Bird Photography - Black Winged Stilt">
-                        <div class="gallery-overlay">
-                            <h3>Elegant Stilt</h3>
-                            <p>Bird Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="birds">
-                        <img src="images/thumbnails/portfolio/bird-6.jpg" data-full="images/portfolio/bird-6.jpg" alt="Bird Photography - Bird in Flight">
-                        <div class="gallery-overlay">
-                            <h3>Wings in Motion</h3>
-                            <p>Bird Photography</p>
-                        </div>
-                    </div>
-
-                    <!-- Animals Photography -->
-                    <div class="gallery-item" data-category="animals">
-                        <img src="images/thumbnails/portfolio/animal-1.jpg" data-full="images/portfolio/animal-1.jpg" alt="Animal Photography - Wild Monkey">
-                        <div class="gallery-overlay">
-                            <h3>Wild Expressions</h3>
-                            <p>Animal Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="animals">
-                        <img src="images/thumbnails/portfolio/animal-2.jpg" data-full="images/portfolio/animal-2.jpg" alt="Animal Photography - Peacock">
-                        <div class="gallery-overlay">
-                            <h3>Majestic Peacock</h3>
-                            <p>Animal Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="animals">
-                        <img src="images/thumbnails/portfolio/animal-3.jpg" data-full="images/portfolio/animal-3.jpg" alt="Animal Photography - Elephant">
-                        <div class="gallery-overlay">
-                            <h3>Gentle Giant</h3>
-                            <p>Animal Photography</p>
-                        </div>
-                    </div>
-
-                    <!-- Scenic Photography -->
-                    <div class="gallery-item" data-category="scenic">
-                        <img src="images/thumbnails/portfolio/scenic-1.jpg" data-full="images/portfolio/scenic-1.jpg" alt="Scenic Photography - Pamban Sunset">
-                        <div class="gallery-overlay">
-                            <h3>Pamban Sunset</h3>
-                            <p>Scenic Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="scenic">
-                        <img src="images/thumbnails/portfolio/scenic-2.jpg" data-full="images/portfolio/scenic-2.jpg" alt="Scenic Photography - Sunrise">
-                        <div class="gallery-overlay">
-                            <h3>Golden Dawn</h3>
-                            <p>Scenic Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="scenic">
-                        <img src="images/thumbnails/portfolio/scenic-3.jpg" data-full="images/portfolio/scenic-3.jpg" alt="Scenic Photography - Sunset Views">
-                        <div class="gallery-overlay">
-                            <h3>Evening Glory</h3>
-                            <p>Scenic Photography</p>
-                        </div>
-                    </div>
-
-                    <!-- Street Photography -->
-                    <div class="gallery-item" data-category="street">
-                        <img src="images/thumbnails/portfolio/street-1.jpg" data-full="images/portfolio/street-1.jpg" alt="Street Photography - Daily Life">
-                        <div class="gallery-overlay">
-                            <h3>Daily Stories</h3>
-                            <p>Street Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="street">
-                        <img src="images/thumbnails/portfolio/street-2.jpg" data-full="images/portfolio/street-2.jpg" alt="Street Photography - Urban Life">
-                        <div class="gallery-overlay">
-                            <h3>Urban Rhythm</h3>
-                            <p>Street Photography</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="street">
-                        <img src="images/thumbnails/portfolio/street-3.jpg" data-full="images/portfolio/street-3.jpg" alt="Street Photography - Human Connection">
-                        <div class="gallery-overlay">
-                            <h3>Human Connections</h3>
-                            <p>Street Photography</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Instagram Section -->
-        <section class="instagram-section">
-            <div class="container">
-                <h2>Follow My Photography Journey</h2>
-                <p>See my latest work and behind-the-scenes content on Instagram</p>
-                <a href="https://instagram.com/codeaayu.creatives" target="_blank" class="btn btn-primary">
-                    Follow @codeaayu.creatives
-                </a>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section class="photography-services">
-            <div class="container">
-                <h2>Photography Services</h2>
-                <div class="services-grid">
-                    <div class="service-item">
-                        <h3>Travel Photography</h3>
-                        <p>Capturing the essence of places and cultures through compelling visual narratives.</p>
-                    </div>
-                    <div class="service-item">
-                        <h3>Portrait Sessions</h3>
-                        <p>Professional headshots and creative portraits that tell your unique story.</p>
-                    </div>
-                    <div class="service-item">
-                        <h3>Event Coverage</h3>
-                        <p>Documenting special moments and events with a photojournalistic approach.</p>
-                    </div>
-                </div>
-                <div class="services-cta">
-                    <a href="contact.html" class="btn btn-primary">Book a Session</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-        <div class="lightbox-caption" id="lightbox-caption"></div>
-        <div class="lightbox-nav">
-            <button class="lightbox-prev">&#10094;</button>
-            <button class="lightbox-next">&#10095;</button>
+    <!-- Page Header -->
+    <section class="page-header-modern">
+        <div class="header-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
         </div>
-    </div>
+        <div class="container">
+            <div class="header-content" data-aos="fade-up">
+                <span class="section-label">Portfolio</span>
+                <h1 class="page-title">Photography</h1>
+                <p class="page-description">
+                    Visual storytelling through the lens - capturing moments, emotions, and stories across
+                    diverse landscapes, cultures, and wildlife encounters.
+                </p>
+                <div class="header-stats">
+                    <div class="stat-pill">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Photos</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Cities</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
+    <!-- Gallery Filter -->
+    <section class="gallery-filter-section">
+        <div class="container">
+            <div class="filter-wrapper" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="travel">Travel</button>
+                <button class="filter-btn" data-filter="birds">Birds</button>
+                <button class="filter-btn" data-filter="animals">Wildlife</button>
+                <button class="filter-btn" data-filter="scenic">Scenic</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photography Gallery -->
+    <section class="photography-gallery-v2">
+        <div class="container-fluid">
+            <div class="gallery-masonry" id="galleryGrid">
+                <!-- Travel Photos -->
+
+                <!-- Birds Photos -->
+                <div class="gallery-card" data-category="birds" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/bird-1.jpg" alt="Bird wildlife photography" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Feathered Beauty</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(0)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/bird-2.jpg" alt="Bird in nature photography" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Wildlife Moments</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(1)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/bird-3.jpg" alt="Bird in flight photography" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Flight Captured</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(2)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wildlife/Animals -->
+
+                <div class="gallery-card" data-category="animals" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/animal-3.jpg" alt="Wildlife creature photography" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Wildlife</span>
+                            <h3 class="gallery-title">Into The Wild</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(3)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scenic -->
+
+                <div class="gallery-card" data-category="scenic" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/scenic-3.jpg" alt="Scenic nature photography" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Scenic</span>
+                            <h3 class="gallery-title">Natural Beauty</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(4)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Street -->
+
+                <!-- New Birds Photos -->
+                <div class="gallery-card" data-category="birds" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Peacock.jpg" alt="Peacock photography" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Regal Peacock</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(5)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Black Winged Stilt.jpg" alt="Black Winged Stilt photography" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Elegant Stilt</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(6)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Purple_heron.jpg" alt="Purple Heron photography" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Purple Heron</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(7)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Spotted_owl.jpg" alt="Spotted Owl photography" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Spotted Owl</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(8)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/eagle_fly.jpg" alt="Eagle in flight" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Soaring Eagle</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(9)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Flamebeck_woodpecker.jpg" alt="Flameback Woodpecker" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Flameback Woodpecker</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(10)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Greater_Coucal.jpg" alt="Greater Coucal bird" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Greater Coucal</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(11)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/bird_flight.jpg" alt="Bird in flight" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Flight Dynamics</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(12)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/twin_eagle.jpg" alt="Twin eagles" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Eagle Duo</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(13)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="birds" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Bird_couple.jpg" alt="Bird couple" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Birds</span>
+                            <h3 class="gallery-title">Love Birds</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(14)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Travel/Scenic Photos -->
+                <div class="gallery-card" data-category="travel" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/pamban_sunset.jpg" alt="Pamban Bridge sunset" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Travel</span>
+                            <h3 class="gallery-title">Pamban Sunset</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(15)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="scenic" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Sunrise.jpg" alt="Sunrise landscape" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Scenic</span>
+                            <h3 class="gallery-title">Morning Glory</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(16)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="travel" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="Vivekananda Memorial" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Travel</span>
+                            <h3 class="gallery-title">Rock Memorial</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(17)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="scenic" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/wave_splashing.jpg" alt="Ocean waves crashing" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Scenic</span>
+                            <h3 class="gallery-title">Crashing Waves</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(18)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="travel" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Fire_nubra.JPG" alt="Fire in Nubra Valley" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Travel</span>
+                            <h3 class="gallery-title">Nubra Nights</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(19)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="scenic" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Pine Forest.jpg" alt="Pine forest landscape" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Scenic</span>
+                            <h3 class="gallery-title">Pine Retreat</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(20)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="scenic" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Wilson forest.jpg" alt="Wilson forest trail" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Scenic</span>
+                            <h3 class="gallery-title">Forest Trail</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(21)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Wildlife Photos -->
+                <div class="gallery-card" data-category="animals" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Wild Monkey.jpg" alt="Wild monkey" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Wildlife</span>
+                            <h3 class="gallery-title">Wild Monkey</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(22)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="animals" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Duck.jpg" alt="Duck on water" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Wildlife</span>
+                            <h3 class="gallery-title">Peaceful Duck</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(23)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="animals" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Blue Dragon.JPG" alt="Blue dragonfly" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Wildlife</span>
+                            <h3 class="gallery-title">Blue Dragonfly</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(24)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flower/Scenic Photos -->
+                <div class="gallery-card" data-category="scenic" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Flower with sun.jpg" alt="Flower silhouette" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Scenic</span>
+                            <h3 class="gallery-title">Sunlit Bloom</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(25)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="scenic" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Flowers close up.jpg" alt="Flower macro" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Scenic</span>
+                            <h3 class="gallery-title">Floral Detail</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(26)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="scenic" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="images/thumbnails/portfolio/Pink_flower.jpg" alt="Pink flower" loading="lazy">
+                        <div class="gallery-overlay-v2">
+                            <span class="gallery-category">Scenic</span>
+                            <h3 class="gallery-title">Pink Petals</h3>
+                            <button class="gallery-zoom" onclick="openLightbox(27)">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Interested in Working Together?</h2>
+                <p>Let's create stunning visuals for your next project. Available for photography commissions, brand collaborations, and creative partnerships.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">
+                        <span>Get In Touch</span>
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                    <a href="about.html" class="btn btn-outline">
+                        <span>Learn More About Me</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-info">
-                    <h3>CodeAayu Creatives</h3>
-                    <p>Visual Storyteller & Creative Content Creator</p>
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-text">CodeAayu Creatives</span>
+                    </div>
+                    <p class="footer-description">
+                        Visual storyteller capturing moments that matter. Based in India, working worldwide.
+                    </p>
                 </div>
+
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="photography.html">Photography</a></li>
-                        <li><a href="writing.html">Writing</a></li>
-                        <!-- <li><a href="video.html">Video</a></li> -->
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4>Follow Me</h4>
-                    <div class="social-links">
-                        <a href="https://instagram.com/codeaayu.creatives" target="_blank" aria-label="Instagram">
-                            <span class="social-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
-                                </svg>
-                            </span>
-                            <span class="social-text">Instagram</span>
-                        </a>
-                        <a href="https://medium.com/@codeaayu" target="_blank" aria-label="Medium">
-                            <span class="social-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M3 7.5c0-.3.1-.6.3-.8l2.9-3.5v-.4H3V2h6v.8L12.7 8l3.7-5.2V2h6v.8l-1.9 1.8c-.2.2-.3.5-.3.8V17c0 .3.1.6.3.8l1.8 1.8V20h-7v-.4l1.9-1.8c.2-.2.3-.5.3-.8V8.7l-4.5 6.5h-.2L7 8.4V17c0 .3.1.6.3.8l2.5 2.2V20H3v-.4l2.5-2.1c.2-.2.3-.5.3-.8V7.5z"/>
-                                </svg>
-                            </span>
-                            <span class="social-text">Medium</span>
-                        </a>
-                        <a href="https://www.youtube.com/@CodeAayuCreatives" target="_blank" aria-label="YouTube">
-                            <span class="social-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M23.5 7.2s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9-3-.2-7.6-.2-7.6-.2h-.1s-4.6 0-7.6.2c-.4 0-1.3.1-2.1.9-.6.7-.8 2.3-.8 2.3S2 9.1 2 11v2c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.4.2 7.4.2s4.6 0 7.6-.2c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3S24 12.9 24 11V9c0-1.9-.5-1.8-.5-1.8zM9.8 14.5V8.9l6 2.8-6 2.8z"/>
-                                </svg>
-                            </span>
-                            <span class="social-text">YouTube</span>
-                        </a>
-                        <a href="https://linkedin.com/in/aayushahuja" target="_blank" aria-label="LinkedIn">
-                            <span class="social-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20.45 20.45h-3.55v-5.6c0-1.34 0-3.06-1.86-3.06-1.86 0-2.14 1.45-2.14 2.96v5.7H9.35V9h3.4v1.56h.05c.47-.89 1.62-1.83 3.34-1.83 3.57 0 4.23 2.35 4.23 5.41v6.31zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.15.92-2.07 2.06-2.07 1.15 0 2.07.92 2.07 2.07 0 1.14-.93 2.07-2.07 2.07zM7.11 20.45H3.56V9h3.55v11.45z"/>
-                                </svg>
-                            </span>
-                            <span class="social-text">LinkedIn</span>
-                        </a>
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="photography.html">Photography</a>
+                        <a href="writing.html">Writing</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="contact.html">Contact</a>
+                        <a href="https://instagram.com/codeaayu.creatives" target="_blank">Instagram</a>
+                        <a href="https://medium.com/@codeaayu" target="_blank">Medium</a>
+                        <a href="https://linkedin.com/in/aayushahuja" target="_blank">LinkedIn</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <a href="photography.html">Travel Photography</a>
+                        <a href="photography.html">Portrait Photography</a>
+                        <a href="writing.html">Content Creation</a>
+                        <a href="contact.html">Collaborations</a>
                     </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
                 <p>&copy; 2025 CodeAayu Creatives. All rights reserved.</p>
+                <p>Designed & Developed with ❤️ by Aayush Ahuja</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <!-- Lightbox (Simple implementation) -->
+    <div class="lightbox" id="lightbox" style="display: none;">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Simple lightbox functionality
+        const images = document.querySelectorAll('.gallery-image img');
+
+        // Make entire gallery image clickable
+        document.querySelectorAll('.gallery-image').forEach((img, index) => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function(e) {
+                openLightbox(index);
+            });
+        });
+
+        function openLightbox(index) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightbox.style.display = 'flex';
+            lightboxImg.src = images[index].src.replace('thumbnails/', '');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Gallery filter
+        const filterBtns = document.querySelectorAll('.filter-wrapper .filter-btn');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filterValue = this.getAttribute('data-filter');
+
+                galleryCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const category = card.getAttribute('data-category');
+                        card.style.display = category === filterValue ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        /* Page-specific styles */
+        .page-header-modern {
+            padding: calc(var(--nav-height) + 5rem) 0 4rem;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: var(--space-6);
+        }
+
+        .page-description {
+            font-size: var(--text-lg);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-8);
+            line-height: 1.8;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-6);
+            flex-wrap: wrap;
+        }
+
+        .stat-pill {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-6);
+            background: white;
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-md);
+        }
+
+        [data-theme="dark"] .stat-pill {
+            background: var(--bg-tertiary);
+        }
+
+        .stat-pill .stat-number {
+            font-family: var(--font-display);
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-pill .stat-label {
+            font-size: var(--text-sm);
+            color: var(--text-tertiary);
+        }
+
+        .gallery-filter-section {
+            padding: var(--space-12) 0;
+            background: var(--bg-primary);
+        }
+
+        .filter-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+        }
+
+        .photography-gallery-v2 {
+            padding: var(--space-12) 0 var(--space-24);
+        }
+
+        .gallery-masonry {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .gallery-card {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: transform var(--transition-base);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .gallery-card:hover .gallery-image img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay-v2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: var(--space-6);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .gallery-card:hover .gallery-overlay-v2 {
+            opacity: 1;
+        }
+
+        .gallery-category {
+            font-size: var(--text-xs);
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-2);
+        }
+
+        .gallery-title {
+            color: white;
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-3);
+        }
+
+        .gallery-zoom {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-start;
+        }
+
+        .gallery-zoom svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+        }
+
+        .cta-section {
+            padding: var(--space-24) 0;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: var(--space-4);
+            color: white;
+        }
+
+        .cta-content p {
+            font-size: var(--text-lg);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto var(--space-8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .lightbox {
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: var(--radius-lg);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-masonry {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </body>
 </html>

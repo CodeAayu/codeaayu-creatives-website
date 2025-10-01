@@ -5,415 +5,657 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - CodeAayu Creatives</title>
     <meta name="description" content="Get in touch with Aayush for photography services, content collaboration, or creative projects. Let's create something amazing together.">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="navbar">
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">CodeAayu Creatives</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav navbar" id="mainNav">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">
-                    <img src="images/logos/logo-black.png" alt="CodeAayu Creatives Logo" class="logo">
-                </a>
-            </div>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="photography.html">Photography</a></li>
-                    <li><a href="writing.html">Writing</a></li>
-                    <!-- <li><a href="video.html">Video</a></li> -->
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <a href="index.html" class="nav-logo logo">
+                <span class="logo-text">CodeAayu Creatives</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li class="nav-item has-dropdown">
+                    <a href="index.html" class="nav-link">
+                        Home
+                        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html#home" class="dropdown-link">Hero</a></li>
+                        <li><a href="index.html#about" class="dropdown-link">About</a></li>
+                        <li><a href="index.html#services" class="dropdown-link">Services</a></li>
+                        <li><a href="index.html#work" class="dropdown-link">Work</a></li>
+                        <li><a href="index.html#contact" class="dropdown-link">Contact</a></li>
+                    </ul>
+                </li>
+                <li><a href="photography.html" class="nav-link">Photography</a></li>
+                <li><a href="writing.html" class="nav-link">Writing</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="nav-toggle mobile-toggle" id="navToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <!-- Contact Hero Section -->
-        <section class="contact-hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Let's Create Something Amazing Together</h1>
-                        <p class="hero-subtitle">Ready to bring your creative vision to life? Whether it's photography, content creation, or collaboration - I'd love to hear about your project and make it happen.</p>
-                        <div class="quick-contact">
-                            <a href="mailto:codeaayu@gmail.com" class="quick-contact-item">
-                                <span class="contact-icon">📧 codeaayu@gmail.com</span>
-                            </a>
-                            <a href="https://wa.me/918873643965" target="_blank" class="quick-contact-item">
-                                <span class="contact-icon">💬 WhatsApp Me</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="hero-visual">
-                        <div class="contact-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">50+</div>
-                                <div class="stat-label">Projects Completed</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">24hr</div>
-                                <div class="stat-label">Response Time</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">4.5⭐</div>
-                                <div class="stat-label">Client Rating</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Form & Info -->
-        <section class="contact-section">
-            <div class="container">
-                <div class="contact-content">
-                    <!-- Contact Form (temporarily disabled) -->
-                    <!--
-                    <div class="contact-form-container">
-                        <h2>Send Me a Message</h2>
-                        <form class="contact-form" id="contactForm">
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="project-type">Project Type</label>
-                                <select id="project-type" name="project-type">
-                                    <option value="">Select a project type</option>
-                                    <option value="photography">Photography Session</option>
-                                    <option value="event">Event Coverage</option>
-                                    <option value="content">Content Creation</option>
-                                    <option value="writing">Writing/Articles</option>
-                                    <option value="collaboration">General Collaboration</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="budget">Budget Range</label>
-                                <select id="budget" name="budget">
-                                    <option value="">Select budget range</option>
-                                    <option value="under-10k">Under ₹10,000</option>
-                                    <option value="10k-25k">₹10,000 - ₹25,000</option>
-                                    <option value="25k-50k">₹25,000 - ₹50,000</option>
-                                    <option value="50k-100k">₹50,000 - ₹1,00,000</option>
-                                    <option value="100k-plus">₹1,00,000+</option>
-                                    <option value="discuss">Let's discuss</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="timeline">Timeline</label>
-                                <select id="timeline" name="timeline">
-                                    <option value="">Select timeline</option>
-                                    <option value="asap">ASAP</option>
-                                    <option value="1-week">Within 1 week</option>
-                                    <option value="2-4-weeks">2-4 weeks</option>
-                                    <option value="1-2-months">1-2 months</option>
-                                    <option value="flexible">Flexible</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, vision, or what you'd like to collaborate on..." required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
-                    </div>
-                    -->
-
-                    <!-- Contact Info -->
-                    <div class="contact-info">
-                        <div class="contact-info-header">
-                            <h2>Why Work With Me?</h2>
-                            <p>I'm passionate about creating compelling visual stories and content that resonates. Whether you're looking for stunning photography, engaging content, or creative collaboration, I bring dedication, creativity, and professionalism to every project.</p>
-                        </div>
-
-                        <div class="contact-details">
-                            <!-- <div class="contact-item featured">
-                                <div class="contact-icon">📧</div>
-                                <div class="contact-text">
-                                    <h3>Email Me</h3>
-                                    <a href="mailto:codeaayu@gmail.com" class="contact-link">codeaayu@gmail.com</a>
-                                    <p class="contact-note">Best for detailed project discussions</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item featured">
-                                <div class="contact-icon">💬</div>
-                                <div class="contact-text">
-                                    <h3>WhatsApp / Call</h3>
-                                    <div class="contact-options">
-                                        <a href="https://wa.me/918873643965" target="_blank" class="contact-link">WhatsApp</a>
-                                        <span class="divider">•</span>
-                                        <a href="tel:+918873643965" class="contact-link">Call +91-88736-43965</a>
-                                    </div>
-                                    <p class="contact-note">WhatsApp preferred for quick responses</p>
-                                </div>
-                            </div> -->
-
-                            <div class="contact-item">
-                                <div class="contact-icon">📍</div>
-                                <div class="contact-text">
-                                    <h3>Location</h3>
-                                    <p>Bangalore, India • Available for travel worldwide</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">⏰</div>
-                                <div class="contact-text">
-                                    <h3>Response Time</h3>
-                                    <p>Usually within 24 hours • Faster for urgent projects</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">💼</div>
-                                <div class="contact-text">
-                                    <h3>Project Types</h3>
-                                    <p>Photography • Content Creation • Writing</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">🎯</div>
-                                <div class="contact-text">
-                                    <h3>Specialties</h3>
-                                    <p>Travel Photography • Brand Content • Visual Storytelling</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="social-links-contact">
-                            <h3>Follow Me</h3>
-                            <div class="social-grid">
-                                <!-- Instagram -->
-                                <a href="https://instagram.com/codeaayu.creatives" target="_blank" class="social-link instagram" aria-label="Instagram">
-                                    <span class="social-icon" aria-hidden="true">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
-                                        </svg>
-                                    </span>
-                                    <span class="social-text">Instagram</span>
-                                </a>
-
-                                <!-- Medium -->
-                                <a href="https://medium.com/@Codeaayu" target="_blank" class="social-link medium" aria-label="Medium">
-                                    <span class="social-icon" aria-hidden="true">
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M3 7.5c0-.3.1-.6.3-.8l2.9-3.5v-.4H3V2h6v.8L12.7 8l3.7-5.2V2h6v.8l-1.9 1.8c-.2.2-.3.5-.3.8V17c0 .3.1.6.3.8l1.8 1.8V20h-7v-.4l1.9-1.8c.2-.2.3-.5.3-.8V8.7l-4.5 6.5h-.2L7 8.4V17c0 .3.1.6.3.8l2.5 2.2V20H3v-.4l2.5-2.1c.2-.2.3-.5.3-.8V7.5z"/>
-                                        </svg>
-                                    </span>
-                                    <span class="social-text">Medium</span>
-                                </a>
-
-                                <!-- YouTube -->
-                                <a href="https://www.youtube.com/@CodeAayuCreatives" target="_blank" class="social-link youtube" aria-label="YouTube">
-                                    <span class="social-icon" aria-hidden="true">
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M23.5 7.2s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9-3-.2-7.6-.2-7.6-.2h-.1s-4.6 0-7.6.2c-.4 0-1.3.1-2.1.9-.6.7-.8 2.3-.8 2.3S2 9.1 2 11v2c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.4.2 7.4.2s4.6 0 7.6-.2c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3S24 12.9 24 11V9c0-1.9-.5-1.8-.5-1.8zM9.8 14.5V8.9l6 2.8-6 2.8z"/>
-                                        </svg>
-                                    </span>
-                                    <span class="social-text">YouTube</span>
-                                </a>
-
-                                <!-- LinkedIn -->
-                                <a href="https://linkedin.com/in/aayushahuja" target="_blank" class="social-link linkedin" aria-label="LinkedIn">
-                                    <span class="social-icon" aria-hidden="true">
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M20.45 20.45h-3.55v-5.6c0-1.34 0-3.06-1.86-3.06-1.86 0-2.14 1.45-2.14 2.96v5.7H9.35V9h3.4v1.56h.05c.47-.89 1.62-1.83 3.34-1.83 3.57 0 4.23 2.35 4.23 5.41v6.31zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.15.92-2.07 2.06-2.07 1.15 0 2.07.92 2.07 2.07 0 1.14-.93 2.07-2.07 2.07zM7.11 20.45H3.56V9h3.55v11.45z"/>
-                                        </svg>
-                                    </span>
-                                    <span class="social-text">LinkedIn</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="linktree-section">
-                            <h3>All Links in One Place</h3>
-                            <div class="linktree-qr">
-                                <img src="images/linktree-qr.png" alt="CodeAayu Creatives Linktree QR Code">
-                                <p>Scan to access all my social media and content</p>
-                                <a href="https://linktr.ee/codeaayu.creatives" target="_blank" class="btn btn-primary">Visit Linktree</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Overview -->
-        <section class="services-overview">
-            <div class="container">
-                <h2>What I Offer</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">📸</div>
-                        <h3>Photography Services</h3>
-                        <ul>
-                            <li>Portrait Photography</li>
-                            <li>Event Documentation</li>
-                            <li>Travel Photography</li>
-                            <li>Commercial Photography</li>
-                            <li>Photo Editing & Retouching</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">✍️</div>
-                        <h3>Content Creation</h3>
-                        <ul>
-                            <li>Article Writing</li>
-                            <li>Blog Content</li>
-                            <li>Social Media Content</li>
-                            <li>Creative Writing</li>
-                            <li>Content Strategy</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">🤝</div>
-                        <h3>Brand Collaborations & Social Media</h3>
-                        <ul>
-                            <li>Brand Partnerships</li>
-                            <li>Instagram Content Creation</li>
-                            <li>Social Media Strategy</li>
-                            <li>Creative Campaigns</li>
-                            <li>Visual Storytelling</li>
-                            <li>Educational Content</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="faq-section">
-            <div class="container">
-                <h2>Frequently Asked Questions</h2>
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <h3>What's your typical response time?</h3>
-                        <p>I usually respond to inquiries within 24 hours. For urgent projects, feel free to mention it in your message.</p>
-                    </div>
-
-                    <div class="faq-item">
-                        <h3>Do you travel for projects?</h3>
-                        <p>Yes! I'm available for travel within India and internationally for the right projects. Travel costs would be discussed separately.</p>
-                    </div>
-
-                    <div class="faq-item">
-                        <h3>What's included in your photography packages?</h3>
-                        <p>Each package is customized based on your needs, but typically includes planning, shooting, basic editing, and digital delivery. We can discuss specifics based on your project.</p>
-                    </div>
-
-                    <div class="faq-item">
-                        <h3>Do you offer payment plans?</h3>
-                        <p>Yes, for larger projects I offer flexible payment plans. We can discuss terms that work for both of us.</p>
-                    </div>
-
-                    <div class="faq-item">
-                        <h3>Can you help with content strategy?</h3>
-                        <p>Absolutely! I can help develop content strategies for social media, blogs, and other platforms based on your goals and audience.</p>
-                    </div>
-
-                    <div class="faq-item">
-                        <h3>What if I'm not sure what I need?</h3>
-                        <p>No worries! I offer consultation calls where we can discuss your goals and I can recommend the best approach for your project.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <!-- Contact Hero -->
+    <section class="contact-hero-v2">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>CodeAayu Creatives</h3>
-                    <p>Visual Storyteller & Creative Content Creator</p>
+            <div class="contact-hero-content" data-aos="fade-up">
+                <div class="hero-badge">Let's Connect</div>
+                <h1 class="hero-title-large">Let's Create Something Amazing Together</h1>
+                <p class="hero-description-large">Ready to bring your creative vision to life? Whether it's photography, content creation, or collaboration — I'd love to hear about your project and make it happen.</p>
+
+                <div class="quick-contact-grid">
+                    <a href="mailto:codeaayu@gmail.com" class="quick-contact-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="qc-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="qc-content">
+                            <h3>Email Me</h3>
+                            <p>codeaayu@gmail.com</p>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/918873643965" target="_blank" class="quick-contact-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="qc-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                        </div>
+                        <div class="qc-content">
+                            <h3>WhatsApp</h3>
+                            <p>Message me directly</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="photography.html">Photography</a></li>
-                        <li><a href="writing.html">Writing</a></li>
-                        <!-- <li><a href="video.html">Video</a></li> -->
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+
+                <div class="hero-stats-row">
+                    <div class="stat-pill">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>24hr Response</span>
+                    </div>
+                    <div class="stat-pill">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        </svg>
+                        <span>50+ Projects</span>
+                    </div>
+                    <div class="stat-pill">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        <span>4.5★ Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Work With Me -->
+    <section class="why-me-section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header-center">
+                <h2>Why Work With Me?</h2>
+                <p>What makes our collaboration special</p>
+            </div>
+            <div class="why-me-grid">
+                <div class="why-me-card" data-aos="fade-up">
+                    <div class="wm-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <h3>Passion-Driven</h3>
+                    <p>I'm genuinely passionate about visual storytelling and creating content that resonates. Every project gets my full creative energy and attention to detail.</p>
+                </div>
+
+                <div class="why-me-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="wm-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3>Flexible & Affordable</h3>
+                    <p>Custom packages tailored to your budget and needs. I believe great creative work should be accessible, with payment plans available for larger projects.</p>
+                </div>
+
+                <div class="why-me-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="wm-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Quick Turnaround</h3>
+                    <p>Fast response times and efficient workflows. I respect deadlines and will work with your timeline to deliver quality results on schedule.</p>
+                </div>
+
+                <div class="why-me-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="wm-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Collaborative Approach</h3>
+                    <p>Your vision drives the project. I listen carefully, communicate openly, and work collaboratively to bring your ideas to life authentically.</p>
+                </div>
+
+                <div class="why-me-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="wm-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Technical + Creative</h3>
+                    <p>Unique blend of technical skills from software development and creative artistic vision. Best of both worlds for your project.</p>
+                </div>
+
+                <div class="why-me-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="wm-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
+                    <h3>Ongoing Support</h3>
+                    <p>My commitment doesn't end at delivery. I provide revisions, ongoing support, and am always available for future collaborations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Showcase -->
+    <section class="services-detailed-v2" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header-center">
+                <h2>What I Offer</h2>
+                <p>Comprehensive creative services for your brand</p>
+            </div>
+            <div class="services-showcase-grid">
+
+                <!-- Photography -->
+                <div class="service-detail-card" data-aos="fade-up">
+                    <div class="service-header-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Photography Services</h3>
+                    <p class="service-intro">Capturing moments that tell your story</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Portrait Photography</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Event Documentation</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Travel Photography</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Commercial Photography</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Photo Editing & Retouching</span>
+                        </li>
                     </ul>
                 </div>
-                <div class="footer-social">
-                    <h4>Follow Me</h4>
-                    <div class="social-links">
-                        <a href="https://instagram.com/codeaayu.creatives" target="_blank" aria-label="Instagram">
-                            <span class="social-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
-                                </svg>
-                            </span>
-                            <span class="social-text">Instagram</span>
-                        </a>
-                        <a href="https://medium.com/@codeaayu" target="_blank" aria-label="Medium">
-                            <span class="social-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M3 7.5c0-.3.1-.6.3-.8l2.9-3.5v-.4H3V2h6v.8L12.7 8l3.7-5.2V2h6v.8l-1.9 1.8c-.2.2-.3.5-.3.8V17c0 .3.1.6.3.8l1.8 1.8V20h-7v-.4l1.9-1.8c.2-.2.3-.5.3-.8V8.7l-4.5 6.5h-.2L7 8.4V17c0 .3.1.6.3.8l2.5 2.2V20H3v-.4l2.5-2.1c.2-.2.3-.5.3-.8V7.5z"/>
-                                </svg>
-                            </span>
-                            <span class="social-text">Medium</span>
-                        </a>
-                        <a href="https://www.youtube.com/@CodeAayuCreatives" target="_blank" aria-label="YouTube">
-                            <span class="social-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M23.5 7.2s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9-3-.2-7.6-.2-7.6-.2h-.1s-4.6 0-7.6.2c-.4 0-1.3.1-2.1.9-.6.7-.8 2.3-.8 2.3S2 9.1 2 11v2c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.8.2 7.4.2 7.4.2s4.6 0 7.6-.2c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3S24 12.9 24 11V9c0-1.9-.5-1.8-.5-1.8zM9.8 14.5V8.9l6 2.8-6 2.8z"/>
-                                </svg>
-                            </span>
-                            <span class="social-text">YouTube</span>
-                        </a>
-                        <a href="https://linkedin.com/in/aayushahuja" target="_blank" aria-label="LinkedIn">
-                            <span class="social-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20.45 20.45h-3.55v-5.6c0-1.34 0-3.06-1.86-3.06-1.86 0-2.14 1.45-2.14 2.96v5.7H9.35V9h3.4v1.56h.05c.47-.89 1.62-1.83 3.34-1.83 3.57 0 4.23 2.35 4.23 5.41v6.31zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.15.92-2.07 2.06-2.07 1.15 0 2.07.92 2.07 2.07 0 1.14-.93 2.07-2.07 2.07zM7.11 20.45H3.56V9h3.55v11.45z"/>
-                                </svg>
-                            </span>
-                            <span class="social-text">LinkedIn</span>
-                        </a>
+
+                <!-- Content Creation -->
+                <div class="service-detail-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-header-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 20h9"></path>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                        </svg>
+                    </div>
+                    <h3>Content Creation</h3>
+                    <p class="service-intro">Words that inspire and engage</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Article & Blog Writing</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Social Media Content</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Creative Writing</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Content Strategy</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Copywriting</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Brand Collaborations -->
+                <div class="service-detail-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-header-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Brand Collaborations</h3>
+                    <p class="service-intro">Amplifying your brand story</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Brand Partnerships</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Instagram Content Creation</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Social Media Strategy</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Creative Campaigns</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Visual Storytelling</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Educational Content</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section-v2" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header-center">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know</p>
+            </div>
+            <div class="faq-accordion">
+
+                <div class="faq-item-v2" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h3>What's your typical response time?</h3>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>I usually respond to inquiries within 24 hours. For urgent projects, feel free to mention it in your message and I'll prioritize getting back to you faster.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-v2" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h3>Do you travel for projects?</h3>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! I'm available for travel within India and internationally for the right projects. Travel costs would be discussed separately based on location and project requirements.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-v2" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h3>What's included in your photography packages?</h3>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Each package is customized based on your needs, but typically includes pre-shoot planning, on-site shooting, professional editing, and digital delivery. We can discuss specifics based on your project scope.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-v2" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h3>Do you offer payment plans?</h3>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, for larger projects I offer flexible payment plans. Typically a 30-50% upfront deposit with the remaining balance split into milestones. We can discuss terms that work for both of us.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-v2" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h3>Can you help with content strategy?</h3>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! I can help develop comprehensive content strategies for social media, blogs, and other platforms based on your goals, target audience, and brand identity.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-v2" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h3>What if I'm not sure what I need?</h3>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No worries! I offer free consultation calls where we can discuss your goals, challenges, and vision. I'll recommend the best approach and services for your specific needs.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Availability -->
+    <section class="location-section-v2" data-aos="fade-up">
+        <div class="container">
+            <div class="location-card-v2">
+                <div class="location-info">
+                    <div class="location-badge">Currently Based In</div>
+                    <h2>Bangalore, India</h2>
+                    <p>Available for travel worldwide for the right projects. From local shoots in Bangalore to international collaborations, distance is never a barrier to creating great work together.</p>
+                    <div class="availability-grid">
+                        <div class="availability-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <div>
+                                <strong>Response Time</strong>
+                                <span>Within 24 hours</span>
+                            </div>
+                        </div>
+                        <div class="availability-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <div>
+                                <strong>Travel</strong>
+                                <span>India & International</span>
+                            </div>
+                        </div>
+                        <div class="availability-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                            <div>
+                                <strong>Work Mode</strong>
+                                <span>On-site & Remote</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="social-connect-v2" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header-center">
+                <h2>Connect With Me</h2>
+                <p>Follow my creative journey on social media</p>
+            </div>
+            <div class="social-cards-grid">
+                <a href="https://instagram.com/codeaayu.creatives" target="_blank" class="social-card-v2 instagram" data-aos="fade-up">
+                    <div class="sc-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="white" stroke-width="2"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2"></line>
+                        </svg>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>@codeaayu.creatives</p>
+                    <span class="sc-arrow">→</span>
+                </a>
+
+                <a href="https://medium.com/@codeaayu" target="_blank" class="social-card-v2 medium" data-aos="fade-up" data-aos-delay="100">
+                    <div class="sc-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 7.5c0-.3.1-.6.3-.8l2.9-3.5v-.4H3V2h6v.8L12.7 8l3.7-5.2V2h6v.8l-1.9 1.8c-.2.2-.3.5-.3.8V17c0 .3.1.6.3.8l1.8 1.8V20h-7v-.4l1.9-1.8c.2-.2.3-.5.3-.8V8.7l-4.5 6.5h-.2L7 8.4V17c0 .3.1.6.3.8l2.5 2.2V20H3v-.4l2.5-2.1c.2-.2.3-.5.3-.8V7.5z"/>
+                        </svg>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>@codeaayu</p>
+                    <span class="sc-arrow">→</span>
+                </a>
+
+                <a href="https://www.youtube.com/@CodeAayuCreatives" target="_blank" class="social-card-v2 youtube" data-aos="fade-up" data-aos-delay="200">
+                    <div class="sc-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>@CodeAayuCreatives</p>
+                    <span class="sc-arrow">→</span>
+                </a>
+
+                <a href="https://linkedin.com/in/aayushahuja" target="_blank" class="social-card-v2 linkedin" data-aos="fade-up" data-aos-delay="300">
+                    <div class="sc-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Aayush Ahuja</p>
+                    <span class="sc-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta-v2" data-aos="fade-up">
+        <div class="container">
+            <div class="final-cta-card">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Let's have a conversation about your vision and how I can help bring it to life. No commitment required — just a friendly chat about possibilities.</p>
+                <div class="cta-buttons-row">
+                    <a href="mailto:codeaayu@gmail.com" class="btn btn-primary btn-lg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>Send an Email</span>
+                    </a>
+                    <a href="https://wa.me/918873643965" target="_blank" class="btn btn-secondary btn-lg">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        <span>WhatsApp Me</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-text">CodeAayu Creatives</span>
+                    </div>
+                    <p class="footer-description">
+                        Visual storyteller capturing moments that matter. Based in India, working worldwide.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <a href="index.html#home">Home</a>
+                        <a href="index.html#about">About</a>
+                        <a href="index.html#work">Work</a>
+                        <a href="index.html#services">Services</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Portfolio</h4>
+                        <a href="photography.html">Photography</a>
+                        <a href="writing.html">Writing</a>
+                        <a href="about.html">About Me</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Social</h4>
+                        <a href="https://instagram.com/codeaayu.creatives" target="_blank">Instagram</a>
+                        <a href="https://medium.com/@codeaayu" target="_blank">Medium</a>
+                        <a href="https://linkedin.com/in/aayushahuja" target="_blank">LinkedIn</a>
+                        <a href="https://youtube.com/@codeaayu" target="_blank">YouTube</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="footer-bottom">
                 <p>&copy; 2025 CodeAayu Creatives. All rights reserved.</p>
+                <p>Designed & Developed with ❤️ by Aayush Ahuja</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ Accordion
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item-v2');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+
+                question.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+
+                    // Close all items
+                    faqItems.forEach(i => i.classList.remove('active'));
+
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
