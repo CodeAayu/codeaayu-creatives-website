@@ -96,10 +96,15 @@ function initNavigation() {
         });
     }
 
-    // Close mobile menu on link click
+    // Close mobile menu on link click (but not dropdown toggle)
     if (navToggle && navMenu) {
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
+                // Don't close menu if this is a dropdown toggle on mobile
+                const isDropdownToggle = this.parentElement.classList.contains('has-dropdown');
+                if (window.innerWidth <= 768 && isDropdownToggle) {
+                    return; // Let the dropdown toggle handler handle this
+                }
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('active');
             });
