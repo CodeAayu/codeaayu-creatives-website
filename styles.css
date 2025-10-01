@@ -939,6 +939,7 @@ section {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: var(--space-4);
+    height: 100%;
 }
 
 .visual-item {
@@ -948,7 +949,8 @@ section {
 }
 
 .visual-item.large {
-    grid-row: span 2;
+    grid-row: auto;
+    grid-column: auto;
 }
 
 .visual-item img {

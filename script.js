@@ -402,8 +402,15 @@ window.addEventListener('scroll', function() {
     const hero = document.querySelector('.hero');
 
     if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        hero.style.opacity = 1 - (scrolled / 700);
+        // Disable parallax and opacity effect on mobile devices
+        if (window.innerWidth > 768) {
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            hero.style.opacity = 1 - (scrolled / 700);
+        } else {
+            // Reset styles on mobile to prevent hiding
+            hero.style.transform = 'none';
+            hero.style.opacity = '1';
+        }
     }
 });
 
