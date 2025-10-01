@@ -547,7 +547,16 @@
                 </div>
 
                 <div class="contact-form-wrapper" data-aos="fade-left">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="7fd97d1e-c924-4d77-b6f9-95943252cd3e">
+
+                        <!-- Honeypot Spam Protection -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                        <!-- Redirect after submission (optional) -->
+                        <input type="hidden" name="redirect" value="https://codeaayu-creatives.co.in/#contact">
+
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" required>

@@ -265,32 +265,61 @@ function initWorkFilter() {
 }
 
 // ================================================================
-// CONTACT FORM
+// CONTACT FORM - Web3Forms Integration
 // ================================================================
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                subject: formData.get('subject'),
-                message: formData.get('message')
-            };
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const buttonText = submitButton.querySelector('span');
+            const originalText = buttonText.textContent;
 
-            // Here you would normally send the data to your backend
-            console.log('Form submitted:', data);
+            // Show loading state
+            submitButton.disabled = true;
+            buttonText.textContent = 'Sending...';
 
-            // Show success message
-            showNotification('Thank you! Your message has been sent successfully.', 'success');
+            try {
+                // Get form data
+                const formData = new FormData(contactForm);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
 
-            // Reset form
-            contactForm.reset();
+                // Send to Web3Forms with JSON
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Show success message
+                    showNotification('Thank you! Your message has been sent successfully.', 'success');
+
+                    // Reset form
+                    contactForm.reset();
+                } else {
+                    // Show error message
+                    showNotification('Oops! Something went wrong. Please try again.', 'error');
+                    console.error('Form submission error:', data);
+                }
+            } catch (error) {
+                // Show error message
+                showNotification('Oops! Something went wrong. Please try again.', 'error');
+                console.error('Form submission error:', error);
+            } finally {
+                // Reset button state
+                submitButton.disabled = false;
+                buttonText.textContent = originalText;
+            }
         });
     }
 }
