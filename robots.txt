@@ -1,0 +1,16 @@
+# robots.txt for CodeAayu Creatives
+# This file tells search engines which pages they can and cannot crawl
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Disallow specific directories if needed (currently allowing all)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://codeaayucreatives.co.in/sitemap.xml
+
+# Crawl-delay to be respectful to the server
+Crawl-delay: 1
