@@ -1,65 +1,56 @@
 # CodeAayu Creatives - Photography Portfolio Website
 
-A modern, responsive photography portfolio website showcasing travel, portrait, wildlife, and scenic photography. Built with vanilla HTML, CSS, and JavaScript with a focus on performance and visual storytelling.
+A modern, elegant photography portfolio website showcasing travel, portrait, wildlife, and scenic photography. Built with vanilla HTML, CSS, and JavaScript featuring a sophisticated dark theme with editorial luxury aesthetics.
 
-🌐 **Live Site:** [codeaayucreatives.co.in](https://codeaayucreatives.co.in)
+**Live Site:** [codeaayucreatives.co.in](https://codeaayucreatives.co.in)
 
-## 📸 Features
+## Features
 
 ### Portfolio Showcase
 - **Multi-category Gallery**: Travel, Wildlife, Birds, Scenic, and Portrait photography
 - **Filterable Gallery**: Dynamic filtering system to browse photos by category
-- **Lightbox View**: Full-screen image viewing with smooth transitions
-- **Face-focused Thumbnails**: Smart cropping for portrait photos to highlight subjects
-- **Responsive Grid Layout**: Masonry-style gallery that adapts to all screen sizes
+- **Lightbox View**: Full-screen high-resolution image viewing with keyboard navigation
+- **Responsive Grid Layout**: Adaptive gallery that works beautifully on all screen sizes
+
+### Design & Aesthetics
+- **Editorial Luxury Theme**: Sophisticated dark mode design with warm cream and gold accents
+- **Professional Typography**: Playfair Display (serif) for headlines, DM Sans for body text
+- **Smooth Animations**: Scroll-triggered reveals and subtle hover effects
+- **Grain Texture Overlay**: Premium feel with subtle grain texture
 
 ### Interactive Elements
-- **Smooth Animations**: AOS (Animate On Scroll) library for engaging page transitions
-- **Dark/Light Theme Toggle**: User preference-based theme switching
-- **Dynamic Navigation**: Active page highlighting and smooth scroll navigation
+- **Responsive Navigation**: Desktop nav with mobile hamburger menu
 - **Contact Form**: Integrated with Web3Forms for functional contact submissions
 - **Back-to-Top Button**: Easy navigation on long pages
+- **Loading Screen**: Branded loading animation
 
 ### Content Sections
-- **Home Page**: Hero section, about preview, services, featured work, and contact
-- **Photography Page**: Complete portfolio gallery with filtering and lightbox
-- **About Page**: Personal story, education, experience, and timeline
-- **Writing Page**: Blog posts and creative writing showcase
-- **Contact Page**: Contact form with social media links
+- **Home Page**: Hero section, about preview, services, featured work, writing preview, and contact
+- **Photography Page**: Complete portfolio gallery with category filtering and lightbox
+- **About Page**: Personal story, experience timeline, and skills showcase
+- **Writing Page**: Blog posts and Medium articles showcase
+- **Contact Page**: Contact form with FAQ section
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Frontend**: Vanilla HTML5, CSS3, JavaScript (ES6+)
-- **Styling**: Custom CSS with CSS Variables for theming
-- **Icons**: SVG icons for performance and scalability
-- **Fonts**: Google Fonts (Space Grotesk, Inter)
-- **Animations**: AOS (Animate On Scroll) library
+- **Styling**: Custom CSS with CSS Variables (dark theme)
+- **Typography**: Google Fonts (Playfair Display, DM Sans)
+- **Icons**: Inline SVG icons
 - **Form Handling**: Web3Forms API integration
-- **Hosting**: GitHub Pages (or custom hosting)
+- **Hosting**: GitHub Pages
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-my_website_codeaayu_creatives_co_in/
-├── .claude/                      # Claude AI documentation
-│   └── photo-processing-guide.md # Photo workflow documentation
-├── assets/                       # Additional assets (PDFs, etc.)
-├── components/                   # Reusable HTML components
-│   ├── header.html              # Navigation bar
-│   └── footer.html              # Footer and back-to-top
-├── css/                         # Additional stylesheets
-│   ├── main.css
-│   └── responsive.css
-├── images/                      # All image assets
+codeaayu-creatives-website/
+├── images/
 │   ├── about/                   # About page images
-│   ├── logos/                   # Brand logos
+│   ├── logos/                   # Brand logos (white/black variants)
 │   ├── portfolio/               # Full-size portfolio images
 │   └── thumbnails/              # Optimized thumbnails
 │       ├── portfolio/           # Portfolio thumbnails
 │       └── about/               # About page thumbnails
-├── js/                          # Additional JavaScript
-│   └── main.js
-├── components-loader.js         # Dynamic component loader
 ├── script.js                    # Main JavaScript file
 ├── styles.css                   # Main stylesheet
 ├── index.html                   # Home page
@@ -71,182 +62,87 @@ my_website_codeaayu_creatives_co_in/
 └── README.md                    # This file
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - A modern web browser
 - A text editor (VS Code, Sublime, etc.)
-- Python 3.x with PIL/Pillow (for photo processing)
 - Git (for version control)
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/my_website_codeaayu_creatives_co_in.git
-   cd my_website_codeaayu_creatives_co_in
+   git clone https://github.com/CodeAayu/codeaayu-creatives-website.git
+   cd codeaayu-creatives-website
    ```
 
 2. **Open in browser**
-   - Simply open `index.html` in your web browser
-   - Or use a local server:
-     ```bash
-     # Python 3
-     python -m http.server 8000
-     # Then visit http://localhost:8000
-     ```
-
-3. **Install Python dependencies (for photo processing)**
    ```bash
-   pip install Pillow
+   # Using Python 3
+   python -m http.server 8080
+   # Then visit http://localhost:8080
    ```
 
-## 📷 Adding New Photos
+## Design System
 
-Detailed instructions are available in [`.claude/photo-processing-guide.md`](.claude/photo-processing-guide.md)
-
-### Quick Start
-
-1. **Copy photos to portfolio folder**
-   ```bash
-   cp /path/to/photo.jpg images/portfolio/portrait-N.jpg
-   ```
-
-2. **Remove white borders (if present)**
-   ```python
-   python3 -c "
-   from PIL import Image, ImageChops
-   # See .claude/photo-processing-guide.md for complete script
-   "
-   ```
-
-3. **Create face-focused thumbnails**
-   ```python
-   python3 -c "
-   from PIL import Image
-   # See .claude/photo-processing-guide.md for complete script
-   "
-   ```
-
-4. **Add to HTML pages**
-   - Update `index.html` and `photography.html`
-   - Add appropriate category (`portraits`, `travel`, `wildlife`, etc.)
-
-## 🎨 Customization
-
-### Theme Colors
-Edit CSS variables in `styles.css`:
+### Color Palette
 ```css
 :root {
-    --primary: #6366f1;        /* Primary brand color */
-    --secondary: #8b5cf6;      /* Secondary brand color */
-    --bg-primary: #ffffff;     /* Light theme background */
-    --text-primary: #1a1a1a;   /* Light theme text */
-}
-
-[data-theme="dark"] {
-    --bg-primary: #0a0a0a;     /* Dark theme background */
-    --text-primary: #f5f5f5;   /* Dark theme text */
+  --color-ink: #1a1a1a;          /* Deep charcoal (background) */
+  --color-cream: #f5f0e8;        /* Warm cream (text) */
+  --color-gold: #c9a962;         /* Muted gold (accent) */
+  --color-muted: #8a8580;        /* Muted gray (secondary text) */
 }
 ```
 
-### Navigation & Footer
-Edit the component files:
-- `components/header.html` - Navigation bar
-- `components/footer.html` - Footer content
+### Typography
+- **Display/Headlines**: Playfair Display (serif)
+- **Body Text**: DM Sans (sans-serif)
 
-Changes will automatically apply to all pages thanks to the component loader system.
+### Breakpoints
+- **Desktop**: 1024px and above
+- **Tablet**: 641px - 1023px
+- **Mobile**: 640px and below
 
-### Adding New Pages
-1. Create new HTML file (e.g., `services.html`)
-2. Add `data-page="services"` to `<body>` tag
-3. Include component placeholders:
-   ```html
-   <div id="header-component"></div>
-   <!-- Your content -->
-   <div id="footer-component"></div>
-   ```
-4. Load scripts:
-   ```html
-   <script src="components-loader.js"></script>
-   <script src="script.js"></script>
-   ```
+## Responsive Design
 
-## 📱 Responsive Design
+The website is fully responsive with:
+- Mobile-first approach
+- Optimized touch interactions
+- Simplified footer on mobile
+- Disabled animations on mobile for better performance
+- Adaptive image loading
 
-The website is fully responsive with breakpoints:
-- **Desktop**: 1200px and above
-- **Tablet**: 768px - 1199px
-- **Mobile**: Below 768px
-
-Mobile-specific features:
-- Hamburger menu navigation
-- Touch-optimized gallery
-- Optimized image loading
-- Condensed layouts
-
-## 🔧 Maintenance
-
-### Updating Portfolio
-1. Add new photos following the photo processing guide
-2. Update `photography.html` with new gallery items
-3. Optionally add featured work to `index.html`
-
-### Updating Content
-- **About**: Edit `about.html`
-- **Services**: Edit `index.html` services section
-- **Writing**: Edit `writing.html`
-- **Contact**: Update social media links in `components/footer.html`
-
-### Updating Styles
-- Main styles: `styles.css`
-- Component-specific styles: Embedded in HTML pages
-- Responsive styles: `css/responsive.css`
-
-## 🌐 Deployment
+## Deployment
 
 ### GitHub Pages
 1. Push to GitHub repository
 2. Go to Settings → Pages
 3. Select branch (usually `main`)
-4. Set custom domain in `CNAME` file (if applicable)
+4. Set custom domain in `CNAME` file
 
 ### Custom Domain
-1. Update `CNAME` file with your domain
-2. Configure DNS records:
-   ```
-   Type: A
-   Name: @
-   Value: 185.199.108.153
-          185.199.109.153
-          185.199.110.153
-          185.199.111.153
+Configure DNS records:
+```
+Type: A
+Name: @
+Value: 185.199.108.153 (and other GitHub IPs)
 
-   Type: CNAME
-   Name: www
-   Value: yourusername.github.io
-   ```
+Type: CNAME
+Name: www
+Value: codeaayu.github.io
+```
 
-## 📧 Contact Form Setup
+## Contact Form Setup
 
 The contact form uses [Web3Forms](https://web3forms.com/):
 
 1. Get API key from Web3Forms
-2. Update `contact.html`:
-   ```html
-   <input type="hidden" name="access_key" value="YOUR_API_KEY">
-   ```
-3. Configure redirect URL and form behavior
+2. Update the access_key in contact form
+3. Form submissions are sent to configured email
 
-## 🎯 Performance Optimization
-
-- **Image Optimization**: Thumbnails are max 800x600px, quality 90%
-- **Lazy Loading**: Images load only when needed
-- **CSS/JS Minification**: Consider minifying for production
-- **CDN**: Consider using a CDN for fonts and libraries
-- **Caching**: Browser caching configured for static assets
-
-## 🧪 Browser Support
+## Browser Support
 
 - Chrome (latest)
 - Firefox (latest)
@@ -254,11 +150,7 @@ The contact form uses [Web3Forms](https://web3forms.com/):
 - Edge (latest)
 - Mobile browsers (iOS Safari, Chrome Mobile)
 
-## 📄 License
-
-This project is private and proprietary. All rights reserved.
-
-## 👨‍💻 Author
+## Author
 
 **Aayush Ahuja**
 - Website: [codeaayucreatives.co.in](https://codeaayucreatives.co.in)
@@ -267,23 +159,24 @@ This project is private and proprietary. All rights reserved.
 - LinkedIn: [codeaayu](https://www.linkedin.com/in/codeaayu/)
 - YouTube: [@codeaayucreatives](https://www.youtube.com/@codeaayucreatives)
 
-## 🙏 Acknowledgments
+## Version History
 
-- Photography subjects and collaborators
-- Web3Forms for contact form API
-- Google Fonts for typography
-- AOS library for scroll animations
-- All open-source tools and libraries used
+### v3.0 (Current - December 2024)
+- Complete design overhaul with editorial luxury aesthetic
+- Dark mode only theme with warm cream and gold accents
+- New typography system (Playfair Display + DM Sans)
+- Actual brand logo integration in header, footer, and loading screen
+- Improved mobile responsiveness
+- Simplified footer on mobile
+- Enhanced lightbox with full-resolution images
+- Removed theme toggle (dark mode only)
+- Performance optimizations for mobile
 
-## 📝 Version History
-
-### v2.0 (Current)
+### v2.0
 - Added portrait photography section
 - Implemented face-focused thumbnail system
 - Added dark/light theme toggle
 - Integrated Web3Forms contact form
-- Component-based architecture for header/footer
-- Improved responsive design
 - Enhanced gallery filtering
 - Added lightbox functionality
 
@@ -292,23 +185,10 @@ This project is private and proprietary. All rights reserved.
 - Basic portfolio structure
 - Travel and wildlife photography showcase
 
-## 🐛 Known Issues
+## License
 
-None currently. Report issues via email or social media.
-
-## 🔮 Future Enhancements
-
-- [ ] Add blog functionality with CMS integration
-- [ ] Implement photo categories pagination
-- [ ] Add photo metadata (camera, settings, location)
-- [ ] Create print shop integration
-- [ ] Add client testimonials section
-- [ ] Implement photo search functionality
-- [ ] Add image zoom on hover preview
-- [ ] Create photography tutorials section
+This project is private and proprietary. All rights reserved.
 
 ---
 
-**Last Updated**: October 2025
-
-For detailed photo processing instructions, see [`.claude/photo-processing-guide.md`](.claude/photo-processing-guide.md)
+**Last Updated**: December 2024

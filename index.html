@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <meta name="revisit-after" content="7 days">
-    <meta name="theme-color" content="#6366f1">
+    <meta name="theme-color" content="#c9a962">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://codeaayucreatives.co.in/">
@@ -47,8 +47,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts - Editorial Luxury -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
@@ -99,8 +99,10 @@
                 "url": "https://codeaayucreatives.co.in/",
                 "logo": "https://codeaayucreatives.co.in/images/logos/logo-black.png",
                 "image": "https://codeaayucreatives.co.in/images/thumbnails/about/personality-photo-1.jpg",
-                "description": "Professional photography services including travel, portrait, wildlife, and scenic photography. Creative content creation for brands and individuals.",
+                "description": "Professional photography services specializing in travel, portrait, wildlife, and scenic photography.",
                 "priceRange": "$$",
+                "telephone": "",
+                "email": "codeaayu@gmail.com",
                 "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Bangalore",
@@ -109,25 +111,57 @@
                 },
                 "geo": {
                     "@type": "GeoCoordinates",
-                    "latitude": "12.9716",
-                    "longitude": "77.5946"
+                    "latitude": 12.9716,
+                    "longitude": 77.5946
                 },
-                "telephone": "",
-                "email": "codeaayu@gmail.com",
-                "areaServed": {
-                    "@type": "Country",
-                    "name": "India"
-                },
-                "serviceType": [
-                    "Travel Photography",
-                    "Portrait Photography",
-                    "Wildlife Photography",
-                    "Scenic Photography",
-                    "Content Creation",
-                    "Brand Photography"
-                ],
-                "founder": {
-                    "@id": "https://codeaayucreatives.co.in/#person"
+                "areaServed": ["India", "Worldwide"],
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Photography Services",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Travel Photography"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Portrait Photography"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Wildlife Photography"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Scenic Photography"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Content Creation"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Brand Photography"
+                            }
+                        }
+                    ]
                 }
             },
             {
@@ -135,33 +169,28 @@
                 "@id": "https://codeaayucreatives.co.in/#website",
                 "url": "https://codeaayucreatives.co.in/",
                 "name": "CodeAayu Creatives",
-                "description": "Photography portfolio and creative services by Aayush Ahuja",
+                "description": "Professional photography portfolio and services by Aayush Ahuja",
                 "publisher": {
                     "@id": "https://codeaayucreatives.co.in/#person"
                 },
-                "inLanguage": "en-IN"
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://codeaayucreatives.co.in/?s={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
             },
             {
                 "@type": "WebPage",
                 "@id": "https://codeaayucreatives.co.in/#webpage",
                 "url": "https://codeaayucreatives.co.in/",
                 "name": "Aayush Ahuja - Creative Photographer & Storyteller",
-                "description": "Award-winning travel & portrait photographer based in Bangalore, India. Specializing in travel, wildlife, portrait, and scenic photography.",
                 "isPartOf": {
                     "@id": "https://codeaayucreatives.co.in/#website"
                 },
                 "about": {
                     "@id": "https://codeaayucreatives.co.in/#person"
                 },
-                "primaryImageOfPage": {
-                    "@type": "ImageObject",
-                    "url": "https://codeaayucreatives.co.in/images/thumbnails/about/personality-photo-1.jpg",
-                    "width": 1200,
-                    "height": 630
-                },
-                "datePublished": "2024-01-01",
-                "dateModified": "2025-10-15",
-                "inLanguage": "en-IN"
+                "description": "Award-winning travel & portrait photographer, visual storyteller, and creative content creator based in Bangalore, India."
             }
         ]
     }
@@ -169,309 +198,231 @@
 </head>
 <body>
     <!-- Loading Screen -->
-    <div class="loader-wrapper" id="loader">
-        <div class="loader">
-            <div class="loader-circle"></div>
-            <div class="loader-text">CodeAayu Creatives</div>
-        </div>
+    <div class="loading-screen" id="loading">
+        <img src="images/logos/logo-white.png" alt="CodeAayu Creatives" class="loading-logo-img">
     </div>
 
-    <!-- Navigation -->
-    <nav class="nav navbar" id="mainNav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo logo">
-                <span class="logo-text">CodeAayu Creatives</span>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo-white.png" alt="CodeAayu Creatives" class="logo-img">
             </a>
 
-            <ul class="nav-menu">
-                <li class="nav-item has-dropdown">
-                    <a href="index.html" class="nav-link active">
-                        Home
-                        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="index.html#home" class="dropdown-link">Hero</a></li>
-                        <li><a href="index.html#about" class="dropdown-link">About</a></li>
-                        <li><a href="index.html#services" class="dropdown-link">Services</a></li>
-                        <li><a href="index.html#work" class="dropdown-link">Work</a></li>
-                        <li><a href="index.html#contact" class="dropdown-link">Contact</a></li>
-                    </ul>
-                </li>
-                <li><a href="photography.html" class="nav-link">Photography</a></li>
-                <li><a href="writing.html" class="nav-link">Writing</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
+            <nav class="nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="photography.html" class="nav-link">Photography</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="writing.html" class="nav-link">Writing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
 
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-                <button class="nav-toggle mobile-toggle" id="navToggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="photography.html" class="mobile-nav-link">Photography</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="writing.html" class="mobile-nav-link">Writing</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-bg">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-        </div>
-
-        <div class="container hero-container">
+    <section class="hero">
+        <div class="container">
             <div class="hero-content">
-                <div class="hero-label" data-aos="fade-up">
-                    <span class="pulse-dot"></span>
-                    Available for creative projects
+                <div class="hero-eyebrow">
+                    <span class="dot"></span>
+                    <span class="label">Available for creative projects</span>
                 </div>
 
-                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
-                    Hi, I'm <span class="gradient-text">Aayush Ahuja</span>
+                <h1 class="hero-title display-huge">
+                    <span class="line">Capturing</span>
+                    <span class="line"><em class="highlight">moments</em> that</span>
+                    <span class="line">tell stories</span>
                 </h1>
 
-                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-                    Professional Photographer in Bangalore | Travel & Portrait Photography
+                <p class="hero-description body-large">
+                    I'm Aayush Ahuja, a photographer and visual storyteller based in Bangalore.
+                    I craft compelling narratives through travel, portrait, and documentary photography.
                 </p>
 
-                <p class="hero-description" data-aos="fade-up" data-aos-delay="300">
-                    Crafting compelling visual narratives through travel, portrait, and documentary photography.
-                    Based in India, available worldwide.
-                </p>
-
-                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#work" class="btn btn-primary">
-                        <span>View My Work</span>
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <div class="hero-cta">
+                    <a href="photography.html" class="btn btn-primary">
+                        View My Work
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <span>Let's Collaborate</span>
-                    </a>
-                </div>
-
-                <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Projects Completed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Cities Explored</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">10K+</div>
-                        <div class="stat-label">Photos Captured</div>
-                    </div>
+                    <a href="contact.html" class="btn btn-secondary">Let's Collaborate</a>
                 </div>
             </div>
 
-            <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
-                <div class="image-frame">
-                    <img src="images/thumbnails/about/personality-photo-1.jpg" alt="Aayush Ahuja professional photographer in Bangalore India with camera" class="hero-img">
-                    <div class="image-glow"></div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projects</div>
                 </div>
-                <div class="floating-card" data-aos="zoom-in" data-aos-delay="800">
-                    <div class="card-icon">📸</div>
-                    <div class="card-text">
-                        <div class="card-title">Professional Photography</div>
-                        <div class="card-subtitle">Travel & Portraits</div>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Cities</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Photos</div>
                 </div>
             </div>
         </div>
 
-        <a href="#about" class="scroll-indicator">
-            <span class="scroll-text">Scroll Down</span>
-            <span class="scroll-arrow">↓</span>
-        </a>
+        <div class="hero-decoration"></div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="line"></div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="about-section section-large">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-label">Get To Know Me</span>
-                <h2 class="section-title">About Me</h2>
-            </div>
-
             <div class="about-grid">
-                <div class="about-content" data-aos="fade-right">
-                    <h3 class="about-heading">Turning moments into timeless visual stories</h3>
-                    <p class="about-text">
-                        Hey! I'm Aayush, a passionate <a href="about.html">photographer based in Bangalore</a> with a love for
-                        capturing authentic moments. I specialize in <a href="photography.html">travel photography</a>, <a href="photography.html">portrait photography</a>, and creative content creation.
+                <div class="about-image-wrapper">
+                    <div class="about-image">
+                        <img src="images/thumbnails/about/personality-photo-1.jpg" alt="Aayush Ahuja - Photographer" loading="lazy">
+                        <div class="about-image-frame"></div>
+                    </div>
+                    <div class="about-badge">5+ Years</div>
+                </div>
+
+                <div class="about-content reveal">
+                    <span class="label text-gold about-eyebrow">About Me</span>
+                    <h2 class="heading-large about-title">Turning moments into timeless visual stories</h2>
+
+                    <p class="body-base about-text">
+                        I'm Aayush, a passionate photographer based in Bangalore with a love for capturing authentic moments.
+                        I specialize in travel photography, portrait photography, and creative content creation.
                     </p>
-                    <p class="about-text">
-                        My journey started during my time at <strong>IIT(ISM) Dhanbad</strong>, where I pursued
-                        Integrated MTech in Mathematics and Computing. What began as a hobby evolved into a
-                        full-fledged passion for visual storytelling.
+
+                    <p class="body-base about-text">
+                        My journey started at IIT(ISM) Dhanbad pursuing Integrated MTech in Mathematics and Computing.
+                        What began as a hobby evolved into a full-fledged passion for visual storytelling.
                     </p>
-                    <p class="about-text">
-                        Currently working as a <strong>Software Engineer at udaan.com</strong>, I blend my technical
-                        expertise with artistic vision to create images that resonate. Whether it's golden hour landscapes,
-                        intimate portraits, or candid street moments, I strive to capture emotion and authenticity.
+
+                    <p class="body-base about-text">
+                        Currently working as a Software Engineer at udaan.com, I blend my technical expertise
+                        with artistic vision to create images that resonate.
                     </p>
 
                     <div class="about-highlights">
                         <div class="highlight-item">
-                            <div class="highlight-icon">🎓</div>
-                            <div class="highlight-content">
-                                <h4>Education</h4>
-                                <p>IIT(ISM) Dhanbad<br>Integrated MTech<br>Mathematics & Computing</p>
+                            <div class="highlight-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                </svg>
                             </div>
+                            <div class="highlight-title">Education</div>
+                            <div class="highlight-text">IIT(ISM) Dhanbad</div>
                         </div>
                         <div class="highlight-item">
-                            <div class="highlight-icon">💼</div>
-                            <div class="highlight-content">
-                                <h4>Current Role</h4>
-                                <p>Software Engineer<br>udaan.com, Bangalore</p>
+                            <div class="highlight-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
                             </div>
+                            <div class="highlight-title">Current Role</div>
+                            <div class="highlight-text">Software Engineer, udaan.com</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                            </div>
+                            <div class="highlight-title">Location</div>
+                            <div class="highlight-text">Bangalore, India</div>
                         </div>
                     </div>
 
-                    <a href="about.html" class="btn btn-text">
-                        <span>Read Full Story</span>
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <a href="about.html" class="btn btn-text" style="margin-top: var(--space-8);">
+                        Learn More About Me
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
-                </div>
-
-                <div class="about-visual" data-aos="fade-left">
-                    <div class="visual-grid">
-                        <div class="visual-item large">
-                            <img src="images/thumbnails/about/personality-photo-2.jpg" alt="Bangalore photographer Aayush Ahuja at work capturing moments" loading="lazy">
-                        </div>
-                        <div class="visual-item">
-                            <img src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="Vivekananda Rock Memorial Kanyakumari travel photography by Aayush Ahuja" loading="lazy">
-                        </div>
-                        <div class="visual-item">
-                            <img src="images/thumbnails/portfolio/bird-1.jpg" alt="Indian bird wildlife photography shot in natural habitat" loading="lazy">
-                        </div>
-                        <div class="visual-item">
-                            <img src="images/thumbnails/portfolio/Sunrise.jpg" alt="Golden hour sunrise landscape photography India" loading="lazy">
-                        </div>
-                    </div>
-
-                    <div class="experience-badge" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="badge-number">5+</div>
-                        <div class="badge-text">Years of Experience</div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section class="section-large">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-label">What I Offer</span>
-                <h2 class="section-title">Services</h2>
-                <p class="section-description">
-                    Professional creative services tailored to bring your vision to life
-                </p>
+            <div class="services-header reveal">
+                <div class="services-header-content">
+                    <span class="label text-gold">Services</span>
+                    <h2 class="heading-large" style="margin-top: var(--space-4);">What I offer</h2>
+                    <p class="body-base text-muted" style="margin-top: var(--space-4);">
+                        Professional photography services tailored to capture your unique story.
+                    </p>
+                </div>
+                <a href="contact.html" class="btn btn-secondary">Get a Quote</a>
             </div>
 
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
-                            <path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Travel Photography</h3>
-                    <p class="service-description">
-                        Capturing breathtaking landscapes, cultural moments, and authentic travel experiences
-                        across diverse destinations.
+            <div class="services-grid stagger-children revealed">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <h3 class="heading-small service-title">Travel Photography</h3>
+                    <p class="body-small service-description">
+                        Capturing breathtaking landscapes, cultural moments, and authentic travel experiences across diverse destinations.
                     </p>
-                    <ul class="service-features">
-                        <li>✓ Landscape & Scenic Photography</li>
-                        <li>✓ Cultural Documentation</li>
-                        <li>✓ Adventure & Outdoor Shoots</li>
-                        <li>✓ Travel Blog Content</li>
-                    </ul>
                     <a href="photography.html" class="service-link">
-                        <span>View Portfolio</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        View Work
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
                 </div>
 
-                <div class="service-card featured" data-aos="fade-up" data-aos-delay="200">
-                    <div class="featured-badge">Most Popular</div>
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-                            <path d="M12 2v4m0 12v4M2 12h4m12 0h4m-3.05-7.05l-2.83 2.83M9.88 14.12l-2.83 2.83m9.9 0l-2.83-2.83M9.88 9.88L7.05 7.05" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Portrait Photography</h3>
-                    <p class="service-description">
-                        Professional portrait sessions that capture personality, emotion, and authentic character
-                        in stunning detail.
+                <div class="service-card">
+                    <span class="service-badge">Popular</span>
+                    <div class="service-number">02</div>
+                    <h3 class="heading-small service-title">Portrait Photography</h3>
+                    <p class="body-small service-description">
+                        Professional portrait sessions that capture personality, emotion, and authentic character in stunning detail.
                     </p>
-                    <ul class="service-features">
-                        <li>✓ Personal Portraits</li>
-                        <li>✓ Professional Headshots</li>
-                        <li>✓ Lifestyle Photography</li>
-                        <li>✓ Creative Portrait Sessions</li>
-                    </ul>
                     <a href="photography.html" class="service-link">
-                        <span>View Portfolio</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        View Work
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
                 </div>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 6.25c3.23 0 5.25 1.32 6.24 2.63a9.8 9.8 0 0 1 1.26 2.37H18a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-5.5a11.8 11.8 0 0 0-1.89-3.87C18.75 8.68 15.77 6.25 12 6.25z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M7 11.25H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1z" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Content Creation</h3>
-                    <p class="service-description">
-                        Strategic visual content for brands, social media campaigns, and storytelling projects
-                        that engage and inspire.
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <h3 class="heading-small service-title">Content Creation</h3>
+                    <p class="body-small service-description">
+                        Strategic visual content for brands, social media campaigns, and storytelling projects that engage and inspire.
                     </p>
-                    <ul class="service-features">
-                        <li>✓ Brand Photography</li>
-                        <li>✓ Social Media Content</li>
-                        <li>✓ Creative Writing & Blogs</li>
-                        <li>✓ Content Strategy</li>
-                    </ul>
-                    <a href="writing.html" class="service-link">
-                        <span>View Work</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <a href="contact.html" class="service-link">
+                        Learn More
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
                 </div>
@@ -479,210 +430,178 @@
         </div>
     </section>
 
-    <!-- Work Section -->
-    <section class="work" id="work">
-        <div class="container-fluid">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-label">Portfolio</span>
-                <h2 class="section-title">Featured Work</h2>
-                <p class="section-description">
-                    A curated selection of my best photography and creative projects
+    <!-- Featured Work Section -->
+    <section class="work-section section-large">
+        <div class="container">
+            <div class="work-header reveal">
+                <div>
+                    <span class="label" style="color: var(--color-gold);">Portfolio</span>
+                    <h2 class="heading-large" style="margin-top: var(--space-4);">Featured Work</h2>
+                </div>
+                <div class="work-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="travel">Travel</button>
+                    <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                    <button class="filter-btn" data-filter="portraits">Portraits</button>
+                    <button class="filter-btn" data-filter="scenic">Scenic</button>
+                </div>
+            </div>
+
+            <div class="work-grid">
+                <div class="work-item" data-category="travel">
+                    <img src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="Vivekananda Rock Memorial" class="work-item-image" loading="lazy">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">Travel</span>
+                        <h3 class="work-item-title">Rock Memorial</h3>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="wildlife">
+                    <img src="images/thumbnails/portfolio/eagle_fly.jpg" alt="Soaring Eagle" class="work-item-image" loading="lazy">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">Wildlife</span>
+                        <h3 class="work-item-title">Wings of Freedom</h3>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="scenic">
+                    <img src="images/thumbnails/portfolio/Sunrise.jpg" alt="Golden Hour Magic" class="work-item-image" loading="lazy">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">Scenic</span>
+                        <h3 class="work-item-title">Golden Hour Magic</h3>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="portraits">
+                    <img src="images/thumbnails/portfolio/portrait-1.jpg" alt="Personal Stories" class="work-item-image" loading="lazy">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">Portraits</span>
+                        <h3 class="work-item-title">Personal Stories</h3>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="wildlife">
+                    <img src="images/thumbnails/portfolio/Peacock.jpg" alt="Regal Peacock" class="work-item-image" loading="lazy">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">Wildlife</span>
+                        <h3 class="work-item-title">Regal Peacock</h3>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="travel">
+                    <img src="images/thumbnails/portfolio/pamban_sunset.jpg" alt="Pamban Sunset" class="work-item-image" loading="lazy">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">Travel</span>
+                        <h3 class="work-item-title">Pamban Sunset</h3>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="scenic">
+                    <img src="images/thumbnails/portfolio/Pine Forest.jpg" alt="Pine Forest" class="work-item-image" loading="lazy">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">Scenic</span>
+                        <h3 class="work-item-title">Pine Retreat</h3>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="portraits">
+                    <img src="images/thumbnails/portfolio/portrait-5.jpg" alt="Character Study" class="work-item-image" loading="lazy">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">Portraits</span>
+                        <h3 class="work-item-title">Character Study</h3>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="wildlife">
+                    <img src="images/thumbnails/portfolio/Purple_heron.jpg" alt="Purple Heron" class="work-item-image" loading="lazy">
+                    <div class="work-item-overlay">
+                        <span class="work-item-category">Wildlife</span>
+                        <h3 class="work-item-title">Purple Heron</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--space-12);">
+                <a href="photography.html" class="btn btn-secondary" style="border-color: var(--color-border-dark); color: var(--text-inverse);">
+                    View All Work
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Writing Section -->
+    <section class="writing-section section-large">
+        <div class="container">
+            <div class="writing-header reveal">
+                <span class="label text-gold">Blog</span>
+                <h2 class="heading-large" style="margin-top: var(--space-4);">Latest Writing</h2>
+                <p class="body-base text-muted" style="margin-top: var(--space-4);">
+                    Stories, insights, and reflections on creativity, travel, and life.
                 </p>
             </div>
 
-            <div class="work-filter" data-aos="fade-up" data-aos-delay="100">
-                <button class="filter-btn active" data-filter="all">All Work</button>
-                <button class="filter-btn" data-filter="travel">Travel</button>
-                <button class="filter-btn" data-filter="wildlife">Wildlife</button>
-                <button class="filter-btn" data-filter="scenic">Scenic</button>
-                <button class="filter-btn" data-filter="portraits">Portraits</button>
-            </div>
-
-            <div class="work-grid" id="workGrid">
-                <!-- Travel -->
-                <div class="work-item" data-category="travel" data-aos="fade-up">
-                    <div class="work-image">
-                        <img src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="Vivekananda Rock Memorial Kanyakumari India travel photography" loading="lazy">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <span class="work-category">Travel Photography</span>
-                                <h3 class="work-title">Rock Memorial</h3>
-                                <p class="work-description">Vivekananda Memorial at Kanyakumari</p>
-                            </div>
-                            <a href="photography.html" class="work-link">
-                                <span>View Project</span>
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
+            <div class="writing-grid">
+                <a href="https://medium.com/@CodeAayu/2024-a-year-of-milestones-adventures-and-self-discovery-0a9aae84eaae" target="_blank" rel="noopener noreferrer" class="writing-featured">
+                    <img src="https://cdn-images-1.medium.com/max/1024/1*SqiWIsCfxOwtBgOMP_tUHw.jpeg" alt="2024: A Year of Milestones" class="writing-featured-image" loading="lazy">
+                    <div class="writing-featured-content">
+                        <div class="writing-meta">
+                            <span class="writing-category">Reflection</span>
+                            <span class="writing-date">Dec 24, 2024</span>
                         </div>
+                        <h3 class="heading-medium writing-featured-title">2024: A Year of Milestones, Adventures, and Self-Discovery</h3>
+                        <p class="body-base writing-featured-excerpt">
+                            Reflecting on an extraordinary year of professional triumphs, personal milestones, and adventures from Ladakh rides to meaningful acts of service.
+                        </p>
+                        <span class="btn btn-text">
+                            Read Article
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
                     </div>
-                </div>
+                </a>
 
-                <!-- Wildlife -->
-                <div class="work-item" data-category="wildlife" data-aos="fade-up" data-aos-delay="100">
-                    <div class="work-image">
-                        <img src="images/thumbnails/portfolio/bird-2.jpg" alt="Indian bird wildlife photography natural habitat close up" loading="lazy">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <span class="work-category">Wildlife Photography</span>
-                                <h3 class="work-title">Wings of Freedom</h3>
-                                <p class="work-description">Birds in their natural habitat</p>
-                            </div>
-                            <a href="photography.html" class="work-link">
-                                <span>View Project</span>
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
+                <div class="writing-list">
+                    <a href="https://medium.com/@CodeAayu/embracing-self-completeness-and-finding-a-complementary-partner-ba31cf3faa59" target="_blank" rel="noopener noreferrer" class="writing-item">
+                        <div class="writing-meta">
+                            <span class="writing-category">Creativity</span>
+                            <span class="writing-date">Aug 14, 2024</span>
                         </div>
-                    </div>
-                </div>
+                        <h4 class="heading-small writing-item-title">Embracing Self-Completeness</h4>
+                        <p class="writing-item-excerpt">Shifting from seeking completion in others to embracing self-completeness and finding complementary partnerships.</p>
+                    </a>
 
-                <!-- Scenic -->
-                <div class="work-item" data-category="scenic" data-aos="fade-up" data-aos-delay="200">
-                    <div class="work-image">
-                        <img src="images/thumbnails/portfolio/Sunrise.jpg" alt="Golden hour sunrise scenic landscape photography India" loading="lazy">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <span class="work-category">Scenic Photography</span>
-                                <h3 class="work-title">Golden Hour Magic</h3>
-                                <p class="work-description">Nature's canvas at its finest</p>
-                            </div>
-                            <a href="photography.html" class="work-link">
-                                <span>View Project</span>
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
+                    <a href="https://medium.com/@CodeAayu/will-i-go-back-to-ladakh-a-second-time-a41a34c00ae9" target="_blank" rel="noopener noreferrer" class="writing-item">
+                        <div class="writing-meta">
+                            <span class="writing-category">Travel</span>
+                            <span class="writing-date">Jul 23, 2024</span>
                         </div>
-                    </div>
-                </div>
+                        <h4 class="heading-small writing-item-title">Will I Go Back to Ladakh?</h4>
+                        <p class="writing-item-excerpt">Revisiting the magic of my first expedition and doubts about repeating perfection.</p>
+                    </a>
 
-                <!-- Travel -->
-                <div class="work-item" data-category="travel" data-aos="fade-up">
-                    <div class="work-image">
-                        <img src="images/thumbnails/portfolio/travel-4.jpg" alt="Urban street travel photography India city exploration" loading="lazy">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <span class="work-category">Travel Photography</span>
-                                <h3 class="work-title">Urban Chronicles</h3>
-                                <p class="work-description">Stories from city streets</p>
-                            </div>
-                            <a href="photography.html" class="work-link">
-                                <span>View Project</span>
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
+                    <a href="https://medium.com/@CodeAayu/embracing-the-journey-discovering-confidence-through-pursuing-dreams-bbe6a2ce5ceb" target="_blank" rel="noopener noreferrer" class="writing-item">
+                        <div class="writing-meta">
+                            <span class="writing-category">Growth</span>
+                            <span class="writing-date">Jul 11, 2024</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Wildlife -->
-                <div class="work-item" data-category="wildlife" data-aos="fade-up" data-aos-delay="100">
-                    <div class="work-image">
-                        <img src="images/thumbnails/portfolio/animal-3.jpg" alt="Indian wildlife animal photography documenting natural behavior" loading="lazy">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <span class="work-category">Wildlife Photography</span>
-                                <h3 class="work-title">Into The Wild</h3>
-                                <p class="work-description">Documenting India's wildlife</p>
-                            </div>
-                            <a href="photography.html" class="work-link">
-                                <span>View Project</span>
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Scenic -->
-                <div class="work-item" data-category="scenic" data-aos="fade-up" data-aos-delay="200">
-                    <div class="work-image">
-                        <img src="images/thumbnails/portfolio/scenic-3.jpg" alt="Candid street photography capturing life in India" loading="lazy">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <span class="work-category">Street Photography</span>
-                                <h3 class="work-title">Life in Motion</h3>
-                                <p class="work-description">Candid moments captured</p>
-                            </div>
-                            <a href="photography.html" class="work-link">
-                                <span>View Project</span>
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portraits -->
-                <div class="work-item" data-category="portraits" data-aos="fade-up">
-                    <div class="work-image">
-                        <img src="images/thumbnails/portfolio/portrait-1.jpg" alt="Professional portrait photography session Bangalore capturing personality" loading="lazy">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <span class="work-category">Portrait Photography</span>
-                                <h3 class="work-title">Personal Stories</h3>
-                                <p class="work-description">Capturing authentic moments</p>
-                            </div>
-                            <a href="photography.html" class="work-link">
-                                <span>View Project</span>
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="work-item" data-category="portraits" data-aos="fade-up" data-aos-delay="100">
-                    <div class="work-image">
-                        <img src="images/thumbnails/portfolio/portrait-5.jpg" alt="Portrait session" loading="lazy">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <span class="work-category">Portrait Photography</span>
-                                <h3 class="work-title">Character Study</h3>
-                                <p class="work-description">Personality in focus</p>
-                            </div>
-                            <a href="photography.html" class="work-link">
-                                <span>View Project</span>
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="work-item" data-category="portraits" data-aos="fade-up" data-aos-delay="200">
-                    <div class="work-image">
-                        <img src="images/thumbnails/portfolio/portrait-9.jpg" alt="Creative portrait" loading="lazy">
-                        <div class="work-overlay">
-                            <div class="work-info">
-                                <span class="work-category">Portrait Photography</span>
-                                <h3 class="work-title">Expressive Portraits</h3>
-                                <p class="work-description">Stories through expressions</p>
-                            </div>
-                            <a href="photography.html" class="work-link">
-                                <span>View Project</span>
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+                        <h4 class="heading-small writing-item-title">Discovering Confidence Through Dreams</h4>
+                        <p class="writing-item-excerpt">On courage, self-doubt, and growth from stepping beyond your comfort zone.</p>
+                    </a>
                 </div>
             </div>
 
-            <div class="work-cta" data-aos="fade-up">
-                <a href="photography.html" class="btn btn-outline-lg">
-                    <span>View Full Portfolio</span>
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <div style="text-align: center; margin-top: var(--space-12);">
+                <a href="writing.html" class="btn btn-secondary">
+                    View All Articles
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
             </div>
@@ -690,104 +609,105 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="contact-section section-large">
         <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-content" data-aos="fade-right">
-                    <span class="section-label">Get In Touch</span>
-                    <h2 class="section-title">Let's Create Something Amazing Together</h2>
-                    <p class="contact-text">
-                        Whether you need professional photography, creative content, or want to collaborate
-                        on a project, I'd love to hear from you. Let's bring your vision to life.
+            <div class="contact-grid">
+                <div class="contact-content reveal">
+                    <span class="label text-gold">Get in Touch</span>
+                    <h2 class="display-medium contact-title" style="margin-top: var(--space-4);">Let's create something amazing together</h2>
+                    <p class="body-large contact-text">
+                        Have a project in mind? I'd love to hear about it. Whether it's a photography session,
+                        content collaboration, or just a conversation about visual storytelling.
                     </p>
 
                     <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
                                 </svg>
                             </div>
-                            <div class="contact-details">
-                                <div class="contact-label">Email</div>
-                                <a href="mailto:codeaayu@gmail.com" class="contact-value">codeaayu@gmail.com</a>
+                            <div>
+                                <div class="contact-info-label">Email</div>
+                                <div class="contact-info-value">codeaayu@gmail.com</div>
                             </div>
                         </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    <circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="2"/>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
                                 </svg>
                             </div>
-                            <div class="contact-details">
-                                <div class="contact-label">Location</div>
-                                <div class="contact-value">Bangalore, India</div>
+                            <div>
+                                <div class="contact-info-label">Location</div>
+                                <div class="contact-info-value">Bangalore, India</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="social-links">
-                        <a href="https://instagram.com/codeaayu.creatives" target="_blank" class="social-link" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01" stroke="white" stroke-width="2" fill="none"/>
+                    <div class="contact-social">
+                        <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                             </svg>
                         </a>
-                        <a href="https://medium.com/@codeaayu" target="_blank" class="social-link" aria-label="Medium">
+                        <a href="https://medium.com/@codeaayu" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Medium">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
                             </svg>
                         </a>
-                        <a href="https://www.linkedin.com/in/codeaayu/" target="_blank" class="social-link" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        <a href="https://www.linkedin.com/in/codeaayu/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
                             </svg>
                         </a>
-                        <a href="https://www.youtube.com/@codeaayucreatives" target="_blank" class="social-link" aria-label="YouTube">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        <a href="https://www.youtube.com/@codeaayucreatives" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                             </svg>
                         </a>
                     </div>
                 </div>
 
-                <div class="contact-form-wrapper" data-aos="fade-left">
-                    <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                        <!-- Web3Forms Access Key -->
+                <div class="contact-form-wrapper reveal reveal-delay-2">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
                         <input type="hidden" name="access_key" value="7fd97d1e-c924-4d77-b6f9-95943252cd3e">
+                        <input type="hidden" name="redirect" value="https://codeaayucreatives.co.in/#contact">
+                        <input type="checkbox" name="botcheck" style="display: none;">
 
-                        <!-- Honeypot Spam Protection -->
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                        <!-- Redirect after submission (optional) -->
-                        <input type="hidden" name="redirect" value="https://codeaayu-creatives.co.in/#contact">
-
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" name="name" class="form-input" required placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-input" required placeholder="What's this about?">
                         </div>
 
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" required placeholder="Tell me about your project..."></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-block">
-                            <span>Send Message</span>
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <button type="submit" class="btn btn-primary form-submit">
+                            Send Message
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                             </svg>
                         </button>
                     </form>
@@ -799,58 +719,81 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-main">
                 <div class="footer-brand">
-                    <div class="footer-logo">
-                        <span class="logo-text">CodeAayu Creatives</span>
-                    </div>
-                    <p class="footer-description">
-                        Visual storyteller capturing moments that matter. Based in India, available worldwide.
+                    <img src="images/logos/logo-white.png" alt="CodeAayu Creatives" class="footer-logo-img">
+                    <p class="footer-tagline body-small">
+                        Capturing moments, telling stories. Professional photography and visual storytelling based in Bangalore, India.
                     </p>
                 </div>
 
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Navigation</h4>
-                        <a href="#home">Home</a>
-                        <a href="#about">About</a>
-                        <a href="#work">Work</a>
-                        <a href="#services">Services</a>
-                    </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <nav class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="photography.html" class="footer-link">Photography</a>
+                        <a href="about.html" class="footer-link">About</a>
+                        <a href="writing.html" class="footer-link">Writing</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </nav>
+                </div>
 
-                    <div class="footer-column">
-                        <h4>Portfolio</h4>
-                        <a href="photography.html">Photography</a>
-                        <a href="writing.html">Writing</a>
-                        <a href="about.html">About Me</a>
-                        <a href="contact.html">Contact</a>
-                    </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Services</h4>
+                    <nav class="footer-links">
+                        <a href="photography.html" class="footer-link">Travel Photography</a>
+                        <a href="photography.html" class="footer-link">Portrait Photography</a>
+                        <a href="photography.html" class="footer-link">Wildlife Photography</a>
+                        <a href="contact.html" class="footer-link">Content Creation</a>
+                    </nav>
+                </div>
 
-                    <div class="footer-column">
-                        <h4>Social</h4>
-                        <a href="https://instagram.com/codeaayu.creatives" target="_blank">Instagram</a>
-                        <a href="https://medium.com/@codeaayu" target="_blank">Medium</a>
-                        <a href="https://www.linkedin.com/in/codeaayu/" target="_blank">LinkedIn</a>
-                        <a href="https://www.youtube.com/@codeaayucreatives" target="_blank">YouTube</a>
-                    </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Connect</h4>
+                    <nav class="footer-links">
+                        <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+                        <a href="https://medium.com/@codeaayu" target="_blank" rel="noopener noreferrer" class="footer-link">Medium</a>
+                        <a href="https://www.linkedin.com/in/codeaayu/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+                        <a href="https://www.youtube.com/@codeaayucreatives" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+                    </nav>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 CodeAayu Creatives. All rights reserved.</p>
-                <p>Designed & Developed with ❤️ by Aayush Ahuja</p>
+                <p class="footer-copyright">&copy; 2024 CodeAayu Creatives. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://medium.com/@codeaayu" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Medium">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/codeaayu/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
+    <!-- Back to Top -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg viewBox="0 0 24 24" fill="none">
-            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     </button>
 
-    <!-- Scripts -->
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
