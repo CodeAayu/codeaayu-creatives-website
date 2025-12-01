@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,7 @@
     <meta name="keywords" content="writing portfolio, Medium articles, creative writing, travel writing, personal essays, Aayush Ahuja writer, technology articles, life experiences, inspirational writing, CodeAayu">
     <meta name="author" content="Aayush Ahuja">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#c9a962">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://codeaayucreatives.co.in/writing.html">
@@ -32,552 +33,276 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/logos/logo-black.png">
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader">
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <div class="loader-text">CodeAayu Creatives</div>
-        </div>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading">
+        <img src="images/logos/logo-white.png" alt="CodeAayu Creatives" class="loading-logo-img">
     </div>
 
-    <!-- Navigation -->
-    <nav class="nav navbar" id="mainNav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo logo">
-                <span class="logo-text">CodeAayu Creatives</span>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo-white.png" alt="CodeAayu Creatives" class="logo-img">
             </a>
-
-            <ul class="nav-menu">
-                <li class="nav-item has-dropdown">
-                    <a href="index.html" class="nav-link">
-                        Home
-                        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="index.html#home" class="dropdown-link">Hero</a></li>
-                        <li><a href="index.html#about" class="dropdown-link">About</a></li>
-                        <li><a href="index.html#services" class="dropdown-link">Services</a></li>
-                        <li><a href="index.html#work" class="dropdown-link">Work</a></li>
-                        <li><a href="index.html#contact" class="dropdown-link">Contact</a></li>
-                    </ul>
-                </li>
-                <li><a href="photography.html" class="nav-link">Photography</a></li>
-                <li><a href="writing.html" class="nav-link active">Writing</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-                <button class="nav-toggle mobile-toggle" id="navToggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="photography.html" class="nav-link">Photography</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="writing.html" class="nav-link active">Writing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="photography.html" class="mobile-nav-link">Photography</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="writing.html" class="mobile-nav-link">Writing</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header-v2">
-        <div class="header-bg">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-        </div>
+    <section class="page-header">
         <div class="container">
-            <div class="header-content" data-aos="fade-up">
-                <h1 class="page-title">Writing Portfolio</h1>
-                <p class="page-subtitle">Stories, insights, and creative content that inspire and inform</p>
-                <div class="header-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">9+</span>
-                        <span class="stat-label">Published Articles</span>
+            <div class="page-header-content">
+                <span class="label text-gold page-header-eyebrow">Blog</span>
+                <h1 class="display-large page-header-title">Writing</h1>
+                <p class="body-large page-header-description">
+                    Stories, insights, and creative content that inspire and inform.
+                    Exploring creativity, travel, personal growth, and the intersection of technology and art.
+                </p>
+
+                <div class="page-header-stats">
+                    <div class="page-stat">
+                        <div class="page-stat-number">9+</div>
+                        <div class="page-stat-label">Articles</div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">Categories</span>
+                    <div class="page-stat">
+                        <div class="page-stat-number">3+</div>
+                        <div class="page-stat-label">Categories</div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">Years Writing</span>
+                    <div class="page-stat">
+                        <div class="page-stat-number">5+</div>
+                        <div class="page-stat-label">Years Writing</div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="page-header-decoration">Words</div>
     </section>
 
-    <!-- Featured Article -->
-    <section class="featured-article-v2" data-aos="fade-up">
+    <!-- Articles Section -->
+    <section class="section-large">
         <div class="container">
-            <div class="featured-label-tag">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                Featured Article
-            </div>
-            <div class="featured-article-card">
-                <div class="featured-article-image">
-                    <img src="https://cdn-images-1.medium.com/max/1024/1*SqiWIsCfxOwtBgOMP_tUHw.jpeg" alt="2024: A Year of Milestones, Adventures, and Self-Discovery">
-                    <div class="featured-overlay"></div>
-                </div>
-                <div class="featured-article-content">
-                    <div class="article-badge">Latest</div>
-                    <h2 class="featured-title">2024: A Year of Milestones, Adventures, and Self-Discovery</h2>
-                    <p class="featured-description">Reflecting on an extraordinary year of professional triumphs, personal milestones, and adventures from Ladakh rides to meaningful acts of service and family journeys.</p>
-                    <div class="article-meta-v2">
-                        <span class="meta-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="16" y1="2" x2="16" y2="6"></line>
-                                <line x1="8" y1="2" x2="8" y2="6"></line>
-                                <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
-                            Dec 24, 2024
-                        </span>
-                        <span class="meta-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                            Medium
-                        </span>
+            <div class="articles-grid">
+                <!-- Featured Article -->
+                <a href="https://medium.com/@CodeAayu/2024-a-year-of-milestones-adventures-and-self-discovery-0a9aae84eaae" target="_blank" rel="noopener noreferrer" class="article-card featured">
+                    <div class="article-image">
+                        <img src="https://cdn-images-1.medium.com/max/1024/1*SqiWIsCfxOwtBgOMP_tUHw.jpeg" alt="2024: A Year of Milestones" loading="lazy">
                     </div>
-                    <a href="https://medium.com/@CodeAayu/2024-a-year-of-milestones-adventures-and-self-discovery-0a9aae84eaae" target="_blank" class="btn btn-primary">
-                        <span>Read on Medium</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Category Filter -->
-    <section class="category-filter-section" data-aos="fade-up">
-        <div class="container">
-            <div class="filter-wrapper">
-                <button class="filter-btn-v2 active" data-filter="all">
-                    <span>All Articles</span>
-                    <span class="filter-count">9</span>
-                </button>
-                <button class="filter-btn-v2" data-filter="creativity">
-                    <span>Creativity</span>
-                    <span class="filter-count">6</span>
-                </button>
-                <button class="filter-btn-v2" data-filter="travel">
-                    <span>Travel</span>
-                    <span class="filter-count">1</span>
-                </button>
-                <button class="filter-btn-v2" data-filter="technology">
-                    <span>Technology</span>
-                    <span class="filter-count">2</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Articles Grid -->
-    <section class="articles-grid-v2">
-        <div class="container">
-            <div class="articles-container-v2">
-
-                <!-- Article 1 -->
-                <article class="article-card-v2" data-category="creativity" data-aos="fade-up">
-                    <div class="article-image-v2">
-                        <img src="https://cdn-images-1.medium.com/max/1024/0*A7jkIYQ-VBGOJ2Ep.jpg" alt="Embracing Self-Completeness and Finding a Complementary Partner">
-                        <div class="article-overlay-v2"></div>
-                        <div class="article-category-badge">Creativity</div>
-                    </div>
-                    <div class="article-content-v2">
-                        <h3 class="article-title-v2">Embracing Self-Completeness and Finding a Complementary Partner</h3>
-                        <p class="article-excerpt-v2">On shifting from seeking completion in others to embracing self-completeness and building healthier, complementary relationships.</p>
-                        <div class="article-footer-v2">
-                            <div class="article-date-v2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                Aug 14, 2024
-                            </div>
-                            <a href="https://medium.com/@CodeAayu/embracing-self-completeness-and-finding-a-complementary-partner-ba31cf3faa59" target="_blank" class="article-link-v2">
-                                Read More
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Reflection</span>
+                            <span class="article-date">Dec 24, 2024</span>
                         </div>
-                    </div>
-                </article>
-
-                <!-- Article 2 -->
-                <article class="article-card-v2" data-category="travel" data-aos="fade-up" data-aos-delay="100">
-                    <div class="article-image-v2">
-                        <img src="https://cdn-images-1.medium.com/max/1024/1*RRdJYDouIMnL5XckAbmiXA.jpeg" alt="Will I Go Back to Ladakh a Second Time?">
-                        <div class="article-overlay-v2"></div>
-                        <div class="article-category-badge">Travel</div>
-                    </div>
-                    <div class="article-content-v2">
-                        <h3 class="article-title-v2">Will I Go Back to Ladakh a Second Time?</h3>
-                        <p class="article-excerpt-v2">Revisiting the magic of a first Ladakh expedition, the doubts of repeating perfection, and the pull to return for new adventures.</p>
-                        <div class="article-footer-v2">
-                            <div class="article-date-v2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                Jul 23, 2024
-                            </div>
-                            <a href="https://medium.com/@CodeAayu/will-i-go-back-to-ladakh-a-second-time-a41a34c00ae9" target="_blank" class="article-link-v2">
-                                Read More
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 3 -->
-                <article class="article-card-v2" data-category="creativity" data-aos="fade-up" data-aos-delay="200">
-                    <div class="article-image-v2">
-                        <img src="https://cdn-images-1.medium.com/max/813/0*U-2fIbpuqqGn7buh.jpg" alt="Embracing the Journey: Discovering Confidence Through Pursuing Dreams">
-                        <div class="article-overlay-v2"></div>
-                        <div class="article-category-badge">Creativity</div>
-                    </div>
-                    <div class="article-content-v2">
-                        <h3 class="article-title-v2">Embracing the Journey: Discovering Confidence Through Pursuing Dreams</h3>
-                        <p class="article-excerpt-v2">On courage, self-doubt, and the growth that comes from stepping beyond comfort to pursue your deepest aspirations.</p>
-                        <div class="article-footer-v2">
-                            <div class="article-date-v2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                Jul 11, 2024
-                            </div>
-                            <a href="https://medium.com/@CodeAayu/embracing-the-journey-discovering-confidence-through-pursuing-dreams-bbe6a2ce5ceb" target="_blank" class="article-link-v2">
-                                Read More
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 4 -->
-                <article class="article-card-v2" data-category="creativity" data-aos="fade-up">
-                    <div class="article-image-v2">
-                        <img src="https://cdn-images-1.medium.com/max/800/0*j0voWlGlFltjZD0J.jpg" alt="Self-Harm — A Reality We Must Acknowledge and Address">
-                        <div class="article-overlay-v2"></div>
-                        <div class="article-category-badge">Creativity</div>
-                    </div>
-                    <div class="article-content-v2">
-                        <h3 class="article-title-v2">Self-Harm — A Reality We Must Acknowledge and Address</h3>
-                        <p class="article-excerpt-v2">Understanding prevalence, underlying causes, warning signs, and the role of compassionate intervention and support.</p>
-                        <div class="article-footer-v2">
-                            <div class="article-date-v2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                May 10, 2023
-                            </div>
-                            <a href="https://medium.com/@CodeAayu/self-harm-a-reality-we-must-acknowledge-and-address-b5074b855285" target="_blank" class="article-link-v2">
-                                Read More
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 5 -->
-                <article class="article-card-v2" data-category="technology" data-aos="fade-up" data-aos-delay="100">
-                    <div class="article-image-v2">
-                        <img src="https://cdn-images-1.medium.com/max/1024/0*q4uKp9LnD2o86Hfg.jpg" alt="Are we really searching for life in the Universe?">
-                        <div class="article-overlay-v2"></div>
-                        <div class="article-category-badge">Technology</div>
-                    </div>
-                    <div class="article-content-v2">
-                        <h3 class="article-title-v2">Are we really searching for life in the Universe?</h3>
-                        <p class="article-excerpt-v2">A reflection on space exploration, climate priorities, and whether we seek alien life or a backup for Earth.</p>
-                        <div class="article-footer-v2">
-                            <div class="article-date-v2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                Jul 22, 2021
-                            </div>
-                            <a href="https://medium.com/@CodeAayu/are-we-really-searching-for-life-in-the-universe-38a797bbe34e" target="_blank" class="article-link-v2">
-                                Read More
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 6 -->
-                <article class="article-card-v2" data-category="creativity" data-aos="fade-up" data-aos-delay="200">
-                    <div class="article-image-v2">
-                        <img src="https://cdn-images-1.medium.com/max/1024/0*l1N3aACMVJyd-rfb" alt="I Am Not Ok!">
-                        <div class="article-overlay-v2"></div>
-                        <div class="article-category-badge">Creativity</div>
-                    </div>
-                    <div class="article-content-v2">
-                        <h3 class="article-title-v2">I Am Not Ok!</h3>
-                        <p class="article-excerpt-v2">A candid account of student life in the pandemic—exhaustion, online classes, and calls for humane academic expectations.</p>
-                        <div class="article-footer-v2">
-                            <div class="article-date-v2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                Oct 21, 2020
-                            </div>
-                            <a href="https://medium.com/@CodeAayu/i-am-not-ok-4b14943cdf43" target="_blank" class="article-link-v2">
-                                Read More
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 7 -->
-                <article class="article-card-v2" data-category="creativity" data-aos="fade-up">
-                    <div class="article-image-v2">
-                        <img src="https://cdn-images-1.medium.com/max/620/0*amONbF86oOZarpEI.jpg" alt="Better future, Open past! Is present present?">
-                        <div class="article-overlay-v2"></div>
-                        <div class="article-category-badge">Creativity</div>
-                    </div>
-                    <div class="article-content-v2">
-                        <h3 class="article-title-v2">Better future, Open past! Is present present?</h3>
-                        <p class="article-excerpt-v2">On living in the present versus endlessly chasing a moving finish line called the future.</p>
-                        <div class="article-footer-v2">
-                            <div class="article-date-v2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                Oct 06, 2020
-                            </div>
-                            <a href="https://medium.com/@CodeAayu/better-future-open-past-is-present-present-3579c0377c8" target="_blank" class="article-link-v2">
-                                Read More
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 8 -->
-                <article class="article-card-v2" data-category="creativity" data-aos="fade-up" data-aos-delay="100">
-                    <div class="article-image-v2">
-                        <img src="https://cdn-images-1.medium.com/max/1024/0*jQTzFaJf4Yats80k.jpg" alt="Suicide — Why talking about it is a Taboo?">
-                        <div class="article-overlay-v2"></div>
-                        <div class="article-category-badge">Creativity</div>
-                    </div>
-                    <div class="article-content-v2">
-                        <h3 class="article-title-v2">Suicide — Why talking about it is a Taboo?</h3>
-                        <p class="article-excerpt-v2">Why open conversations matter, why "weak-hearted" narratives harm, and how to be truly available to others.</p>
-                        <div class="article-footer-v2">
-                            <div class="article-date-v2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                Nov 06, 2019
-                            </div>
-                            <a href="https://medium.com/@CodeAayu/suicide-why-is-it-a-taboo-8c60c142f967" target="_blank" class="article-link-v2">
-                                Read More
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 9 -->
-                <article class="article-card-v2" data-category="technology" data-aos="fade-up" data-aos-delay="200">
-                    <div class="article-image-v2">
-                        <img src="https://cdn-images-1.medium.com/max/578/0*SpdqXiylA5ltn468.jpg" alt="I Met a Time Traveler!">
-                        <div class="article-overlay-v2"></div>
-                        <div class="article-category-badge">Technology</div>
-                    </div>
-                    <div class="article-content-v2">
-                        <h3 class="article-title-v2">I Met a Time Traveler!</h3>
-                        <p class="article-excerpt-v2">Playful musings on proving time travel, relativity's time dilation, and Stephen Hawking's 'party for time travelers'.</p>
-                        <div class="article-footer-v2">
-                            <div class="article-date-v2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                Sep 19, 2019
-                            </div>
-                            <a href="https://medium.com/@CodeAayu/i-met-a-time-traveler-962cbe8ec4dd" target="_blank" class="article-link-v2">
-                                Read More
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Medium CTA Section -->
-    <section class="medium-cta-section" data-aos="fade-up">
-        <div class="container">
-            <div class="cta-card-v2">
-                <div class="cta-content-v2">
-                    <h2>Follow My Writing Journey</h2>
-                    <p>Get notified when I publish new articles, stories, and insights on creativity, travel, technology, and life.</p>
-                    <div class="cta-buttons-v2">
-                        <a href="https://medium.com/@Codeaayu" target="_blank" class="btn btn-primary btn-lg">
-                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; margin-right: 8px;">
-                                <path d="M3 7.5c0-.3.1-.6.3-.8l2.9-3.5v-.4H3V2h6v.8L12.7 8l3.7-5.2V2h6v.8l-1.9 1.8c-.2.2-.3.5-.3.8V17c0 .3.1.6.3.8l1.8 1.8V20h-7v-.4l1.9-1.8c.2-.2.3-.5.3-.8V8.7l-4.5 6.5h-.2L7 8.4V17c0 .3.1.6.3.8l2.5 2.2V20H3v-.4l2.5-2.1c.2-.2.3-.5.3-.8V7.5z"/>
-                            </svg>
-                            <span>Follow on Medium</span>
-                        </a>
-                        <a href="contact.html" class="btn btn-secondary btn-lg">
-                            <span>Collaborate on Content</span>
+                        <h2 class="heading-medium article-title">2024: A Year of Milestones, Adventures, and Self-Discovery</h2>
+                        <p class="body-base article-excerpt">
+                            Reflecting on an extraordinary year of professional triumphs, personal milestones, and adventures from Ladakh rides to meaningful acts of service and family journeys.
+                        </p>
+                        <span class="article-link">
+                            Read Article
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
-                        </a>
+                        </span>
                     </div>
-                </div>
-                <div class="cta-stats-v2">
-                    <div class="stat-badge">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                        <div>
-                            <div class="stat-number">1K+</div>
-                            <div class="stat-label">Readers</div>
-                        </div>
-                    </div>
-                    <div class="stat-badge">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                        </svg>
-                        <div>
-                            <div class="stat-number">5+</div>
-                            <div class="stat-label">Years</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                </a>
 
-    <!-- Writing Services -->
-    <section class="services-showcase-v2" data-aos="fade-up">
-        <div class="container">
-            <div class="section-header-center">
-                <h2>Writing Services</h2>
-                <p>Professional content creation across multiple formats and platforms</p>
+                <!-- Article Cards -->
+                <a href="https://medium.com/@CodeAayu/embracing-self-completeness-and-finding-a-complementary-partner-ba31cf3faa59" target="_blank" rel="noopener noreferrer" class="article-card">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Creativity</span>
+                            <span class="article-date">Aug 14, 2024</span>
+                        </div>
+                        <h3 class="heading-small article-title">Embracing Self-Completeness and Finding a Complementary Partner</h3>
+                        <p class="body-small article-excerpt">
+                            Shifting from seeking completion in others to embracing self-completeness and finding complementary partnerships that enhance rather than complete.
+                        </p>
+                        <span class="article-link">
+                            Read Article
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="https://medium.com/@CodeAayu/will-i-go-back-to-ladakh-a-second-time-a41a34c00ae9" target="_blank" rel="noopener noreferrer" class="article-card">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Travel</span>
+                            <span class="article-date">Jul 23, 2024</span>
+                        </div>
+                        <h3 class="heading-small article-title">Will I Go Back to Ladakh a Second Time?</h3>
+                        <p class="body-small article-excerpt">
+                            Revisiting the magic of my first expedition and doubts about repeating perfection. Can a second journey match the wonder of the first?
+                        </p>
+                        <span class="article-link">
+                            Read Article
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="https://medium.com/@CodeAayu/embracing-the-journey-discovering-confidence-through-pursuing-dreams-bbe6a2ce5ceb" target="_blank" rel="noopener noreferrer" class="article-card">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Growth</span>
+                            <span class="article-date">Jul 11, 2024</span>
+                        </div>
+                        <h3 class="heading-small article-title">Embracing the Journey: Discovering Confidence Through Pursuing Dreams</h3>
+                        <p class="body-small article-excerpt">
+                            On courage, self-doubt, and growth from stepping beyond your comfort zone. How pursuing dreams builds the confidence we seek.
+                        </p>
+                        <span class="article-link">
+                            Read Article
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="https://medium.com/@CodeAayu/self-harm-a-reality-we-must-acknowledge-and-address-b5074b855285" target="_blank" rel="noopener noreferrer" class="article-card">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Awareness</span>
+                            <span class="article-date">May 10, 2023</span>
+                        </div>
+                        <h3 class="heading-small article-title">Self-Harm: A Reality We Must Acknowledge and Address</h3>
+                        <p class="body-small article-excerpt">
+                            Understanding prevalence, causes, warning signs, and compassionate intervention. A topic we need to discuss openly.
+                        </p>
+                        <span class="article-link">
+                            Read Article
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="https://medium.com/@CodeAayu/are-we-really-searching-for-life-in-the-universe-38a797bbe34e" target="_blank" rel="noopener noreferrer" class="article-card">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Technology</span>
+                            <span class="article-date">Jul 22, 2021</span>
+                        </div>
+                        <h3 class="heading-small article-title">Are We Really Searching for Life in the Universe?</h3>
+                        <p class="body-small article-excerpt">
+                            Space exploration, climate priorities, seeking alien life vs backup for Earth. What drives our cosmic curiosity?
+                        </p>
+                        <span class="article-link">
+                            Read Article
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="https://medium.com/@CodeAayu/i-am-not-ok-4b14943cdf43" target="_blank" rel="noopener noreferrer" class="article-card">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Personal</span>
+                            <span class="article-date">Oct 21, 2020</span>
+                        </div>
+                        <h3 class="heading-small article-title">I Am Not Ok!</h3>
+                        <p class="body-small article-excerpt">
+                            A candid account of student life in the pandemic - exhaustion, online classes, and the struggle to keep going.
+                        </p>
+                        <span class="article-link">
+                            Read Article
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="https://medium.com/@CodeAayu/better-future-open-past-is-present-present-3579c0377c8" target="_blank" rel="noopener noreferrer" class="article-card">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Philosophy</span>
+                            <span class="article-date">Oct 6, 2020</span>
+                        </div>
+                        <h3 class="heading-small article-title">Better Future, Open Past! Is Present Present?</h3>
+                        <p class="body-small article-excerpt">
+                            Reflections on living in the present versus chasing the future. The importance of mindfulness in our daily lives.
+                        </p>
+                        <span class="article-link">
+                            Read Article
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="https://medium.com/@CodeAayu/suicide-why-is-it-a-taboo-8c60c142f967" target="_blank" rel="noopener noreferrer" class="article-card">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Awareness</span>
+                            <span class="article-date">Nov 6, 2019</span>
+                        </div>
+                        <h3 class="heading-small article-title">Suicide: Why Talking About It Is a Taboo?</h3>
+                        <p class="body-small article-excerpt">
+                            Why conversations matter, why "weak-hearted" narratives harm, and how being available to others can save lives.
+                        </p>
+                        <span class="article-link">
+                            Read Article
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
             </div>
-            <div class="services-grid-v2">
-                <div class="service-card-v2" data-aos="fade-up">
-                    <div class="service-icon-v2">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 19l7 0 0 -14l-7 0"></path>
-                            <path d="M5 5v.01"></path>
-                            <path d="M5 8v.01"></path>
-                            <path d="M5 11v.01"></path>
-                            <path d="M5 14v.01"></path>
-                            <path d="M5 17v.01"></path>
-                        </svg>
-                    </div>
-                    <h3>Content Creation</h3>
-                    <p>Engaging articles and blog posts for businesses, publications, and digital platforms that resonate with your target audience.</p>
-                </div>
-                <div class="service-card-v2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon-v2">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 20h9"></path>
-                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                        </svg>
-                    </div>
-                    <h3>Creative Writing</h3>
-                    <p>Personal essays, stories, and creative content that inspire, provoke thought, and create meaningful connections with readers.</p>
-                </div>
-                <div class="service-card-v2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon-v2">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Technical Writing</h3>
-                    <p>Clear, accessible explanations of complex topics and technologies for both technical and non-technical audiences.</p>
-                </div>
+
+            <!-- More on Medium -->
+            <div style="text-align: center; margin-top: var(--space-16);">
+                <a href="https://medium.com/@codeaayu" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    Read More on Medium
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
@@ -585,93 +310,80 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-main">
                 <div class="footer-brand">
-                    <div class="footer-logo">
-                        <span class="logo-text">CodeAayu Creatives</span>
-                    </div>
-                    <p class="footer-description">
-                        Visual storyteller capturing moments that matter. Based in India, working worldwide.
+                    <img src="images/logos/logo-white.png" alt="CodeAayu Creatives" class="footer-logo-img">
+                    <p class="footer-tagline body-small">
+                        Capturing moments, telling stories. Professional photography and visual storytelling based in Bangalore, India.
                     </p>
                 </div>
 
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Navigation</h4>
-                        <a href="index.html#home">Home</a>
-                        <a href="index.html#about">About</a>
-                        <a href="index.html#work">Work</a>
-                        <a href="index.html#services">Services</a>
-                    </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <nav class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="photography.html" class="footer-link">Photography</a>
+                        <a href="about.html" class="footer-link">About</a>
+                        <a href="writing.html" class="footer-link">Writing</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </nav>
+                </div>
 
-                    <div class="footer-column">
-                        <h4>Portfolio</h4>
-                        <a href="photography.html">Photography</a>
-                        <a href="writing.html">Writing</a>
-                        <a href="about.html">About Me</a>
-                        <a href="contact.html">Contact</a>
-                    </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Services</h4>
+                    <nav class="footer-links">
+                        <a href="photography.html" class="footer-link">Travel Photography</a>
+                        <a href="photography.html" class="footer-link">Portrait Photography</a>
+                        <a href="photography.html" class="footer-link">Wildlife Photography</a>
+                        <a href="contact.html" class="footer-link">Content Creation</a>
+                    </nav>
+                </div>
 
-                    <div class="footer-column">
-                        <h4>Social</h4>
-                        <a href="https://instagram.com/codeaayu.creatives" target="_blank">Instagram</a>
-                        <a href="https://medium.com/@codeaayu" target="_blank">Medium</a>
-                        <a href="https://www.linkedin.com/in/codeaayu/" target="_blank">LinkedIn</a>
-                        <a href="https://youtube.com/@codeaayu" target="_blank">YouTube</a>
-                    </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Connect</h4>
+                    <nav class="footer-links">
+                        <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+                        <a href="https://medium.com/@codeaayu" target="_blank" rel="noopener noreferrer" class="footer-link">Medium</a>
+                        <a href="https://www.linkedin.com/in/codeaayu/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+                        <a href="https://www.youtube.com/@codeaayucreatives" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+                    </nav>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 CodeAayu Creatives. All rights reserved.</p>
-                <p>Designed & Developed with ❤️ by Aayush Ahuja</p>
+                <p class="footer-copyright">&copy; 2024 CodeAayu Creatives. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://medium.com/@codeaayu" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Medium">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/codeaayu/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
+    <!-- Back to Top -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg viewBox="0 0 24 24" fill="none">
-            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     </button>
 
     <script src="script.js"></script>
-    <script>
-        // Category Filter Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterBtns = document.querySelectorAll('.filter-btn-v2');
-            const articleCards = document.querySelectorAll('.article-card-v2');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const filterValue = this.getAttribute('data-filter');
-
-                    // Update active state
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Filter articles
-                    articleCards.forEach(card => {
-                        const category = card.getAttribute('data-category');
-
-                        if (filterValue === 'all' || category === filterValue) {
-                            card.style.display = 'block';
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 10);
-                        } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 300);
-                        }
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 </html>

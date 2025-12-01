@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,7 @@
     <meta name="keywords" content="About Aayush Ahuja, photographer biography, travel photographer India, IIT ISM Dhanbad, software engineer photographer, creative photographer, visual storyteller, CodeAayu Creatives, photography portfolio, Bangalore photographer">
     <meta name="author" content="Aayush Ahuja">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#c9a962">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://codeaayucreatives.co.in/about.html">
@@ -32,133 +33,81 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/logos/logo-black.png">
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader">
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <div class="loader-text">CodeAayu Creatives</div>
-        </div>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading">
+        <img src="images/logos/logo-white.png" alt="CodeAayu Creatives" class="loading-logo-img">
     </div>
 
-    <!-- Navigation -->
-    <nav class="nav navbar" id="mainNav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo logo">
-                <span class="logo-text">CodeAayu Creatives</span>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo-white.png" alt="CodeAayu Creatives" class="logo-img">
             </a>
-
-            <ul class="nav-menu">
-                <li class="nav-item has-dropdown">
-                    <a href="index.html" class="nav-link">
-                        Home
-                        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="index.html#home" class="dropdown-link">Hero</a></li>
-                        <li><a href="index.html#about" class="dropdown-link">About</a></li>
-                        <li><a href="index.html#services" class="dropdown-link">Services</a></li>
-                        <li><a href="index.html#work" class="dropdown-link">Work</a></li>
-                        <li><a href="index.html#contact" class="dropdown-link">Contact</a></li>
-                    </ul>
-                </li>
-                <li><a href="photography.html" class="nav-link">Photography</a></li>
-                <li><a href="writing.html" class="nav-link">Writing</a></li>
-                <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-                <button class="nav-toggle mobile-toggle" id="navToggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="photography.html" class="nav-link">Photography</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="writing.html" class="nav-link">Writing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="photography.html" class="mobile-nav-link">Photography</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="writing.html" class="mobile-nav-link">Writing</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
     </nav>
 
-    <!-- About Hero Section -->
-    <section class="about-hero-v2">
-        <div class="hero-bg">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-        </div>
+    <!-- About Hero -->
+    <section class="about-hero">
         <div class="container">
-            <div class="about-hero-content" data-aos="fade-up">
-                <div class="about-hero-image">
-                    <div class="image-frame">
-                        <img src="images/thumbnails/about/personality-photo-2.jpg" alt="Aayush Ahuja - CodeAayu">
-                        <div class="image-glow"></div>
+            <div class="about-hero-image reveal">
+                <img src="images/thumbnails/about/personality-photo-1.jpg" alt="Aayush Ahuja - Photographer" loading="eager">
+                <span class="about-hero-badge">Visual Storyteller</span>
+            </div>
+
+            <div class="about-hero-content">
+                <span class="label text-gold about-hero-eyebrow">About Me</span>
+                <h1 class="display-large about-hero-title">Hey, I'm Aayush!</h1>
+                <p class="heading-small about-hero-subtitle italic">Photographer, Writer, Creative Content Creator</p>
+
+                <p class="body-large about-hero-text">
+                    Welcome to my creative world! I'm passionate about visual storytelling, capturing authentic moments,
+                    and creating content that connects people through shared experiences.
+                </p>
+
+                <p class="body-base about-hero-text text-muted">
+                    Based in Bangalore, India, I blend my background in technology with artistic vision to create
+                    images and stories that resonate with viewers across the globe.
+                </p>
+
+                <div class="about-hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Creating</div>
                     </div>
-                </div>
-                <div class="about-hero-text">
-                    <div class="hero-badge">Visual Storyteller</div>
-                    <h1 class="page-title">Hey, I'm Aayush!</h1>
-                    <p class="page-subtitle">Photographer • Writer • Creative Content Creator</p>
-                    <p class="hero-description">Welcome to my creative world! I'm passionate about visual storytelling, capturing authentic moments, and creating content that connects people through shared experiences.</p>
-                    <div class="hero-stats-grid">
-                        <div class="stat-item-v2">
-                            <div class="stat-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                                    <line x1="12" y1="17" x2="12" y2="21"></line>
-                                </svg>
-                            </div>
-                            <div class="stat-content">
-                                <div class="stat-number">5+</div>
-                                <div class="stat-label">Years Creating</div>
-                            </div>
-                        </div>
-                        <div class="stat-item-v2">
-                            <div class="stat-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                                </svg>
-                            </div>
-                            <div class="stat-content">
-                                <div class="stat-number">50+</div>
-                                <div class="stat-label">Projects</div>
-                            </div>
-                        </div>
-                        <div class="stat-item-v2">
-                            <div class="stat-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
-                            </div>
-                            <div class="stat-content">
-                                <div class="stat-number">10+</div>
-                                <div class="stat-label">Clients</div>
-                            </div>
-                        </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Clients</div>
                     </div>
                 </div>
             </div>
@@ -166,426 +115,197 @@
     </section>
 
     <!-- Story Section -->
-    <section class="story-section-v2" data-aos="fade-up">
+    <section class="story-section section-large">
         <div class="container">
-            <div class="section-header-center">
-                <h2>My Creative Journey</h2>
-                <p>From engineering to visual storytelling</p>
-            </div>
-            <div class="story-content-v2">
-                <div class="story-card">
-                    <p class="story-text">My journey into photography and creative content began during my college years at <strong>IIT(ISM) Dhanbad</strong>, where I pursued an Integrated MTech in Mathematics and Computing. What started as a hobby quickly became a passion that would shape my creative identity.</p>
+            <div class="story-content">
+                <span class="label text-gold" style="display: block; text-align: center; margin-bottom: var(--space-8);">My Story</span>
+                <h2 class="heading-large" style="text-align: center; margin-bottom: var(--space-12);">The Journey So Far</h2>
 
-                    <p class="story-text">As a <strong>travel and portrait photographer</strong>, I'm drawn to capturing authentic moments and telling stories through my lens. Whether it's the candid expression of a stranger on the street, the golden hour light painting a mountain landscape, or the intimate moment during a portrait session, I strive to create images that resonate with viewers and evoke emotion.</p>
+                <p class="story-text">
+                    My journey began at IIT(ISM) Dhanbad, where I pursued an Integrated MTech in Mathematics and Computing.
+                    What started as a simple hobby of capturing moments during college events evolved into a full-fledged passion
+                    for visual storytelling that would shape my creative identity.
+                </p>
 
-                    <p class="story-text">My background in technology and current role in software development at <strong>udaan.com</strong> has given me a unique perspective on the intersection of creativity and technology. This dual experience helps me approach visual storytelling with both artistic intuition and technical precision.</p>
+                <p class="story-text">
+                    As a travel and portrait photographer, I'm drawn to capturing authentic moments and telling stories
+                    through my lens. Whether it's candid expressions, golden hour landscapes, or intimate portrait sessions,
+                    I strive to create images that resonate with viewers and evoke emotion.
+                </p>
 
-                    <p class="story-text">Beyond photography, I'm passionate about writing and content creation. Through my articles on Medium, I share insights about creativity, personal growth, travel experiences, and technology. I believe in building a community of fellow creatives and learning from each other's journeys.</p>
-                </div>
+                <p class="story-text">
+                    My background in technology and current role as a Software Engineer at udaan.com has given me a unique
+                    perspective on the intersection of creativity and technology. This dual experience helps me approach
+                    visual storytelling with both artistic intuition and technical precision.
+                </p>
+
+                <p class="story-text">
+                    Beyond photography, I'm passionate about writing and content creation. Through my articles on Medium,
+                    I share insights about creativity, personal growth, travel experiences, and technology. I believe
+                    in building a community of fellow creatives and learning from each other's journeys.
+                </p>
             </div>
         </div>
     </section>
 
     <!-- Timeline Section -->
-    <section class="timeline-section-v2" data-aos="fade-up">
+    <section class="timeline-section section-large">
         <div class="container">
-            <div class="section-header-center">
-                <h2>Professional Journey</h2>
-                <p>Key milestones in my career and education</p>
+            <div style="text-align: center; margin-bottom: var(--space-16);">
+                <span class="label text-gold">Experience</span>
+                <h2 class="heading-large" style="margin-top: var(--space-4);">Professional Journey</h2>
             </div>
-            <div class="timeline-v2">
 
-                <!-- 2021 - Present -->
-                <div class="timeline-item-v2" data-aos="fade-up">
-                    <div class="timeline-marker">
-                        <div class="marker-dot"></div>
-                        <div class="marker-line"></div>
-                    </div>
-                    <div class="timeline-content-card">
-                        <div class="timeline-year">2021 - Present</div>
-                        <div class="timeline-badge current">Current</div>
-                        <h3>Software Developer</h3>
-                        <h4>udaan.com</h4>
-                        <p>Working in backend development with Django and Haskell, building scalable B2B e-commerce solutions. Balancing technical work with creative pursuits in photography and content creation.</p>
-                        <div class="timeline-tags">
-                            <span class="tag">Backend Development</span>
-                            <span class="tag">Django</span>
-                            <span class="tag">Haskell</span>
-                            <span class="tag">E-commerce</span>
-                        </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">2021 - Present</span>
+                    <h3 class="heading-small timeline-title">Software Engineer at udaan.com</h3>
+                    <p class="timeline-subtitle">Bangalore, India</p>
+                    <p class="timeline-description">
+                        Backend development with Django and Haskell, building scalable B2B e-commerce solutions
+                        that serve millions of users across India.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Django</span>
+                        <span class="timeline-tag">Haskell</span>
+                        <span class="timeline-tag">Backend</span>
+                        <span class="timeline-tag">E-commerce</span>
                     </div>
                 </div>
 
-                <!-- 2021 -->
-                <div class="timeline-item-v2" data-aos="fade-up">
-                    <div class="timeline-marker">
-                        <div class="marker-dot"></div>
-                        <div class="marker-line"></div>
-                    </div>
-                    <div class="timeline-content-card">
-                        <div class="timeline-year">2021</div>
-                        <h3>MTS Intern</h3>
-                        <h4>Nutanix</h4>
-                        <p>Gained valuable experience in enterprise software development, cloud infrastructure, and hyper-converged systems. Worked on distributed systems and learned about scalable architecture design.</p>
-                        <div class="timeline-tags">
-                            <span class="tag">Cloud Computing</span>
-                            <span class="tag">Distributed Systems</span>
-                            <span class="tag">Enterprise Software</span>
-                        </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">2021</span>
+                    <h3 class="heading-small timeline-title">MTS Intern at Nutanix</h3>
+                    <p class="timeline-subtitle">Enterprise Software</p>
+                    <p class="timeline-description">
+                        Worked on cloud computing and distributed systems, gaining experience in
+                        enterprise software development and hyper-converged infrastructure.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Cloud Computing</span>
+                        <span class="timeline-tag">Distributed Systems</span>
                     </div>
                 </div>
 
-                <!-- 2020 -->
-                <div class="timeline-item-v2" data-aos="fade-up">
-                    <div class="timeline-marker">
-                        <div class="marker-dot"></div>
-                        <div class="marker-line"></div>
-                    </div>
-                    <div class="timeline-content-card">
-                        <div class="timeline-year">2020</div>
-                        <h3>SDE Intern</h3>
-                        <h4>Juspay Technologies</h4>
-                        <p>Developed skills in fintech and payment processing systems. Worked on backend services handling secure transactions and learned about payment gateway integrations.</p>
-                        <div class="timeline-tags">
-                            <span class="tag">Fintech</span>
-                            <span class="tag">Payment Systems</span>
-                            <span class="tag">Backend Services</span>
-                        </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">2020</span>
+                    <h3 class="heading-small timeline-title">SDE Intern at Juspay Technologies</h3>
+                    <p class="timeline-subtitle">Fintech</p>
+                    <p class="timeline-description">
+                        Contributed to payment processing systems and backend services,
+                        learning about secure transactions and payment gateway integrations.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Fintech</span>
+                        <span class="timeline-tag">Payments</span>
+                        <span class="timeline-tag">Backend</span>
                     </div>
                 </div>
 
-                <!-- Creative Milestones -->
-                <div class="timeline-item-v2" data-aos="fade-up">
-                    <div class="timeline-marker">
-                        <div class="marker-dot"></div>
-                        <div class="marker-line"></div>
-                    </div>
-                    <div class="timeline-content-card highlight">
-                        <div class="timeline-year">2020 - Present</div>
-                        <div class="timeline-badge creative">Creative Journey</div>
-                        <h3>Photography & Content Creation</h3>
-                        <h4>CodeAayu Creatives</h4>
-                        <p>Built a photography portfolio focusing on travel, portrait, and street photography. Published multiple articles on Medium covering creativity, personal growth, and life experiences. Developed content creation skills across photography, writing, and social media.</p>
-                        <div class="timeline-highlights">
-                            <div class="highlight-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                                    <line x1="12" y1="17" x2="12" y2="21"></line>
-                                </svg>
-                                <span>100+ Photo Projects</span>
-                            </div>
-                            <div class="highlight-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 20h9"></path>
-                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                </svg>
-                                <span>9 Published Articles</span>
-                            </div>
-                            <div class="highlight-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
-                                <span>1K+ Community Reach</span>
-                            </div>
-                        </div>
-                        <div class="timeline-tags">
-                            <span class="tag">Travel Photography</span>
-                            <span class="tag">Portrait Photography</span>
-                            <span class="tag">Creative Writing</span>
-                            <span class="tag">Content Strategy</span>
-                        </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">2020 - Present</span>
+                    <h3 class="heading-small timeline-title">Photography & Content Creation</h3>
+                    <p class="timeline-subtitle">CodeAayu Creatives</p>
+                    <p class="timeline-description">
+                        100+ photo projects completed, 9 published articles on Medium,
+                        building a community of 1K+ creatives through visual storytelling.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Travel Photography</span>
+                        <span class="timeline-tag">Portraits</span>
+                        <span class="timeline-tag">Writing</span>
                     </div>
                 </div>
 
-                <!-- Education -->
-                <div class="timeline-item-v2" data-aos="fade-up">
-                    <div class="timeline-marker">
-                        <div class="marker-dot"></div>
-                        <div class="marker-line"></div>
-                    </div>
-                    <div class="timeline-content-card">
-                        <div class="timeline-year">2016 - 2021</div>
-                        <div class="timeline-badge education">Education</div>
-                        <h3>Integrated MTech</h3>
-                        <h4>Mathematics and Computing, IIT(ISM) Dhanbad</h4>
-                        <p>5-year integrated program combining mathematical foundations with computing skills. Developed strong analytical and problem-solving abilities while exploring creative passions in photography and content creation.</p>
-                        <div class="timeline-tags">
-                            <span class="tag">Mathematics</span>
-                            <span class="tag">Computer Science</span>
-                            <span class="tag">Algorithms</span>
-                            <span class="tag">Software Engineering</span>
-                        </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">2016 - 2021</span>
+                    <h3 class="heading-small timeline-title">Integrated MTech, IIT(ISM) Dhanbad</h3>
+                    <p class="timeline-subtitle">Mathematics & Computing</p>
+                    <p class="timeline-description">
+                        Strong foundation in algorithms, data structures, and mathematical problem-solving.
+                        This is where my passion for both technology and creative expression took root.
+                    </p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Mathematics</span>
+                        <span class="timeline-tag">Computer Science</span>
+                        <span class="timeline-tag">Algorithms</span>
                     </div>
                 </div>
-
-                <!-- Early Years -->
-                <div class="timeline-item-v2" data-aos="fade-up">
-                    <div class="timeline-marker">
-                        <div class="marker-dot"></div>
-                    </div>
-                    <div class="timeline-content-card">
-                        <div class="timeline-year">2018</div>
-                        <h3>The Beginning</h3>
-                        <h4>Discovering My Passions</h4>
-                        <p>Started exploring photography during college, capturing campus life and local landscapes. Began documenting experiences through writing on Medium, discovering a love for creative expression and storytelling.</p>
-                        <div class="timeline-tags">
-                            <span class="tag">Discovery</span>
-                            <span class="tag">First Steps</span>
-                            <span class="tag">Learning</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section class="skills-section-v2" data-aos="fade-up">
+    <section class="skills-section section-large">
         <div class="container">
-            <div class="section-header-center">
-                <h2>Skills & Expertise</h2>
-                <p>A blend of creative and technical abilities</p>
+            <div style="text-align: center; margin-bottom: var(--space-16);">
+                <span class="label" style="color: var(--color-gold);">Expertise</span>
+                <h2 class="heading-large" style="margin-top: var(--space-4);">Skills & Capabilities</h2>
             </div>
-            <div class="skills-grid-v2">
-                <div class="skill-category-v2" data-aos="fade-up">
-                    <div class="skill-category-header">
-                        <div class="skill-icon-v2">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                <line x1="8" y1="21" x2="16" y2="21"></line>
-                                <line x1="12" y1="17" x2="12" y2="21"></line>
-                            </svg>
-                        </div>
-                        <h3>Photography</h3>
-                    </div>
-                    <ul class="skills-list-v2">
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Travel Photography
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Portrait Photography
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Street Photography
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Event Documentation
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Photo Editing & Post-processing
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Studio Lighting
-                        </li>
+
+            <div class="skills-grid">
+                <div class="skills-category reveal">
+                    <h3 class="skills-category-title">Photography</h3>
+                    <ul class="skills-list">
+                        <li class="skill-item">Travel Photography</li>
+                        <li class="skill-item">Portrait Photography</li>
+                        <li class="skill-item">Wildlife Photography</li>
+                        <li class="skill-item">Street Photography</li>
+                        <li class="skill-item">Photo Editing & Post-processing</li>
+                        <li class="skill-item">Studio Lighting</li>
                     </ul>
                 </div>
 
-                <div class="skill-category-v2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="skill-category-header">
-                        <div class="skill-icon-v2">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 20h9"></path>
-                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                            </svg>
-                        </div>
-                        <h3>Content Creation</h3>
-                    </div>
-                    <ul class="skills-list-v2">
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Blog Content Creation
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Social Media Strategy
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Creative Writing
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Brand Storytelling
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Content Strategy
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Visual Storytelling
-                        </li>
+                <div class="skills-category reveal reveal-delay-1">
+                    <h3 class="skills-category-title">Content Creation</h3>
+                    <ul class="skills-list">
+                        <li class="skill-item">Creative Writing</li>
+                        <li class="skill-item">Blog Content Creation</li>
+                        <li class="skill-item">Social Media Strategy</li>
+                        <li class="skill-item">Brand Storytelling</li>
+                        <li class="skill-item">Visual Storytelling</li>
+                        <li class="skill-item">Content Strategy</li>
                     </ul>
                 </div>
 
-                <div class="skill-category-v2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-category-header">
-                        <div class="skill-icon-v2">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
-                        </div>
-                        <h3>Technical Skills</h3>
-                    </div>
-                    <ul class="skills-list-v2">
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Software Development
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Django & Haskell
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Backend Development
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Web Technologies
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Digital Workflow Optimization
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Technical Writing
-                        </li>
+                <div class="skills-category reveal reveal-delay-2">
+                    <h3 class="skills-category-title">Technical</h3>
+                    <ul class="skills-list">
+                        <li class="skill-item">Software Development</li>
+                        <li class="skill-item">Django & Haskell</li>
+                        <li class="skill-item">Backend Development</li>
+                        <li class="skill-item">Web Technologies</li>
+                        <li class="skill-item">Digital Workflow Optimization</li>
+                        <li class="skill-item">System Architecture</li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interests Section -->
-    <section class="interests-section-v2" data-aos="fade-up">
-        <div class="container">
-            <div class="section-header-center">
-                <h2>Beyond the Camera</h2>
-                <p>Passions and interests that fuel my creativity</p>
-            </div>
-            <div class="interests-grid-v2">
-                <div class="interest-card-v2" data-aos="fade-up">
-                    <div class="interest-icon-v2">🛹</div>
-                    <h3>Skating</h3>
-                    <p>When I'm not behind the camera, you'll often find me on my skateboard, exploring the city and finding new perspectives on familiar streets.</p>
-                </div>
-                <div class="interest-card-v2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="interest-icon-v2">✈️</div>
-                    <h3>Travel</h3>
-                    <p>Exploring new places, cultures, and meeting interesting people fuels my creativity and provides endless inspiration for my photography and writing.</p>
-                </div>
-                <div class="interest-card-v2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="interest-icon-v2">💻</div>
-                    <h3>Technology</h3>
-                    <p>My background in software development keeps me curious about new technologies and their creative applications in visual storytelling.</p>
-                </div>
-                <div class="interest-card-v2" data-aos="fade-up" data-aos-delay="300">
-                    <div class="interest-icon-v2">📚</div>
-                    <h3>Learning</h3>
-                    <p>Continuously learning new techniques, exploring different art forms, and sharing knowledge with the creative community drives my growth.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section class="philosophy-section-v2" data-aos="fade-up">
-        <div class="container">
-            <div class="philosophy-card-v2">
-                <div class="philosophy-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                </div>
-                <h2>My Creative Philosophy</h2>
-                <blockquote class="philosophy-quote">
-                    "Every moment has a story waiting to be told. My role as a creative is to find those stories, capture them authentically, and share them in a way that connects with people on a human level."
-                </blockquote>
-                <p class="philosophy-text">I believe that the best creative work comes from genuine curiosity, respect for subjects, and a commitment to continuous learning. Whether I'm photographing a street scene, writing an article, or creating content, I approach each project with the goal of creating something meaningful and authentic.</p>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section-v2" data-aos="fade-up">
-        <div class="container">
-            <div class="cta-content-center">
-                <h2>Let's Create Something Together</h2>
-                <p>Whether you're looking for photography services, content collaboration, or just want to connect with a fellow creative, I'd love to hear from you.</p>
-                <div class="cta-buttons-center">
-                    <a href="contact.html" class="btn btn-primary btn-lg">
-                        <span>Get In Touch</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                    <a href="photography.html" class="btn btn-secondary btn-lg">
-                        <span>View Portfolio</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                    <a href="assets/Aayush-Ahuja-Resume.pdf" download class="btn btn-outline btn-lg" style="border: 2px solid white; color: white;">
-                        <span>Download Resume</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
+    <section class="section-large" style="background-color: var(--bg-secondary);">
+        <div class="container" style="text-align: center;">
+            <span class="label text-gold">Let's Connect</span>
+            <h2 class="display-medium" style="margin-top: var(--space-4); margin-bottom: var(--space-6);">Ready to create something together?</h2>
+            <p class="body-large text-muted" style="max-width: 600px; margin: 0 auto var(--space-10);">
+                Whether you need photography services, content collaboration, or just want to chat about creative projects,
+                I'd love to hear from you.
+            </p>
+            <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html" class="btn btn-primary">
+                    Get in Touch
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="photography.html" class="btn btn-secondary">View My Work</a>
             </div>
         </div>
     </section>
@@ -593,54 +313,77 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-main">
                 <div class="footer-brand">
-                    <div class="footer-logo">
-                        <span class="logo-text">CodeAayu Creatives</span>
-                    </div>
-                    <p class="footer-description">
-                        Visual storyteller capturing moments that matter. Based in India, working worldwide.
+                    <img src="images/logos/logo-white.png" alt="CodeAayu Creatives" class="footer-logo-img">
+                    <p class="footer-tagline body-small">
+                        Capturing moments, telling stories. Professional photography and visual storytelling based in Bangalore, India.
                     </p>
                 </div>
 
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Navigation</h4>
-                        <a href="index.html#home">Home</a>
-                        <a href="index.html#about">About</a>
-                        <a href="index.html#work">Work</a>
-                        <a href="index.html#services">Services</a>
-                    </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <nav class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="photography.html" class="footer-link">Photography</a>
+                        <a href="about.html" class="footer-link">About</a>
+                        <a href="writing.html" class="footer-link">Writing</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </nav>
+                </div>
 
-                    <div class="footer-column">
-                        <h4>Portfolio</h4>
-                        <a href="photography.html">Photography</a>
-                        <a href="writing.html">Writing</a>
-                        <a href="about.html">About Me</a>
-                        <a href="contact.html">Contact</a>
-                    </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Services</h4>
+                    <nav class="footer-links">
+                        <a href="photography.html" class="footer-link">Travel Photography</a>
+                        <a href="photography.html" class="footer-link">Portrait Photography</a>
+                        <a href="photography.html" class="footer-link">Wildlife Photography</a>
+                        <a href="contact.html" class="footer-link">Content Creation</a>
+                    </nav>
+                </div>
 
-                    <div class="footer-column">
-                        <h4>Social</h4>
-                        <a href="https://instagram.com/codeaayu.creatives" target="_blank">Instagram</a>
-                        <a href="https://medium.com/@codeaayu" target="_blank">Medium</a>
-                        <a href="https://www.linkedin.com/in/codeaayu/" target="_blank">LinkedIn</a>
-                        <a href="https://youtube.com/@codeaayu" target="_blank">YouTube</a>
-                    </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Connect</h4>
+                    <nav class="footer-links">
+                        <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+                        <a href="https://medium.com/@codeaayu" target="_blank" rel="noopener noreferrer" class="footer-link">Medium</a>
+                        <a href="https://www.linkedin.com/in/codeaayu/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+                        <a href="https://www.youtube.com/@codeaayucreatives" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+                    </nav>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 CodeAayu Creatives. All rights reserved.</p>
-                <p>Designed & Developed with ❤️ by Aayush Ahuja</p>
+                <p class="footer-copyright">&copy; 2024 CodeAayu Creatives. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://medium.com/@codeaayu" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Medium">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/codeaayu/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
+    <!-- Back to Top -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg viewBox="0 0 24 24" fill="none">
-            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     </button>
 
