@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initSmoothScroll();
     initHeaderScroll();
+    initCurrentYear();
 });
 
 // ================================================================
@@ -73,7 +74,7 @@ function initHeaderScroll() {
 function initNavigation() {
     const menuToggle = document.getElementById('menuToggle');
     const mobileNav = document.getElementById('mobileNav');
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-nav-cta');
 
     if (menuToggle && mobileNav) {
         menuToggle.addEventListener('click', function() {
@@ -154,47 +155,51 @@ function initBackToTop() {
 // PHOTOGRAPHY GALLERY
 // ================================================================
 function initGallery() {
-    // Filter functionality
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    if (filterBtns.length > 0 && galleryItems.length > 0) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-
-                const filterValue = this.getAttribute('data-filter');
-
-                // Filter items
-                galleryItems.forEach(item => {
-                    const category = item.getAttribute('data-category');
-
-                    if (filterValue === 'all' || category === filterValue) {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            item.style.display = 'block';
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'scale(1)';
-                            }, 50);
-                        }, 200);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 200);
-                    }
-                });
-            });
-        });
-    }
+    initFilterGroup('.gallery-filters', '.gallery-item');
+    initFilterGroup('.work-filters', '.work-item');
 
     // Lightbox functionality
     initLightbox();
+}
+
+function initFilterGroup(groupSelector, itemSelector) {
+    const filterGroup = document.querySelector(groupSelector);
+    const items = document.querySelectorAll(itemSelector);
+    if (!filterGroup || items.length === 0) return;
+
+    const filterBtns = filterGroup.querySelectorAll('.filter-btn');
+    if (filterBtns.length === 0) return;
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const filterValue = this.getAttribute('data-filter');
+
+            items.forEach(item => {
+                const category = item.getAttribute('data-category');
+                const shouldShow = filterValue === 'all' || category === filterValue;
+
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.8)';
+
+                if (shouldShow) {
+                    setTimeout(() => {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    }, 200);
+                } else {
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 200);
+                }
+            });
+        });
+    });
 }
 
 function initLightbox() {
@@ -314,12 +319,11 @@ function initContactForm() {
         e.preventDefault();
 
         const submitButton = contactForm.querySelector('button[type="submit"]');
-        const buttonText = submitButton.querySelector('span') || submitButton;
-        const originalText = buttonText.textContent;
+        const originalButtonHtml = submitButton.innerHTML;
 
         // Show loading state
         submitButton.disabled = true;
-        buttonText.textContent = 'Sending...';
+        submitButton.textContent = 'Sending...';
 
         try {
             const formData = new FormData(contactForm);
@@ -349,7 +353,7 @@ function initContactForm() {
             console.error('Form submission error:', error);
         } finally {
             submitButton.disabled = false;
-            buttonText.textContent = originalText;
+            submitButton.innerHTML = originalButtonHtml;
         }
     });
 }
@@ -454,6 +458,19 @@ function initSmoothScroll() {
                 });
             }
         });
+    });
+}
+
+// ================================================================
+// YEAR IN FOOTER
+// ================================================================
+function initCurrentYear() {
+    const currentYearNodes = document.querySelectorAll('.current-year');
+    if (currentYearNodes.length === 0) return;
+
+    const currentYear = String(new Date().getFullYear());
+    currentYearNodes.forEach(node => {
+        node.textContent = currentYear;
     });
 }
 
