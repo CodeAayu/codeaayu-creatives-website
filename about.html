@@ -33,7 +33,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="images/logos/logo-black.png">
 </head>
@@ -56,6 +56,9 @@
                 <a href="writing.html" class="nav-link">Writing</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
+
+            <a href="contact.html" class="btn btn-primary nav-cta">Book a Shoot</a>
+
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -71,6 +74,7 @@
         <a href="about.html" class="mobile-nav-link">About</a>
         <a href="writing.html" class="mobile-nav-link">Writing</a>
         <a href="contact.html" class="mobile-nav-link">Contact</a>
+        <a href="contact.html" class="btn btn-primary mobile-nav-cta">Book a Shoot</a>
     </nav>
 
     <!-- About Hero -->
@@ -118,8 +122,8 @@
     <section class="story-section section-large">
         <div class="container">
             <div class="story-content">
-                <span class="label text-gold" style="display: block; text-align: center; margin-bottom: var(--space-8);">My Story</span>
-                <h2 class="heading-large" style="text-align: center; margin-bottom: var(--space-12);">The Journey So Far</h2>
+                <span class="label text-gold story-heading-label">My Story</span>
+                <h2 class="heading-large story-heading-title">The Journey So Far</h2>
 
                 <p class="story-text">
                     My journey began at IIT(ISM) Dhanbad, where I pursued an Integrated MTech in Mathematics and Computing.
@@ -151,9 +155,9 @@
     <!-- Timeline Section -->
     <section class="timeline-section section-large">
         <div class="container">
-            <div style="text-align: center; margin-bottom: var(--space-16);">
+            <div class="section-heading">
                 <span class="label text-gold">Experience</span>
-                <h2 class="heading-large" style="margin-top: var(--space-4);">Professional Journey</h2>
+                <h2 class="heading-large section-title-gap">Professional Journey</h2>
             </div>
 
             <div class="timeline">
@@ -243,9 +247,9 @@
     <!-- Skills Section -->
     <section class="skills-section section-large">
         <div class="container">
-            <div style="text-align: center; margin-bottom: var(--space-16);">
-                <span class="label" style="color: var(--color-gold);">Expertise</span>
-                <h2 class="heading-large" style="margin-top: var(--space-4);">Skills & Capabilities</h2>
+            <div class="section-heading">
+                <span class="label text-gold">Expertise</span>
+                <h2 class="heading-large section-title-gap">Skills & Capabilities</h2>
             </div>
 
             <div class="skills-grid">
@@ -289,23 +293,23 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="section-large" style="background-color: var(--bg-secondary);">
-        <div class="container" style="text-align: center;">
-            <span class="label text-gold">Let's Connect</span>
-            <h2 class="display-medium" style="margin-top: var(--space-4); margin-bottom: var(--space-6);">Ready to create something together?</h2>
-            <p class="body-large text-muted" style="max-width: 600px; margin: 0 auto var(--space-10);">
-                Whether you need photography services, content collaboration, or just want to chat about creative projects,
-                I'd love to hear from you.
+    <section class="section-large creative-cta">
+        <div class="container creative-cta-content">
+            <span class="label text-gold">Book a Shoot</span>
+            <h2 class="display-medium cta-title">Need editorial visuals that move your audience?</h2>
+            <p class="body-large text-muted cta-description">
+                Share your campaign objective and timeline. I will help you shape the story, plan production,
+                and deliver visuals that drive action.
             </p>
-            <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+            <div class="cta-actions">
                 <a href="contact.html" class="btn btn-primary">
-                    Get in Touch
+                    Request Availability
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
-                <a href="photography.html" class="btn btn-secondary">View My Work</a>
+                <a href="photography.html" class="btn btn-secondary">See Signature Work</a>
             </div>
         </div>
     </section>
@@ -354,7 +358,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-copyright">&copy; 2024 CodeAayu Creatives. All rights reserved.</p>
+                <p class="footer-copyright">&copy; <span class="current-year">2026</span> CodeAayu Creatives. All rights reserved.</p>
                 <div class="footer-social">
                     <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
