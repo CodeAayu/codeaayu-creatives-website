@@ -15,6 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initBackToTop();
     initGallery();
     initContactForm();
+    initWeddingCountdown();
+    initWeddingSlideshow();
+    initWeddingFilmFullscreen();
+    initWeddingExperience();
     initSmoothScroll();
     initHeaderScroll();
     initCurrentYear();
@@ -308,54 +312,439 @@ function initLightbox() {
 }
 
 // ================================================================
-// CONTACT FORM - Web3Forms Integration
+// WEB3FORMS - Shared submission handler
 // ================================================================
 function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
+    const forms = document.querySelectorAll('form[action*="api.web3forms.com/submit"]');
 
-    if (!contactForm) return;
+    if (forms.length === 0) return;
 
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
+    forms.forEach(form => {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
 
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const originalButtonHtml = submitButton.innerHTML;
+            const submitButton = form.querySelector('button[type="submit"]');
+            if (!submitButton) return;
 
-        // Show loading state
-        submitButton.disabled = true;
-        submitButton.textContent = 'Sending...';
+            const originalButtonHtml = submitButton.innerHTML;
+            const loadingText = form.dataset.loadingText || 'Sending...';
+            const successMessage = form.dataset.successMessage || 'Thank you! Your message has been sent successfully.';
+            const errorMessage = form.dataset.errorMessage || 'Oops! Something went wrong. Please try again.';
 
-        try {
-            const formData = new FormData(contactForm);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
+            submitButton.disabled = true;
+            submitButton.textContent = loadingText;
 
-            const response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
-            });
+            try {
+                const formData = new FormData(form);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
 
-            const data = await response.json();
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                });
 
-            if (data.success) {
-                showNotification('Thank you! Your message has been sent successfully.', 'success');
-                contactForm.reset();
-            } else {
-                showNotification('Oops! Something went wrong. Please try again.', 'error');
-                console.error('Form submission error:', data);
+                const data = await response.json();
+
+                if (data.success) {
+                    showNotification(successMessage, 'success');
+                    form.reset();
+                } else {
+                    showNotification(errorMessage, 'error');
+                    console.error('Form submission error:', data);
+                }
+            } catch (error) {
+                showNotification(errorMessage, 'error');
+                console.error('Form submission error:', error);
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonHtml;
             }
-        } catch (error) {
-            showNotification('Oops! Something went wrong. Please try again.', 'error');
-            console.error('Form submission error:', error);
-        } finally {
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalButtonHtml;
+        });
+    });
+}
+
+// ================================================================
+// WEDDING COUNTDOWN
+// ================================================================
+function initWeddingCountdown() {
+    const countdown = document.querySelector('[data-countdown-target]');
+
+    if (!countdown) return;
+
+    const targetTime = Date.parse(countdown.getAttribute('data-countdown-target'));
+    const daysNode = countdown.querySelector('[data-countdown-part="days"]');
+    const hoursNode = countdown.querySelector('[data-countdown-part="hours"]');
+    const minutesNode = countdown.querySelector('[data-countdown-part="minutes"]');
+    const secondsNode = countdown.querySelector('[data-countdown-part="seconds"]');
+
+    if (Number.isNaN(targetTime) || !daysNode || !hoursNode || !minutesNode || !secondsNode) return;
+
+    function updateCountdown() {
+        const remaining = Math.max(0, targetTime - Date.now());
+        const totalSeconds = Math.floor(remaining / 1000);
+
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        daysNode.textContent = String(days).padStart(2, '0');
+        hoursNode.textContent = String(hours).padStart(2, '0');
+        minutesNode.textContent = String(minutes).padStart(2, '0');
+        secondsNode.textContent = String(seconds).padStart(2, '0');
+
+        return remaining;
+    }
+
+    const initialRemaining = updateCountdown();
+    if (initialRemaining === 0) return;
+
+    const timer = setInterval(() => {
+        const remaining = updateCountdown();
+        if (remaining === 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+}
+
+// ================================================================
+// WEDDING HERO SLIDESHOW
+// ================================================================
+function initWeddingSlideshow() {
+    const slideshow = document.querySelector('[data-wedding-slideshow]');
+
+    if (!slideshow) return;
+
+    const slides = Array.from(slideshow.querySelectorAll('[data-wedding-slide]'));
+    const dots = Array.from(slideshow.querySelectorAll('[data-wedding-dot]'));
+
+    if (slides.length === 0) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activeIndex = 0;
+    let timerId = null;
+
+    function setActiveSlide(nextIndex) {
+        activeIndex = (nextIndex + slides.length) % slides.length;
+
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('is-active', index === activeIndex);
+        });
+
+        dots.forEach((dot, index) => {
+            const isActive = index === activeIndex;
+            dot.classList.toggle('is-active', isActive);
+            dot.setAttribute('aria-pressed', String(isActive));
+        });
+    }
+
+    function stopRotation() {
+        if (timerId) {
+            clearInterval(timerId);
+            timerId = null;
+        }
+    }
+
+    function startRotation() {
+        stopRotation();
+
+        if (reducedMotion.matches || slides.length < 2) return;
+
+        timerId = setInterval(() => {
+            setActiveSlide(activeIndex + 1);
+        }, 4200);
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function() {
+            setActiveSlide(index);
+            startRotation();
+        });
+    });
+
+    slideshow.addEventListener('mouseenter', stopRotation);
+    slideshow.addEventListener('mouseleave', startRotation);
+    slideshow.addEventListener('focusin', stopRotation);
+    slideshow.addEventListener('focusout', function(e) {
+        if (!slideshow.contains(e.relatedTarget)) {
+            startRotation();
         }
     });
+
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            stopRotation();
+        } else {
+            startRotation();
+        }
+    });
+
+    if (typeof reducedMotion.addEventListener === 'function') {
+        reducedMotion.addEventListener('change', startRotation);
+    } else if (typeof reducedMotion.addListener === 'function') {
+        reducedMotion.addListener(startRotation);
+    }
+
+    setActiveSlide(0);
+    startRotation();
+}
+
+// ================================================================
+// WEDDING FILM FULLSCREEN
+// ================================================================
+function initWeddingFilmFullscreen() {
+    const media = document.getElementById('weddingFilmMedia');
+    const video = document.getElementById('weddingInviteVideo');
+    const button = document.getElementById('weddingFilmFullscreenButton');
+
+    if (!media || !video || !button) return;
+
+    function isMediaFullscreen() {
+        return document.fullscreenElement === media || document.webkitFullscreenElement === media;
+    }
+
+    function syncButtonState() {
+        button.textContent = isMediaFullscreen() ? 'Exit Full Screen' : 'Open Full Screen';
+        button.setAttribute('aria-pressed', String(isMediaFullscreen()));
+    }
+
+    async function enterFullscreen() {
+        try {
+            if (media.requestFullscreen) {
+                await media.requestFullscreen();
+                return;
+            }
+
+            if (media.webkitRequestFullscreen) {
+                media.webkitRequestFullscreen();
+                return;
+            }
+
+            if (video.requestFullscreen) {
+                await video.requestFullscreen();
+                return;
+            }
+
+            if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+                return;
+            }
+
+            if (typeof video.webkitEnterFullscreen === 'function') {
+                video.webkitEnterFullscreen();
+            }
+        } catch (error) {
+            console.error('Fullscreen error:', error);
+        }
+    }
+
+    async function exitFullscreen() {
+        try {
+            if (document.exitFullscreen) {
+                await document.exitFullscreen();
+                return;
+            }
+
+            if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+        } catch (error) {
+            console.error('Fullscreen exit error:', error);
+        }
+    }
+
+    button.addEventListener('click', async function() {
+        if (isMediaFullscreen()) {
+            await exitFullscreen();
+        } else {
+            await enterFullscreen();
+        }
+
+        syncButtonState();
+    });
+
+    document.addEventListener('fullscreenchange', syncButtonState);
+    document.addEventListener('webkitfullscreenchange', syncButtonState);
+
+    syncButtonState();
+}
+
+// ================================================================
+// WEDDING PAGE SIDE EXPERIENCE
+// ================================================================
+function initWeddingExperience() {
+    const sidePicker = document.getElementById('weddingSidePicker');
+
+    if (!sidePicker) return;
+
+    const primaryName = document.getElementById('weddingPrimaryName');
+    const secondaryLine = document.getElementById('weddingSecondaryLine');
+    const heroIntro = document.getElementById('weddingHeroIntro');
+    const sideStatus = document.getElementById('weddingSideStatus');
+    const detailsEyebrow = document.getElementById('weddingDetailsEyebrow');
+    const detailsHeading = document.getElementById('weddingDetailsHeading');
+    const detailsIntro = document.getElementById('weddingDetailsIntro');
+    const familyNoteLabel = document.getElementById('weddingFamilyNoteLabel');
+    const familyNoteTitle = document.getElementById('weddingFamilyNoteTitle');
+    const familyNoteText = document.getElementById('weddingFamilyNoteText');
+    const filmEyebrow = document.getElementById('weddingFilmEyebrow');
+    const filmHeading = document.getElementById('weddingFilmHeading');
+    const filmIntro = document.getElementById('weddingFilmIntro');
+    const filmLabel = document.getElementById('weddingFilmLabel');
+    const filmTitle = document.getElementById('weddingFilmTitle');
+    const filmText = document.getElementById('weddingFilmText');
+    const inviteVideo = document.getElementById('weddingInviteVideo');
+    const inviteVideoSource = document.getElementById('weddingInviteVideoSource');
+    const rsvpText = document.getElementById('weddingRsvpText');
+    const formNote = document.getElementById('weddingFormNote');
+    const rsvpSubject = document.getElementById('weddingRsvpSubject');
+    const rsvpFromName = document.getElementById('weddingRsvpFromName');
+    const invitationSide = document.getElementById('weddingInvitationSide');
+    const guestSideField = document.getElementById('guestSideField');
+    const sideSwitch = document.getElementById('weddingSideSwitch');
+    const pageTitle = document.querySelector('title');
+    const pageMetaTitle = document.querySelector('meta[name="title"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    const sideButtons = sidePicker.querySelectorAll('[data-side-choice]');
+
+    const sideContent = {
+        bride: {
+            primaryName: 'Ishita Arora',
+            secondaryLine: '& Aayush Ahuja',
+            heroIntro: "Together with their families, Ishita Arora and Aayush Ahuja invite you to join them in celebrating their wedding at Rajvi Palace, Hanumangarh, Rajasthan. We would be honoured to have you with us on this special day.",
+            sideStatus: "Viewing the bride's invitation",
+            detailsEyebrow: "Bride's Invitation",
+            detailsHeading: "A note from Ishita's side.",
+            detailsIntro: 'Please join us as family and friends gather together to celebrate love, blessings, and a beautiful new beginning.',
+            familyNoteLabel: 'From Her Side',
+            familyNoteTitle: "With love from Ishita's family",
+            familyNoteText: 'Please let us know whether you plan to arrive by 24th morning, 24th evening, or 25th April so we can receive you warmly and prepare for your presence.',
+            filmEyebrow: "Bride Side E-Invite",
+            filmHeading: "A little glimpse from Ishita's side.",
+            filmIntro: "Please watch the invitation film from Ishita's family.",
+            filmLabel: 'Bride Side',
+            filmTitle: "Ishita's family invite",
+            filmText: "A warm invitation from Ishita's side of the family.",
+            filmSrc: 'videos/wedding/ishita-side-e-invite.mp4',
+            rsvpText: "Share your name, phone number, and whether you plan to arrive by 24th morning, 24th evening, or 25th April. If you cannot make it, please still let us know from Ishita's side.",
+            formNote: 'We would be so happy to hear from you. Please share your response below.',
+            subject: 'Wedding RSVP | Bride Side | Ishita Arora & Aayush Ahuja',
+            fromName: 'Wedding RSVP | Bride Side',
+            guestSide: 'Bride Side',
+            pageTitle: 'Ishita Arora & Aayush Ahuja Wedding | 25 April 2026 | Rajvi Palace'
+        },
+        groom: {
+            primaryName: 'Aayush Ahuja',
+            secondaryLine: '& Ishita Arora',
+            heroIntro: 'Together with their families, Aayush Ahuja and Ishita Arora invite you to join them in celebrating their wedding at Rajvi Palace, Hanumangarh, Rajasthan. We would be honoured to have you with us on this special day.',
+            sideStatus: "Viewing the groom's invitation",
+            detailsEyebrow: "Groom's Invitation",
+            detailsHeading: "A note from Aayush's side.",
+            detailsIntro: 'Please join us as family and friends gather together to celebrate love, blessings, and a beautiful new beginning.',
+            familyNoteLabel: 'From His Side',
+            familyNoteTitle: "With love from Aayush's family",
+            familyNoteText: 'Please let us know whether you plan to arrive by 24th morning, 24th evening, or 25th April so we can receive you warmly and prepare for your presence.',
+            filmEyebrow: "Groom Side E-Invite",
+            filmHeading: "A little glimpse from Aayush's side.",
+            filmIntro: "Please watch the invitation film from Aayush's family.",
+            filmLabel: 'Groom Side',
+            filmTitle: "Aayush's family invite",
+            filmText: "A warm invitation from Aayush's side of the family.",
+            filmSrc: 'videos/wedding/aayush-side-e-invite.mp4',
+            rsvpText: "Share your name, phone number, and whether you plan to arrive by 24th morning, 24th evening, or 25th April. If you cannot make it, please still let us know from Aayush's side.",
+            formNote: 'We would be so happy to hear from you. Please share your response below.',
+            subject: 'Wedding RSVP | Groom Side | Aayush Ahuja & Ishita Arora',
+            fromName: 'Wedding RSVP | Groom Side',
+            guestSide: 'Groom Side',
+            pageTitle: 'Aayush Ahuja & Ishita Arora Wedding | 25 April 2026 | Rajvi Palace'
+        }
+    };
+
+    function openSidePicker() {
+        sidePicker.hidden = false;
+        document.body.classList.add('wedding-side-picker-open');
+    }
+
+    function closeSidePicker() {
+        sidePicker.hidden = true;
+        document.body.classList.remove('wedding-side-picker-open');
+    }
+
+    function syncRsvpSideMetadata(selectedSide) {
+        const normalizedSide = selectedSide === sideContent.bride.guestSide
+            ? sideContent.bride
+            : sideContent.groom;
+
+        if (rsvpSubject) rsvpSubject.value = normalizedSide.subject;
+        if (rsvpFromName) rsvpFromName.value = normalizedSide.fromName;
+        if (guestSideField) guestSideField.value = normalizedSide.guestSide;
+    }
+
+    function applyWeddingSide(side) {
+        const content = sideContent[side];
+        if (!content) return;
+
+        primaryName.textContent = content.primaryName;
+        secondaryLine.textContent = content.secondaryLine;
+        heroIntro.textContent = content.heroIntro;
+        sideStatus.textContent = content.sideStatus;
+        detailsEyebrow.textContent = content.detailsEyebrow;
+        detailsHeading.textContent = content.detailsHeading;
+        detailsIntro.textContent = content.detailsIntro;
+        familyNoteLabel.textContent = content.familyNoteLabel;
+        familyNoteTitle.textContent = content.familyNoteTitle;
+        familyNoteText.textContent = content.familyNoteText;
+        filmEyebrow.textContent = content.filmEyebrow;
+        filmHeading.textContent = content.filmHeading;
+        filmIntro.textContent = content.filmIntro;
+        filmLabel.textContent = content.filmLabel;
+        filmTitle.textContent = content.filmTitle;
+        filmText.textContent = content.filmText;
+        rsvpText.textContent = content.rsvpText;
+        formNote.textContent = content.formNote;
+        if (invitationSide) invitationSide.value = content.guestSide;
+        syncRsvpSideMetadata(content.guestSide);
+
+        if (pageTitle) pageTitle.textContent = content.pageTitle;
+        if (pageMetaTitle) pageMetaTitle.setAttribute('content', content.pageTitle);
+        if (ogTitle) ogTitle.setAttribute('content', content.pageTitle);
+        if (twitterTitle) twitterTitle.setAttribute('content', content.pageTitle);
+
+        if (inviteVideo && inviteVideoSource) {
+            inviteVideo.pause();
+            if (inviteVideoSource.getAttribute('src') !== content.filmSrc) {
+                inviteVideoSource.setAttribute('src', content.filmSrc);
+                inviteVideo.load();
+            }
+        }
+
+        document.body.dataset.weddingInviteSide = side;
+        closeSidePicker();
+    }
+
+    sideButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            applyWeddingSide(this.dataset.sideChoice);
+        });
+    });
+
+    if (sideSwitch) {
+        sideSwitch.addEventListener('click', openSidePicker);
+    }
+
+    if (guestSideField) {
+        guestSideField.addEventListener('change', function() {
+            syncRsvpSideMetadata(this.value);
+        });
+    }
+
+    openSidePicker();
 }
 
 // ================================================================
