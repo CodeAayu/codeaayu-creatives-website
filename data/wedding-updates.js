@@ -1,11 +1,11 @@
 window.WEDDING_UPDATES = {
     lastUpdated: '4 April 2026',
     important: {
-        tag: 'Important Update',
+        tag: 'Travel Guide',
         date: '4 April 2026',
         tone: 'travel',
-        title: 'Travel Note',
-        message: 'The closest railway station is Pilibanga itself. For guests travelling by air, the nearest airports are Jaipur and Delhi, both around 350 to 400 km away by road, and the preferred onward option from both cities is a nightly AC sleeper bus service.',
+        title: 'Reaching Pilibanga',
+        message: 'The nearest railway station is Pilibanga. If you are flying in, Jaipur and Delhi are the closest airports, each around 350 to 400 km away by road. From either city, a nightly AC sleeper bus is the easiest onward option.',
         highlights: [
             'Pilibanga Station',
             'Jaipur Airport',
@@ -32,7 +32,7 @@ window.WEDDING_UPDATES = {
             date: '24-25 April 2026',
             title: 'Logistics Help',
             label: 'Guest Support',
-            message: 'For logistics or stay-related help in Pilibanga, guests can reach out to Mr. Ram Ahuja (Groom\'s father) or Mr. Aayush Ahuja (Groom).',
+            message: 'If you need help with travel, stay, or arrival coordination in Pilibanga, please reach out to Mr. Ram Ahuja (Groom\'s father) or Aayush.',
             actions: [
                 {
                     label: 'Message Ram Uncle',
@@ -48,7 +48,7 @@ window.WEDDING_UPDATES = {
             date: '24-25 April 2026',
             title: 'Travel Note',
             label: 'Guest Travel',
-            message: 'Guests travelling by train can plan for Pilibanga, which is the closest railway station. Guests travelling by air can plan via Jaipur or Delhi and continue onward by nightly AC sleeper bus service.',
+            message: 'Guests travelling by train can plan for Pilibanga, the nearest railway station. Guests travelling by air can come via Jaipur or Delhi and continue onward by nightly AC sleeper bus service.',
             locations: [
                 {
                     label: 'Pilibanga Station',
@@ -68,7 +68,7 @@ window.WEDDING_UPDATES = {
             date: '24-25 April 2026',
             title: 'Accommodation Note',
             label: 'Guest Stay',
-            message: 'Stay has been arranged for guests at Maheshwari Bhawan, Crest Hotel, and Kandhari Hotel. Room allocation and arrival coordination can be managed accordingly once your RSVP is shared.',
+            message: 'Guest stay has been arranged at Maheshwari Bhawan, Crest Hotel, and Kandhari Hotel. Once you share your RSVP, room allocation and arrival coordination can be planned smoothly.',
             locations: [
                 {
                     label: 'Maheshwari Bhawan',
@@ -88,7 +88,7 @@ window.WEDDING_UPDATES = {
             date: '4 April 2026',
             title: 'Dress Code Note',
             label: 'Guest Attire',
-            message: 'The 24 April evening functions are best suited to western formals, Haldi is best in yellowish shades, and the wedding ceremony at Swarn Mahal, Rajvi Palace is best in festive Indian occasion wear.'
+            message: 'The 24 April evening functions are best in western formals, Haldi is best in yellowish shades, and the wedding evening is best in festive Indian occasion wear.'
         },
         {
             date: '24 April 2026',

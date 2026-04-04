@@ -6073,6 +6073,11 @@ h6 {
     line-height: 1.02;
   }
 
+  .wedding-section-text,
+  .wedding-attire-guide-summary {
+    max-width: none;
+  }
+
   .wedding-hero {
     padding-top: calc(var(--header-height) + var(--space-10));
     padding-bottom: var(--space-14);
@@ -6114,6 +6119,11 @@ h6 {
   .wedding-attire-card-top {
     grid-template-columns: 1fr;
     padding-inline: 0;
+  }
+
+  .wedding-guide-card-date,
+  .wedding-attire-card-cue {
+    justify-self: start;
   }
 
   .wedding-events-overview {
@@ -6187,10 +6197,32 @@ h6 {
     padding: var(--space-5);
   }
 
+  .wedding-attire-guide-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .wedding-attire-guide-title {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+    line-height: 1.04;
+  }
+
   .wedding-attire-card-body {
     margin: 0 var(--space-3) var(--space-3);
     padding: var(--space-4);
     border-radius: 18px;
+  }
+
+  .wedding-attire-card-title {
+    font-size: clamp(1.55rem, 6vw, 1.9rem);
+  }
+
+  .wedding-attire-points {
+    gap: 0.8rem;
+  }
+
+  .wedding-attire-point {
+    gap: 0.7rem;
+    line-height: 1.6;
   }
 
   .wedding-update-note {
@@ -6204,6 +6236,11 @@ h6 {
   .wedding-film-media,
   .wedding-film-copy {
     padding: 0;
+  }
+
+  .wedding-location-tag,
+  .wedding-update-action {
+    max-width: 100%;
   }
 
   .wedding-film-media {

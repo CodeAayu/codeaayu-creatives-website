@@ -742,8 +742,8 @@ function initWeddingUpdates() {
         const summary = document.createElement('p');
         summary.className = 'body-base wedding-attire-guide-summary';
         summary.textContent = summaryNotice && summaryNotice.message
-            ? 'A quick guide to help guests plan for the 24 April evening functions, the Haldi ceremony, and the wedding celebration.'
-            : 'A quick guide to help guests plan outfits comfortably for each celebration.';
+            ? 'A quick guide to help guests plan what to wear for the 24 April celebrations, the Haldi ceremony, and the wedding evening.'
+            : 'A quick guide to help guests plan what to wear for each celebration.';
 
         header.append(eyebrow, title, summary);
 
@@ -820,13 +820,13 @@ function initWeddingUpdates() {
 
     renderGuideCard(supportGuide, supportNotice, {
         eyebrow: 'Guest Help',
-        title: 'Need help on arrival?',
+        title: 'Help on arrival',
         tone: 'support'
     });
 
     renderGuideCard(stayGuide, stayNotice, {
         eyebrow: 'Stay Arrangements',
-        title: 'Where guests are staying',
+        title: 'Guest stay arrangements',
         tone: 'stay'
     });
 
@@ -957,22 +957,22 @@ function initWeddingExperience() {
             primaryName: 'Ishita Arora',
             secondaryLine: '& Aayush Ahuja',
             heroIntro: "Together with their families, Ishita Arora and Aayush Ahuja invite you to join them in celebrating their wedding at Swarn Mahal, Rajvi Palace, Hanumangarh, Rajasthan. We would be honoured to have you with us on this special day.",
-            sideStatus: "Viewing the bride's invitation",
+            sideStatus: "Viewing the bride's side",
             detailsEyebrow: "Bride's Invitation",
             detailsHeading: "From Ishita's Family",
-            detailsIntro: 'Please join us as family and friends gather together to celebrate love, blessings, and a beautiful new beginning.',
+            detailsIntro: 'Please join us as family and friends come together to celebrate love, blessings, and a beautiful new beginning.',
             familyNoteLabel: 'From Her Side',
             familyNoteTitle: "With love from Ishita's family",
-            familyNoteText: 'Please let us know whether you plan to arrive by 24th morning, 24th evening, or 25th April so we can receive you warmly and prepare for your presence.',
+            familyNoteText: 'Please let us know if you expect to arrive on 24th morning, 24th evening, or 25th April so we can welcome you comfortably and make the arrangements with care.',
             filmEyebrow: "Bride Side E-Invite",
             filmHeading: 'Invitation Film',
-            filmIntro: "Please watch the invitation film from Ishita's family.",
+            filmIntro: "Here is the invitation film from Ishita's family.",
             filmLabel: 'Bride Side',
-            filmTitle: "Ishita's family invite",
+            filmTitle: "Invitation from Ishita's family",
             filmText: "A warm invitation from Ishita's side of the family.",
             filmSrc: 'videos/wedding/ishita-side-e-invite.mp4',
-            rsvpText: "Share your name, phone number, and whether you plan to arrive by 24th morning, 24th evening, or 25th April. If you cannot make it, please still let us know from Ishita's side.",
-            formNote: 'We would be so happy to hear from you. Please share your response below.',
+            rsvpText: 'Please share your name, phone number, and expected arrival time so we can receive you comfortably. If you are unable to join us, please still send your response with love.',
+            formNote: 'We would love to hear from you. Please share your response below.',
             subject: 'Wedding RSVP | Bride Side | Ishita Arora & Aayush Ahuja',
             fromName: 'Wedding RSVP | Bride Side',
             guestSide: 'Bride Side',
@@ -982,22 +982,22 @@ function initWeddingExperience() {
             primaryName: 'Aayush Ahuja',
             secondaryLine: '& Ishita Arora',
             heroIntro: 'Together with their families, Aayush Ahuja and Ishita Arora invite you to join them in celebrating their wedding at Swarn Mahal, Rajvi Palace, Hanumangarh, Rajasthan. We would be honoured to have you with us on this special day.',
-            sideStatus: "Viewing the groom's invitation",
+            sideStatus: "Viewing the groom's side",
             detailsEyebrow: "Groom's Invitation",
             detailsHeading: "From Aayush's Family",
-            detailsIntro: 'Please join us as family and friends gather together to celebrate love, blessings, and a beautiful new beginning.',
+            detailsIntro: 'Please join us as family and friends come together to celebrate love, blessings, and a beautiful new beginning.',
             familyNoteLabel: 'From His Side',
             familyNoteTitle: "With love from Aayush's family",
-            familyNoteText: 'Please let us know whether you plan to arrive by 24th morning, 24th evening, or 25th April so we can receive you warmly and prepare for your presence.',
+            familyNoteText: 'Please let us know if you expect to arrive on 24th morning, 24th evening, or 25th April so we can welcome you comfortably and make the arrangements with care.',
             filmEyebrow: "Groom Side E-Invite",
             filmHeading: 'Invitation Film',
-            filmIntro: "Please watch the invitation film from Aayush's family.",
+            filmIntro: "Here is the invitation film from Aayush's family.",
             filmLabel: 'Groom Side',
-            filmTitle: "Aayush's family invite",
+            filmTitle: "Invitation from Aayush's family",
             filmText: "A warm invitation from Aayush's side of the family.",
             filmSrc: 'videos/wedding/aayush-side-e-invite.mp4',
-            rsvpText: "Share your name, phone number, and whether you plan to arrive by 24th morning, 24th evening, or 25th April. If you cannot make it, please still let us know from Aayush's side.",
-            formNote: 'We would be so happy to hear from you. Please share your response below.',
+            rsvpText: 'Please share your name, phone number, and expected arrival time so we can receive you comfortably. If you are unable to join us, please still send your response with love.',
+            formNote: 'We would love to hear from you. Please share your response below.',
             subject: 'Wedding RSVP | Groom Side | Aayush Ahuja & Ishita Arora',
             fromName: 'Wedding RSVP | Groom Side',
             guestSide: 'Groom Side',
