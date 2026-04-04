@@ -4956,16 +4956,6 @@ h6 {
   background: linear-gradient(90deg, rgba(238, 189, 176, 0.92), rgba(244, 214, 164, 0.14));
 }
 
-.wedding-guide-card[data-guide-tone="weather"] {
-  background:
-    radial-gradient(circle at top right, rgba(146, 183, 239, 0.16), transparent 34%),
-    linear-gradient(180deg, rgba(20, 32, 52, 0.96), rgba(9, 16, 28, 0.99));
-}
-
-.wedding-guide-card[data-guide-tone="weather"]::before {
-  background: linear-gradient(90deg, rgba(146, 183, 239, 0.92), rgba(244, 214, 164, 0.18));
-}
-
 .wedding-guide-card > * {
   position: relative;
   z-index: 1;
@@ -5039,82 +5029,199 @@ h6 {
   color: rgba(255, 248, 235, 0.98);
 }
 
-.wedding-weather-loading,
-.wedding-weather-fallback {
-  padding: 1rem 1.1rem;
-  border-radius: 18px;
-  border: 1px solid rgba(244, 246, 251, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(245, 240, 232, 0.74);
+.wedding-weather-section {
+  position: relative;
 }
 
-.wedding-weather-summary {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-4);
-  align-items: center;
-  padding: 1rem 1.1rem;
-  border-radius: 22px;
-  border: 1px solid rgba(152, 187, 239, 0.16);
+.wedding-weather-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(circle at top right, rgba(146, 183, 239, 0.14), transparent 40%),
-    rgba(255, 255, 255, 0.04);
+    radial-gradient(circle at top right, rgba(124, 167, 236, 0.1), transparent 28%),
+    linear-gradient(180deg, rgba(17, 24, 38, 0.28), transparent 36%);
+  pointer-events: none;
 }
 
-.wedding-weather-temperature {
-  font-family: var(--font-display);
-  font-size: clamp(2.1rem, 4vw, 3rem);
-  line-height: 0.95;
-  color: rgba(245, 240, 232, 0.96);
+.wedding-weather-panel {
+  position: relative;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-radius: 34px;
+  border: 1px solid rgba(160, 190, 236, 0.16);
+  background:
+    radial-gradient(circle at top right, rgba(144, 185, 245, 0.18), transparent 30%),
+    linear-gradient(135deg, rgba(20, 31, 50, 0.98), rgba(12, 20, 34, 0.99) 58%, rgba(8, 15, 27, 1));
+  box-shadow: 0 28px 60px rgba(7, 10, 16, 0.24);
+  overflow: hidden;
 }
 
-.wedding-weather-condition {
-  display: grid;
-  gap: 0.2rem;
+.wedding-weather-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(147, 183, 240, 0.94), rgba(212, 185, 120, 0.28), rgba(212, 185, 120, 0.06));
 }
 
-.wedding-weather-condition-title {
+.wedding-weather-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-weather-panel-loading,
+.wedding-weather-panel-error {
+  padding: clamp(1.4rem, 2vw, 1.8rem);
+  border-radius: 24px;
+  border: 1px solid rgba(244, 246, 251, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(245, 240, 232, 0.76);
+}
+
+.wedding-weather-panel-error-title {
+  display: block;
+  margin-bottom: 0.45rem;
   font-size: 1rem;
-  font-weight: 600;
   color: rgba(245, 240, 232, 0.9);
 }
 
-.wedding-weather-condition-text {
-  font-size: 0.84rem;
-  color: rgba(245, 240, 232, 0.62);
-}
-
-.wedding-weather-stats {
-  display: grid;
-  gap: 0.8rem;
+.wedding-weather-panel-error-text {
   margin: 0;
 }
 
-.wedding-weather-stat {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--space-3);
+.wedding-weather-panel-topline {
+  display: flex;
   align-items: center;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(244, 246, 251, 0.08);
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
-.wedding-weather-stat-label,
-.wedding-weather-stat-value {
+.wedding-weather-panel-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(159, 194, 243, 0.18);
+  background: rgba(159, 194, 243, 0.08);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(225, 237, 255, 0.92);
+}
+
+.wedding-weather-panel-time {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: rgba(225, 232, 244, 0.66);
+}
+
+.wedding-weather-panel-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+.wedding-weather-current,
+.wedding-weather-forecast {
+  padding: clamp(1.3rem, 2vw, 1.6rem);
+  border-radius: 28px;
+  border: 1px solid rgba(244, 246, 251, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+.wedding-weather-current {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+}
+
+.wedding-weather-current-kicker {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(212, 185, 120, 0.92);
+}
+
+.wedding-weather-current-temperature {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  line-height: 0.9;
+  color: rgba(245, 240, 232, 0.98);
+}
+
+.wedding-weather-current-condition {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: rgba(231, 239, 251, 0.92);
+}
+
+.wedding-weather-current-text {
+  margin: 0;
+  max-width: 28ch;
+  color: rgba(245, 240, 232, 0.72);
+}
+
+.wedding-weather-forecast {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.wedding-weather-forecast-header {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.wedding-weather-forecast-title {
   margin: 0;
 }
 
-.wedding-weather-stat-label {
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(245, 240, 232, 0.52);
+.wedding-weather-forecast-text {
+  margin: 0;
+  color: rgba(245, 240, 232, 0.64);
 }
 
-.wedding-weather-stat-value {
+.wedding-weather-forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.wedding-weather-forecast-card {
+  display: grid;
+  gap: var(--space-3);
+  padding: 1.1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(244, 246, 251, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(146, 183, 239, 0.08), transparent 42%),
+    rgba(8, 14, 24, 0.28);
+}
+
+.wedding-weather-forecast-day {
   font-family: var(--font-mono);
-  font-size: 0.84rem;
-  color: rgba(245, 240, 232, 0.82);
+  font-size: 0.78rem;
+  color: rgba(225, 232, 244, 0.62);
+}
+
+.wedding-weather-forecast-condition {
+  font-size: 1rem;
+  line-height: 1.35;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.wedding-weather-forecast-range {
+  display: grid;
+  gap: 0.35rem;
+  color: rgba(245, 240, 232, 0.76);
+}
+
+.wedding-weather-forecast-rain {
+  font-size: 0.82rem;
+  color: rgba(195, 216, 247, 0.8);
 }
 
 .wedding-attire-guide {
@@ -6138,6 +6245,10 @@ h6 {
     grid-template-columns: 1fr;
   }
 
+  .wedding-weather-panel-grid {
+    grid-template-columns: 1fr;
+  }
+
   .wedding-events-overview {
     margin-top: calc(var(--space-8) * -1 + var(--space-2));
   }
@@ -6266,6 +6377,7 @@ h6 {
 
   .wedding-countdown-panel,
   .wedding-detail-card,
+  .wedding-weather-panel,
   .wedding-update-feature,
   .wedding-guide-card,
   .wedding-attire-guide,
@@ -6331,13 +6443,17 @@ h6 {
     max-width: 100%;
   }
 
-  .wedding-weather-summary {
+  .wedding-weather-panel-topline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wedding-weather-forecast-grid {
     grid-template-columns: 1fr;
   }
 
-  .wedding-weather-stat {
-    grid-template-columns: 1fr;
-    gap: 0.35rem;
+  .wedding-weather-current-temperature {
+    font-size: clamp(3rem, 18vw, 4.4rem);
   }
 
   .wedding-film-media {

@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260404-2">
+    <link rel="stylesheet" href="styles.css?v=20260404-3">
     <link rel="icon" type="image/png" href="images/logos/logo-black.png">
 </head>
 <body class="wedding-page">
@@ -256,6 +256,22 @@
         </div>
     </section>
 
+    <section class="wedding-section wedding-weather-section" id="weather">
+        <div class="container">
+            <div class="wedding-section-header reveal">
+                <span class="label text-gold">Pilibanga Weather</span>
+                <h2 class="heading-large wedding-section-title">Current Conditions &amp; Next 3 Days</h2>
+                <p class="body-base wedding-section-text">
+                    A quick live look at the weather in Pilibanga so guests can plan travel, packing, and arrival a little better.
+                </p>
+            </div>
+
+            <article class="wedding-weather-panel reveal reveal-delay-1" id="weddingWeatherPanel">
+                <div class="wedding-weather-panel-loading">Loading live weather for Pilibanga...</div>
+            </article>
+        </div>
+    </section>
+
     <section class="wedding-section wedding-updates-section" id="updates">
         <div class="container">
             <div class="wedding-section-header reveal">
@@ -284,7 +300,6 @@
 
                 <div class="wedding-guide-grid">
                     <article class="wedding-guide-card wedding-guide-card-support reveal reveal-delay-2" id="weddingSupportGuide"></article>
-                    <article class="wedding-guide-card wedding-guide-card-weather reveal reveal-delay-3" id="weddingWeatherGuide"></article>
                     <article class="wedding-guide-card wedding-guide-card-stay reveal reveal-delay-3" id="weddingStayGuide"></article>
                 </div>
 
@@ -596,7 +611,7 @@
         </svg>
     </button>
 
-    <script src="data/wedding-updates.js?v=20260404-2"></script>
-    <script src="script.js?v=20260404-2"></script>
+    <script src="data/wedding-updates.js?v=20260404-3"></script>
+    <script src="script.js?v=20260404-3"></script>
 </body>
 </html>
