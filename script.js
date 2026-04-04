@@ -132,7 +132,8 @@ async function initWeddingWeather() {
     renderWeddingWeatherPanel({ status: 'loading' });
 
     try {
-        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=29.44964&longitude=74.10093&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FKolkata&forecast_days=4');
+        // Pilibanga coordinates from 29°29'24.4"N 74°04'42.5"E
+        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=29.490111&longitude=74.078472&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FKolkata&forecast_days=4');
         if (!response.ok) throw new Error(`Weather request failed: ${response.status}`);
 
         const payload = await response.json();
