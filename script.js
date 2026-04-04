@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initWeddingCountdown();
     initWeddingSlideshow();
+    initWeddingUpdates();
     initWeddingFilmFullscreen();
     initWeddingExperience();
     initSmoothScroll();
@@ -495,6 +496,344 @@ function initWeddingSlideshow() {
 }
 
 // ================================================================
+// WEDDING UPDATES
+// ================================================================
+function initWeddingUpdates() {
+    const section = document.getElementById('updates');
+    const importantUpdate = document.getElementById('weddingImportantUpdate');
+    const supportGuide = document.getElementById('weddingSupportGuide');
+    const stayGuide = document.getElementById('weddingStayGuide');
+    const attireGuide = document.getElementById('weddingAttireGuide');
+    const lastUpdated = document.getElementById('weddingUpdatesLastUpdated');
+    const updatesData = window.WEDDING_UPDATES;
+
+    if (!section || !importantUpdate || !supportGuide || !stayGuide || !attireGuide || !lastUpdated) return;
+
+    if (!updatesData || (!updatesData.important && !Array.isArray(updatesData.notices))) {
+        section.hidden = true;
+        return;
+    }
+
+    if (updatesData.lastUpdated) {
+        lastUpdated.textContent = `Last updated: ${updatesData.lastUpdated}`;
+    }
+
+    if (updatesData.important) {
+        importantUpdate.innerHTML = '';
+        importantUpdate.dataset.importantTone = updatesData.important.tone || 'default';
+
+        const featureMeta = document.createElement('div');
+        featureMeta.className = 'wedding-update-feature-meta';
+
+        const featureTag = document.createElement('span');
+        featureTag.className = 'wedding-update-feature-tag';
+        featureTag.textContent = updatesData.important.tag || 'Important Update';
+
+        const featureDate = document.createElement('span');
+        featureDate.className = 'wedding-update-feature-date';
+        featureDate.textContent = updatesData.important.date || '';
+
+        featureMeta.append(featureTag, featureDate);
+
+        const featureCopy = document.createElement('div');
+        featureCopy.className = 'wedding-update-feature-copy';
+
+        const featureTitle = document.createElement('h3');
+        featureTitle.className = 'heading-medium wedding-update-feature-title';
+        featureTitle.textContent = updatesData.important.title || '';
+
+        const featureText = document.createElement('p');
+        featureText.className = 'body-base wedding-update-feature-text';
+        featureText.textContent = updatesData.important.message || '';
+
+        featureCopy.append(featureTitle, featureText);
+
+        const hasImportantLocations = Array.isArray(updatesData.important.locations)
+            && updatesData.important.locations.length > 0;
+
+        if (!hasImportantLocations && Array.isArray(updatesData.important.highlights) && updatesData.important.highlights.length > 0) {
+            const featureHighlights = document.createElement('div');
+            featureHighlights.className = 'wedding-update-feature-highlights';
+
+            updatesData.important.highlights.forEach(highlight => {
+                if (!highlight) return;
+
+                const pill = document.createElement('span');
+                pill.className = 'wedding-update-feature-highlight';
+                pill.textContent = highlight;
+                featureHighlights.appendChild(pill);
+            });
+
+            if (featureHighlights.childElementCount > 0) {
+                featureCopy.appendChild(featureHighlights);
+            }
+        }
+
+        if (hasImportantLocations) {
+            const featureLocations = createWeddingMapTags(updatesData.important.locations, 'wedding-update-feature-locations');
+
+            if (featureLocations) {
+                featureCopy.appendChild(featureLocations);
+            }
+        }
+
+        importantUpdate.append(featureMeta, featureCopy);
+    }
+
+    const notices = Array.isArray(updatesData.notices) ? updatesData.notices.slice() : [];
+
+    if (notices.length === 0) return;
+
+    function createWeddingMapTags(locations, className = 'wedding-update-note-locations') {
+        if (!Array.isArray(locations) || locations.length === 0) return null;
+
+        const container = document.createElement('div');
+        container.className = className;
+
+        locations.forEach(location => {
+            if (!location || !location.url || !location.label) return;
+
+            const link = document.createElement('a');
+            link.className = 'wedding-location-tag';
+            link.href = location.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = location.label;
+
+            container.appendChild(link);
+        });
+
+        return container.childElementCount > 0 ? container : null;
+    }
+
+    function createWeddingActions(actions, className = 'wedding-guide-actions') {
+        if (!Array.isArray(actions) || actions.length === 0) return null;
+
+        const container = document.createElement('div');
+        container.className = className;
+
+        actions.forEach(action => {
+            if (!action || !action.url || !action.label) return;
+
+            const link = document.createElement('a');
+            link.className = 'wedding-update-action';
+            link.href = action.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = action.label;
+
+            container.appendChild(link);
+        });
+
+        return container.childElementCount > 0 ? container : null;
+    }
+
+    function matchesNotice(notice, patterns) {
+        const content = `${notice.title || ''} ${notice.label || ''}`.toLowerCase();
+        return patterns.some(pattern => content.includes(pattern));
+    }
+
+    function renderGuideCard(root, notice, options) {
+        if (!root || !notice) {
+            if (root) root.hidden = true;
+            return;
+        }
+
+        root.hidden = false;
+        root.innerHTML = '';
+        root.dataset.guideTone = options.tone || 'default';
+
+        const header = document.createElement('div');
+        header.className = 'wedding-guide-card-header';
+
+        const headerCopy = document.createElement('div');
+        headerCopy.className = 'wedding-guide-card-header-copy';
+
+        const eyebrow = document.createElement('span');
+        eyebrow.className = 'wedding-guide-card-eyebrow';
+        eyebrow.textContent = options.eyebrow || notice.label || 'Guest Guide';
+
+        const title = document.createElement('h3');
+        title.className = 'heading-medium wedding-guide-card-title';
+        title.textContent = options.title || notice.title || '';
+
+        headerCopy.append(eyebrow, title);
+
+        const date = document.createElement('span');
+        date.className = 'wedding-guide-card-date';
+        date.textContent = notice.date || '';
+
+        header.append(headerCopy, date);
+
+        const text = document.createElement('p');
+        text.className = 'body-base wedding-guide-card-text';
+        text.textContent = notice.message || '';
+
+        root.append(header, text);
+
+        const actions = createWeddingActions(notice.actions);
+        if (actions) root.appendChild(actions);
+
+        const locations = createWeddingMapTags(notice.locations, 'wedding-guide-card-locations');
+        if (locations) root.appendChild(locations);
+    }
+
+    function getAttireGuideMeta(notice) {
+        const title = (notice.title || '').toLowerCase();
+
+        if (title.includes('haldi')) {
+            return {
+                tone: 'haldi',
+                moment: '25 April Morning',
+                cue: 'Yellowish Shades',
+                points: [
+                    'Yellowish shades are preferred.',
+                    'Choose light festive outfits that feel easy for a morning function.',
+                    'The function will be in an air-conditioned indoor hall.'
+                ]
+            };
+        }
+
+        if (title.includes('wedding')) {
+            return {
+                tone: 'wedding',
+                moment: '25 April Evening',
+                cue: 'Festive Indian',
+                points: [
+                    'Gents can plan for indo-western attire.',
+                    'Ladies can plan for lehengas or sarees.',
+                    'The celebration is in a garden setting, so comfortable footwear will help.'
+                ]
+            };
+        }
+
+        return {
+            tone: 'evening',
+            moment: '24 April Evening',
+            cue: 'Western Formals',
+            points: [
+                'Girls will mostly be in gowns or dresses.',
+                'Boys can plan for three-piece suits or western formals.',
+                'The function will be in an air-conditioned indoor hall.'
+            ]
+        };
+    }
+
+    function renderAttireGuide(root, summaryNotice, attireNotices) {
+        if (!root || attireNotices.length === 0) {
+            if (root) root.hidden = true;
+            return;
+        }
+
+        root.hidden = false;
+        root.innerHTML = '';
+
+        const header = document.createElement('div');
+        header.className = 'wedding-attire-guide-header';
+
+        const eyebrow = document.createElement('span');
+        eyebrow.className = 'wedding-attire-guide-eyebrow';
+        eyebrow.textContent = 'Dress Code Guide';
+
+        const title = document.createElement('h3');
+        title.className = 'heading-large wedding-attire-guide-title';
+        title.textContent = 'What to Wear for Each Celebration';
+
+        const summary = document.createElement('p');
+        summary.className = 'body-base wedding-attire-guide-summary';
+        summary.textContent = summaryNotice && summaryNotice.message
+            ? 'A quick guide to help guests plan for the 24 April evening functions, the Haldi ceremony, and the wedding celebration.'
+            : 'A quick guide to help guests plan outfits comfortably for each celebration.';
+
+        header.append(eyebrow, title, summary);
+
+        const grid = document.createElement('div');
+        grid.className = 'wedding-attire-grid';
+
+        attireNotices.forEach(notice => {
+            const attireMeta = getAttireGuideMeta(notice);
+            const card = document.createElement('article');
+            card.className = 'wedding-attire-card';
+            card.dataset.attireTone = attireMeta.tone;
+
+            const headerBlock = document.createElement('div');
+            headerBlock.className = 'wedding-attire-card-header';
+
+            const top = document.createElement('div');
+            top.className = 'wedding-attire-card-top';
+
+            const moment = document.createElement('span');
+            moment.className = 'wedding-attire-card-moment';
+            moment.textContent = attireMeta.moment;
+
+            const cue = document.createElement('span');
+            cue.className = 'wedding-attire-card-cue';
+            cue.textContent = attireMeta.cue;
+
+            top.append(moment, cue);
+
+            const attireTitle = document.createElement('h4');
+            attireTitle.className = 'heading-small wedding-attire-card-title';
+            attireTitle.textContent = notice.title || '';
+
+            headerBlock.append(top, attireTitle);
+            card.appendChild(headerBlock);
+
+            const bodyBlock = document.createElement('div');
+            bodyBlock.className = 'wedding-attire-card-body';
+
+            if (Array.isArray(attireMeta.points) && attireMeta.points.length > 0) {
+                const attireList = document.createElement('ul');
+                attireList.className = 'wedding-attire-points';
+
+                attireMeta.points.forEach(point => {
+                    if (!point) return;
+
+                    const item = document.createElement('li');
+                    item.className = 'wedding-attire-point';
+                    item.textContent = point;
+                    attireList.appendChild(item);
+                });
+
+                bodyBlock.appendChild(attireList);
+            } else {
+                const attireText = document.createElement('p');
+                attireText.className = 'body-small wedding-attire-card-text';
+                attireText.textContent = notice.message || '';
+                bodyBlock.appendChild(attireText);
+            }
+
+            card.appendChild(bodyBlock);
+            grid.appendChild(card);
+        });
+
+        root.append(header, grid);
+    }
+
+    const supportNotice = notices.find(notice => matchesNotice(notice, ['support', 'logistics']));
+    const stayNotice = notices.find(notice => matchesNotice(notice, ['stay', 'accommodation']));
+    const dressSummary = notices.find(notice => matchesNotice(notice, ['dress', 'attire']));
+    const attireNoticeOrder = ['Ring Ceremony & Sangeet', 'Haldi Ceremony', 'Wedding Ceremony'];
+    const attireNotices = attireNoticeOrder
+        .map(title => notices.find(notice => notice.title === title))
+        .filter(Boolean);
+
+    renderGuideCard(supportGuide, supportNotice, {
+        eyebrow: 'Guest Help',
+        title: 'Need help on arrival?',
+        tone: 'support'
+    });
+
+    renderGuideCard(stayGuide, stayNotice, {
+        eyebrow: 'Stay Arrangements',
+        title: 'Where guests are staying',
+        tone: 'stay'
+    });
+
+    renderAttireGuide(attireGuide, dressSummary, attireNotices);
+}
+
+// ================================================================
 // WEDDING FILM FULLSCREEN
 // ================================================================
 function initWeddingFilmFullscreen() {
@@ -617,16 +956,16 @@ function initWeddingExperience() {
         bride: {
             primaryName: 'Ishita Arora',
             secondaryLine: '& Aayush Ahuja',
-            heroIntro: "Together with their families, Ishita Arora and Aayush Ahuja invite you to join them in celebrating their wedding at Rajvi Palace, Hanumangarh, Rajasthan. We would be honoured to have you with us on this special day.",
+            heroIntro: "Together with their families, Ishita Arora and Aayush Ahuja invite you to join them in celebrating their wedding at Swarn Mahal, Rajvi Palace, Hanumangarh, Rajasthan. We would be honoured to have you with us on this special day.",
             sideStatus: "Viewing the bride's invitation",
             detailsEyebrow: "Bride's Invitation",
-            detailsHeading: "A note from Ishita's side.",
+            detailsHeading: "From Ishita's Family",
             detailsIntro: 'Please join us as family and friends gather together to celebrate love, blessings, and a beautiful new beginning.',
             familyNoteLabel: 'From Her Side',
             familyNoteTitle: "With love from Ishita's family",
             familyNoteText: 'Please let us know whether you plan to arrive by 24th morning, 24th evening, or 25th April so we can receive you warmly and prepare for your presence.',
             filmEyebrow: "Bride Side E-Invite",
-            filmHeading: "A little glimpse from Ishita's side.",
+            filmHeading: 'Invitation Film',
             filmIntro: "Please watch the invitation film from Ishita's family.",
             filmLabel: 'Bride Side',
             filmTitle: "Ishita's family invite",
@@ -637,21 +976,21 @@ function initWeddingExperience() {
             subject: 'Wedding RSVP | Bride Side | Ishita Arora & Aayush Ahuja',
             fromName: 'Wedding RSVP | Bride Side',
             guestSide: 'Bride Side',
-            pageTitle: 'Ishita Arora & Aayush Ahuja Wedding | 25 April 2026 | Rajvi Palace'
+            pageTitle: 'Ishita Arora & Aayush Ahuja Wedding | 25 April 2026 | Swarn Mahal, Rajvi Palace'
         },
         groom: {
             primaryName: 'Aayush Ahuja',
             secondaryLine: '& Ishita Arora',
-            heroIntro: 'Together with their families, Aayush Ahuja and Ishita Arora invite you to join them in celebrating their wedding at Rajvi Palace, Hanumangarh, Rajasthan. We would be honoured to have you with us on this special day.',
+            heroIntro: 'Together with their families, Aayush Ahuja and Ishita Arora invite you to join them in celebrating their wedding at Swarn Mahal, Rajvi Palace, Hanumangarh, Rajasthan. We would be honoured to have you with us on this special day.',
             sideStatus: "Viewing the groom's invitation",
             detailsEyebrow: "Groom's Invitation",
-            detailsHeading: "A note from Aayush's side.",
+            detailsHeading: "From Aayush's Family",
             detailsIntro: 'Please join us as family and friends gather together to celebrate love, blessings, and a beautiful new beginning.',
             familyNoteLabel: 'From His Side',
             familyNoteTitle: "With love from Aayush's family",
             familyNoteText: 'Please let us know whether you plan to arrive by 24th morning, 24th evening, or 25th April so we can receive you warmly and prepare for your presence.',
             filmEyebrow: "Groom Side E-Invite",
-            filmHeading: "A little glimpse from Aayush's side.",
+            filmHeading: 'Invitation Film',
             filmIntro: "Please watch the invitation film from Aayush's family.",
             filmLabel: 'Groom Side',
             filmTitle: "Aayush's family invite",
@@ -662,7 +1001,7 @@ function initWeddingExperience() {
             subject: 'Wedding RSVP | Groom Side | Aayush Ahuja & Ishita Arora',
             fromName: 'Wedding RSVP | Groom Side',
             guestSide: 'Groom Side',
-            pageTitle: 'Aayush Ahuja & Ishita Arora Wedding | 25 April 2026 | Rajvi Palace'
+            pageTitle: 'Aayush Ahuja & Ishita Arora Wedding | 25 April 2026 | Swarn Mahal, Rajvi Palace'
         }
     };
 
