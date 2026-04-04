@@ -502,6 +502,7 @@ function initWeddingUpdates() {
     const section = document.getElementById('updates');
     const importantUpdate = document.getElementById('weddingImportantUpdate');
     const supportGuide = document.getElementById('weddingSupportGuide');
+    const weatherGuide = document.getElementById('weddingWeatherGuide');
     const stayGuide = document.getElementById('weddingStayGuide');
     const attireGuide = document.getElementById('weddingAttireGuide');
     const lastUpdated = document.getElementById('weddingUpdatesLastUpdated');
@@ -678,6 +679,167 @@ function initWeddingUpdates() {
         if (locations) root.appendChild(locations);
     }
 
+    function describeWeatherCode(code, isDay) {
+        const normalizedCode = Number(code);
+
+        if (normalizedCode === 0) return isDay ? 'Clear sky' : 'Clear night';
+        if ([1, 2, 3].includes(normalizedCode)) return 'Partly cloudy';
+        if ([45, 48].includes(normalizedCode)) return 'Foggy';
+        if ([51, 53, 55, 56, 57].includes(normalizedCode)) return 'Drizzle';
+        if ([61, 63, 65, 66, 67, 80, 81, 82].includes(normalizedCode)) return 'Rain';
+        if ([71, 73, 75, 77, 85, 86].includes(normalizedCode)) return 'Snow';
+        if ([95, 96, 99].includes(normalizedCode)) return 'Thunderstorm';
+        return 'Current conditions';
+    }
+
+    function formatWeatherTime(value) {
+        if (!value || !value.includes('T')) return 'Just updated';
+
+        const [, timePart] = value.split('T');
+        const [hoursString = '0', minutesString = '00'] = timePart.split(':');
+        const hours = Number(hoursString);
+        const minutes = Number(minutesString);
+        const meridiem = hours >= 12 ? 'PM' : 'AM';
+        const displayHour = hours % 12 || 12;
+
+        return `Updated ${displayHour}:${String(minutes).padStart(2, '0')} ${meridiem} IST`;
+    }
+
+    function renderWeatherGuide(root, state) {
+        if (!root) return;
+
+        root.hidden = false;
+        root.innerHTML = '';
+        root.dataset.guideTone = 'weather';
+
+        const header = document.createElement('div');
+        header.className = 'wedding-guide-card-header';
+
+        const headerCopy = document.createElement('div');
+        headerCopy.className = 'wedding-guide-card-header-copy';
+
+        const eyebrow = document.createElement('span');
+        eyebrow.className = 'wedding-guide-card-eyebrow';
+        eyebrow.textContent = 'Current Weather';
+
+        const title = document.createElement('h3');
+        title.className = 'heading-medium wedding-guide-card-title';
+        title.textContent = 'Pilibanga right now';
+
+        headerCopy.append(eyebrow, title);
+
+        const date = document.createElement('span');
+        date.className = 'wedding-guide-card-date';
+        date.textContent = state.updatedLabel || 'Checking live conditions';
+
+        header.append(headerCopy, date);
+        root.appendChild(header);
+
+        const intro = document.createElement('p');
+        intro.className = 'body-base wedding-guide-card-text';
+        intro.textContent = state.message || 'Live conditions at the time this page is opened.';
+        root.appendChild(intro);
+
+        if (state.status === 'loading') {
+            const loading = document.createElement('div');
+            loading.className = 'wedding-weather-loading';
+            loading.textContent = 'Loading current conditions...';
+            root.appendChild(loading);
+            return;
+        }
+
+        if (state.status === 'error') {
+            const fallback = document.createElement('div');
+            fallback.className = 'wedding-weather-fallback';
+            fallback.textContent = 'Live weather is temporarily unavailable. You can refresh the page in a moment.';
+            root.appendChild(fallback);
+            return;
+        }
+
+        const summary = document.createElement('div');
+        summary.className = 'wedding-weather-summary';
+
+        const temperature = document.createElement('div');
+        temperature.className = 'wedding-weather-temperature';
+        temperature.textContent = `${Math.round(state.temperature)}°C`;
+
+        const condition = document.createElement('div');
+        condition.className = 'wedding-weather-condition';
+
+        const conditionTitle = document.createElement('strong');
+        conditionTitle.className = 'wedding-weather-condition-title';
+        conditionTitle.textContent = state.condition;
+
+        const conditionText = document.createElement('span');
+        conditionText.className = 'wedding-weather-condition-text';
+        conditionText.textContent = 'Live conditions at page open';
+
+        condition.append(conditionTitle, conditionText);
+        summary.append(temperature, condition);
+        root.appendChild(summary);
+
+        const stats = document.createElement('dl');
+        stats.className = 'wedding-weather-stats';
+
+        [
+            { label: 'Feels like', value: `${Math.round(state.apparentTemperature)}°C` },
+            { label: 'Wind', value: `${Math.round(state.windSpeed)} km/h` },
+            { label: 'Time', value: state.updatedLabel.replace('Updated ', '') }
+        ].forEach(item => {
+            const row = document.createElement('div');
+            row.className = 'wedding-weather-stat';
+
+            const term = document.createElement('dt');
+            term.className = 'wedding-weather-stat-label';
+            term.textContent = item.label;
+
+            const detail = document.createElement('dd');
+            detail.className = 'wedding-weather-stat-value';
+            detail.textContent = item.value;
+
+            row.append(term, detail);
+            stats.appendChild(row);
+        });
+
+        root.appendChild(stats);
+    }
+
+    async function loadWeddingWeather() {
+        if (!weatherGuide) return;
+
+        renderWeatherGuide(weatherGuide, {
+            status: 'loading',
+            updatedLabel: 'Checking live conditions',
+            message: 'Live conditions at the time this page is opened.'
+        });
+
+        try {
+            const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=29.44964&longitude=74.10093&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,is_day&timezone=Asia%2FKolkata&forecast_days=1');
+            if (!response.ok) throw new Error(`Weather request failed: ${response.status}`);
+
+            const payload = await response.json();
+            const current = payload && payload.current;
+            if (!current) throw new Error('Missing current weather data');
+
+            renderWeatherGuide(weatherGuide, {
+                status: 'ready',
+                updatedLabel: formatWeatherTime(current.time),
+                message: 'Live conditions in Pilibanga at the moment you opened the invitation.',
+                temperature: current.temperature_2m,
+                apparentTemperature: current.apparent_temperature,
+                windSpeed: current.wind_speed_10m,
+                condition: describeWeatherCode(current.weather_code, Number(current.is_day) === 1)
+            });
+        } catch (error) {
+            console.error(error);
+            renderWeatherGuide(weatherGuide, {
+                status: 'error',
+                updatedLabel: 'Live update unavailable',
+                message: 'Live conditions at the time this page is opened.'
+            });
+        }
+    }
+
     function getAttireGuideMeta(notice) {
         const title = (notice.title || '').toLowerCase();
 
@@ -831,6 +993,7 @@ function initWeddingUpdates() {
     });
 
     renderAttireGuide(attireGuide, dressSummary, attireNotices);
+    loadWeddingWeather();
 }
 
 // ================================================================

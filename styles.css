@@ -4891,7 +4891,7 @@ h6 {
 
 .wedding-guide-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-5);
 }
 
@@ -4954,6 +4954,16 @@ h6 {
 
 .wedding-guide-card[data-guide-tone="stay"]::before {
   background: linear-gradient(90deg, rgba(238, 189, 176, 0.92), rgba(244, 214, 164, 0.14));
+}
+
+.wedding-guide-card[data-guide-tone="weather"] {
+  background:
+    radial-gradient(circle at top right, rgba(146, 183, 239, 0.16), transparent 34%),
+    linear-gradient(180deg, rgba(20, 32, 52, 0.96), rgba(9, 16, 28, 0.99));
+}
+
+.wedding-guide-card[data-guide-tone="weather"]::before {
+  background: linear-gradient(90deg, rgba(146, 183, 239, 0.92), rgba(244, 214, 164, 0.18));
 }
 
 .wedding-guide-card > * {
@@ -5027,6 +5037,84 @@ h6 {
   background: rgba(212, 185, 120, 0.14);
   border-color: rgba(212, 185, 120, 0.26);
   color: rgba(255, 248, 235, 0.98);
+}
+
+.wedding-weather-loading,
+.wedding-weather-fallback {
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(244, 246, 251, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(245, 240, 232, 0.74);
+}
+
+.wedding-weather-summary {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  align-items: center;
+  padding: 1rem 1.1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(152, 187, 239, 0.16);
+  background:
+    radial-gradient(circle at top right, rgba(146, 183, 239, 0.14), transparent 40%),
+    rgba(255, 255, 255, 0.04);
+}
+
+.wedding-weather-temperature {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  line-height: 0.95;
+  color: rgba(245, 240, 232, 0.96);
+}
+
+.wedding-weather-condition {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.wedding-weather-condition-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(245, 240, 232, 0.9);
+}
+
+.wedding-weather-condition-text {
+  font-size: 0.84rem;
+  color: rgba(245, 240, 232, 0.62);
+}
+
+.wedding-weather-stats {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.wedding-weather-stat {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(244, 246, 251, 0.08);
+}
+
+.wedding-weather-stat-label,
+.wedding-weather-stat-value {
+  margin: 0;
+}
+
+.wedding-weather-stat-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.52);
+}
+
+.wedding-weather-stat-value {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  color: rgba(245, 240, 232, 0.82);
 }
 
 .wedding-attire-guide {
@@ -6241,6 +6329,15 @@ h6 {
   .wedding-location-tag,
   .wedding-update-action {
     max-width: 100%;
+  }
+
+  .wedding-weather-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .wedding-weather-stat {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
   }
 
   .wedding-film-media {
