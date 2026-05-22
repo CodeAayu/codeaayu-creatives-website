@@ -81,7 +81,7 @@ Implements multiple schema types in a graph structure:
 
 1. **Person Schema**
    - Name: Aayush Ahuja
-   - Job Title: Photographer & Visual Storyteller
+   - Job Title: Photographer
    - Contact: Email, address
    - Social media profiles (sameAs)
    - Education: IIT (ISM) Dhanbad
@@ -116,7 +116,7 @@ Implements multiple schema types in a graph structure:
 ### Photography Page (photography.html)
 - **Focus**: Portfolio showcase, photography categories
 - **Keywords**: photography portfolio, travel photography, wildlife photography, bird photography
-- **Image Count**: 500+ photos mentioned in meta
+- **Image Count**: 40+ selected frames mentioned in portfolio
 - **Featured**: Vivekananda Memorial image for social sharing
 
 ### About Page (about.html)
@@ -321,7 +321,7 @@ Implements multiple schema types in a graph structure:
 - Hire photographer Bangalore
 - Photography services India
 - Book photographer India
-- Professional photography contact
+- Photography project contact
 
 ## Conclusion
 
