@@ -5,15 +5,15 @@
     <!-- Home Page -->
     <url>
         <loc>https://codeaayucreatives.co.in/</loc>
-        <lastmod>2025-10-15</lastmod>
+        <lastmod>2026-05-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- Photography Portfolio -->
+    <!-- Gallery -->
     <url>
         <loc>https://codeaayucreatives.co.in/photography.html</loc>
-        <lastmod>2025-10-15</lastmod>
+        <lastmod>2026-05-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -21,7 +21,7 @@
     <!-- About Page -->
     <url>
         <loc>https://codeaayucreatives.co.in/about.html</loc>
-        <lastmod>2025-10-15</lastmod>
+        <lastmod>2026-05-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -29,7 +29,7 @@
     <!-- Writing/Blog Page -->
     <url>
         <loc>https://codeaayucreatives.co.in/writing.html</loc>
-        <lastmod>2025-10-15</lastmod>
+        <lastmod>2026-05-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -37,7 +37,7 @@
     <!-- Contact Page -->
     <url>
         <loc>https://codeaayucreatives.co.in/contact.html</loc>
-        <lastmod>2025-10-15</lastmod>
+        <lastmod>2026-05-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
