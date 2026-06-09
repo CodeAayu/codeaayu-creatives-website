@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initMoodDial();
   initBriefBuilder();
   initContactForms();
+  initScrollProgress();
+  initCreativeCursor();
+  initInteractiveSurfaces();
+  initClickRipples();
 });
 
 function initLoader() {
@@ -247,4 +251,134 @@ function showToast(message, type) {
     toast.classList.remove("is-visible");
     window.setTimeout(() => toast.remove(), 300);
   }, 3600);
+}
+
+function initScrollProgress() {
+  const progress = document.createElement("div");
+  progress.className = "scroll-progress";
+  progress.setAttribute("aria-hidden", "true");
+  document.body.appendChild(progress);
+
+  const update = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+    progress.style.setProperty("--scroll-progress", Math.min(Math.max(ratio, 0), 1).toString());
+  };
+
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+}
+
+function initCreativeCursor() {
+  const canUsePointer = window.matchMedia("(pointer: fine)").matches;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!canUsePointer || reduceMotion) return;
+
+  const halo = document.createElement("div");
+  halo.className = "cursor-halo";
+  halo.setAttribute("aria-hidden", "true");
+  document.body.appendChild(halo);
+  document.body.classList.add("has-creative-cursor");
+
+  let targetX = window.innerWidth / 2;
+  let targetY = window.innerHeight / 2;
+  let currentX = targetX;
+  let currentY = targetY;
+
+  const render = () => {
+    currentX += (targetX - currentX) * 0.18;
+    currentY += (targetY - currentY) * 0.18;
+    halo.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+    window.requestAnimationFrame(render);
+  };
+
+  window.addEventListener("pointermove", (event) => {
+    targetX = event.clientX;
+    targetY = event.clientY;
+    halo.classList.add("is-visible");
+  }, { passive: true });
+
+  document.addEventListener("pointerover", (event) => {
+    if (event.target.closest("a, button, input, textarea, select, [data-lightbox-src]")) {
+      halo.classList.add("is-active");
+    }
+  });
+
+  document.addEventListener("pointerout", (event) => {
+    if (event.target.closest("a, button, input, textarea, select, [data-lightbox-src]")) {
+      halo.classList.remove("is-active");
+    }
+  });
+
+  window.addEventListener("pointerleave", () => halo.classList.remove("is-visible"));
+  render();
+}
+
+function initInteractiveSurfaces() {
+  const canUsePointer = window.matchMedia("(pointer: fine)").matches;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!canUsePointer || reduceMotion) return;
+
+  const selector = [
+    ".hero-console",
+    ".profile-card",
+    ".metric",
+    ".about-copy-panel",
+    ".about-media-panel",
+    ".about-principles article",
+    ".about-stats div",
+    ".about-hero-card",
+    ".about-page-card",
+    ".about-image-lab",
+    ".about-metrics div",
+    ".about-method-card",
+    ".about-cta",
+    ".process-step",
+    ".stack-card",
+    ".work-tile",
+    ".mood-stage",
+    ".contact-console",
+    ".contact-card",
+    ".article"
+  ].join(",");
+
+  document.querySelectorAll(selector).forEach((surface) => {
+    surface.classList.add("interactive-surface");
+    surface.addEventListener("pointermove", (event) => {
+      const rect = surface.getBoundingClientRect();
+      surface.style.setProperty("--surface-x", `${event.clientX - rect.left}px`);
+      surface.style.setProperty("--surface-y", `${event.clientY - rect.top}px`);
+    }, { passive: true });
+  });
+}
+
+function initClickRipples() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) return;
+
+  const selector = [
+    ".button",
+    ".nav-cta",
+    ".nav-link",
+    ".menu-toggle",
+    ".filter-bar button",
+    ".mood-controls button",
+    ".work-tile",
+    ".lightbox-close"
+  ].join(",");
+
+  document.addEventListener("click", (event) => {
+    const target = event.target.closest(selector);
+    if (!target || target.disabled) return;
+
+    const rect = target.getBoundingClientRect();
+    const ripple = document.createElement("span");
+    ripple.className = "click-ripple";
+    ripple.style.left = `${event.clientX - rect.left}px`;
+    ripple.style.top = `${event.clientY - rect.top}px`;
+    ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height) * 1.25}px`;
+    target.appendChild(ripple);
+    window.setTimeout(() => ripple.remove(), 650);
+  });
 }
