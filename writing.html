@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260609-about">
+  <link rel="stylesheet" href="styles.css?v=20260701-redesign">
   <link rel="icon" type="image/png" href="images/logos/logo-black.png">
 </head>
 <body>
@@ -42,6 +42,7 @@
     </header>
 
     <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
+      <button type="button" class="menu-close" aria-label="Close menu" data-menu-close>×</button>
       <a href="index.html">Home</a>
       <a href="photography.html">Gallery</a>
       <a href="about.html">About</a>
@@ -63,34 +64,51 @@
       <section class="section">
         <div class="container article-list" data-reveal>
           <a class="article" href="https://medium.com/@CodeAayu/2024-a-year-of-milestones-adventures-and-self-discovery-0a9aae84eaae" target="_blank" rel="noopener noreferrer">
-            <time>Dec 2024</time>
-            <h2>2024: A Year of Milestones, Adventures, and Self-Discovery</h2>
-            <span>Read</span>
+            <img class="article-cover" src="https://cdn-images-1.medium.com/max/1024/1*SqiWIsCfxOwtBgOMP_tUHw.jpeg" alt="" loading="lazy" decoding="async">
+            <div class="article-body">
+              <time>Dec 2024</time>
+              <h2>2024: A Year of Milestones, Adventures, and Self-Discovery</h2>
+              <span>Read</span>
+            </div>
           </a>
           <a class="article" href="https://medium.com/@CodeAayu/embracing-self-completeness-and-finding-a-complementary-partner-ba31cf3faa59" target="_blank" rel="noopener noreferrer">
-            <time>Aug 2024</time>
-            <h2>Embracing Self-Completeness and Finding a Complementary Partner</h2>
-            <span>Read</span>
+            <img class="article-cover" src="images/thumbnails/portfolio/pamban_sunset.jpg" alt="" loading="lazy" decoding="async">
+            <div class="article-body">
+              <time>Aug 2024</time>
+              <h2>Embracing Self-Completeness and Finding a Complementary Partner</h2>
+              <span>Read</span>
+            </div>
           </a>
           <a class="article" href="https://medium.com/@CodeAayu/will-i-go-back-to-ladakh-a-second-time-a41a34c00ae9" target="_blank" rel="noopener noreferrer">
-            <time>Jul 2024</time>
-            <h2>Will I Go Back to Ladakh a Second Time?</h2>
-            <span>Read</span>
+            <img class="article-cover" src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="" loading="lazy" decoding="async">
+            <div class="article-body">
+              <time>Jul 2024</time>
+              <h2>Will I Go Back to Ladakh a Second Time?</h2>
+              <span>Read</span>
+            </div>
           </a>
           <a class="article" href="https://medium.com/@CodeAayu/embracing-the-journey-discovering-confidence-through-pursuing-dreams-bbe6a2ce5ceb" target="_blank" rel="noopener noreferrer">
-            <time>Jul 2024</time>
-            <h2>Embracing the Journey: Discovering Confidence Through Pursuing Dreams</h2>
-            <span>Read</span>
+            <img class="article-cover" src="images/thumbnails/portfolio/Peacock.jpg" alt="" loading="lazy" decoding="async">
+            <div class="article-body">
+              <time>Jul 2024</time>
+              <h2>Embracing the Journey: Discovering Confidence Through Pursuing Dreams</h2>
+              <span>Read</span>
+            </div>
           </a>
           <a class="article" href="https://medium.com/@CodeAayu/self-harm-a-reality-we-must-acknowledge-and-address-b5074b855285" target="_blank" rel="noopener noreferrer">
-            <time>May 2023</time>
-            <h2>Self-Harm: A Reality We Must Acknowledge and Address</h2>
-            <span>Read</span>
+            <img class="article-cover" src="images/thumbnails/portfolio/Sunrise.jpg" alt="" loading="lazy" decoding="async">
+            <div class="article-body">
+              <time>May 2023</time>
+              <h2>Self-Harm: A Reality We Must Acknowledge and Address</h2>
+              <span>Read</span>
+            </div>
           </a>
-          <a class="article" href="https://medium.com/@codeaayu" target="_blank" rel="noopener noreferrer">
-            <time>More</time>
-            <h2>Open the full Medium archive</h2>
-            <span>Visit</span>
+          <a class="article article-more" href="https://medium.com/@codeaayu" target="_blank" rel="noopener noreferrer">
+            <div class="article-body">
+              <time>More</time>
+              <h2>Open the full Medium archive</h2>
+              <span>Visit</span>
+            </div>
           </a>
         </div>
       </section>
@@ -104,6 +122,6 @@
     </footer>
   </div>
 
-  <script src="script.js?v=20260609-creative"></script>
+  <script src="script.js?v=20260701-redesign"></script>
 </body>
 </html>

@@ -14,17 +14,95 @@ document.addEventListener("DOMContentLoaded", () => {
   initCreativeCursor();
   initInteractiveSurfaces();
   initClickRipples();
+  initPortfolioData();
 });
+
+const PORTFOLIO_SOURCE = "data/portfolio.json";
+let portfolioCache = null;
+
+async function loadPortfolio() {
+  if (portfolioCache) return portfolioCache;
+  try {
+    const res = await fetch(PORTFOLIO_SOURCE, { cache: "no-cache" });
+    if (!res.ok) throw new Error("Failed to load portfolio");
+    portfolioCache = await res.json();
+  } catch (error) {
+    console.warn("Portfolio data could not be loaded; falling back to inline galleries.", error);
+    portfolioCache = { items: [] };
+  }
+  return portfolioCache;
+}
+
+async function initPortfolioData() {
+  const data = await loadPortfolio();
+  if (!data.items || !data.items.length) return;
+
+  const selectedContainer = document.querySelector("[data-selected-work]");
+  if (selectedContainer) {
+    const featured = data.items
+      .filter((item) => item.featured)
+      .sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0));
+    selectedContainer.innerHTML = featured
+      .map((item, index) => renderSelectedTile(item, index))
+      .join("");
+  }
+
+  const galleryContainer = document.querySelector("[data-portfolio-grid]");
+  if (galleryContainer && !galleryContainer.children.length) {
+    galleryContainer.innerHTML = data.items
+      .map((item) => renderGalleryTile(item))
+      .join("");
+    initWorkFilters();
+  }
+}
+
+function renderSelectedTile(item, index) {
+  const sizeClass = index === 0 ? "work-tile large" : "work-tile";
+  return `
+    <button class="${sizeClass}" type="button"
+      data-lightbox-src="${item.full}"
+      data-lightbox-id="${item.id}"
+      data-caption="${item.tagline} / ${item.title}"
+      data-reveal>
+      <img src="${item.thumb}" alt="${item.alt}" loading="lazy" decoding="async">
+      <span class="work-caption">
+        <span>${item.tagline}</span>
+        <span>${item.title}</span>
+      </span>
+    </button>
+  `;
+}
+
+function renderGalleryTile(item) {
+  return `
+    <button class="work-tile" data-category="${item.category}" type="button"
+      data-lightbox-src="${item.full}"
+      data-lightbox-id="${item.id}"
+      data-caption="${item.tagline} / ${item.title}"
+      data-reveal>
+      <img src="${item.thumb}" alt="${item.alt}" loading="lazy" decoding="async">
+      <span class="work-caption">
+        <span>${item.tagline}</span>
+        <span>${item.title}</span>
+      </span>
+    </button>
+  `;
+}
 
 function initLoader() {
   const loader = document.getElementById("loading");
   if (!loader) return;
 
-  window.addEventListener("load", () => {
-    window.setTimeout(() => loader.classList.add("is-hidden"), 350);
-  });
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hide = () => loader.classList.add("is-hidden");
 
-  window.setTimeout(() => loader.classList.add("is-hidden"), 1200);
+  if (reduceMotion) {
+    hide();
+    return;
+  }
+
+  window.addEventListener("load", () => window.setTimeout(hide, 350));
+  window.setTimeout(hide, 1200);
 }
 
 function initMenu() {
@@ -32,27 +110,76 @@ function initMenu() {
   const menu = document.querySelector("[data-mobile-menu]");
   if (!toggle || !menu) return;
 
+  const openMenu = () => {
+    toggle.classList.add("is-open");
+    menu.classList.add("is-open");
+    document.body.classList.add("menu-open");
+    toggle.setAttribute("aria-label", "Close menu");
+    trapFocus(menu);
+  };
+
   const closeMenu = () => {
     toggle.classList.remove("is-open");
     menu.classList.remove("is-open");
     document.body.classList.remove("menu-open");
+    toggle.setAttribute("aria-label", "Open menu");
+    releaseFocusTrap();
+    if (document.activeElement && menu.contains(document.activeElement)) {
+      toggle.focus();
+    }
   };
 
   toggle.addEventListener("click", () => {
-    toggle.classList.toggle("is-open");
-    menu.classList.toggle("is-open");
-    document.body.classList.toggle("menu-open", menu.classList.contains("is-open"));
+    if (menu.classList.contains("is-open")) closeMenu();
+    else openMenu();
   });
 
   menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+  menu.querySelector("[data-menu-close]")?.addEventListener("click", closeMenu);
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeMenu();
+    if (event.key === "Escape" && menu.classList.contains("is-open")) closeMenu();
   });
+}
+
+let focusTrapHandler = null;
+function trapFocus(container) {
+  releaseFocusTrap();
+  const selector = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  const focusables = () => Array.from(container.querySelectorAll(selector)).filter((el) => el.offsetParent !== null);
+  focusables()[0]?.focus();
+  focusTrapHandler = (event) => {
+    if (event.key !== "Tab") return;
+    const list = focusables();
+    if (!list.length) return;
+    const first = list[0];
+    const last = list[list.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+  document.addEventListener("keydown", focusTrapHandler);
+}
+
+function releaseFocusTrap() {
+  if (focusTrapHandler) {
+    document.removeEventListener("keydown", focusTrapHandler);
+    focusTrapHandler = null;
+  }
 }
 
 function initReveal() {
   const items = document.querySelectorAll("[data-reveal]");
   if (!items.length) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) {
+    items.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -78,17 +205,27 @@ function initWorkFilters() {
     const items = document.querySelectorAll(targetSelector);
     if (!items.length) return;
 
-    group.querySelectorAll("[data-filter]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const value = button.dataset.filter;
-        group.querySelectorAll("[data-filter]").forEach((item) => item.classList.remove("is-active"));
-        button.classList.add("is-active");
-
-        items.forEach((item) => {
-          const show = value === "all" || item.dataset.category === value;
-          item.classList.toggle("is-hidden", !show);
-        });
+    const apply = (value) => {
+      group.querySelectorAll("[data-filter]").forEach((item) => item.classList.remove("is-active"));
+      const target = group.querySelector(`[data-filter="${value}"]`);
+      if (target) target.classList.add("is-active");
+      else {
+        const fallback = group.querySelector('[data-filter="all"]');
+        if (fallback) fallback.classList.add("is-active");
+        value = "all";
+      }
+      items.forEach((item) => {
+        const show = value === "all" || item.dataset.category === value;
+        item.classList.toggle("is-hidden", !show);
       });
+    };
+
+    group.querySelectorAll("[data-filter]").forEach((button) => {
+      button.addEventListener("click", () => apply(button.dataset.filter));
+    });
+
+    document.querySelectorAll("[data-jump-filter]").forEach((link) => {
+      link.addEventListener("click", () => apply(link.dataset.jumpFilter));
     });
   });
 }
@@ -100,12 +237,20 @@ function initLightbox() {
   const image = lightbox.querySelector("[data-lightbox-image]");
   const caption = lightbox.querySelector("[data-lightbox-caption]");
   const close = lightbox.querySelector("[data-lightbox-close]");
-  const galleryItems = Array.from(document.querySelectorAll("[data-lightbox-src]"));
 
-  const open = (item) => {
-    image.src = item.dataset.lightboxSrc;
-    image.alt = item.querySelector("img")?.alt || "Portfolio image";
-    caption.textContent = item.dataset.caption || item.querySelector("h3")?.textContent || "";
+  const triggers = () => Array.from(document.querySelectorAll("[data-lightbox-src]"));
+  let currentIndex = -1;
+
+  const showAt = (index) => {
+    const list = triggers();
+    if (!list.length) return;
+    if (index < 0) index = list.length - 1;
+    if (index >= list.length) index = 0;
+    currentIndex = index;
+    const trigger = list[index];
+    image.src = trigger.dataset.lightboxSrc;
+    image.alt = trigger.querySelector("img")?.alt || "Portfolio image";
+    caption.textContent = trigger.dataset.caption || "";
     lightbox.classList.add("is-open");
     document.body.classList.add("lightbox-open");
   };
@@ -113,25 +258,29 @@ function initLightbox() {
   const closeLightbox = () => {
     lightbox.classList.remove("is-open");
     document.body.classList.remove("lightbox-open");
-    image.removeAttribute("src");
+    currentIndex = -1;
+    window.setTimeout(() => image.removeAttribute("src"), 200);
   };
-
-  galleryItems.forEach((item) => {
-    item.addEventListener("click", () => open(item));
-    item.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        open(item);
-      }
-    });
-  });
 
   close?.addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (event) => {
     if (event.target === lightbox) closeLightbox();
   });
+
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-lightbox-src]");
+    if (!trigger) return;
+    event.preventDefault();
+    const list = triggers();
+    const index = list.indexOf(trigger);
+    showAt(index >= 0 ? index : 0);
+  });
+
   document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("is-open")) return;
     if (event.key === "Escape") closeLightbox();
+    else if (event.key === "ArrowRight") showAt(currentIndex + 1);
+    else if (event.key === "ArrowLeft") showAt(currentIndex - 1);
   });
 }
 
@@ -196,15 +345,37 @@ function initBriefBuilder() {
   if (!form) return;
 
   const output = document.querySelector("[data-brief-output]");
-  const update = () => {
+  const messageField = document.querySelector("[data-brief-message]");
+  const copyButton = document.querySelector("[data-brief-copy]");
+  const build = () => {
     const checked = Array.from(form.querySelectorAll("input:checked")).map((input) => input.value);
-    output.textContent = checked.length
-      ? `Brief signal: ${checked.join(" + ")}.`
-      : "Brief signal: choose what matters most.";
+    const summary = checked.length ? `Brief signal: ${checked.join(" + ")}.` : "";
+    if (output) {
+      output.textContent = checked.length
+        ? `Brief signal: ${checked.join(" + ")}.`
+        : "Brief signal: choose what matters most.";
+    }
+    if (messageField) {
+      const existing = messageField.value.trim();
+      const prefix = summary ? `${summary} ` : "";
+      const stripped = existing.replace(/^Brief signal:.*?\.\s*/, "");
+      messageField.value = prefix + stripped;
+    }
   };
 
-  form.addEventListener("change", update);
-  update();
+  form.addEventListener("change", build);
+  build();
+
+  copyButton?.addEventListener("click", async () => {
+    const text = output?.textContent || "";
+    try {
+      await navigator.clipboard.writeText(text);
+      copyButton.classList.add("is-copied");
+      window.setTimeout(() => copyButton.classList.remove("is-copied"), 1400);
+    } catch {
+      showToast("Copy failed. Select the text manually.", "error");
+    }
+  });
 }
 
 function initContactForms() {
@@ -254,6 +425,8 @@ function showToast(message, type) {
 }
 
 function initScrollProgress() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
   const progress = document.createElement("div");
   progress.className = "scroll-progress";
   progress.setAttribute("aria-hidden", "true");
