@@ -17,18 +17,44 @@ document.addEventListener("DOMContentLoaded", () => {
   initPortfolioData();
 });
 
+const PORTFOLIO_DATA = {
+  "version": 1,
+  "items": [
+    { "id": "eagle_fly", "thumb": "images/thumbnails/portfolio/eagle_fly.jpg", "full": "images/portfolio/eagle_fly.jpg", "alt": "Eagle in flight", "category": "wildlife", "surfaces": ["web", "campaign", "print"], "title": "Wings of Freedom", "tagline": "Wildlife", "featured": true, "featuredOrder": 1 },
+    { "id": "portrait-5", "thumb": "images/thumbnails/portfolio/portrait-5.jpg", "full": "images/portfolio/portrait-5.jpg", "alt": "Portrait study", "category": "portrait", "surfaces": ["web", "campaign"], "title": "Character Study", "tagline": "Portrait", "featured": true, "featuredOrder": 2 },
+    { "id": "vivekanand_memorial", "thumb": "images/thumbnails/portfolio/vivekanand_memorial.jpg", "full": "images/portfolio/vivekanand_memorial.jpg", "alt": "Vivekananda Rock Memorial", "category": "travel", "surfaces": ["web", "print", "campaign"], "title": "Rock Memorial", "tagline": "Travel", "featured": true, "featuredOrder": 3 },
+    { "id": "Flower with sun", "thumb": "images/thumbnails/portfolio/Flower with sun.jpg", "full": "images/portfolio/Flower with sun.jpg", "alt": "Flower silhouette against sun", "category": "texture", "surfaces": ["web", "print"], "title": "Sunlit Bloom", "tagline": "Texture", "featured": true, "featuredOrder": 4 },
+    { "id": "Fire_nubra", "thumb": "images/thumbnails/portfolio/Fire_nubra.JPG", "full": "images/portfolio/Fire_nubra.JPG", "alt": "Camp fire at Nubra", "category": "travel", "surfaces": ["web", "campaign"], "title": "Nubra Fire", "tagline": "Travel" },
+    { "id": "pamban_sunset", "thumb": "images/thumbnails/portfolio/pamban_sunset.jpg", "full": "images/portfolio/pamban_sunset.jpg", "alt": "Pamban sunset", "category": "travel", "surfaces": ["web", "print"], "title": "Pamban Sunset", "tagline": "Travel" },
+    { "id": "Sunrise", "thumb": "images/thumbnails/portfolio/Sunrise.jpg", "full": "images/portfolio/Sunrise.jpg", "alt": "Sunrise over horizon", "category": "scenic", "surfaces": ["web", "print"], "title": "Sunrise", "tagline": "Scenic" },
+    { "id": "Purple_heron", "thumb": "images/thumbnails/portfolio/Purple_heron.jpg", "full": "images/portfolio/Purple_heron.jpg", "alt": "Purple heron", "category": "wildlife", "surfaces": ["web", "print"], "title": "Purple Heron", "tagline": "Wildlife" },
+    { "id": "Peacock", "thumb": "images/thumbnails/portfolio/Peacock.jpg", "full": "images/portfolio/Peacock.jpg", "alt": "Peacock", "category": "wildlife", "surfaces": ["web", "print", "campaign"], "title": "Regal Peacock", "tagline": "Wildlife" },
+    { "id": "portrait-1", "thumb": "images/thumbnails/portfolio/portrait-1.jpg", "full": "images/portfolio/portrait-1.jpg", "alt": "Portrait in yellow saree", "category": "portrait", "surfaces": ["web", "campaign"], "title": "Personal Story", "tagline": "Portrait" },
+    { "id": "portrait-8", "thumb": "images/thumbnails/portfolio/portrait-8.jpg", "full": "images/portfolio/portrait-8.jpg", "alt": "Smiling portrait", "category": "portrait", "surfaces": ["web", "campaign"], "title": "Laughing Frame", "tagline": "Portrait" },
+    { "id": "Spotted_owl", "thumb": "images/thumbnails/portfolio/Spotted_owl.jpg", "full": "images/portfolio/Spotted_owl.jpg", "alt": "Spotted owl", "category": "wildlife", "surfaces": ["web", "print"], "title": "Spotted Owl", "tagline": "Wildlife" },
+    { "id": "Pine Forest", "thumb": "images/thumbnails/portfolio/Pine Forest.jpg", "full": "images/portfolio/Pine Forest.jpg", "alt": "Pine forest", "category": "scenic", "surfaces": ["web", "print"], "title": "Pine Forest", "tagline": "Scenic" },
+    { "id": "Black Winged Stilt", "thumb": "images/thumbnails/portfolio/Black Winged Stilt.jpg", "full": "images/portfolio/Black Winged Stilt.jpg", "alt": "Black winged stilt", "category": "wildlife", "surfaces": ["web", "print"], "title": "Black Winged Stilt", "tagline": "Wildlife" },
+    { "id": "Blue Dragon", "thumb": "images/thumbnails/portfolio/Blue Dragon.JPG", "full": "images/portfolio/Blue Dragon.JPG", "alt": "Blue dragon light texture", "category": "texture", "surfaces": ["web", "print"], "title": "Blue Dragon", "tagline": "Texture" },
+    { "id": "wave_splashing", "thumb": "images/thumbnails/portfolio/wave_splashing.jpg", "full": "images/portfolio/wave_splashing.jpg", "alt": "Wave splash", "category": "scenic", "surfaces": ["web", "print"], "title": "Wave Impact", "tagline": "Scenic" }
+  ]
+};
+
 const PORTFOLIO_SOURCE = "data/portfolio.json";
 let portfolioCache = null;
 
 async function loadPortfolio() {
+  if (typeof window !== "undefined" && window.PORTFOLIO_DATA) {
+    portfolioCache = window.PORTFOLIO_DATA;
+    return portfolioCache;
+  }
   if (portfolioCache) return portfolioCache;
   try {
     const res = await fetch(PORTFOLIO_SOURCE, { cache: "no-cache" });
     if (!res.ok) throw new Error("Failed to load portfolio");
     portfolioCache = await res.json();
   } catch (error) {
-    console.warn("Portfolio data could not be loaded; falling back to inline galleries.", error);
-    portfolioCache = { items: [] };
+    console.warn("Portfolio data could not be loaded; using inline fallback.", error);
+    portfolioCache = PORTFOLIO_DATA;
   }
   return portfolioCache;
 }
