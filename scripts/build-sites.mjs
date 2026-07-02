@@ -14,6 +14,7 @@ const staticEntries = [
   "contact.html",
   "styles.css",
   "script.js",
+  "data/portfolio.json",
   "components-loader.js",
   "robots.txt",
   "sitemap.xml",

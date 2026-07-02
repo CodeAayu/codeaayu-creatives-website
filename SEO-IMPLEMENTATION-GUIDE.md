@@ -1,336 +1,193 @@
 # SEO Implementation Guide - CodeAayu Creatives
 
 ## Overview
-This guide documents the comprehensive SEO optimization implemented for codeaayucreatives.co.in to improve search engine visibility, social media sharing, and AI search engine discoverability.
 
-## Implementation Date
-October 2025
+This guide documents the current SEO setup for [codeaayucreatives.co.in](https://codeaayucreatives.co.in). The site is a 5-page static photography portfolio for Aayush Ahuja, with a current redesign focused on photography systems, selected portfolio frames, writing, and project briefs.
 
-## What Was Implemented
+## Current Status
 
-### 1. Technical SEO Foundation
+- **Last reviewed**: 2026-07-02
+- **Site version**: `20260701-redesign-g` cache-bust suffix
+- **Primary theme color**: `#050816`
+- **Primary typography**: Inter + IBM Plex Mono
 
-#### robots.txt
-- **Location**: `/robots.txt`
-- **Purpose**: Guides search engine crawlers on which pages to index
-- **Configuration**:
-  - Allows all search engines to crawl the entire site
-  - Specifies sitemap location
-  - Sets crawl-delay to 1 second to be respectful to the server
+The redesign currently includes:
 
-#### sitemap.xml
-- **Location**: `/sitemap.xml`
-- **Purpose**: Provides search engines with a complete map of your website
-- **Includes**:
-  - All 5 main pages with priority and update frequency
-  - Last modification dates
-  - Priority settings (1.0 for homepage, 0.9-0.6 for other pages)
+- Canonical URLs on all 5 pages.
+- Page-specific titles, descriptions, keywords, author, robots, and theme color.
+- Open Graph title, description, type, and image on all 5 pages.
+- Twitter large-image card metadata on all 5 pages.
+- JSON-LD on `index.html` (`Person`) and `contact.html` (`ContactPage`).
+- `robots.txt` and `sitemap.xml`.
+- Lazy-loaded portfolio, about, and writing-card images where they are not first-paint critical.
 
-### 2. Meta Tags (All Pages)
+## Technical SEO Files
 
-Every page now includes comprehensive meta tags:
+### robots.txt
 
-#### Primary Meta Tags
-- **Title**: Optimized titles (50-60 characters) with relevant keywords
-- **Description**: Compelling descriptions (150-160 characters)
-- **Keywords**: Relevant keywords for each page
-- **Author**: Aayush Ahuja
-- **Robots**: index, follow
-- **Language**: English
-- **Theme Color**: #6366f1 (brand color)
+**Location**: `/robots.txt`
 
-#### Canonical URLs
-- Prevents duplicate content issues
-- Example: `<link rel="canonical" href="https://codeaayucreatives.co.in/">`
+Current behavior:
 
-### 3. Open Graph Tags (Social Media)
+- Allows all crawlers.
+- Points to `https://codeaayucreatives.co.in/sitemap.xml`.
+- Uses `Crawl-delay: 1`.
 
-Optimized for Facebook, LinkedIn, and other platforms:
+### sitemap.xml
 
-- **og:type**: website/profile/article (based on page type)
-- **og:url**: Canonical URL for the page
-- **og:title**: Engaging title for social sharing
-- **og:description**: Compelling description
-- **og:image**: High-quality preview image (1200x630px recommended)
-- **og:site_name**: CodeAayu Creatives
-- **og:locale**: en_IN (English - India)
+**Location**: `/sitemap.xml`
 
-### 4. Twitter Card Tags
+Current coverage:
 
-Optimized previews for Twitter/X:
+- `/`
+- `/photography.html`
+- `/about.html`
+- `/writing.html`
+- `/contact.html`
 
-- **twitter:card**: summary_large_image or summary
-- **twitter:title**: Engaging title
-- **twitter:description**: Compelling description
-- **twitter:image**: Preview image
-- **twitter:creator**: @codeaayu
-
-### 5. Geographic Meta Tags (Home Page)
-
-For local SEO:
-
-- **geo.region**: IN-KA (Karnataka, India)
-- **geo.placename**: Bangalore
-- **geo.position**: 12.9716, 77.5946
-- **ICBM**: Latitude and longitude coordinates
-
-### 6. Structured Data (Schema.org JSON-LD)
-
-#### Home Page (index.html)
-Implements multiple schema types in a graph structure:
-
-1. **Person Schema**
-   - Name: Aayush Ahuja
-   - Job Title: Photographer
-   - Contact: Email, address
-   - Social media profiles (sameAs)
-   - Education: IIT (ISM) Dhanbad
-   - Works for: udaan.com
-
-2. **ProfessionalService Schema**
-   - Business name: CodeAayu Creatives
-   - Services: Travel, Portrait, Wildlife, Scenic photography
-   - Location: Bangalore, India
-   - Contact information
-   - Price range
-   - Geographic coordinates
-
-3. **WebSite Schema**
-   - Site name and description
-   - Publisher information
-   - Language: en-IN
-
-4. **WebPage Schema**
-   - Page title and description
-   - Primary image
-   - Publication and modification dates
-   - Part of website graph
+Update each page's `<lastmod>` date when page copy, structure, or portfolio content materially changes.
 
 ## Page-Specific SEO
 
-### Home Page (index.html)
-- **Focus**: General brand, services, photographer portfolio
-- **Keywords**: Aayush Ahuja, photographer, travel photography, portrait photography, Bangalore
-- **Structured Data**: Person, ProfessionalService, WebSite, WebPage schemas
+### Home Page (`index.html`)
 
-### Photography Page (photography.html)
-- **Focus**: Portfolio showcase, photography categories
-- **Keywords**: photography portfolio, travel photography, wildlife photography, bird photography
-- **Image Count**: 40+ selected frames mentioned in portfolio
-- **Featured**: Vivekananda Memorial image for social sharing
+- **Focus**: CodeAayu Creatives brand, Aayush Ahuja, photography systems, portraits, brands, travel, and wildlife.
+- **Primary social image**: `images/thumbnails/portfolio/eagle_fly.jpg`.
+- **Structured data**: `Person` JSON-LD with name, URL, image, job title, email, Bangalore address, and social profiles.
+- **Current content signal**: Hero, selected work, 4-step production pipeline, and contact CTA.
 
-### About Page (about.html)
-- **Focus**: Personal story, credentials, experience
-- **Keywords**: About Aayush Ahuja, IIT ISM Dhanbad, software engineer photographer
-- **Profile Type**: Uses og:type="profile"
-- **Featured**: Personality photo for social sharing
+### Photography Page (`photography.html`)
 
-### Writing Page (writing.html)
-- **Focus**: Articles, blog posts, creative writing
-- **Keywords**: writing portfolio, Medium articles, creative writing
-- **Content Stats**: 9+ published articles mentioned
-- **Featured**: Latest article image for social sharing
+- **Focus**: Curated photography gallery across Portrait, Wildlife, Travel, Scenic, and Texture categories.
+- **Current gallery count**: 16 inlined frames, mirrored in `script.js` and `data/portfolio.json`.
+- **Primary social image**: `images/thumbnails/portfolio/vivekanand_memorial.jpg`.
+- **Current content signal**: Use-case sub-nav, category filters, lightbox, and mood engine.
 
-### Contact Page (contact.html)
-- **Focus**: Contact information, booking, collaboration
-- **Keywords**: hire photographer, contact photographer, photography services India
-- **Key Info**: 24-hour response time, email, location
-- **CTA**: Strong call-to-action for bookings
+### About Page (`about.html`)
 
-## SEO Best Practices Implemented
+- **Focus**: Aayush Ahuja profile, Bangalore base, software-engineer background, photography operating style, and shoot protocol.
+- **Open Graph type**: `profile`.
+- **Primary social image**: `images/thumbnails/about/personality-photo-1.jpg`.
+- **Current content signal**: Profile summary, image lab, operating principles, and availability CTA.
 
-### 1. Title Tag Optimization
-- Unique titles for each page
-- Include primary keywords
-- Brand name at the end (except homepage)
-- Length: 50-60 characters
+### Writing Page (`writing.html`)
 
-### 2. Meta Description Optimization
-- Unique descriptions for each page
-- Include call-to-action
-- Natural keyword placement
-- Length: 150-160 characters
+- **Focus**: Medium essays by Aayush Ahuja on travel, creativity, personal growth, technology, and life.
+- **Current article count**: 5 featured article links plus a Medium archive link.
+- **Primary social image**: Medium CDN image for the latest featured article.
+- **Current content signal**: Article cards with decorative cover images and external Medium links.
 
-### 3. Image Optimization
-- All images have descriptive alt text
-- Lazy loading implemented (`loading="lazy"`)
-- Optimized thumbnails for faster loading
-- Proper file naming conventions
+### Contact Page (`contact.html`)
 
-### 4. Internal Linking
-- Clear navigation structure
-- Contextual links between pages
-- Breadcrumb-style navigation
-- Footer links to all main pages
+- **Focus**: Project brief submission for portraits, brand image sets, travel stories, events, and collaborations.
+- **Primary social image**: `images/thumbnails/about/personality-photo-1.jpg`.
+- **Structured data**: `ContactPage` JSON-LD.
+- **Current content signal**: Brief builder, Web3Forms form, and direct email/social details.
 
-### 5. Mobile Optimization
-- Responsive meta viewport tag
-- Mobile-friendly design
-- Touch-optimized navigation
-- Fast loading on mobile devices
+## Metadata Checklist
 
-### 6. Schema Markup
-- JSON-LD format (Google recommended)
-- Multiple entity types in graph structure
-- Rich snippets potential for search results
-- Knowledge graph eligibility
+Every page should keep these tags current:
 
-## Tools for Verification
-
-### 1. Google Tools
-- **Google Search Console**: Submit sitemap, monitor indexing
-- **Rich Results Test**: Verify structured data
-  - URL: https://search.google.com/test/rich-results
-- **PageSpeed Insights**: Check performance
-  - URL: https://pagespeed.web.dev/
-
-### 2. Social Media Tools
-- **Facebook Sharing Debugger**: Test Open Graph tags
-  - URL: https://developers.facebook.com/tools/debug/
-- **Twitter Card Validator**: Test Twitter cards
-  - URL: https://cards-dev.twitter.com/validator
-- **LinkedIn Post Inspector**: Test LinkedIn sharing
-  - URL: https://www.linkedin.com/post-inspector/
-
-### 3. SEO Analysis Tools
-- **Schema Markup Validator**: https://validator.schema.org/
-- **SEO Site Checkup**: https://seositecheckup.com/
-- **Screaming Frog**: Desktop crawler for technical SEO
-- **Ahrefs/SEMrush**: Comprehensive SEO analysis (paid)
-
-## Next Steps for Maximum Impact
-
-### 1. Submit to Search Engines
-```bash
-# Google Search Console
-1. Verify site ownership
-2. Submit sitemap.xml
-3. Request indexing for all pages
-4. Monitor performance weekly
-
-# Bing Webmaster Tools
-1. Verify site ownership
-2. Submit sitemap.xml
-3. Monitor indexing status
+```html
+<title>...</title>
+<meta name="description" content="...">
+<meta name="keywords" content="...">
+<meta name="author" content="Aayush Ahuja">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#050816">
+<link rel="canonical" href="https://codeaayucreatives.co.in/...">
+<meta property="og:type" content="website">
+<meta property="og:title" content="...">
+<meta property="og:description" content="...">
+<meta property="og:image" content="https://codeaayucreatives.co.in/...">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://codeaayucreatives.co.in/...">
 ```
 
-### 2. Content Optimization
-- Add blog section with regular content updates
-- Create location-specific content (Bangalore photography, India travel)
-- Add more long-tail keywords naturally in content
-- Create photography tutorials and guides
+The home page currently also includes `og:url`, `twitter:title`, and `twitter:description`. Add those to the other pages if you want stricter parity across social previews.
 
-### 3. Link Building
-- Submit to photography directories
-- Guest post on photography blogs
-- Get listed in "Best Photographers in Bangalore"
-- Engage with photography communities
+## Image SEO
 
-### 4. Social Media Integration
-- Regular posting with proper hashtags
-- Link back to website from social profiles
-- Use Instagram Shopping for prints
-- Create Pinterest boards for photography
+- Use descriptive `alt` text for portfolio, logo, and about-page content images.
+- Use empty `alt=""` for purely decorative writing-card cover images.
+- Keep thumbnails in `images/thumbnails/portfolio/`.
+- Keep full-size lightbox images in `images/portfolio/`.
+- Keep `loading="lazy"` and `decoding="async"` on non-critical images.
+- When adding a portfolio image, update `photography.html`, `index.html` if featured, `script.js`, and `data/portfolio.json` together.
 
-### 5. Performance Optimization
-- Implement image CDN (Cloudflare, Cloudinary)
-- Minify CSS and JavaScript
-- Enable browser caching
-- Implement service worker for PWA
+## Structured Data
 
-### 6. Local SEO
-- Create Google Business Profile
-- Get listed on photography directories
-- Encourage client reviews
-- Add location pages for different cities
+Current JSON-LD is intentionally narrow:
 
-### 7. AI Search Optimization
-- Ensure FAQ sections are well-structured
-- Use natural language in content
-- Create "How to" guides
-- Implement FAQ schema markup
+- `index.html`: `Person`
+- `contact.html`: `ContactPage`
 
-## Monitoring & Maintenance
+Potential future additions:
 
-### Weekly Tasks
-- Check Google Search Console for errors
-- Monitor ranking for target keywords
-- Review traffic analytics
+- `WebSite` schema for the whole domain.
+- `ProfessionalService` schema if CodeAayu Creatives should rank more strongly as a local photography service.
+- `ImageGallery` or `CreativeWork` schema if portfolio indexing becomes a priority.
+- `Article` schema only if article content is hosted on this site instead of linking out to Medium.
 
-### Monthly Tasks
-- Update sitemap if new pages added
-- Refresh meta descriptions based on performance
-- Add new structured data types as needed
-- Review and update content
+## Verification Tools
 
-### Quarterly Tasks
-- Comprehensive SEO audit
-- Competitor analysis
-- Backlink profile review
-- Content strategy refinement
+- Google Rich Results Test: https://search.google.com/test/rich-results
+- Schema Markup Validator: https://validator.schema.org/
+- PageSpeed Insights: https://pagespeed.web.dev/
+- Facebook Sharing Debugger: https://developers.facebook.com/tools/debug/
+- LinkedIn Post Inspector: https://www.linkedin.com/post-inspector/
 
-## Expected Results
+## Maintenance Checklist
 
-### Short-term (1-3 months)
-- Improved search engine indexing
-- Better social media preview cards
-- Increased organic traffic (10-20%)
-- Better click-through rates from search
+Run this checklist when changing page content, portfolio content, or social preview images:
 
-### Medium-term (3-6 months)
-- Rankings for branded keywords
-- Featured snippets potential
-- 30-50% increase in organic traffic
-- Higher engagement from social shares
-
-### Long-term (6-12 months)
-- Rankings for competitive keywords
-- Knowledge graph appearance
-- 50-100% increase in organic traffic
-- Consistent lead generation from search
+1. Update page title, description, and keywords if the page focus changed.
+2. Update Open Graph and Twitter images if the featured visual changed.
+3. Update `sitemap.xml` `<lastmod>` dates for touched pages.
+4. Bump `styles.css?v=...` and `script.js?v=...` when CSS or JS changes need cache busting.
+5. Run `npm run build` to verify the OpenAI Sites package output.
+6. Test a local static server with `python3 -m http.server 8080`.
 
 ## Target Keywords by Page
 
 ### Home Page
+
 - Aayush Ahuja photographer
-- Photographer Bangalore
-- Travel photographer India
-- Portrait photographer Bangalore
 - CodeAayu Creatives
+- Bangalore photographer
+- portrait photography Bangalore
+- brand photography India
 
 ### Photography Page
-- Photography portfolio India
-- Travel photography India
-- Wildlife photography portfolio
-- Portrait photography samples
-- Professional photographer portfolio
+
+- photography portfolio India
+- wildlife photography portfolio
+- portrait photography samples
+- travel photography India
+- professional photographer portfolio
 
 ### About Page
-- Aayush Ahuja photographer biography
+
+- Aayush Ahuja biography
+- software engineer photographer
 - IIT ISM photographer
-- Software engineer photographer
-- Professional photographer Bangalore
+- Bangalore photographer profile
 
 ### Writing Page
-- Photography blog India
-- Creative writing photographer
-- Travel stories India
-- Medium writer photographer
+
+- Aayush Ahuja writing
+- CodeAayu Medium
+- travel essays India
+- creative writing photographer
 
 ### Contact Page
-- Hire photographer Bangalore
-- Photography services India
-- Book photographer India
-- Photography project contact
 
-## Conclusion
-
-This comprehensive SEO implementation provides a solid foundation for search engine visibility and discoverability. Regular monitoring, content updates, and link building will further improve results over time.
-
-For questions or updates, refer to this guide and update it as the SEO strategy evolves.
+- hire photographer Bangalore
+- photography project brief
+- book photographer India
+- brand photography contact
 
 ---
 
-**Last Updated**: October 15, 2025
-**Implemented By**: Claude Code
-**Version**: 1.0
+- **Last Updated**: 2026-07-02
+- **Version**: 2.0

@@ -1,110 +1,88 @@
 # Component System for CodeAayu Creatives Website
 
-## Overview
-The header and footer are now maintained in a single location and dynamically loaded into all pages. This makes it easy to update navigation, footer links, or branding across the entire website.
+## Status: **Experimental — not currently in use**
 
-## Structure
+This folder holds an *experimental* header/footer component system that was set up to deduplicate navigation and footer markup across the 5 HTML pages. **It is not wired into any page on the site today.** Each HTML file inlines its own `<header>` and `<footer>`.
+
+The data in this README is preserved so the system can be revived if and when the duplication becomes painful enough to justify a real include step. For the current state of the site, see [README.md](./README.md) -> "Known Limitations".
+
+## What it was supposed to do
+
+Keep the header and footer in a single location and dynamically load them into all pages, so navigation, footer links, and branding could be updated in one place.
+
+## Structure (if revived)
 
 ```
 components/
-├── header.html   - Navigation bar component
-└── footer.html   - Footer and back-to-top button component
+├── header.html        # Navigation bar component
+└── footer.html        # Footer and back-to-top button component
 
-components-loader.js  - Script that loads components into pages
+components-loader.js   # Script that loads components into pages
 ```
 
-## How to Use
+The existing files in this folder are from the v2 design and use a different visual treatment (cream/warm-light theme, `nav-container` markup, dropdown menus, and a theme toggle) than the current dark mono design. **They are not drop-in replacements** for the current header/footer: the markup, classes, mobile-menu behavior, and assets have all changed.
 
-### 1. Add Component Placeholders to Your HTML Pages
+## Why it was abandoned
 
-In the `<body>` tag, add a `data-page` attribute:
-```html
-<body data-page="index">   <!-- for v2-index.html -->
-<body data-page="about">   <!-- for v2-about.html -->
-<body data-page="writing"> <!-- for v2-writing.html -->
-etc.
-```
+The plan to wire it up was on the redesign checklist but got deprioritized in favor of:
 
-Replace the entire `<nav>...</nav>` section with:
-```html
-<div id="header-component"></div>
-```
+- **Resilience over DRY**: Inlining the header/footer in each HTML page means no JS dependency for navigation. A failed loader script doesn't break the site.
+- **A 5-page site doesn't justify the complexity**: At 5 pages, the cost of "edit navigation in 5 places" is low enough that the runtime cost of a JS fetch-based component loader isn't worth the trade-off.
+- **No build-time include**: The repo now has an optional `npm run build` packaging step for OpenAI Sites, but it only copies static assets and writes a Worker entry. It does not compile HTML partials.
 
-Replace the entire `<footer>...</footer>` and back-to-top button with:
-```html
-<div id="footer-component"></div>
-```
+## When to revive this
 
-### 2. Load the Component Loader Script
+Revisit this system if any of the following become true:
 
-Add this script **BEFORE** your main `v2-script.js`:
-```html
-<script src="components-loader.js"></script>
-<script src="v2-script.js"></script>
-```
+1. The site grows past ~10 pages.
+2. The header or footer needs to change frequently (e.g., seasonal navigation, A/B tests).
+3. The Sites build script is expanded to generate HTML from shared partials.
 
-### 3. Example: Converting a Page
+## What to do if you revive it
 
-**Before:**
-```html
-<body>
-    <nav class="nav navbar" id="mainNav">
-        <!-- 50 lines of navigation code -->
-    </nav>
+### 1. Rewrite the components
 
-    <!-- Page content -->
+The current `components/header.html` and `components/footer.html` use the v2 visual treatment. Re-author them to match the v3 dark mono header/footer markup in `index.html`.
 
-    <footer class="footer">
-        <!-- 50 lines of footer code -->
-    </footer>
+### 2. Update the loader
 
-    <script src="v2-script.js"></script>
-</body>
-```
+`components-loader.js` exists, but it was written for the older component markup. If this system is revived, update it to:
+- Fetch the components in parallel, as it does today
+- Inject them into `<div id="header-component">` and `<div id="footer-component">` placeholders
+- Update the active link in the nav based on the `data-page` attribute on `<body>`
+- Handle fetch failure gracefully (e.g., leave the inline header/footer as a fallback)
+- Re-run or coordinate with `script.js` menu setup so the mobile close button, focus trap, and body scroll lock still work after injection
 
-**After:**
-```html
-<body data-page="about">
-    <div id="header-component"></div>
+### 3. Migrate the HTML pages
 
-    <!-- Page content -->
+In each of the 5 HTML files:
+- Add a `data-page` attribute to `<body>` (e.g., `<body data-page="photography">`)
+- Replace the inlined `<header>` with `<div id="header-component"></div>`
+- Replace the inlined `<footer>` with `<div id="footer-component"></div>`
+- Load `components-loader.js` before `script.js`
+- Make sure the revived component markup includes the current close button (`data-menu-close`) and matches the current cache-busted `styles.css` / `script.js` version.
 
-    <div id="footer-component"></div>
+### 4. Test with JS off
 
-    <script src="components-loader.js"></script>
-    <script src="v2-script.js"></script>
-</body>
-```
+Because inlined header/footer was a deliberate resilience choice, the revived component system should degrade gracefully when JS is disabled. Either keep the inline header/footer as a `<noscript>` fallback or accept the trade-off explicitly.
 
-## Making Updates
+## Loader status
 
-### To Update Navigation
-Edit `components/header.html` - changes will appear on all pages
+`components-loader.js` is present in the repository. It is archived with the v2 component experiment and is not referenced by the current pages.
 
-### To Update Footer
-Edit `components/footer.html` - changes will appear on all pages
+Current behavior:
 
-### To Update Branding/Logo
-Edit `components/header.html` and `components/footer.html`
+- It loads `components/header.html` and `components/footer.html` into `#header-component` and `#footer-component`.
+- It dispatches `componentLoaded` for each component and `allComponentsLoaded` after both finish.
+- It applies an `active` class based on `body[data-page]`.
 
-## Benefits
+Do not treat the loader as production-ready until the component HTML is rewritten to match the current dark mono header/footer and mobile-menu behavior.
 
-1. **Single Source of Truth**: Update header/footer in one place
-2. **Consistency**: All pages automatically have the same navigation and footer
-3. **Easy Maintenance**: No need to update 5 different HTML files
-4. **Active Link Highlighting**: The current page is automatically highlighted in navigation
+## See also
 
-## Active Link Detection
+- [README.md](./README.md) — current site architecture and known limitations
+- [SEO-IMPLEMENTATION-GUIDE.md](./SEO-IMPLEMENTATION-GUIDE.md) — current meta and SEO strategy
 
-The component loader automatically highlights the active page link based on the `data-page` attribute on the `<body>` tag.
+---
 
-- `data-page="index"` → "Home" link gets `active` class
-- `data-page="photography"` → "Photography" link gets `active` class
-- etc.
-
-## Notes
-
-- The components are loaded asynchronously using JavaScript fetch
-- Components load very quickly and are cached by the browser
-- If JavaScript is disabled, components won't load (consider server-side includes for production)
-- The `allComponentsLoaded` event is fired when all components are ready
+**Last Updated**: 2026-07-02
