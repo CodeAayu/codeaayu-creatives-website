@@ -135,78 +135,88 @@ EOF
 
 ## Adding Photos to Website Pages
 
-### For Home Page (index.html)
+The current site uses inlined resilient HTML tiles plus mirrored data. When adding, removing, or re-ordering a portfolio frame, keep these locations in sync:
 
-Add to the work grid section around line 353:
+1. `photography.html` - the visible full gallery inside `<div class="portfolio-grid" data-portfolio-grid>`.
+2. `index.html` - the visible selected-work grid inside `<div class="portfolio-grid" data-selected-work>` if the frame is featured.
+3. `script.js` - the `PORTFOLIO_DATA` fallback const.
+4. `data/portfolio.json` - the tooling/build mirror of the same data.
+
+### For Home Page (`index.html`)
+
+Add featured frames to the selected-work grid only when they should appear on the home page:
 
 ```html
-<!-- Portraits -->
-<div class="work-item" data-category="portraits" data-aos="fade-up">
-    <div class="work-image">
-        <img src="images/thumbnails/portfolio/portrait-N.jpg" alt="Portrait photography" loading="lazy">
-        <div class="work-overlay">
-            <div class="work-info">
-                <span class="work-category">Portrait Photography</span>
-                <h3 class="work-title">Title Here</h3>
-                <p class="work-description">Description here</p>
-            </div>
-            <a href="photography.html" class="work-link">
-                <span>View Project</span>
-                <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </a>
-        </div>
-    </div>
-</div>
+<button class="work-tile" type="button"
+  data-lightbox-src="images/portfolio/portrait-N.jpg"
+  data-caption="Portrait / Photo Title"
+  data-reveal>
+  <img src="images/thumbnails/portfolio/portrait-N.jpg" alt="Portrait description" loading="lazy" decoding="async">
+  <span class="work-caption"><span>Portrait</span><span>Photo Title</span></span>
+</button>
 ```
 
 **Available categories:**
-- `portraits` - Portrait photography
-- `travel` - Travel photography
-- `wildlife` - Wildlife photos
+- `portrait` - Portrait and personal-brand photography
+- `travel` - Travel and destination frames
+- `wildlife` - Wildlife and bird photography
 - `scenic` - Scenic/landscape photos
-- `birds` - Bird photography
-- `animals` - Animal photography
+- `texture` - Detail, color, and texture studies
 
-### For Photography Page (photography.html)
+### For Photography Page (`photography.html`)
 
-Add to the gallery around line 555:
+Add to the gallery grid:
 
 ```html
-<div class="gallery-card" data-category="portraits" data-aos="fade-up">
-    <div class="gallery-image">
-        <img src="images/thumbnails/portfolio/portrait-N.jpg" alt="Portrait description" loading="lazy">
-        <div class="gallery-overlay-v2">
-            <span class="gallery-category">Portraits</span>
-            <h3 class="gallery-title">Photo Title</h3>
-            <button class="gallery-zoom" onclick="openLightbox(INDEX)">
-                <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </button>
-        </div>
-    </div>
-</div>
+<button class="work-tile" data-category="portrait" type="button"
+  data-lightbox-src="images/portfolio/portrait-N.jpg"
+  data-caption="Portrait / Photo Title"
+  data-reveal>
+  <img src="images/thumbnails/portfolio/portrait-N.jpg" alt="Portrait description" loading="lazy" decoding="async">
+  <span class="work-caption"><span>Portrait</span><span>Photo Title</span></span>
+</button>
 ```
 
-**Important:** Update the `onclick="openLightbox(INDEX)"` with the correct sequential index based on existing photos in the gallery.
+No manual lightbox index is required. `script.js` reads all `[data-lightbox-src]` triggers at click time and supports left/right arrow navigation.
 
-## CSS Configuration for Face-Focused Display
+### Data Mirror Entry
 
-The photography.html page has this CSS (around line 940) to ensure faces are visible in thumbnails:
+Add the same frame to `PORTFOLIO_DATA` in `script.js` and to `data/portfolio.json`:
 
-```css
-.gallery-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;  /* Crops from top where faces are */
-    transition: transform var(--transition-slow);
+```json
+{
+  "id": "portrait-N",
+  "thumb": "images/thumbnails/portfolio/portrait-N.jpg",
+  "full": "images/portfolio/portrait-N.jpg",
+  "alt": "Portrait description",
+  "category": "portrait",
+  "surfaces": ["web", "campaign"],
+  "title": "Photo Title",
+  "tagline": "Portrait"
 }
 ```
 
-The gallery uses `aspect-ratio: 4/3` containers, and `object-position: top center` ensures that even if thumbnails don't perfectly match the container ratio, faces remain visible.
+For home-page featured frames, also add:
+
+```json
+"featured": true,
+"featuredOrder": 5
+```
+
+## CSS Configuration for Face-Focused Display
+
+The current gallery uses `.work-tile img` with `object-fit: cover`, so the thumbnail file itself should already be cropped to the desired face/subject framing before it is added to the site:
+
+```css
+.work-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--ease);
+}
+```
+
+For portraits, create the face-focused thumbnail first and verify the rendered crop. Do not rely on page-level `object-position` to recover a poorly cropped thumbnail.
 
 ## Quick Reference Commands
 

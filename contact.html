@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260609-about">
+  <link rel="stylesheet" href="styles.css?v=20260701-redesign-g">
   <link rel="icon" type="image/png" href="images/logos/logo-black.png">
   <script type="application/ld+json">
   {
@@ -50,6 +50,7 @@
     </header>
 
     <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
+      <button type="button" class="menu-close" aria-label="Close menu" data-menu-close>×</button>
       <a href="index.html">Home</a>
       <a href="photography.html">Gallery</a>
       <a href="about.html">About</a>
@@ -74,8 +75,7 @@
           <aside class="contact-card" data-reveal>
             <span class="kicker">Fast brief builder</span>
             <p class="section-copy">
-              Choose the strongest signals before sending the form. This is not submitted separately;
-              it helps you clarify the direction.
+              Tick the signals that match your project. The summary gets prepended to the form below so you do not have to retype it.
             </p>
             <form class="brief-builder" data-brief-builder>
               <label><input type="checkbox" value="Portrait energy"> Portrait energy</label>
@@ -83,7 +83,10 @@
               <label><input type="checkbox" value="Travel atmosphere"> Travel atmosphere</label>
               <label><input type="checkbox" value="Fast delivery"> Fast delivery</label>
             </form>
-            <div class="brief-output" data-brief-output></div>
+            <div class="brief-output-row">
+              <div class="brief-output" data-brief-output>Brief signal: choose what matters most.</div>
+              <button type="button" class="brief-copy" data-brief-copy aria-label="Copy brief signal to clipboard">Copy</button>
+            </div>
             <p class="section-copy">
               Email: <a href="mailto:codeaayu@gmail.com">codeaayu@gmail.com</a><br>
               Base: Bangalore, India<br>
@@ -156,7 +159,7 @@
 
               <div class="field">
                 <label for="message">Project Notes</label>
-                <textarea id="message" name="message" placeholder="Share references, dates, deliverables, usage, people involved, and anything you already know." required></textarea>
+                <textarea id="message" name="message" data-brief-message placeholder="Share references, dates, deliverables, usage, people involved, and anything you already know." required></textarea>
               </div>
 
               <button class="button button-primary" type="submit">Send Project Brief</button>
@@ -174,6 +177,6 @@
     </footer>
   </div>
 
-  <script src="script.js?v=20260609-creative"></script>
+  <script src="script.js?v=20260701-redesign-g"></script>
 </body>
 </html>

@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260609-about">
+  <link rel="stylesheet" href="styles.css?v=20260701-redesign-g">
   <link rel="icon" type="image/png" href="images/logos/logo-black.png">
   <script type="application/ld+json">
   {
@@ -74,6 +74,7 @@
     </header>
 
     <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
+      <button type="button" class="menu-close" aria-label="Close menu" data-menu-close>×</button>
       <a href="index.html">Home</a>
       <a href="photography.html">Gallery</a>
       <a href="about.html">About</a>
@@ -85,23 +86,34 @@
       <section class="hero">
         <div class="container hero-grid">
           <div class="hero-copy-column" data-reveal>
-            <span class="kicker">CodeAayu Creatives / Bangalore</span>
+            <span class="kicker">CodeAayu Creatives / Aayush Ahuja / Bangalore</span>
             <h1 class="hero-title">CodeAayu <span>Creatives</span></h1>
             <p class="hero-copy">
-              Photography and visual systems engineered for founders, creators, travel stories,
-              wildlife frames, and brands that need polished, high-signal image sets.
+              Photography and visual systems for founders, brands, portraits, and travel stories that need coherent image
+              sets across web, social, print, and campaigns.
             </p>
-            <div class="hero-stack" aria-label="Creative stack">
-              <span>Photographer</span>
-              <span>Software engineer</span>
-              <span>Visual systems</span>
+            <div class="hero-stack" aria-label="Creative focus areas">
+              <span>Portrait systems</span>
+              <span>Brand image sets</span>
+              <span>Travel stories</span>
             </div>
             <div class="hero-actions">
               <a class="button button-primary" href="contact.html">Start a Project</a>
-              <a class="button button-secondary" href="photography.html">View Gallery</a>
+              <a class="button button-secondary" href="photography.html">See work →</a>
+            </div>
+            <div class="hero-proof-strip" aria-label="Featured photography samples">
+              <button type="button" data-lightbox-src="images/portfolio/eagle_fly.jpg" data-caption="Wildlife / Wings of Freedom">
+                <img src="images/thumbnails/portfolio/eagle_fly.jpg" alt="Eagle in flight" loading="lazy" decoding="async">
+              </button>
+              <button type="button" data-lightbox-src="images/portfolio/portrait-1.jpg" data-caption="Portrait / Personal Story">
+                <img src="images/thumbnails/portfolio/portrait-1.jpg" alt="Portrait in yellow saree" loading="lazy" decoding="async">
+              </button>
+              <button type="button" data-lightbox-src="images/portfolio/vivekanand_memorial.jpg" data-caption="Travel / Rock Memorial">
+                <img src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="Vivekananda Rock Memorial" loading="lazy" decoding="async">
+              </button>
             </div>
             <div class="metric-strip" aria-label="Portfolio metrics">
-              <div class="metric"><strong>40+</strong><span>Curated frames</span></div>
+              <div class="metric"><strong>16</strong><span>Selected frames</span></div>
               <div class="metric"><strong>5+</strong><span>Years shooting</span></div>
               <div class="metric"><strong>15+</strong><span>Cities covered</span></div>
             </div>
@@ -111,7 +123,7 @@
             <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
             <div class="profile-card">
               <div class="profile-frame">
-                <img src="images/thumbnails/about/personality-photo-1.jpg" alt="Aayush Ahuja photographing at the coast">
+                <img src="images/thumbnails/about/personality-photo-1.jpg" alt="Aayush Ahuja photographing at the coast" loading="lazy" decoding="async">
               </div>
               <div class="profile-meta">
                 <span class="status-pill">Active for briefs</span>
@@ -124,84 +136,47 @@
   controls: light, color, context;
   output: web, print, campaign;
 }</code></pre>
-            <div class="signal-grid" aria-label="Delivery signals">
-              <div><span>01</span><strong>Direction</strong></div>
-              <div><span>02</span><strong>Capture</strong></div>
-              <div><span>03</span><strong>Grade</strong></div>
-              <div><span>04</span><strong>Deliver</strong></div>
-            </div>
           </div>
         </div>
       </section>
 
-      <section class="ticker" aria-label="Photography services">
-        <div class="ticker-track">
-          <span>Portrait Systems</span><span>Brand Image Sets</span><span>Travel Stories</span><span>Wildlife Frames</span><span>Creator Profiles</span><span>Campaign Delivery</span>
-          <span>Portrait Systems</span><span>Brand Image Sets</span><span>Travel Stories</span><span>Wildlife Frames</span><span>Creator Profiles</span><span>Campaign Delivery</span>
-        </div>
-      </section>
-
-      <section class="section about-section" id="about">
-        <div class="container about-system">
-          <div class="about-copy-panel" data-reveal>
-            <span class="kicker">Introduction</span>
-            <h2 class="section-title">I build image sets like small systems.</h2>
-            <p class="about-lead">
-              CodeAayu Creatives sits between camera craft and engineering discipline. The work is not just about one good frame;
-              it is about planning, capturing, grading, and handing over a coherent set that can actually be used.
-            </p>
-            <div class="about-tags" aria-label="About capabilities">
-              <span>Portraits</span>
-              <span>Brand libraries</span>
-              <span>Travel stories</span>
-              <span>Wildlife timing</span>
-            </div>
-          </div>
-
-          <div class="about-media-panel" data-reveal>
-            <img src="images/about/final-edits-airport-lights.jpg" alt="Airport lighting installation photographed by CodeAayu Creatives">
-            <div class="about-image-caption">
-              <span>Selected from Final Edits</span>
-              <strong>Light / motion / built environments</strong>
-            </div>
-          </div>
-
-          <div class="about-principles" data-reveal>
-            <article>
-              <span>01</span>
-              <h3>Find the signal</h3>
-              <p>Clarify the subject, usage, audience, and visual constraint before the shoot starts.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>Control the frame</h3>
-              <p>Use light, timing, color, and composition to keep every image connected to the brief.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>Ship the system</h3>
-              <p>Deliver web, social, campaign, and print-ready exports without making the client rework the set.</p>
-            </article>
-          </div>
-
-          <div class="about-stats" data-reveal aria-label="About metrics">
+      <section class="section" id="work">
+        <div class="container">
+          <div class="section-head" data-reveal>
             <div>
-              <strong>01</strong>
-              <span>Brief-led planning</span>
+              <span class="kicker">Selected work</span>
+              <h2 class="section-title">A short cut through the strongest frames.</h2>
             </div>
-            <div>
-              <strong>02</strong>
-              <span>Consistent color logic</span>
-            </div>
-            <div>
-              <strong>03</strong>
-              <span>Channel-ready exports</span>
-            </div>
+            <p class="section-copy">Motion, people, horizons, and texture — four pieces that show the range before the full gallery.</p>
+          </div>
+          <div class="portfolio-grid" data-selected-work>
+            <button class="work-tile large" type="button" data-lightbox-src="images/portfolio/eagle_fly.jpg" data-caption="Wildlife / Wings of Freedom" data-reveal>
+              <img src="images/thumbnails/portfolio/eagle_fly.jpg" alt="Eagle in flight" loading="lazy" decoding="async">
+              <span class="work-caption"><span>Wildlife</span><span>Wings of Freedom</span></span>
+            </button>
+            <button class="work-tile" type="button" data-lightbox-src="images/portfolio/portrait-5.jpg" data-caption="Portrait / Character Study" data-reveal>
+              <img src="images/thumbnails/portfolio/portrait-5.jpg" alt="Portrait study" loading="lazy" decoding="async">
+              <span class="work-caption"><span>Portrait</span><span>Character Study</span></span>
+            </button>
+            <button class="work-tile" type="button" data-lightbox-src="images/portfolio/vivekanand_memorial.jpg" data-caption="Travel / Rock Memorial" data-reveal>
+              <img src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="Vivekananda Rock Memorial" loading="lazy" decoding="async">
+              <span class="work-caption"><span>Travel</span><span>Rock Memorial</span></span>
+            </button>
+            <button class="work-tile" type="button" data-lightbox-src="images/portfolio/Flower with sun.jpg" data-caption="Texture / Sunlit Bloom" data-reveal>
+              <img src="images/thumbnails/portfolio/Flower with sun.jpg" alt="Flower silhouette against sun" loading="lazy" decoding="async">
+              <span class="work-caption"><span>Texture</span><span>Sunlit Bloom</span></span>
+            </button>
+            <noscript>
+              <p class="section-copy">JavaScript is off — only the four featured frames are shown here. <a href="photography.html">Open the full gallery</a>.</p>
+            </noscript>
+          </div>
+          <div class="section-foot" data-reveal>
+            <a class="button button-secondary" href="photography.html">Open the full gallery</a>
           </div>
         </div>
       </section>
 
-      <section class="section section-panel" id="work">
+      <section class="section section-panel" id="process">
         <div class="container">
           <div class="section-head" data-reveal>
             <div>
@@ -234,97 +209,6 @@
               <h3>Ship</h3>
               <p>Exports are packaged for web, social, print, portfolio, and campaign use without extra friction.</p>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="skills">
-        <div class="container">
-          <div class="section-head" data-reveal>
-            <div>
-              <span class="kicker">Technical toolkit</span>
-              <h2 class="section-title">The stack behind the frames.</h2>
-            </div>
-            <p class="section-copy">
-              A practical mix of camera craft, post-production, web delivery, and engineering habits.
-            </p>
-          </div>
-          <div class="tech-stack" data-reveal>
-            <div class="stack-card">
-              <span>Capture</span>
-              <strong>Sony Alpha / natural light / field timing</strong>
-            </div>
-            <div class="stack-card">
-              <span>Post</span>
-              <strong>Lightroom / Photoshop / color systems</strong>
-            </div>
-            <div class="stack-card">
-              <span>Delivery</span>
-              <strong>Web exports / campaign crops / print-ready sets</strong>
-            </div>
-            <div class="stack-card">
-              <span>Ops</span>
-              <strong>Briefing / versioning / structured handoff</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="projects">
-        <div class="container">
-          <div class="section-head" data-reveal>
-            <div>
-              <span class="kicker">Case studies</span>
-              <h2 class="section-title">Selected frames.</h2>
-            </div>
-            <p class="section-copy">A short cut through the strongest local assets: motion, people, horizons, and textures.</p>
-          </div>
-          <div class="portfolio-grid">
-            <button class="work-tile large" type="button" data-lightbox-src="images/portfolio/eagle_fly.jpg" data-caption="Wildlife / Wings of Freedom" data-reveal>
-              <img src="images/thumbnails/portfolio/eagle_fly.jpg" alt="Eagle in flight">
-              <span class="work-caption"><span>Wildlife</span><span>Wings of Freedom</span></span>
-            </button>
-            <button class="work-tile tall" type="button" data-lightbox-src="images/portfolio/portrait-5.jpg" data-caption="Portrait / Character Study" data-reveal>
-              <img src="images/thumbnails/portfolio/portrait-5.jpg" alt="Portrait study">
-              <span class="work-caption"><span>Portrait</span><span>Character Study</span></span>
-            </button>
-            <button class="work-tile" type="button" data-lightbox-src="images/portfolio/Fire_nubra.JPG" data-caption="Travel / Nubra Fire" data-reveal>
-              <img src="images/thumbnails/portfolio/Fire_nubra.JPG" alt="Camp fire at Nubra">
-              <span class="work-caption"><span>Travel</span><span>Nubra Fire</span></span>
-            </button>
-            <button class="work-tile" type="button" data-lightbox-src="images/portfolio/Flower with sun.jpg" data-caption="Texture / Sunlit Bloom" data-reveal>
-              <img src="images/thumbnails/portfolio/Flower with sun.jpg" alt="Flower silhouette against sun">
-              <span class="work-caption"><span>Texture</span><span>Sunlit Bloom</span></span>
-            </button>
-            <button class="work-tile" type="button" data-lightbox-src="images/portfolio/vivekanand_memorial.jpg" data-caption="Travel / Rock Memorial" data-reveal>
-              <img src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="Vivekananda Rock Memorial">
-              <span class="work-caption"><span>Travel</span><span>Rock Memorial</span></span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-panel">
-        <div class="container mood-lab">
-          <div data-reveal>
-            <span class="kicker">Mood engine</span>
-            <h2 class="section-title">Choose the visual mode.</h2>
-            <p class="section-copy">
-              A compact selector that shows the range before visitors browse the full gallery.
-            </p>
-            <div class="mood-controls">
-              <button type="button" class="is-active" data-mood="motion">Motion</button>
-              <button type="button" data-mood="intimate">Intimate</button>
-              <button type="button" data-mood="horizon">Horizon</button>
-              <button type="button" data-mood="texture">Texture</button>
-            </div>
-          </div>
-          <div class="mood-stage" data-mood-stage data-reveal>
-            <img src="images/thumbnails/portfolio/eagle_fly.jpg" alt="Mood preview" data-mood-image>
-            <div class="mood-card">
-              <h3 data-mood-title>Motion</h3>
-              <p data-mood-note>Birds, roads, wind, timing. Built for kinetic stories.</p>
-            </div>
           </div>
         </div>
       </section>
@@ -372,6 +256,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=20260609-creative"></script>
+  <script src="script.js?v=20260701-redesign-g"></script>
 </body>
 </html>

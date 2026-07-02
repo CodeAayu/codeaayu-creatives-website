@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260609-about">
+  <link rel="stylesheet" href="styles.css?v=20260701-redesign-g">
   <link rel="icon" type="image/png" href="images/logos/logo-black.png">
 </head>
 <body>
@@ -42,6 +42,7 @@
     </header>
 
     <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
+      <button type="button" class="menu-close" aria-label="Close menu" data-menu-close>×</button>
       <a href="index.html">Home</a>
       <a href="photography.html">Gallery</a>
       <a href="about.html">About</a>
@@ -68,13 +69,15 @@
           </div>
 
           <aside class="about-hero-card" data-reveal aria-label="Profile summary">
-            <div class="about-portrait">
-              <img src="images/thumbnails/about/personality-photo-1.jpg" alt="Aayush Ahuja photographing by the coast">
-            </div>
             <div class="about-terminal">
               <span>profile.signal</span>
               <strong>Aayush Ahuja</strong>
               <p>Software engineer / photographer / field observer</p>
+              <ul class="about-signal-list">
+                <li><span>Base</span><strong>Bangalore, IN</strong></li>
+                <li><span>Focus</span><strong>Portraits · Travel · Wildlife</strong></li>
+                <li><span>Background</span><strong>IIT(ISM) Dhanbad</strong></li>
+              </ul>
             </div>
           </aside>
         </div>
@@ -96,8 +99,8 @@
           </article>
 
           <div class="about-image-lab" data-reveal aria-label="Selected visual references">
-            <img class="about-lab-primary" src="images/about/final-edits-airport-lights.jpg" alt="Airport lighting installation photographed by CodeAayu Creatives">
-            <img class="about-lab-secondary" src="images/thumbnails/about/personality-photo-2.jpg" alt="Aayush Ahuja outdoors">
+            <img class="about-lab-primary" src="images/about/final-edits-airport-lights.jpg" alt="Airport lighting installation photographed by CodeAayu Creatives" loading="lazy" decoding="async">
+            <img class="about-lab-secondary" src="images/thumbnails/about/personality-photo-2.jpg" alt="Aayush Ahuja outdoors" loading="lazy" decoding="async">
             <div class="about-lab-caption">
               <span>Field note</span>
               <strong>Look for structure first. Then wait for life inside it.</strong>
@@ -163,6 +166,6 @@
     </footer>
   </div>
 
-  <script src="script.js?v=20260609-creative"></script>
+  <script src="script.js?v=20260701-redesign-g"></script>
 </body>
 </html>
