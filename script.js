@@ -64,13 +64,14 @@ async function initPortfolioData() {
   if (!data.items || !data.items.length) return;
 
   const selectedContainer = document.querySelector("[data-selected-work]");
-  if (selectedContainer) {
+  if (selectedContainer && !selectedContainer.querySelector("[data-lightbox-src]")) {
     const featured = data.items
       .filter((item) => item.featured)
       .sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0));
-    selectedContainer.innerHTML = featured
-      .map((item, index) => renderSelectedTile(item, index))
-      .join("");
+    selectedContainer.insertAdjacentHTML(
+      "afterbegin",
+      featured.map((item, index) => renderSelectedTile(item, index)).join("")
+    );
   }
 
   const galleryContainer = document.querySelector("[data-portfolio-grid]");
