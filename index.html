@@ -1,47 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeAayu Creatives | Technical Photography Portfolio</title>
-  <meta name="description" content="CodeAayu Creatives by Aayush Ahuja creates polished photography systems for portraits, brands, travel stories, wildlife frames, and content-ready visual sets.">
-  <meta name="keywords" content="Aayush Ahuja, CodeAayu Creatives, Bangalore photographer, portrait photography, travel photography, wildlife photography, brand photography">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeAayu Creatives — Photography, served with feeling</title>
+  <meta name="description" content="CodeAayu Creatives is Aayush Ahuja's Bangalore photography studio for portraits, celebrations, brands, travel stories, wildlife, and every honest moment in between.">
   <meta name="author" content="Aayush Ahuja">
+  <meta name="theme-color" content="#1b0d18">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#050816">
   <link rel="canonical" href="https://codeaayucreatives.co.in/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://codeaayucreatives.co.in/">
-  <meta property="og:title" content="CodeAayu Creatives | Technical Photography Portfolio">
-  <meta property="og:description" content="Polished photography systems for portraits, brands, travel stories, wildlife frames, and content-ready visual sets.">
-  <meta property="og:image" content="https://codeaayucreatives.co.in/images/thumbnails/portfolio/eagle_fly.jpg">
+  <meta property="og:title" content="CodeAayu Creatives — Come as you are. I'll find the light.">
+  <meta property="og:description" content="A kinetic photography studio by Aayush Ahuja in Bangalore. Portraits, celebrations, brands, travel, wildlife, and moonlight.">
+  <meta property="og:image" content="https://codeaayucreatives.co.in/public/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CodeAayu Creatives | Technical Photography Portfolio">
-  <meta name="twitter:description" content="Polished photography systems for portraits, brands, travel stories, wildlife frames, and content-ready visual sets.">
-  <meta name="twitter:image" content="https://codeaayucreatives.co.in/images/thumbnails/portfolio/eagle_fly.jpg">
+  <meta name="twitter:title" content="CodeAayu Creatives — Photography, served with feeling">
+  <meta name="twitter:description" content="Come as you are. I'll find the light.">
+  <meta name="twitter:image" content="https://codeaayucreatives.co.in/public/og.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260701-redesign-g">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preload" href="images/kinetic/aayush-shooting.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="styles.css?v=20260710-kinetic-f">
   <link rel="icon" type="image/png" href="images/logos/logo-black.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Aayush Ahuja",
+    "@type": "ProfessionalService",
+    "name": "CodeAayu Creatives",
     "url": "https://codeaayucreatives.co.in/",
-    "image": "https://codeaayucreatives.co.in/images/thumbnails/about/personality-photo-1.jpg",
-    "jobTitle": "Photographer",
+    "image": "https://codeaayucreatives.co.in/images/kinetic/aayush-shooting.webp",
+    "description": "Photography studio by Aayush Ahuja for portraits, celebrations, brands, travel stories, and wildlife.",
     "email": "codeaayu@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Bangalore",
-      "addressRegion": "Karnataka",
-      "addressCountry": "IN"
-    },
+    "founder": { "@type": "Person", "name": "Aayush Ahuja" },
+    "areaServed": { "@type": "City", "name": "Bangalore" },
     "sameAs": [
       "https://instagram.com/codeaayu.creatives",
-      "https://medium.com/@codeaayu",
       "https://www.linkedin.com/in/codeaayu/",
       "https://www.youtube.com/@codeaayucreatives"
     ]
@@ -49,213 +44,446 @@
   </script>
 </head>
 <body>
-  <div class="loading-screen" id="loading">
-    <div class="loading-mark">Loading frames</div>
+  <a class="skip-link" href="#main">Skip to the experience</a>
+
+  <div class="loader" data-loader aria-hidden="true">
+    <div class="loader-lens"><span></span></div>
+    <p>Setting the light</p>
   </div>
 
-  <div class="site-shell">
-    <header class="site-header">
-      <div class="nav-frame">
-        <a class="brand" href="index.html" aria-label="CodeAayu Creatives home">
-          <img class="brand-logo" src="images/logos/logo-white.png" alt="CodeAayu Creatives">
-        </a>
-        <nav class="nav-links" aria-label="Main navigation">
-          <a class="nav-link is-active" href="index.html">Home</a>
-          <a class="nav-link" href="photography.html">Gallery</a>
-          <a class="nav-link" href="about.html">About</a>
-          <a class="nav-link" href="writing.html">Writing</a>
-          <a class="nav-link" href="contact.html">Contact</a>
-        </nav>
-        <a class="nav-cta" href="contact.html">Start a Project</a>
-        <button class="menu-toggle" type="button" aria-label="Open menu" data-menu-toggle>
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </header>
+  <div class="ambient-grain" aria-hidden="true"></div>
+  <div class="cursor-aura" data-cursor aria-hidden="true"></div>
+  <div class="scroll-meter" aria-hidden="true"><span data-scroll-meter></span></div>
 
-    <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
-      <button type="button" class="menu-close" aria-label="Close menu" data-menu-close>×</button>
-      <a href="index.html">Home</a>
+  <header class="site-header" data-header>
+    <a class="wordmark" href="#top" aria-label="CodeAayu Creatives, back to top">
+      <span class="wordmark-orbit" aria-hidden="true"></span>
+      <span>CodeAayu</span>
+      <small>Creatives</small>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#experience">Experience</a>
       <a href="photography.html">Gallery</a>
-      <a href="about.html">About</a>
-      <a href="writing.html">Writing</a>
-      <a href="contact.html">Start a Project</a>
+      <a href="#moon-room">Moon room</a>
+      <a href="#about">Aayush</a>
     </nav>
 
-    <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy-column" data-reveal>
-            <span class="kicker">CodeAayu Creatives / Aayush Ahuja / Bangalore</span>
-            <h1 class="hero-title">CodeAayu <span>Creatives</span></h1>
-            <p class="hero-copy">
-              Photography and visual systems for founders, brands, portraits, and travel stories that need coherent image
-              sets across web, social, print, and campaigns.
-            </p>
-            <div class="hero-stack" aria-label="Creative focus areas">
-              <span>Portrait systems</span>
-              <span>Brand image sets</span>
-              <span>Travel stories</span>
-            </div>
-            <div class="hero-actions">
-              <a class="button button-primary" href="contact.html">Start a Project</a>
-              <a class="button button-secondary" href="photography.html">See work →</a>
-            </div>
-            <div class="hero-proof-strip" aria-label="Featured photography samples">
-              <button type="button" data-lightbox-src="images/portfolio/eagle_fly.jpg" data-caption="Wildlife / Wings of Freedom">
-                <img src="images/thumbnails/portfolio/eagle_fly.jpg" alt="Eagle in flight" loading="lazy" decoding="async">
-              </button>
-              <button type="button" data-lightbox-src="images/portfolio/portrait-1.jpg" data-caption="Portrait / Personal Story">
-                <img src="images/thumbnails/portfolio/portrait-1.jpg" alt="Portrait in yellow saree" loading="lazy" decoding="async">
-              </button>
-              <button type="button" data-lightbox-src="images/portfolio/vivekanand_memorial.jpg" data-caption="Travel / Rock Memorial">
-                <img src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="Vivekananda Rock Memorial" loading="lazy" decoding="async">
-              </button>
-            </div>
-            <div class="metric-strip" aria-label="Portfolio metrics">
-              <div class="metric"><strong>16</strong><span>Selected frames</span></div>
-              <div class="metric"><strong>5+</strong><span>Years shooting</span></div>
-              <div class="metric"><strong>15+</strong><span>Cities covered</span></div>
-            </div>
-          </div>
+    <a class="header-cta magnetic" href="#reserve"><span>Reserve a frame</span><i aria-hidden="true">↗</i></a>
 
-          <div class="hero-console" aria-label="CodeAayu creative system preview">
-            <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="profile-card">
-              <div class="profile-frame">
-                <img src="images/thumbnails/about/personality-photo-1.jpg" alt="Aayush Ahuja photographing at the coast" loading="lazy" decoding="async">
-              </div>
-              <div class="profile-meta">
-                <span class="status-pill">Active for briefs</span>
-                <h2>Aayush Ahuja</h2>
-                <p>Photographer / engineer building repeatable visual workflows.</p>
-              </div>
-            </div>
-            <pre class="code-panel" aria-label="Creative workflow code sample"><code>capture.pipeline {
-  input: people + places + motion;
-  controls: light, color, context;
-  output: web, print, campaign;
-}</code></pre>
-          </div>
-        </div>
-      </section>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation" data-menu-toggle>
+      <span></span><span></span>
+    </button>
+  </header>
 
-      <section class="section" id="work">
-        <div class="container">
-          <div class="section-head" data-reveal>
-            <div>
-              <span class="kicker">Selected work</span>
-              <h2 class="section-title">A short cut through the strongest frames.</h2>
-            </div>
-            <p class="section-copy">Motion, people, horizons, and texture — four pieces that show the range before the full gallery.</p>
-          </div>
-          <div class="portfolio-grid" data-selected-work>
-            <button class="work-tile large" type="button" data-lightbox-src="images/portfolio/eagle_fly.jpg" data-caption="Wildlife / Wings of Freedom" data-reveal>
-              <img src="images/thumbnails/portfolio/eagle_fly.jpg" alt="Eagle in flight" loading="lazy" decoding="async">
-              <span class="work-caption"><span>Wildlife</span><span>Wings of Freedom</span></span>
-            </button>
-            <button class="work-tile" type="button" data-lightbox-src="images/portfolio/portrait-5.jpg" data-caption="Portrait / Character Study" data-reveal>
-              <img src="images/thumbnails/portfolio/portrait-5.jpg" alt="Portrait study" loading="lazy" decoding="async">
-              <span class="work-caption"><span>Portrait</span><span>Character Study</span></span>
-            </button>
-            <button class="work-tile" type="button" data-lightbox-src="images/portfolio/vivekanand_memorial.jpg" data-caption="Travel / Rock Memorial" data-reveal>
-              <img src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="Vivekananda Rock Memorial" loading="lazy" decoding="async">
-              <span class="work-caption"><span>Travel</span><span>Rock Memorial</span></span>
-            </button>
-            <button class="work-tile" type="button" data-lightbox-src="images/portfolio/Flower with sun.jpg" data-caption="Texture / Sunlit Bloom" data-reveal>
-              <img src="images/thumbnails/portfolio/Flower with sun.jpg" alt="Flower silhouette against sun" loading="lazy" decoding="async">
-              <span class="work-caption"><span>Texture</span><span>Sunlit Bloom</span></span>
-            </button>
-            <noscript>
-              <p class="section-copy">JavaScript is off — only the four featured frames are shown here. <a href="photography.html">Open the full gallery</a>.</p>
-            </noscript>
-          </div>
-          <div class="section-foot" data-reveal>
-            <a class="button button-secondary" href="photography.html">Open the full gallery</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-panel" id="process">
-        <div class="container">
-          <div class="section-head" data-reveal>
-            <div>
-              <span class="kicker">Operating model</span>
-              <h2 class="section-title">A simple production pipeline.</h2>
-            </div>
-            <p class="section-copy">
-              The process is built like a small product cycle: clarify the use case, build the visual spec,
-              shoot with intent, and deliver a usable set.
-            </p>
-          </div>
-          <div class="process-flow">
-            <article class="process-step" data-reveal>
-              <span>01</span>
-              <h3>Brief</h3>
-              <p>Goal, audience, references, channels, location, and constraints become the creative spec.</p>
-            </article>
-            <article class="process-step" data-reveal>
-              <span>02</span>
-              <h3>Capture</h3>
-              <p>Shot lists stay flexible, but light, composition, and story intent are controlled on location.</p>
-            </article>
-            <article class="process-step" data-reveal>
-              <span>03</span>
-              <h3>Grade</h3>
-              <p>Color and contrast are tuned as a system, so the final set feels coherent across surfaces.</p>
-            </article>
-            <article class="process-step" data-reveal>
-              <span>04</span>
-              <h3>Ship</h3>
-              <p>Exports are packaged for web, social, print, portfolio, and campaign use without extra friction.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="container contact-console" data-reveal>
-          <div>
-            <span class="kicker">Contact</span>
-            <h2 class="section-title">Bring a story. Leave with a system.</h2>
-          </div>
-          <div class="contact-actions">
-            <p class="section-copy">
-              Send the goal, location, timeline, references, and final usage. I will reply with a focused direction for what we should shoot and how the images can be shipped.
-            </p>
-            <a class="button button-primary" href="contact.html">Start a Project</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a class="brand" href="index.html">
-            <img class="brand-logo" src="images/logos/logo-white.png" alt="CodeAayu Creatives">
-          </a>
-          <p class="footer-note">© <span data-current-year></span> Aayush Ahuja. CodeAayu Creatives.</p>
-        </div>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="photography.html">Gallery</a>
-          <a href="about.html">About</a>
-          <a href="writing.html">Writing</a>
-          <a href="contact.html">Contact</a>
-          <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer">Instagram</a>
-        </nav>
-      </div>
-    </footer>
-  </div>
-
-  <div class="lightbox" data-lightbox>
-    <button class="lightbox-close" type="button" aria-label="Close image" data-lightbox-close>×</button>
-    <div>
-      <img src="" alt="" data-lightbox-image>
-      <div class="lightbox-caption" data-lightbox-caption></div>
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true">
+    <div class="mobile-menu-top">
+      <span>Studio menu</span>
+      <button type="button" data-menu-close aria-label="Close navigation">Close</button>
     </div>
+    <nav aria-label="Mobile navigation">
+      <a href="#experience"><span>01</span>Experience</a>
+      <a href="photography.html"><span>02</span>Gallery</a>
+      <a href="#moon-room"><span>03</span>Moon room</a>
+      <a href="#about"><span>04</span>Aayush</a>
+      <a href="#reserve"><span>05</span>Reserve a frame</a>
+    </nav>
+    <p>Bangalore · available wherever the story goes</p>
   </div>
 
-  <script src="script.js?v=20260701-redesign-g"></script>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Photography, served with feeling <span>·</span> Bangalore</p>
+        <h1 id="hero-title" class="hero-title">
+          <span class="title-line title-line-one reveal">Come as</span>
+          <span class="title-line title-line-two reveal">you <em>are.</em></span>
+          <small class="reveal">I'll find the light.</small>
+        </h1>
+        <p class="hero-intro reveal">Portraits that feel like you. Celebrations with a pulse. Brand stories with a point of view.</p>
+        <div class="hero-actions reveal">
+          <a class="pill-button pill-button-light magnetic" href="#work"><span>Enter the studio</span><i aria-hidden="true">↓</i></a>
+          <a class="text-link" href="#reserve">Plan a shoot <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" data-hero-visual>
+        <div class="hero-image-wrap">
+          <img src="images/kinetic/aayush-shooting.webp" alt="Aayush Ahuja looking through his camera beside the sea" width="1400" height="1867">
+          <div class="hero-image-wash" aria-hidden="true"></div>
+        </div>
+        <div class="lens-orbit lens-orbit-outer" aria-hidden="true"></div>
+        <div class="lens-orbit lens-orbit-inner" aria-hidden="true"></div>
+        <div class="hero-badge" aria-label="Five plus years behind the lens">
+          <strong>5+</strong>
+          <span>years chasing<br>honest light</span>
+        </div>
+        <p class="hero-note">The photographer is in.</p>
+      </div>
+
+      <div class="hero-ticket reveal" aria-label="Studio details">
+        <span>Now serving</span>
+        <strong>Portraits · Stories · Wonder</strong>
+        <span>Table 01 / Bengaluru</span>
+      </div>
+
+      <div class="hero-scroll-cue" aria-hidden="true">
+        <span>Scroll for the tasting menu</span>
+        <i></i>
+      </div>
+    </section>
+
+    <section class="studio-intro" id="experience" aria-labelledby="intro-title">
+      <div class="intro-orb" aria-hidden="true"></div>
+      <p class="section-index reveal">01 / The experience</p>
+      <div class="intro-grid">
+        <h2 id="intro-title" class="display-heading reveal">Less posing.<br><em>More living.</em></h2>
+        <div class="intro-copy reveal">
+          <p class="lead">A shoot with me is not a performance. It is a place where the music is good, the directions are easy, and being yourself is enough.</p>
+          <p>I bring the structure. You bring your people, your strange little jokes, your favourite clothes, your nervous energy. Somewhere between those things, we make frames that still feel alive years later.</p>
+        </div>
+      </div>
+      <div class="joy-line" aria-hidden="true">
+        <span>Good light</span><i>✦</i><span>Good people</span><i>✦</i><span>Good chaos</span><i>✦</i><span>Great photographs</span>
+      </div>
+    </section>
+
+    <section class="stack-story" data-stack-story aria-labelledby="stack-title">
+      <div class="stack-sticky">
+        <div class="stack-copy">
+          <p class="section-index">02 / The memory machine</p>
+          <h2 id="stack-title">One camera.<br><em>A thousand ways</em><br>to remember.</h2>
+          <p>Scroll to open the contact sheet.</p>
+        </div>
+
+        <div class="photo-stack" data-photo-stack aria-label="A layered selection of Aayush's photography">
+          <figure class="stack-card card-sunset" data-stack-card data-x="-46" data-y="-28" data-r="-13" data-z="-70">
+            <img src="images/kinetic/beach-sunset.webp" alt="People reflected in a glowing beach sunset" loading="lazy" width="1400" height="1667">
+            <figcaption>Salt + sunset</figcaption>
+          </figure>
+          <figure class="stack-card card-charvi" data-stack-card data-x="43" data-y="-31" data-r="10" data-z="-35">
+            <img src="images/kinetic/portrait-charvi.webp" alt="Joyful portrait of a woman in a flowered dress and hat" loading="lazy" width="1400" height="2053">
+            <figcaption>Colour, naturally</figcaption>
+          </figure>
+          <figure class="stack-card card-eagle" data-stack-card data-x="-49" data-y="26" data-r="8" data-z="-25">
+            <img src="images/kinetic/eagle-flight.webp" alt="Eagle gliding with wings fully open" loading="lazy" width="1400" height="1750">
+            <figcaption>Wait for wings</figcaption>
+          </figure>
+          <figure class="stack-card card-forest" data-stack-card data-x="48" data-y="25" data-r="-8" data-z="-55">
+            <img src="images/kinetic/forest-road.webp" alt="A winding road through a green forest" loading="lazy" width="1400" height="1670">
+            <figcaption>Take the long way</figcaption>
+          </figure>
+          <figure class="stack-card card-flower" data-stack-card data-x="-11" data-y="-40" data-r="4" data-z="25">
+            <img src="images/kinetic/flower-sun.webp" alt="Flower silhouette crossing a vivid orange sun" loading="lazy" width="1800" height="1200">
+            <figcaption>F/8 · patience</figcaption>
+          </figure>
+          <figure class="stack-card card-owl" data-stack-card data-x="16" data-y="37" data-r="-4" data-z="35">
+            <img src="images/kinetic/spotted-owl.webp" alt="Spotted owl perched on a pale branch" loading="lazy" width="1800" height="1800">
+            <figcaption>Seen seeing</figcaption>
+          </figure>
+
+          <figure class="stack-center" data-stack-center>
+            <div class="stack-center-image">
+              <img src="images/kinetic/aayush-camera.webp" alt="Aayush Ahuja holding his camera by the sea" loading="lazy" width="1400" height="1867">
+            </div>
+            <figcaption>
+              <span>Aayush Ahuja</span>
+              <strong>Behind every frame</strong>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="stack-progress" aria-hidden="true"><span data-stack-progress></span></div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="work" aria-labelledby="menu-title">
+      <div class="menu-head">
+        <div>
+          <p class="section-index reveal">03 / The tasting menu</p>
+          <h2 id="menu-title" class="display-heading reveal">Choose your<br><em>kind of magic.</em></h2>
+        </div>
+        <p class="menu-note reveal">Three courses. No stiff smiles. Every session is shaped around what the photographs need to feel like—not a template.</p>
+      </div>
+
+      <div class="course-list" data-course-list>
+        <article class="course" data-course="people">
+          <button type="button" aria-expanded="true" aria-controls="course-people-panel">
+            <span class="course-number">I</span>
+            <span class="course-title">People, as themselves</span>
+            <span class="course-meta">Portraits · Couples · Families</span>
+            <i aria-hidden="true">↗</i>
+          </button>
+          <div class="course-visuals" id="course-people-panel" aria-hidden="false">
+            <figure class="course-photo course-photo-main"><img src="images/kinetic/portrait-charvi.webp" alt="Colourful environmental portrait" loading="lazy" width="1400" height="2053"></figure>
+            <figure class="course-photo course-photo-small"><img src="images/kinetic/portrait-ishita.webp" alt="Relaxed smiling portrait outdoors" loading="lazy" width="1400" height="2100"></figure>
+            <p>For the version of you that laughs between the directions.</p>
+          </div>
+        </article>
+
+        <article class="course" data-course="stories">
+          <button type="button" aria-expanded="true" aria-controls="course-stories-panel">
+            <span class="course-number">II</span>
+            <span class="course-title">Days worth keeping</span>
+            <span class="course-meta">Celebrations · Travel · Life</span>
+            <i aria-hidden="true">↗</i>
+          </button>
+          <div class="course-visuals" id="course-stories-panel" aria-hidden="false">
+            <figure class="course-photo course-photo-main"><img src="images/kinetic/portrait-couple.webp" alt="Happy couple by a blue mountain lake" loading="lazy" width="1800" height="1310"></figure>
+            <figure class="course-photo course-photo-small"><img src="images/kinetic/mountain-light.webp" alt="Mountain ridge under late-evening light" loading="lazy" width="1800" height="1316"></figure>
+            <p>Big landscapes, small gestures, and the atmosphere around both.</p>
+          </div>
+        </article>
+
+        <article class="course" data-course="brand">
+          <button type="button" aria-expanded="true" aria-controls="course-brand-panel">
+            <span class="course-number">III</span>
+            <span class="course-title">A world for your work</span>
+            <span class="course-meta">Brands · Founders · Editorial</span>
+            <i aria-hidden="true">↗</i>
+          </button>
+          <div class="course-visuals" id="course-brand-panel" aria-hidden="false">
+            <figure class="course-photo course-photo-main"><img src="images/kinetic/airport-lights.webp" alt="Sculptural tree installation glowing with hanging lights" loading="lazy" width="1800" height="1200"></figure>
+            <figure class="course-photo course-photo-small"><img src="images/kinetic/blue-dragon.webp" alt="Electric blue glass dragon against a dark background" loading="lazy" width="1800" height="1200"></figure>
+            <p>Images with enough character to make the right people stop.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="happy-room" aria-labelledby="happy-title">
+      <div class="happy-heading">
+        <p class="section-index reveal">04 / The happy room</p>
+        <h2 id="happy-title" class="kinetic-heading" aria-label="Joy looks good on everyone">
+          <span data-kinetic-line>Joy looks good</span>
+          <span data-kinetic-line><em>on everyone.</em></span>
+        </h2>
+      </div>
+
+      <div class="filmstrip" data-filmstrip>
+        <button class="film-frame frame-one" type="button" data-lightbox="images/kinetic/portrait-charvi.webp" data-caption="Portrait / Colour, naturally">
+          <img src="images/kinetic/portrait-charvi.webp" alt="Woman smiling in a flowered dress and hat" loading="lazy" width="1400" height="2053">
+          <span>01 / Charvi</span>
+        </button>
+        <button class="film-frame frame-two" type="button" data-lightbox="images/kinetic/portrait-ishita.webp" data-caption="Portrait / In the in-between">
+          <img src="images/kinetic/portrait-ishita.webp" alt="Woman smiling candidly outdoors" loading="lazy" width="1400" height="2100">
+          <span>02 / Ishita</span>
+        </button>
+        <button class="film-frame frame-three" type="button" data-lightbox="images/kinetic/portrait-profile.webp" data-caption="Portrait / Quiet profile">
+          <img src="images/kinetic/portrait-profile.webp" alt="Profile portrait in warm window light" loading="lazy" width="1400" height="1726">
+          <span>03 / Soft light</span>
+        </button>
+        <button class="film-frame frame-four" type="button" data-lightbox="images/kinetic/portrait-kajal-ghoomar.webp" data-caption="Portrait / Kajal in motion">
+          <img src="images/kinetic/portrait-kajal-ghoomar.webp" alt="Kajal smiling as her printed outfit moves through the frame" loading="lazy" width="1400" height="2058">
+          <span>04 / Kajal in motion</span>
+        </button>
+        <button class="film-frame frame-five" type="button" data-lightbox="images/kinetic/brand-saree-yellow.webp" data-caption="Brand story / Sansruti in yellow">
+          <img src="images/kinetic/brand-saree-yellow.webp" alt="Model smiling in a yellow hand-painted saree during a brand shoot" loading="lazy" width="1400" height="1889">
+          <span>05 / Brand in bloom</span>
+        </button>
+      </div>
+      <p class="drag-note" aria-hidden="true">Drag the film · or keep scrolling</p>
+    </section>
+
+    <section class="field-notes" aria-labelledby="field-title">
+      <div class="field-head">
+        <p class="section-index reveal">05 / Field notes</p>
+        <h2 id="field-title" class="display-heading reveal">Wild has its<br><em>own timing.</em></h2>
+        <p class="reveal">Some photographs ask for direction. These ask for silence, distance, and the good sense to wait.</p>
+      </div>
+
+      <div class="field-grid">
+        <button class="field-card field-card-wide reveal" type="button" data-lightbox="images/kinetic/eagle-flight.webp" data-caption="Wildlife / Wings of freedom">
+          <img src="images/kinetic/eagle-flight.webp" alt="Eagle flying directly toward the camera" loading="lazy" width="1400" height="1750">
+          <span><b>Wings of freedom</b><i>Wildlife · Karnataka</i></span>
+        </button>
+        <button class="field-card field-card-tall reveal" type="button" data-lightbox="images/kinetic/greater-coucal.webp" data-caption="Wildlife / Greater coucal">
+          <img src="images/kinetic/greater-coucal.webp" alt="Greater coucal lit from behind on a branch" loading="lazy" width="1800" height="1800">
+          <span><b>Morning fire</b><i>Greater coucal</i></span>
+        </button>
+        <button class="field-card reveal" type="button" data-lightbox="images/kinetic/peacock.webp" data-caption="Wildlife / Peacock blue">
+          <img src="images/kinetic/peacock.webp" alt="Peacock with vivid blue and green plumage" loading="lazy" width="1400" height="1469">
+          <span><b>Regal blue</b><i>Peacock study</i></span>
+        </button>
+        <button class="field-card reveal" type="button" data-lightbox="images/kinetic/ocean-impact.webp" data-caption="Landscape / Ocean impact">
+          <img src="images/kinetic/ocean-impact.webp" alt="Large ocean wave breaking against dark rocks" loading="lazy" width="1800" height="1200">
+          <span><b>Impact</b><i>1/1600 second</i></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="moon-room" id="moon-room" data-moon-room aria-labelledby="moon-title">
+      <div class="moon-sticky">
+        <div class="star-field" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="moon-copy moon-copy-top">
+          <p class="section-index">06 / The moon room</p>
+          <h2 id="moon-title">After the room goes quiet,<br><em>I keep looking up.</em></h2>
+        </div>
+
+        <div class="moon-stage" data-moon-stage>
+          <div class="moon-halo" aria-hidden="true"></div>
+          <img class="main-moon" src="images/kinetic/moon-crescent.webp" alt="Detailed crescent moon photographed by Aayush Ahuja" loading="lazy" width="1677" height="1481">
+          <figure class="moon-study moon-study-one">
+            <img src="images/kinetic/moon-gold.webp" alt="Golden gibbous moon" loading="lazy" width="1800" height="1800">
+            <figcaption>Waxing light / 01</figcaption>
+          </figure>
+          <figure class="moon-study moon-study-two">
+            <img src="images/kinetic/moon-full.webp" alt="Cool blue full moon" loading="lazy" width="1446" height="1214">
+            <figcaption>Full attention / 02</figcaption>
+          </figure>
+          <figure class="moon-study moon-study-three">
+            <img src="images/kinetic/moon-detail.webp" alt="Detailed monochrome full moon" loading="lazy" width="752" height="752">
+            <figcaption>Still orbiting / 03</figcaption>
+          </figure>
+        </div>
+
+        <p class="moon-note">Space has always fascinated me. Maybe because photography is the same promise: with enough patience, distance becomes intimate.</p>
+        <div class="moon-coordinate" aria-hidden="true">23.2599° N · 77.4126° E / EARTH</div>
+      </div>
+    </section>
+
+    <section class="night-window" aria-label="Night sky photograph">
+      <img src="images/kinetic/milky-way.webp" alt="Milky Way rising above a dark mountain silhouette" loading="lazy" width="1800" height="1315">
+      <div class="night-window-copy reveal">
+        <span>One small frame in a very large sky</span>
+        <strong>Wonder is part of the brief.</strong>
+      </div>
+    </section>
+
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="about-photo reveal">
+        <img src="images/kinetic/aayush-camera.webp" alt="Aayush Ahuja smiling at his camera by the sea" loading="lazy" width="1400" height="1867">
+        <span>Photographed somewhere between a plan and a detour.</span>
+      </div>
+      <div class="about-copy">
+        <p class="section-index reveal">07 / Your photographer</p>
+        <h2 id="about-title" class="display-heading reveal">Hello, I'm<br><em>Aayush.</em></h2>
+        <p class="about-lead reveal">Photographer, engineer, professional light-chaser.</p>
+        <p class="reveal">The engineering side of me plans the frame. The human side waits for it to become real. I have spent 5+ years photographing people, birds, coastlines, city light, mountain air, and the moon from wherever I could find it.</p>
+        <p class="reveal">On a shoot, I am calm, curious, and fully on your side. You never need to know what to do with your hands—that is quite literally my job.</p>
+        <div class="about-details reveal">
+          <div><span>Based</span><strong>Bangalore, India</strong></div>
+          <div><span>Travels for</span><strong>A good story</strong></div>
+          <div><span>Current obsession</span><strong>The moon, always</strong></div>
+        </div>
+        <a class="text-link text-link-dark reveal" href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer">Follow the ongoing contact sheet <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="process-section" aria-labelledby="process-title">
+      <div class="process-head">
+        <p class="section-index reveal">08 / Studio etiquette</p>
+        <h2 id="process-title" class="display-heading reveal">How we make<br><em>the good stuff.</em></h2>
+      </div>
+      <ol class="process-list">
+        <li class="reveal">
+          <span>01</span>
+          <h3>We talk like humans</h3>
+          <p>Your people, purpose, mood, location, and the photographs you keep returning to.</p>
+        </li>
+        <li class="reveal">
+          <span>02</span>
+          <h3>I shape the light</h3>
+          <p>A simple visual direction, timing, wardrobe notes, and a plan with room for surprise.</p>
+        </li>
+        <li class="reveal">
+          <span>03</span>
+          <h3>We make a day of it</h3>
+          <p>Good music, gentle direction, movement, laughter, breaks, and zero pressure to perform.</p>
+        </li>
+        <li class="reveal">
+          <span>04</span>
+          <h3>You keep the feeling</h3>
+          <p>A carefully graded set, ready for screens, walls, campaigns, and future nostalgia.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="reserve-section" id="reserve" aria-labelledby="reserve-title">
+      <div class="reserve-glow" aria-hidden="true"></div>
+      <div class="reserve-intro">
+        <p class="section-index reveal">09 / Reservations</p>
+        <h2 id="reserve-title" class="display-heading reveal">Your story has<br><em>a good side.</em></h2>
+        <p class="reserve-lead reveal">Tell me what you are celebrating, building, remembering, or simply ready to see differently.</p>
+        <a class="reserve-email reveal" href="mailto:codeaayu@gmail.com">codeaayu@gmail.com <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <form class="brief-form reveal" action="https://api.web3forms.com/submit" method="POST" data-brief-form>
+        <input type="hidden" name="access_key" value="7fd97d1e-c924-4d77-b6f9-95943252cd3e">
+        <input type="hidden" name="subject" value="New studio reservation — CodeAayu Creatives">
+        <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
+
+        <div class="form-row">
+          <label>
+            <span>Your name</span>
+            <input type="text" name="name" placeholder="What should I call you?" autocomplete="name" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>
+            <span>What are we making?</span>
+            <select name="project_type" required>
+              <option value="" selected disabled>Choose an experience</option>
+              <option>Portraits</option>
+              <option>Couple or family story</option>
+              <option>Celebration or event</option>
+              <option>Brand or founder story</option>
+              <option>Creative collaboration</option>
+              <option>Something beautifully unusual</option>
+            </select>
+          </label>
+          <label>
+            <span>Where?</span>
+            <input type="text" name="location" placeholder="Bangalore, or somewhere else">
+          </label>
+        </div>
+
+        <label>
+          <span>Give me the feeling</span>
+          <textarea name="message" rows="4" placeholder="Tell me the occasion, your rough timeline, the mood, and anything you want these photographs to hold onto." required></textarea>
+        </label>
+
+        <button class="submit-button magnetic" type="submit">
+          <span data-submit-label>Send the reservation</span>
+          <i aria-hidden="true">↗</i>
+        </button>
+        <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-mark" aria-hidden="true">C<span>○</span>DE<br>AAYU</div>
+    <div class="footer-meta">
+      <p>Photography, served with feeling.</p>
+      <div>
+        <a href="photography.html">Gallery ↗</a>
+        <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        <a href="https://www.youtube.com/@codeaayucreatives" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+        <a href="https://www.linkedin.com/in/codeaayu/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
+      <p>Bangalore · India · Earth</p>
+      <p>© <span data-year></span> Aayush Ahuja</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-label="Expanded photograph">
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close photograph">Close ×</button>
+    <figure>
+      <img src="" alt="" data-lightbox-image>
+      <figcaption data-lightbox-caption></figcaption>
+    </figure>
+  </dialog>
+
+  <noscript><style>.loader{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <script src="script.js?v=20260710-kinetic-f"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide documents the current SEO setup for [codeaayucreatives.co.in](https://codeaayucreatives.co.in). The site is a 5-page static photography portfolio for Aayush Ahuja, with a current redesign focused on photography systems, selected portfolio frames, writing, and project briefs.
+This guide documents the current SEO setup for [codeaayucreatives.co.in](https://codeaayucreatives.co.in). The site is a focused static photography portfolio for Aayush Ahuja, built around the studio experience, the complete gallery, and project briefs.
 
 ## Current Status
 
@@ -13,13 +13,13 @@ This guide documents the current SEO setup for [codeaayucreatives.co.in](https:/
 
 The redesign currently includes:
 
-- Canonical URLs on all 5 pages.
+- Canonical URLs on all published pages.
 - Page-specific titles, descriptions, keywords, author, robots, and theme color.
-- Open Graph title, description, type, and image on all 5 pages.
-- Twitter large-image card metadata on all 5 pages.
+- Open Graph title, description, type, and image on all published pages.
+- Twitter large-image card metadata on all published pages.
 - JSON-LD on `index.html` (`Person`) and `contact.html` (`ContactPage`).
 - `robots.txt` and `sitemap.xml`.
-- Lazy-loaded portfolio, about, and writing-card images where they are not first-paint critical.
+- Lazy-loaded portfolio and about images where they are not first-paint critical.
 
 ## Technical SEO Files
 
@@ -42,7 +42,6 @@ Current coverage:
 - `/`
 - `/photography.html`
 - `/about.html`
-- `/writing.html`
 - `/contact.html`
 
 Update each page's `<lastmod>` date when page copy, structure, or portfolio content materially changes.
@@ -69,13 +68,6 @@ Update each page's `<lastmod>` date when page copy, structure, or portfolio cont
 - **Open Graph type**: `profile`.
 - **Primary social image**: `images/thumbnails/about/personality-photo-1.jpg`.
 - **Current content signal**: Profile summary, image lab, operating principles, and availability CTA.
-
-### Writing Page (`writing.html`)
-
-- **Focus**: Medium essays by Aayush Ahuja on travel, creativity, personal growth, technology, and life.
-- **Current article count**: 5 featured article links plus a Medium archive link.
-- **Primary social image**: Medium CDN image for the latest featured article.
-- **Current content signal**: Article cards with decorative cover images and external Medium links.
 
 ### Contact Page (`contact.html`)
 
@@ -109,7 +101,6 @@ The home page currently also includes `og:url`, `twitter:title`, and `twitter:de
 ## Image SEO
 
 - Use descriptive `alt` text for portfolio, logo, and about-page content images.
-- Use empty `alt=""` for purely decorative writing-card cover images.
 - Keep thumbnails in `images/thumbnails/portfolio/`.
 - Keep full-size lightbox images in `images/portfolio/`.
 - Keep `loading="lazy"` and `decoding="async"` on non-critical images.
@@ -127,7 +118,6 @@ Potential future additions:
 - `WebSite` schema for the whole domain.
 - `ProfessionalService` schema if CodeAayu Creatives should rank more strongly as a local photography service.
 - `ImageGallery` or `CreativeWork` schema if portfolio indexing becomes a priority.
-- `Article` schema only if article content is hosted on this site instead of linking out to Medium.
 
 ## Verification Tools
 
@@ -172,13 +162,6 @@ Run this checklist when changing page content, portfolio content, or social prev
 - software engineer photographer
 - IIT ISM photographer
 - Bangalore photographer profile
-
-### Writing Page
-
-- Aayush Ahuja writing
-- CodeAayu Medium
-- travel essays India
-- creative writing photographer
 
 ### Contact Page
 

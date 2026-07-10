@@ -1,148 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photography Gallery | Aayush Ahuja</title>
-  <meta name="description" content="A curated photography gallery by Aayush Ahuja across portraits, wildlife, travel, scenic frames, and detail studies.">
-  <meta name="keywords" content="Aayush Ahuja photography gallery, portrait photography, wildlife photography, travel photography, Bangalore photographer">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photography Gallery — CodeAayu Creatives</title>
+  <meta name="description" content="The complete CodeAayu Creatives photography archive by Aayush Ahuja: portraits, brands, wildlife, places, nature, and moon studies.">
   <meta name="author" content="Aayush Ahuja">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#050816">
+  <meta name="theme-color" content="#170b15">
   <link rel="canonical" href="https://codeaayucreatives.co.in/photography.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Photography Gallery | Aayush Ahuja">
-  <meta property="og:description" content="Portrait, wildlife, travel, scenic, and detail-led photography by Aayush Ahuja.">
-  <meta property="og:image" content="https://codeaayucreatives.co.in/images/thumbnails/portfolio/vivekanand_memorial.jpg">
+  <meta property="og:url" content="https://codeaayucreatives.co.in/photography.html">
+  <meta property="og:title" content="The Full Contact Sheet — CodeAayu Creatives">
+  <meta property="og:description" content="Portraits, brands, wildlife, places, nature, and moonlight—photographed by Aayush Ahuja.">
+  <meta property="og:image" content="https://codeaayucreatives.co.in/public/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://codeaayucreatives.co.in/images/thumbnails/portfolio/vivekanand_memorial.jpg">
+  <meta name="twitter:title" content="The Full Contact Sheet — CodeAayu Creatives">
+  <meta name="twitter:description" content="The complete photography archive by Aayush Ahuja.">
+  <meta name="twitter:image" content="https://codeaayucreatives.co.in/public/og.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260701-redesign-g">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260710-kinetic-f">
   <link rel="icon" type="image/png" href="images/logos/logo-black.png">
 </head>
-<body>
-  <div class="loading-screen" id="loading"><div class="loading-mark">Loading gallery</div></div>
+<body class="gallery-page">
+  <a class="skip-link" href="#gallery-main">Skip to the gallery</a>
 
-  <div class="site-shell">
-    <header class="site-header">
-      <div class="nav-frame">
-        <a class="brand" href="index.html"><img class="brand-logo" src="images/logos/logo-white.png" alt="CodeAayu Creatives"></a>
-        <nav class="nav-links" aria-label="Main navigation">
-          <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link is-active" href="photography.html">Gallery</a>
-          <a class="nav-link" href="about.html">About</a>
-          <a class="nav-link" href="writing.html">Writing</a>
-          <a class="nav-link" href="contact.html">Contact</a>
-        </nav>
-        <a class="nav-cta" href="contact.html">Start a Project</a>
-        <button class="menu-toggle" type="button" aria-label="Open menu" data-menu-toggle><span></span><span></span><span></span></button>
-      </div>
-    </header>
+  <div class="loader" data-loader aria-hidden="true">
+    <div class="loader-lens"><span></span></div>
+    <p>Developing the contact sheet</p>
+  </div>
 
-    <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
-      <button type="button" class="menu-close" aria-label="Close menu" data-menu-close>×</button>
-      <a href="index.html">Home</a>
-      <a href="photography.html">Gallery</a>
-      <a href="about.html">About</a>
-      <a href="writing.html">Writing</a>
-      <a href="contact.html">Start a Project</a>
+  <div class="ambient-grain" aria-hidden="true"></div>
+  <div class="cursor-aura" data-cursor aria-hidden="true"></div>
+  <div class="scroll-meter" aria-hidden="true"><span data-scroll-meter></span></div>
+
+  <header class="site-header" data-header>
+    <a class="wordmark" href="index.html" aria-label="CodeAayu Creatives home">
+      <span class="wordmark-orbit" aria-hidden="true"></span>
+      <span>CodeAayu</span>
+      <small>Creatives</small>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="index.html">Studio</a>
+      <a href="index.html#experience">Experience</a>
+      <a class="is-active" href="photography.html" aria-current="page">Gallery</a>
+      <a href="index.html#moon-room">Moon room</a>
     </nav>
 
-    <main>
-      <section class="page-hero">
-        <div class="container" data-reveal>
-          <span class="kicker">Gallery / 16 selected frames</span>
-          <h1 class="page-title">The working eye.</h1>
-          <p class="page-intro">
-            A tighter gallery built from the strongest local assets: birds in motion, quiet portraits,
-            destination frames, forest light, flowers, water, and visual texture.
-          </p>
-          <div class="use-case-strip" data-reveal>
-            <span class="kicker">Browse by use case</span>
-            <nav class="use-case-links" aria-label="Browse by use case">
-              <a href="#gallery-grid" data-jump-filter="all">All work</a>
-              <a href="#gallery-grid" data-jump-filter="portrait">Portraits &amp; brand</a>
-              <a href="#gallery-grid" data-jump-filter="travel">Travel &amp; stories</a>
-              <a href="#gallery-grid" data-jump-filter="wildlife">Wildlife &amp; nature</a>
-              <a href="#gallery-grid" data-jump-filter="texture">Texture &amp; detail</a>
-            </nav>
-          </div>
+    <a class="header-cta magnetic" href="index.html#reserve"><span>Reserve a frame</span><i aria-hidden="true">↗</i></a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="gallery-mobile-menu" aria-label="Open navigation" data-menu-toggle>
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="gallery-mobile-menu" data-mobile-menu aria-hidden="true">
+    <div class="mobile-menu-top">
+      <span>Contact sheet menu</span>
+      <button type="button" data-menu-close aria-label="Close navigation">Close</button>
+    </div>
+    <nav aria-label="Mobile navigation">
+      <a href="index.html"><span>01</span>Studio</a>
+      <a href="index.html#experience"><span>02</span>Experience</a>
+      <a href="photography.html"><span>03</span>Gallery</a>
+      <a href="index.html#moon-room"><span>04</span>Moon room</a>
+      <a href="index.html#reserve"><span>05</span>Reserve a frame</a>
+    </nav>
+    <p>Every finished frame · one evolving archive</p>
+  </div>
+
+  <main id="gallery-main">
+    <section class="gallery-hero" aria-labelledby="gallery-title">
+      <div class="gallery-hero-copy">
+        <p class="section-index reveal">The complete archive</p>
+        <h1 id="gallery-title">
+          <span class="reveal">The full</span>
+          <span class="reveal"><em>contact</em> sheet.</span>
+        </h1>
+        <div class="gallery-hero-bottom reveal">
+          <p>Not only the greatest hits. The experiments, patient waits, unexpected glances, changing skies, brand stories, and frames that taught me how to see.</p>
+          <div class="gallery-tally"><strong data-gallery-total>175</strong><span>finished frames</span></div>
         </div>
-      </section>
-
-      <section class="section" id="gallery-grid">
-        <div class="container">
-          <div class="filter-bar" data-filter-group=".work-tile">
-            <button class="is-active" type="button" data-filter="all">All</button>
-            <button type="button" data-filter="wildlife">Wildlife</button>
-            <button type="button" data-filter="portrait">Portrait</button>
-            <button type="button" data-filter="travel">Travel</button>
-            <button type="button" data-filter="scenic">Scenic</button>
-            <button type="button" data-filter="texture">Texture</button>
-          </div>
-
-          <div class="portfolio-grid" data-portfolio-grid>
-            <button class="work-tile" data-category="wildlife" type="button" data-lightbox-src="images/portfolio/Peacock.jpg" data-caption="Wildlife / Regal Peacock" data-reveal><img src="images/thumbnails/portfolio/Peacock.jpg" alt="Peacock" loading="lazy" decoding="async"><span class="work-caption"><span>Wildlife</span><span>Regal Peacock</span></span></button>
-            <button class="work-tile" data-category="portrait" type="button" data-lightbox-src="images/portfolio/portrait-1.jpg" data-caption="Portrait / Personal Story" data-reveal><img src="images/thumbnails/portfolio/portrait-1.jpg" alt="Portrait in yellow saree" loading="lazy" decoding="async"><span class="work-caption"><span>Portrait</span><span>Personal Story</span></span></button>
-            <button class="work-tile" data-category="wildlife" type="button" data-lightbox-src="images/portfolio/eagle_fly.jpg" data-caption="Wildlife / Eagle Flight" data-reveal><img src="images/thumbnails/portfolio/eagle_fly.jpg" alt="Eagle flight" loading="lazy" decoding="async"><span class="work-caption"><span>Wildlife</span><span>Eagle Flight</span></span></button>
-            <button class="work-tile" data-category="travel" type="button" data-lightbox-src="images/portfolio/pamban_sunset.jpg" data-caption="Travel / Pamban Sunset" data-reveal><img src="images/thumbnails/portfolio/pamban_sunset.jpg" alt="Pamban sunset" loading="lazy" decoding="async"><span class="work-caption"><span>Travel</span><span>Pamban Sunset</span></span></button>
-            <button class="work-tile" data-category="scenic" type="button" data-lightbox-src="images/portfolio/Sunrise.jpg" data-caption="Scenic / Sunrise" data-reveal><img src="images/thumbnails/portfolio/Sunrise.jpg" alt="Sunrise" loading="lazy" decoding="async"><span class="work-caption"><span>Scenic</span><span>Sunrise</span></span></button>
-            <button class="work-tile" data-category="wildlife" type="button" data-lightbox-src="images/portfolio/Purple_heron.jpg" data-caption="Wildlife / Purple Heron" data-reveal><img src="images/thumbnails/portfolio/Purple_heron.jpg" alt="Purple heron" loading="lazy" decoding="async"><span class="work-caption"><span>Wildlife</span><span>Purple Heron</span></span></button>
-            <button class="work-tile" data-category="portrait" type="button" data-lightbox-src="images/portfolio/portrait-5.jpg" data-caption="Portrait / Character Study" data-reveal><img src="images/thumbnails/portfolio/portrait-5.jpg" alt="Portrait detail" loading="lazy" decoding="async"><span class="work-caption"><span>Portrait</span><span>Character Study</span></span></button>
-            <button class="work-tile" data-category="travel" type="button" data-lightbox-src="images/portfolio/vivekanand_memorial.jpg" data-caption="Travel / Rock Memorial" data-reveal><img src="images/thumbnails/portfolio/vivekanand_memorial.jpg" alt="Vivekananda Memorial" loading="lazy" decoding="async"><span class="work-caption"><span>Travel</span><span>Rock Memorial</span></span></button>
-            <button class="work-tile" data-category="texture" type="button" data-lightbox-src="images/portfolio/Flower with sun.jpg" data-caption="Texture / Sunlit Bloom" data-reveal><img src="images/thumbnails/portfolio/Flower with sun.jpg" alt="Flower against sun" loading="lazy" decoding="async"><span class="work-caption"><span>Texture</span><span>Sunlit Bloom</span></span></button>
-            <button class="work-tile" data-category="wildlife" type="button" data-lightbox-src="images/portfolio/Spotted_owl.jpg" data-caption="Wildlife / Spotted Owl" data-reveal><img src="images/thumbnails/portfolio/Spotted_owl.jpg" alt="Spotted owl" loading="lazy" decoding="async"><span class="work-caption"><span>Wildlife</span><span>Spotted Owl</span></span></button>
-            <button class="work-tile" data-category="scenic" type="button" data-lightbox-src="images/portfolio/Pine Forest.jpg" data-caption="Scenic / Pine Forest" data-reveal><img src="images/thumbnails/portfolio/Pine Forest.jpg" alt="Pine forest" loading="lazy" decoding="async"><span class="work-caption"><span>Scenic</span><span>Pine Forest</span></span></button>
-            <button class="work-tile" data-category="travel" type="button" data-lightbox-src="images/portfolio/Fire_nubra.JPG" data-caption="Travel / Nubra Fire" data-reveal><img src="images/thumbnails/portfolio/Fire_nubra.JPG" alt="Fire at night" loading="lazy" decoding="async"><span class="work-caption"><span>Travel</span><span>Nubra Fire</span></span></button>
-            <button class="work-tile" data-category="wildlife" type="button" data-lightbox-src="images/portfolio/Black Winged Stilt.jpg" data-caption="Wildlife / Black Winged Stilt" data-reveal><img src="images/thumbnails/portfolio/Black Winged Stilt.jpg" alt="Black winged stilt" loading="lazy" decoding="async"><span class="work-caption"><span>Wildlife</span><span>Black Winged Stilt</span></span></button>
-            <button class="work-tile" data-category="portrait" type="button" data-lightbox-src="images/portfolio/portrait-8.jpg" data-caption="Portrait / Laughing Frame" data-reveal><img src="images/thumbnails/portfolio/portrait-8.jpg" alt="Smiling portrait" loading="lazy" decoding="async"><span class="work-caption"><span>Portrait</span><span>Laughing Frame</span></span></button>
-            <button class="work-tile" data-category="texture" type="button" data-lightbox-src="images/portfolio/Blue Dragon.JPG" data-caption="Texture / Blue Dragon" data-reveal><img src="images/thumbnails/portfolio/Blue Dragon.JPG" alt="Blue dragon light texture" loading="lazy" decoding="async"><span class="work-caption"><span>Texture</span><span>Blue Dragon</span></span></button>
-            <button class="work-tile" data-category="scenic" type="button" data-lightbox-src="images/portfolio/wave_splashing.jpg" data-caption="Scenic / Wave Impact" data-reveal><img src="images/thumbnails/portfolio/wave_splashing.jpg" alt="Wave splash" loading="lazy" decoding="async"><span class="work-caption"><span>Scenic</span><span>Wave Impact</span></span></button>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-panel">
-        <div class="container mood-lab">
-          <div data-reveal>
-            <span class="kicker">Mood engine</span>
-            <h2 class="section-title">Choose the visual mode.</h2>
-            <p class="section-copy">
-              A compact selector that shows the range before visitors browse the full gallery.
-            </p>
-            <div class="mood-controls">
-              <button type="button" class="is-active" data-mood="motion">Motion</button>
-              <button type="button" data-mood="intimate">Intimate</button>
-              <button type="button" data-mood="horizon">Horizon</button>
-              <button type="button" data-mood="texture">Texture</button>
-            </div>
-          </div>
-          <div class="mood-stage" data-mood-stage data-reveal>
-            <img src="images/thumbnails/portfolio/eagle_fly.jpg" alt="Mood preview" data-mood-image>
-            <div class="mood-card">
-              <h3 data-mood-title>Motion</h3>
-              <p data-mood-note>Birds, roads, wind, timing. Built for kinetic stories.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <p class="footer-note">© <span data-current-year></span> Aayush Ahuja / CodeAayu Creatives</p>
-        <nav class="footer-links"><a href="contact.html">Start a Project</a><a href="about.html">About</a><a href="writing.html">Writing</a><a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer">Instagram</a></nav>
       </div>
-    </footer>
-  </div>
 
-  <div class="lightbox" data-lightbox>
-    <button class="lightbox-close" type="button" aria-label="Close image" data-lightbox-close>×</button>
-    <div><img src="" alt="" data-lightbox-image><div class="lightbox-caption" data-lightbox-caption></div></div>
-  </div>
+      <div class="gallery-hero-collage reveal" aria-label="Highlights from the photography archive">
+        <figure class="gallery-hero-card gallery-hero-card-one">
+          <img src="images/kinetic/portrait-kajal-ghoomar.webp" alt="Kajal smiling as her outfit moves through the frame" width="1400" height="2058">
+        </figure>
+        <figure class="gallery-hero-card gallery-hero-card-two">
+          <img src="images/kinetic/eagle-flight.webp" alt="Eagle gliding forward with open wings" width="1400" height="1750">
+        </figure>
+        <figure class="gallery-hero-card gallery-hero-card-three">
+          <img src="images/kinetic/moon-crescent.webp" alt="Detailed crescent moon" width="1677" height="1481">
+        </figure>
+        <div class="gallery-lens-lines" aria-hidden="true"></div>
+      </div>
 
-  <script src="script.js?v=20260701-redesign-g"></script>
+      <div class="gallery-hero-note" aria-hidden="true">Scroll to develop <span>↓</span></div>
+    </section>
+
+    <section class="gallery-archive" aria-labelledby="archive-title">
+      <div class="gallery-archive-head">
+        <div>
+          <p class="section-index reveal">Browse by instinct</p>
+          <h2 id="archive-title" class="display-heading reveal">Every way<br><em>I look.</em></h2>
+        </div>
+        <p class="reveal">Choose a room, or leave it on All and let portraits, wings, streets, flowers, campaigns, and moons interrupt one another.</p>
+      </div>
+
+      <div class="gallery-toolbar" aria-label="Gallery filters">
+        <div class="gallery-filters" data-gallery-filters>
+          <button type="button" class="is-active" data-gallery-filter="all" aria-pressed="true">All <span data-filter-count="all">175</span></button>
+          <button type="button" data-gallery-filter="portraits" aria-pressed="false">People <span data-filter-count="portraits">17</span></button>
+          <button type="button" data-gallery-filter="brand" aria-pressed="false">Brand <span data-filter-count="brand">11</span></button>
+          <button type="button" data-gallery-filter="wildlife" aria-pressed="false">Wildlife <span data-filter-count="wildlife">55</span></button>
+          <button type="button" data-gallery-filter="places" aria-pressed="false">Places <span data-filter-count="places">55</span></button>
+          <button type="button" data-gallery-filter="nature" aria-pressed="false">Nature <span data-filter-count="nature">27</span></button>
+          <button type="button" data-gallery-filter="cosmos" aria-pressed="false">Cosmos <span data-filter-count="cosmos">10</span></button>
+        </div>
+        <p data-gallery-status role="status" aria-live="polite">Preparing the archive…</p>
+      </div>
+
+      <div class="gallery-grid" data-gallery-grid aria-label="Photography archive"></div>
+
+      <button class="gallery-more" type="button" data-gallery-more hidden>
+        <span>Load more frames</span>
+        <i aria-hidden="true">↓</i>
+      </button>
+
+      <noscript>
+        <p class="gallery-noscript">This contact sheet needs JavaScript to progressively load the complete archive. You can still see the selected work on the <a href="index.html#work">studio page</a>.</p>
+      </noscript>
+    </section>
+
+    <section class="gallery-cta" aria-labelledby="gallery-cta-title">
+      <p class="section-index reveal">Seen enough?</p>
+      <h2 id="gallery-cta-title" class="reveal">Let’s make the frame<br><em>that is missing.</em></h2>
+      <div class="gallery-cta-actions reveal">
+        <a class="pill-button pill-button-light magnetic" href="index.html#reserve"><span>Plan a shoot</span><i aria-hidden="true">↗</i></a>
+        <a class="text-link" href="index.html">Return to the studio <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-mark" aria-hidden="true">1<span>7</span>5</div>
+    <div class="footer-meta">
+      <p>The complete contact sheet.</p>
+      <div>
+        <a href="index.html">Studio ↗</a>
+        <a href="https://instagram.com/codeaayu.creatives" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      </div>
+      <p>Bangalore · India · Earth</p>
+      <p>© <span data-year></span> Aayush Ahuja</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-label="Expanded photograph">
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close photograph">Close ×</button>
+    <figure>
+      <img src="" alt="" data-lightbox-image>
+      <figcaption data-lightbox-caption></figcaption>
+    </figure>
+  </dialog>
+
+  <noscript><style>.loader{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <script src="script.js?v=20260710-kinetic-g"></script>
 </body>
 </html>
