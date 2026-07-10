@@ -1352,6 +1352,15 @@ img {
   transition: filter 500ms ease, transform 800ms var(--ease-out);
 }
 
+.course-photo-ishita img,
+.film-frame.frame-ishita img {
+  object-position: 58% 50%;
+}
+
+.course-photo-charvi img {
+  object-position: 50% 62%;
+}
+
 .film-frame:hover img,
 .film-frame:focus-visible img {
   filter: saturate(1.12);

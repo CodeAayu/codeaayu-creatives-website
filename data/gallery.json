@@ -1,8 +1,8 @@
 {
-  "version": 1,
-  "count": 175,
+  "version": 2,
+  "count": 178,
   "counts": {
-    "portraits": 17,
+    "portraits": 20,
     "brand": 11,
     "wildlife": 55,
     "places": 55,
@@ -10,6 +10,42 @@
     "cosmos": 10
   },
   "items": [
+    {
+      "id": "manali-ishita-mountain-light",
+      "title": "Ishita in Mountain Light",
+      "category": "portraits",
+      "source": "Manali portrait story",
+      "thumb": "images/gallery/manali-ishita-mountain-light-thumb.webp",
+      "full": "images/gallery/manali-ishita-mountain-light.webp",
+      "width": 720,
+      "height": 480,
+      "alt": "Portrait photograph by Aayush Ahuja: Ishita in Mountain Light",
+      "featured": true
+    },
+    {
+      "id": "manali-ishita-snowline",
+      "title": "Ishita Before the Snowline",
+      "category": "portraits",
+      "source": "Manali portrait story",
+      "thumb": "images/gallery/manali-ishita-snowline-thumb.webp",
+      "full": "images/gallery/manali-ishita-snowline.webp",
+      "width": 720,
+      "height": 480,
+      "alt": "Portrait photograph by Aayush Ahuja: Ishita Before the Snowline",
+      "featured": true
+    },
+    {
+      "id": "manali-ishita-waterfall",
+      "title": "Ishita by the Falls",
+      "category": "portraits",
+      "source": "Manali portrait story",
+      "thumb": "images/gallery/manali-ishita-waterfall-thumb.webp",
+      "full": "images/gallery/manali-ishita-waterfall.webp",
+      "width": 720,
+      "height": 1080,
+      "alt": "Portrait photograph by Aayush Ahuja: Ishita by the Falls",
+      "featured": true
+    },
     {
       "id": "163-kajal-img-1381-6a34c9d3",
       "title": "Kajal \u00b7 Dupatta in Flight",

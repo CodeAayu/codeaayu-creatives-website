@@ -408,7 +408,7 @@
       moreObserver.observe(galleryMore);
     }
 
-    fetch("data/gallery.json?v=20260710-175")
+    fetch("data/gallery.json?v=20260710-178")
       .then((response) => {
         if (!response.ok) throw new Error("Gallery manifest could not be loaded");
         return response.json();
