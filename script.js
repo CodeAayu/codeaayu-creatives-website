@@ -1,185 +1,228 @@
-"use strict";
+(() => {
+  "use strict";
 
-document.addEventListener("DOMContentLoaded", () => {
-  initLoader();
-  initMenu();
-  initReveal();
-  initCurrentYear();
-  initWorkFilters();
-  initLightbox();
-  initMoodDial();
-  initBriefBuilder();
-  initContactForms();
-  initScrollProgress();
-  initCreativeCursor();
-  initInteractiveSurfaces();
-  initClickRipples();
-  initPortfolioData();
-});
+  const root = document.documentElement;
+  const body = document.body;
+  root.classList.add("has-js");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = window.matchMedia("(pointer: fine)").matches;
 
-const PORTFOLIO_DATA = {
-  "version": 1,
-  "items": [
-    { "id": "eagle_fly", "thumb": "images/thumbnails/portfolio/eagle_fly.jpg", "full": "images/portfolio/eagle_fly.jpg", "alt": "Eagle in flight", "category": "wildlife", "surfaces": ["web", "campaign", "print"], "title": "Wings of Freedom", "tagline": "Wildlife", "featured": true, "featuredOrder": 1 },
-    { "id": "portrait-5", "thumb": "images/thumbnails/portfolio/portrait-5.jpg", "full": "images/portfolio/portrait-5.jpg", "alt": "Portrait study", "category": "portrait", "surfaces": ["web", "campaign"], "title": "Character Study", "tagline": "Portrait", "featured": true, "featuredOrder": 2 },
-    { "id": "vivekanand_memorial", "thumb": "images/thumbnails/portfolio/vivekanand_memorial.jpg", "full": "images/portfolio/vivekanand_memorial.jpg", "alt": "Vivekananda Rock Memorial", "category": "travel", "surfaces": ["web", "print", "campaign"], "title": "Rock Memorial", "tagline": "Travel", "featured": true, "featuredOrder": 3 },
-    { "id": "Flower with sun", "thumb": "images/thumbnails/portfolio/Flower with sun.jpg", "full": "images/portfolio/Flower with sun.jpg", "alt": "Flower silhouette against sun", "category": "texture", "surfaces": ["web", "print"], "title": "Sunlit Bloom", "tagline": "Texture", "featured": true, "featuredOrder": 4 },
-    { "id": "Fire_nubra", "thumb": "images/thumbnails/portfolio/Fire_nubra.JPG", "full": "images/portfolio/Fire_nubra.JPG", "alt": "Camp fire at Nubra", "category": "travel", "surfaces": ["web", "campaign"], "title": "Nubra Fire", "tagline": "Travel" },
-    { "id": "pamban_sunset", "thumb": "images/thumbnails/portfolio/pamban_sunset.jpg", "full": "images/portfolio/pamban_sunset.jpg", "alt": "Pamban sunset", "category": "travel", "surfaces": ["web", "print"], "title": "Pamban Sunset", "tagline": "Travel" },
-    { "id": "Sunrise", "thumb": "images/thumbnails/portfolio/Sunrise.jpg", "full": "images/portfolio/Sunrise.jpg", "alt": "Sunrise over horizon", "category": "scenic", "surfaces": ["web", "print"], "title": "Sunrise", "tagline": "Scenic" },
-    { "id": "Purple_heron", "thumb": "images/thumbnails/portfolio/Purple_heron.jpg", "full": "images/portfolio/Purple_heron.jpg", "alt": "Purple heron", "category": "wildlife", "surfaces": ["web", "print"], "title": "Purple Heron", "tagline": "Wildlife" },
-    { "id": "Peacock", "thumb": "images/thumbnails/portfolio/Peacock.jpg", "full": "images/portfolio/Peacock.jpg", "alt": "Peacock", "category": "wildlife", "surfaces": ["web", "print", "campaign"], "title": "Regal Peacock", "tagline": "Wildlife" },
-    { "id": "portrait-1", "thumb": "images/thumbnails/portfolio/portrait-1.jpg", "full": "images/portfolio/portrait-1.jpg", "alt": "Portrait in yellow saree", "category": "portrait", "surfaces": ["web", "campaign"], "title": "Personal Story", "tagline": "Portrait" },
-    { "id": "portrait-8", "thumb": "images/thumbnails/portfolio/portrait-8.jpg", "full": "images/portfolio/portrait-8.jpg", "alt": "Smiling portrait", "category": "portrait", "surfaces": ["web", "campaign"], "title": "Laughing Frame", "tagline": "Portrait" },
-    { "id": "Spotted_owl", "thumb": "images/thumbnails/portfolio/Spotted_owl.jpg", "full": "images/portfolio/Spotted_owl.jpg", "alt": "Spotted owl", "category": "wildlife", "surfaces": ["web", "print"], "title": "Spotted Owl", "tagline": "Wildlife" },
-    { "id": "Pine Forest", "thumb": "images/thumbnails/portfolio/Pine Forest.jpg", "full": "images/portfolio/Pine Forest.jpg", "alt": "Pine forest", "category": "scenic", "surfaces": ["web", "print"], "title": "Pine Forest", "tagline": "Scenic" },
-    { "id": "Black Winged Stilt", "thumb": "images/thumbnails/portfolio/Black Winged Stilt.jpg", "full": "images/portfolio/Black Winged Stilt.jpg", "alt": "Black winged stilt", "category": "wildlife", "surfaces": ["web", "print"], "title": "Black Winged Stilt", "tagline": "Wildlife" },
-    { "id": "Blue Dragon", "thumb": "images/thumbnails/portfolio/Blue Dragon.JPG", "full": "images/portfolio/Blue Dragon.JPG", "alt": "Blue dragon light texture", "category": "texture", "surfaces": ["web", "print"], "title": "Blue Dragon", "tagline": "Texture" },
-    { "id": "wave_splashing", "thumb": "images/thumbnails/portfolio/wave_splashing.jpg", "full": "images/portfolio/wave_splashing.jpg", "alt": "Wave splash", "category": "scenic", "surfaces": ["web", "print"], "title": "Wave Impact", "tagline": "Scenic" }
-  ]
-};
+  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  const lerp = (start, end, progress) => start + (end - start) * progress;
+  const smoothstep = (start, end, value) => {
+    const x = clamp((value - start) / (end - start));
+    return x * x * (3 - 2 * x);
+  };
 
-const PORTFOLIO_SOURCE = "data/portfolio.json";
-let portfolioCache = null;
+  const loader = document.querySelector("[data-loader]");
+  const dismissLoader = () => loader?.classList.add("is-gone");
+  window.addEventListener("load", () => window.setTimeout(dismissLoader, prefersReducedMotion ? 0 : 260), { once: true });
+  window.setTimeout(dismissLoader, 1800);
 
-async function loadPortfolio() {
-  if (typeof window !== "undefined" && window.PORTFOLIO_DATA) {
-    portfolioCache = window.PORTFOLIO_DATA;
-    return portfolioCache;
+  const year = document.querySelector("[data-year]");
+  if (year) year.textContent = String(new Date().getFullYear());
+
+  const header = document.querySelector("[data-header]");
+  const scrollMeter = document.querySelector("[data-scroll-meter]");
+  const stackStory = document.querySelector("[data-stack-story]");
+  const photoStack = document.querySelector("[data-photo-stack]");
+  const stackCards = [...document.querySelectorAll("[data-stack-card]")];
+  const stackCenter = document.querySelector("[data-stack-center]");
+  const stackProgress = document.querySelector("[data-stack-progress]");
+  const moonRoom = document.querySelector("[data-moon-room]");
+  const moonStage = document.querySelector("[data-moon-stage]");
+  const nightWindow = document.querySelector(".night-window");
+  const kineticLines = [...document.querySelectorAll("[data-kinetic-line]")];
+  const courses = [...document.querySelectorAll("[data-course]")];
+  let activeCourse;
+  let ticking = false;
+
+  const sectionProgress = (section) => {
+    if (!section) return 0;
+    const rect = section.getBoundingClientRect();
+    const distance = Math.max(1, section.offsetHeight - window.innerHeight);
+    return clamp(-rect.top / distance);
+  };
+
+  const updateStack = (forcedProgress = null) => {
+    if (!stackStory || !photoStack || !stackCards.length) return;
+    const progress = forcedProgress ?? sectionProgress(stackStory);
+    const fan = smoothstep(0.07, 0.72, progress);
+    const settle = smoothstep(0.72, 1, progress);
+    const width = photoStack.clientWidth;
+    const height = photoStack.clientHeight;
+
+    stackCards.forEach((card, index) => {
+      const finalX = Number(card.dataset.x || 0) * width / 100;
+      const finalY = Number(card.dataset.y || 0) * height / 100;
+      const finalZ = Number(card.dataset.z || 0);
+      const finalRotation = Number(card.dataset.r || 0);
+      const startRotation = (index - (stackCards.length - 1) / 2) * 1.3;
+      const breathing = Math.sin(progress * Math.PI + index * 0.7) * settle * 5;
+
+      card.style.setProperty("--move-x", `${lerp(0, finalX, fan).toFixed(2)}px`);
+      card.style.setProperty("--move-y", `${(lerp(0, finalY, fan) + breathing).toFixed(2)}px`);
+      card.style.setProperty("--move-z", `${lerp(-90 - index * 7, finalZ, fan).toFixed(2)}px`);
+      card.style.setProperty("--rotation", `${lerp(startRotation, finalRotation, fan).toFixed(2)}deg`);
+      card.style.setProperty("--card-scale", lerp(0.74, 1, fan).toFixed(3));
+    });
+
+    if (stackCenter) {
+      stackCenter.style.setProperty("--center-y", `${lerp(18, -12, smoothstep(0.15, 0.85, progress)).toFixed(2)}px`);
+      stackCenter.style.setProperty("--center-turn", `${(Math.sin(progress * Math.PI) * 4.5).toFixed(2)}deg`);
+      stackCenter.style.setProperty("--center-scale", lerp(0.92, 1.04, smoothstep(0.05, 0.68, progress)).toFixed(3));
+    }
+
+    if (stackProgress) stackProgress.style.transform = `scaleX(${progress.toFixed(4)})`;
+  };
+
+  const updateMoon = (forcedProgress = null) => {
+    if (!moonRoom || !moonStage) return;
+    const progress = forcedProgress ?? sectionProgress(moonRoom);
+    const reveal = smoothstep(0.08, 0.58, progress);
+    const orbit = smoothstep(0.25, 0.9, progress);
+    const studyOpacity = clamp((progress - 0.18) * 1.85);
+
+    moonStage.style.setProperty("--main-moon-scale", lerp(0.52, 1.14, reveal).toFixed(3));
+    moonStage.style.setProperty("--main-moon-rotate", `${lerp(-7, 3, reveal).toFixed(2)}deg`);
+    moonStage.style.setProperty("--halo-scale", lerp(0.72, 1.12, reveal).toFixed(3));
+    moonStage.style.setProperty("--halo-rotate", `${lerp(0, 60, orbit).toFixed(2)}deg`);
+    moonStage.style.setProperty("--study-opacity", studyOpacity.toFixed(3));
+    moonStage.style.setProperty("--study-one-x", `${lerp(0, -0.11 * window.innerWidth, orbit).toFixed(2)}px`);
+    moonStage.style.setProperty("--study-one-y", `${lerp(0, -0.03 * window.innerHeight, orbit).toFixed(2)}px`);
+    moonStage.style.setProperty("--study-one-r", `${lerp(-5, -11, orbit).toFixed(2)}deg`);
+    moonStage.style.setProperty("--study-two-x", `${lerp(0, 0.12 * window.innerWidth, orbit).toFixed(2)}px`);
+    moonStage.style.setProperty("--study-two-y", `${lerp(0, -0.08 * window.innerHeight, orbit).toFixed(2)}px`);
+    moonStage.style.setProperty("--study-two-r", `${lerp(5, 11, orbit).toFixed(2)}deg`);
+    moonStage.style.setProperty("--study-three-x", `${lerp(0, 0.09 * window.innerWidth, orbit).toFixed(2)}px`);
+    moonStage.style.setProperty("--study-three-y", `${lerp(0, 0.07 * window.innerHeight, orbit).toFixed(2)}px`);
+    moonStage.style.setProperty("--study-three-r", `${lerp(-3, 6, orbit).toFixed(2)}deg`);
+  };
+
+  const updateKineticType = () => {
+    if (!kineticLines.length || prefersReducedMotion) return;
+    const heading = kineticLines[0]?.closest(".kinetic-heading");
+    if (!heading) return;
+    const rect = heading.getBoundingClientRect();
+    const progress = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height));
+    const offset = (progress - 0.5) * Math.min(window.innerWidth * 0.1, 110);
+    kineticLines[0].style.transform = `translate3d(${offset.toFixed(1)}px, 0, 0)`;
+    if (kineticLines[1]) kineticLines[1].style.transform = `translate3d(${(-offset).toFixed(1)}px, 0, 0)`;
+  };
+
+  const updateNightWindow = () => {
+    if (!nightWindow || prefersReducedMotion) return;
+    const rect = nightWindow.getBoundingClientRect();
+    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+    const progress = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height));
+    nightWindow.style.setProperty("--night-shift", `${lerp(-28, 28, progress).toFixed(1)}px`);
+  };
+
+  const setActiveCourse = (selected) => {
+    if (activeCourse === selected) return;
+    activeCourse = selected;
+    courses.forEach((course) => {
+      const isSelected = course === selected;
+      course.classList.toggle("is-active", isSelected);
+      course.querySelector("button")?.setAttribute("aria-expanded", String(isSelected));
+      course.querySelector(".course-visuals")?.setAttribute("aria-hidden", String(!isSelected));
+    });
+  };
+
+  const updateCoursesOnScroll = () => {
+    if (!courses.length) return;
+    const readingLine = window.innerHeight * 0.58;
+    const selected = courses.find((course) => {
+      const rect = course.getBoundingClientRect();
+      return rect.top <= readingLine && rect.bottom > readingLine;
+    }) || null;
+    setActiveCourse(selected);
+  };
+
+  const updatePage = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const total = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    header?.classList.toggle("is-scrolled", scrollTop > 24);
+    if (scrollMeter) scrollMeter.style.transform = `scaleY(${clamp(scrollTop / total).toFixed(4)})`;
+    if (!prefersReducedMotion) {
+      updateStack();
+      updateMoon();
+    }
+    updateKineticType();
+    updateNightWindow();
+    updateCoursesOnScroll();
+    ticking = false;
+  };
+
+  const requestPageUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(updatePage);
+  };
+
+  window.addEventListener("scroll", requestPageUpdate, { passive: true });
+  window.addEventListener("resize", requestPageUpdate, { passive: true });
+  updatePage();
+  if (prefersReducedMotion) {
+    updateStack(0.78);
+    updateMoon(0.78);
   }
-  if (portfolioCache) return portfolioCache;
-  try {
-    const res = await fetch(PORTFOLIO_SOURCE, { cache: "no-cache" });
-    if (!res.ok) throw new Error("Failed to load portfolio");
-    portfolioCache = await res.json();
-  } catch (error) {
-    console.warn("Portfolio data could not be loaded; using inline fallback.", error);
-    portfolioCache = PORTFOLIO_DATA;
-  }
-  return portfolioCache;
-}
 
-async function initPortfolioData() {
-  const data = await loadPortfolio();
-  if (!data.items || !data.items.length) return;
-
-  const selectedContainer = document.querySelector("[data-selected-work]");
-  if (selectedContainer && !selectedContainer.querySelector("[data-lightbox-src]")) {
-    const featured = data.items
-      .filter((item) => item.featured)
-      .sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0));
-    selectedContainer.insertAdjacentHTML(
-      "afterbegin",
-      featured.map((item, index) => renderSelectedTile(item, index)).join("")
-    );
+  const reveals = [...document.querySelectorAll(".reveal")];
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    reveals.forEach((element) => element.classList.add("is-visible"));
+  } else {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
+    reveals.forEach((element) => revealObserver.observe(element));
   }
 
-  const galleryContainer = document.querySelector("[data-portfolio-grid]");
-  if (galleryContainer && !galleryContainer.children.length) {
-    galleryContainer.innerHTML = data.items
-      .map((item) => renderGalleryTile(item))
-      .join("");
-    initWorkFilters();
-  }
-}
+  const menuToggle = document.querySelector("[data-menu-toggle]");
+  const mobileMenu = document.querySelector("[data-mobile-menu]");
+  const menuClose = document.querySelector("[data-menu-close]");
+  let menuReturnFocus = null;
 
-function renderSelectedTile(item, index) {
-  const sizeClass = index === 0 ? "work-tile large" : "work-tile";
-  return `
-    <button class="${sizeClass}" type="button"
-      data-lightbox-src="${item.full}"
-      data-lightbox-id="${item.id}"
-      data-caption="${item.tagline} / ${item.title}"
-      data-reveal>
-      <img src="${item.thumb}" alt="${item.alt}" loading="lazy" decoding="async">
-      <span class="work-caption">
-        <span>${item.tagline}</span>
-        <span>${item.title}</span>
-      </span>
-    </button>
-  `;
-}
-
-function renderGalleryTile(item) {
-  return `
-    <button class="work-tile" data-category="${item.category}" type="button"
-      data-lightbox-src="${item.full}"
-      data-lightbox-id="${item.id}"
-      data-caption="${item.tagline} / ${item.title}"
-      data-reveal>
-      <img src="${item.thumb}" alt="${item.alt}" loading="lazy" decoding="async">
-      <span class="work-caption">
-        <span>${item.tagline}</span>
-        <span>${item.title}</span>
-      </span>
-    </button>
-  `;
-}
-
-function initLoader() {
-  const loader = document.getElementById("loading");
-  if (!loader) return;
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const hide = () => loader.classList.add("is-hidden");
-
-  if (reduceMotion) {
-    hide();
-    return;
-  }
-
-  window.addEventListener("load", () => window.setTimeout(hide, 350));
-  window.setTimeout(hide, 1200);
-}
-
-function initMenu() {
-  const toggle = document.querySelector("[data-menu-toggle]");
-  const menu = document.querySelector("[data-mobile-menu]");
-  if (!toggle || !menu) return;
+  const getMenuFocusable = () => mobileMenu ? [...mobileMenu.querySelectorAll("a, button")].filter((item) => !item.hasAttribute("disabled")) : [];
 
   const openMenu = () => {
-    toggle.classList.add("is-open");
-    menu.classList.add("is-open");
-    document.body.classList.add("menu-open");
-    toggle.setAttribute("aria-label", "Close menu");
-    trapFocus(menu);
+    if (!mobileMenu || !menuToggle) return;
+    menuReturnFocus = document.activeElement;
+    body.classList.add("menu-open");
+    mobileMenu.classList.add("is-open");
+    mobileMenu.setAttribute("aria-hidden", "false");
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Close navigation");
+    window.setTimeout(() => getMenuFocusable()[0]?.focus(), 150);
   };
 
   const closeMenu = () => {
-    toggle.classList.remove("is-open");
-    menu.classList.remove("is-open");
-    document.body.classList.remove("menu-open");
-    toggle.setAttribute("aria-label", "Open menu");
-    releaseFocusTrap();
-    if (document.activeElement && menu.contains(document.activeElement)) {
-      toggle.focus();
-    }
+    if (!mobileMenu || !menuToggle) return;
+    body.classList.remove("menu-open");
+    mobileMenu.classList.remove("is-open");
+    mobileMenu.setAttribute("aria-hidden", "true");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+    if (menuReturnFocus instanceof HTMLElement) menuReturnFocus.focus();
   };
 
-  toggle.addEventListener("click", () => {
-    if (menu.classList.contains("is-open")) closeMenu();
-    else openMenu();
-  });
-
-  menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
-  menu.querySelector("[data-menu-close]")?.addEventListener("click", closeMenu);
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && menu.classList.contains("is-open")) closeMenu();
-  });
-}
-
-let focusTrapHandler = null;
-function trapFocus(container) {
-  releaseFocusTrap();
-  const selector = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
-  const focusables = () => Array.from(container.querySelectorAll(selector)).filter((el) => el.offsetParent !== null);
-  focusables()[0]?.focus();
-  focusTrapHandler = (event) => {
+  menuToggle?.addEventListener("click", () => mobileMenu?.classList.contains("is-open") ? closeMenu() : openMenu());
+  menuClose?.addEventListener("click", closeMenu);
+  mobileMenu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+  mobileMenu?.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+      return;
+    }
     if (event.key !== "Tab") return;
-    const list = focusables();
-    if (!list.length) return;
-    const first = list[0];
-    const last = list[list.length - 1];
+    const focusable = getMenuFocusable();
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
     if (event.shiftKey && document.activeElement === first) {
       event.preventDefault();
       last.focus();
@@ -187,398 +230,285 @@ function trapFocus(container) {
       event.preventDefault();
       first.focus();
     }
-  };
-  document.addEventListener("keydown", focusTrapHandler);
-}
-
-function releaseFocusTrap() {
-  if (focusTrapHandler) {
-    document.removeEventListener("keydown", focusTrapHandler);
-    focusTrapHandler = null;
-  }
-}
-
-function initReveal() {
-  const items = document.querySelectorAll("[data-reveal]");
-  if (!items.length) return;
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) {
-    items.forEach((item) => item.classList.add("is-visible"));
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
-
-  items.forEach((item) => observer.observe(item));
-}
-
-function initCurrentYear() {
-  document.querySelectorAll("[data-current-year]").forEach((node) => {
-    node.textContent = new Date().getFullYear();
   });
-}
 
-function initWorkFilters() {
-  document.querySelectorAll("[data-filter-group]").forEach((group) => {
-    const targetSelector = group.dataset.filterGroup;
-    const items = document.querySelectorAll(targetSelector);
-    if (!items.length) return;
+  courses.forEach((course) => {
+    const button = course.querySelector("button");
+    if (!button) return;
+    button.addEventListener("click", () => {
+      setActiveCourse(course);
+      const top = course.getBoundingClientRect().top + window.scrollY - 68;
+      window.scrollTo({ top, behavior: prefersReducedMotion ? "auto" : "smooth" });
+    });
+  });
 
-    const apply = (value) => {
-      group.querySelectorAll("[data-filter]").forEach((item) => item.classList.remove("is-active"));
-      const target = group.querySelector(`[data-filter="${value}"]`);
-      if (target) target.classList.add("is-active");
-      else {
-        const fallback = group.querySelector('[data-filter="all"]');
-        if (fallback) fallback.classList.add("is-active");
-        value = "all";
-      }
-      items.forEach((item) => {
-        const show = value === "all" || item.dataset.category === value;
-        item.classList.toggle("is-hidden", !show);
-      });
+  const filmstrip = document.querySelector("[data-filmstrip]");
+  if (filmstrip) {
+    let dragging = false;
+    let startX = 0;
+    let startScroll = 0;
+    let moved = false;
+
+    filmstrip.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      dragging = true;
+      moved = false;
+      startX = event.clientX;
+      startScroll = filmstrip.scrollLeft;
+      filmstrip.classList.add("is-dragging");
+      filmstrip.setPointerCapture(event.pointerId);
+    });
+
+    filmstrip.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      const delta = event.clientX - startX;
+      if (Math.abs(delta) > 4) moved = true;
+      filmstrip.scrollLeft = startScroll - delta;
+    });
+
+    const endDrag = (event) => {
+      if (!dragging) return;
+      dragging = false;
+      filmstrip.classList.remove("is-dragging");
+      if (filmstrip.hasPointerCapture(event.pointerId)) filmstrip.releasePointerCapture(event.pointerId);
     };
 
-    group.querySelectorAll("[data-filter]").forEach((button) => {
-      button.addEventListener("click", () => apply(button.dataset.filter));
-    });
+    filmstrip.addEventListener("pointerup", endDrag);
+    filmstrip.addEventListener("pointercancel", endDrag);
+    filmstrip.addEventListener("click", (event) => {
+      if (!moved) return;
+      event.preventDefault();
+      event.stopPropagation();
+      moved = false;
+    }, true);
+  }
 
-    document.querySelectorAll("[data-jump-filter]").forEach((link) => {
-      link.addEventListener("click", () => apply(link.dataset.jumpFilter));
-    });
-  });
-}
-
-function initLightbox() {
-  const lightbox = document.querySelector("[data-lightbox]");
-  if (!lightbox) return;
-
-  const image = lightbox.querySelector("[data-lightbox-image]");
-  const caption = lightbox.querySelector("[data-lightbox-caption]");
-  const close = lightbox.querySelector("[data-lightbox-close]");
-
-  const triggers = () => Array.from(document.querySelectorAll("[data-lightbox-src]"));
-  let currentIndex = -1;
-
-  const showAt = (index) => {
-    const list = triggers();
-    if (!list.length) return;
-    if (index < 0) index = list.length - 1;
-    if (index >= list.length) index = 0;
-    currentIndex = index;
-    const trigger = list[index];
-    image.src = trigger.dataset.lightboxSrc;
-    image.alt = trigger.querySelector("img")?.alt || "Portfolio image";
-    caption.textContent = trigger.dataset.caption || "";
-    lightbox.classList.add("is-open");
-    document.body.classList.add("lightbox-open");
-  };
+  const lightbox = document.querySelector("[data-lightbox-dialog]");
+  const lightboxImage = document.querySelector("[data-lightbox-image]");
+  const lightboxCaption = document.querySelector("[data-lightbox-caption]");
+  const lightboxClose = document.querySelector("[data-lightbox-close]");
+  let lightboxReturnFocus = null;
 
   const closeLightbox = () => {
-    lightbox.classList.remove("is-open");
-    document.body.classList.remove("lightbox-open");
-    currentIndex = -1;
-    window.setTimeout(() => image.removeAttribute("src"), 200);
+    if (!lightbox?.open) return;
+    lightbox.close();
+    if (lightboxReturnFocus instanceof HTMLElement) lightboxReturnFocus.focus();
   };
 
-  close?.addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", (event) => {
+  const openLightbox = (trigger) => {
+    if (!lightbox || !lightboxImage || !lightboxCaption) return;
+    lightboxReturnFocus = trigger;
+    lightboxImage.src = trigger.dataset.lightbox || "";
+    lightboxImage.alt = trigger.querySelector("img")?.alt || "Expanded photograph";
+    lightboxCaption.textContent = trigger.dataset.caption || "CodeAayu Creatives";
+    lightbox.showModal();
+    lightboxClose?.focus();
+  };
+
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-lightbox]");
+    if (!trigger) return;
+    openLightbox(trigger);
+  });
+
+  lightboxClose?.addEventListener("click", closeLightbox);
+  lightbox?.addEventListener("click", (event) => {
     if (event.target === lightbox) closeLightbox();
   });
 
-  document.addEventListener("click", (event) => {
-    const trigger = event.target.closest("[data-lightbox-src]");
-    if (!trigger) return;
-    event.preventDefault();
-    const list = triggers();
-    const index = list.indexOf(trigger);
-    showAt(index >= 0 ? index : 0);
-  });
+  const galleryGrid = document.querySelector("[data-gallery-grid]");
+  const galleryMore = document.querySelector("[data-gallery-more]");
+  const galleryStatus = document.querySelector("[data-gallery-status]");
+  const galleryTotal = document.querySelector("[data-gallery-total]");
+  const galleryFilters = [...document.querySelectorAll("[data-gallery-filter]")];
 
-  document.addEventListener("keydown", (event) => {
-    if (!lightbox.classList.contains("is-open")) return;
-    if (event.key === "Escape") closeLightbox();
-    else if (event.key === "ArrowRight") showAt(currentIndex + 1);
-    else if (event.key === "ArrowLeft") showAt(currentIndex - 1);
-  });
-}
+  if (galleryGrid && galleryMore && galleryStatus) {
+    let galleryItems = [];
+    let filteredItems = [];
+    let displayedItems = 0;
+    const batchSize = window.innerWidth <= 620 ? 18 : window.innerWidth <= 900 ? 28 : 36;
 
-function initMoodDial() {
-  const stage = document.querySelector("[data-mood-stage]");
-  if (!stage) return;
+    const createGalleryItem = (item) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "archive-item";
+      button.dataset.lightbox = item.full;
+      button.dataset.caption = `${item.title} / ${item.source}`;
+      button.dataset.category = item.category;
+      button.setAttribute("aria-label", `Open ${item.title}`);
 
-  const image = stage.querySelector("[data-mood-image]");
-  const title = stage.querySelector("[data-mood-title]");
-  const note = stage.querySelector("[data-mood-note]");
-  const buttons = document.querySelectorAll("[data-mood]");
+      const image = document.createElement("img");
+      image.alt = item.alt;
+      image.width = item.width;
+      image.height = item.height;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.addEventListener("load", () => button.classList.add("is-loaded"), { once: true });
+      image.src = item.thumb;
 
-  const moods = {
-    motion: {
-      title: "Motion",
-      note: "Birds, roads, wind, timing. Built for kinetic stories.",
-      src: "images/thumbnails/portfolio/eagle_fly.jpg",
-      accent: "#c7ff5f"
-    },
-    intimate: {
-      title: "Intimate",
-      note: "Portraits that feel observed, not manufactured.",
-      src: "images/thumbnails/portfolio/portrait-8.jpg",
-      accent: "#ff6b4a"
-    },
-    horizon: {
-      title: "Horizon",
-      note: "Travel frames with scale, weather, and destination memory.",
-      src: "images/thumbnails/portfolio/pamban_sunset.jpg",
-      accent: "#55c7ff"
-    },
-    texture: {
-      title: "Texture",
-      note: "Close details for campaigns, essays, covers, and pauses.",
-      src: "images/thumbnails/portfolio/Flower with sun.jpg",
-      accent: "#ffd166"
-    }
-  };
+      const caption = document.createElement("span");
+      caption.className = "archive-caption";
+      const captionText = document.createElement("span");
+      const title = document.createElement("strong");
+      const source = document.createElement("small");
+      const openMark = document.createElement("i");
+      title.textContent = item.title;
+      source.textContent = item.source;
+      openMark.textContent = "↗";
+      openMark.setAttribute("aria-hidden", "true");
+      captionText.append(title, source);
+      caption.append(captionText, openMark);
+      button.append(image, caption);
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const mood = moods[button.dataset.mood];
-      if (!mood) return;
+      if (image.complete) window.requestAnimationFrame(() => button.classList.add("is-loaded"));
+      return button;
+    };
 
-      buttons.forEach((item) => item.classList.remove("is-active"));
-      button.classList.add("is-active");
-      stage.classList.add("is-switching");
-      stage.style.setProperty("--mood-accent", mood.accent);
+    const updateGalleryStatus = () => {
+      const total = filteredItems.length;
+      galleryStatus.textContent = `Showing ${Math.min(displayedItems, total)} of ${total} frames`;
+      galleryMore.hidden = displayedItems >= total;
+    };
 
-      window.setTimeout(() => {
-        image.src = mood.src;
-        title.textContent = mood.title;
-        note.textContent = mood.note;
-        stage.classList.remove("is-switching");
-      }, 160);
-    });
-  });
-}
-
-function initBriefBuilder() {
-  const form = document.querySelector("[data-brief-builder]");
-  if (!form) return;
-
-  const output = document.querySelector("[data-brief-output]");
-  const messageField = document.querySelector("[data-brief-message]");
-  const copyButton = document.querySelector("[data-brief-copy]");
-  const build = () => {
-    const checked = Array.from(form.querySelectorAll("input:checked")).map((input) => input.value);
-    const summary = checked.length ? `Brief signal: ${checked.join(" + ")}.` : "";
-    if (output) {
-      output.textContent = checked.length
-        ? `Brief signal: ${checked.join(" + ")}.`
-        : "Brief signal: choose what matters most.";
-    }
-    if (messageField) {
-      const existing = messageField.value.trim();
-      const prefix = summary ? `${summary} ` : "";
-      const stripped = existing.replace(/^Brief signal:.*?\.\s*/, "");
-      messageField.value = prefix + stripped;
-    }
-  };
-
-  form.addEventListener("change", build);
-  build();
-
-  copyButton?.addEventListener("click", async () => {
-    const text = output?.textContent || "";
-    try {
-      await navigator.clipboard.writeText(text);
-      copyButton.classList.add("is-copied");
-      window.setTimeout(() => copyButton.classList.remove("is-copied"), 1400);
-    } catch {
-      showToast("Copy failed. Select the text manually.", "error");
-    }
-  });
-}
-
-function initContactForms() {
-  const forms = document.querySelectorAll('form[action*="api.web3forms.com/submit"]');
-  forms.forEach((form) => {
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const button = form.querySelector("button[type='submit']");
-      const original = button?.innerHTML;
-
-      if (button) {
-        button.disabled = true;
-        button.textContent = "Sending...";
+    const renderGalleryBatch = () => {
+      if (displayedItems >= filteredItems.length) {
+        updateGalleryStatus();
+        return;
       }
+      const fragment = document.createDocumentFragment();
+      filteredItems.slice(displayedItems, displayedItems + batchSize).forEach((item) => {
+        fragment.append(createGalleryItem(item));
+      });
+      displayedItems += batchSize;
+      galleryGrid.append(fragment);
+      updateGalleryStatus();
+    };
 
-      try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    const applyGalleryFilter = (category) => {
+      filteredItems = category === "all" ? galleryItems : galleryItems.filter((item) => item.category === category);
+      displayedItems = 0;
+      galleryGrid.replaceChildren();
+      galleryFilters.forEach((button) => {
+        const selected = button.dataset.galleryFilter === category;
+        button.classList.toggle("is-active", selected);
+        button.setAttribute("aria-pressed", String(selected));
+      });
+      renderGalleryBatch();
+    };
+
+    galleryFilters.forEach((button) => {
+      button.addEventListener("click", () => applyGalleryFilter(button.dataset.galleryFilter || "all"));
+    });
+    galleryMore.addEventListener("click", renderGalleryBatch);
+
+    if ("IntersectionObserver" in window) {
+      const moreObserver = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) renderGalleryBatch();
+      }, { rootMargin: "600px 0px" });
+      moreObserver.observe(galleryMore);
+    }
+
+    fetch("data/gallery.json?v=20260710-175")
+      .then((response) => {
+        if (!response.ok) throw new Error("Gallery manifest could not be loaded");
+        return response.json();
+      })
+      .then((manifest) => {
+        galleryItems = Array.isArray(manifest.items) ? manifest.items : [];
+        if (galleryTotal) galleryTotal.textContent = String(manifest.count || galleryItems.length);
+        document.querySelectorAll("[data-filter-count]").forEach((element) => {
+          const category = element.dataset.filterCount;
+          const count = category === "all" ? galleryItems.length : manifest.counts?.[category] || 0;
+          element.textContent = String(count);
         });
-        const payload = await response.json();
-        showToast(payload.success ? "Brief sent. I will reply soon." : "Could not send. Please email codeaayu@gmail.com.", payload.success ? "success" : "error");
-        if (payload.success) form.reset();
-      } catch {
-        showToast("Could not send. Please email codeaayu@gmail.com.", "error");
-      } finally {
-        if (button) {
-          button.disabled = false;
-          button.innerHTML = original;
-        }
-      }
-    });
-  });
-}
+        applyGalleryFilter("all");
+      })
+      .catch(() => {
+        galleryStatus.textContent = "The archive could not load. Please refresh the page.";
+        galleryMore.hidden = true;
+      });
+  }
 
-function showToast(message, type) {
-  const toast = document.createElement("div");
-  toast.className = `toast toast-${type}`;
-  toast.textContent = message;
-  document.body.appendChild(toast);
-  window.setTimeout(() => toast.classList.add("is-visible"), 20);
-  window.setTimeout(() => {
-    toast.classList.remove("is-visible");
-    window.setTimeout(() => toast.remove(), 300);
-  }, 3600);
-}
+  const briefForm = document.querySelector("[data-brief-form]");
+  const formStatus = document.querySelector("[data-form-status]");
+  const submitLabel = document.querySelector("[data-submit-label]");
 
-function initScrollProgress() {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  briefForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const submitButton = briefForm.querySelector("button[type='submit']");
+    if (submitButton) submitButton.disabled = true;
+    if (submitLabel) submitLabel.textContent = "Sending your reservation…";
+    if (formStatus) formStatus.textContent = "";
 
-  const progress = document.createElement("div");
-  progress.className = "scroll-progress";
-  progress.setAttribute("aria-hidden", "true");
-  document.body.appendChild(progress);
-
-  const update = () => {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
-    progress.style.setProperty("--scroll-progress", Math.min(Math.max(ratio, 0), 1).toString());
-  };
-
-  update();
-  window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
-}
-
-function initCreativeCursor() {
-  const canUsePointer = window.matchMedia("(pointer: fine)").matches;
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!canUsePointer || reduceMotion) return;
-
-  const halo = document.createElement("div");
-  halo.className = "cursor-halo";
-  halo.setAttribute("aria-hidden", "true");
-  document.body.appendChild(halo);
-  document.body.classList.add("has-creative-cursor");
-
-  let targetX = window.innerWidth / 2;
-  let targetY = window.innerHeight / 2;
-  let currentX = targetX;
-  let currentY = targetY;
-
-  const render = () => {
-    currentX += (targetX - currentX) * 0.18;
-    currentY += (targetY - currentY) * 0.18;
-    halo.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
-    window.requestAnimationFrame(render);
-  };
-
-  window.addEventListener("pointermove", (event) => {
-    targetX = event.clientX;
-    targetY = event.clientY;
-    halo.classList.add("is-visible");
-  }, { passive: true });
-
-  document.addEventListener("pointerover", (event) => {
-    if (event.target.closest("a, button, input, textarea, select, [data-lightbox-src]")) {
-      halo.classList.add("is-active");
+    try {
+      const response = await fetch(briefForm.action, {
+        method: "POST",
+        body: new FormData(briefForm),
+        headers: { Accept: "application/json" }
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) throw new Error("Submission failed");
+      briefForm.reset();
+      if (formStatus) formStatus.textContent = "Reservation received. I’ll be in touch soon.";
+    } catch (error) {
+      if (formStatus) formStatus.innerHTML = "The form had a moment. Please email <a href=\"mailto:codeaayu@gmail.com\">codeaayu@gmail.com</a>.";
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+      if (submitLabel) submitLabel.textContent = "Send the reservation";
     }
   });
 
-  document.addEventListener("pointerout", (event) => {
-    if (event.target.closest("a, button, input, textarea, select, [data-lightbox-src]")) {
-      halo.classList.remove("is-active");
-    }
-  });
+  if (finePointer && !prefersReducedMotion) {
+    const cursor = document.querySelector("[data-cursor]");
+    let cursorX = -100;
+    let cursorY = -100;
+    let renderedX = -100;
+    let renderedY = -100;
+    let cursorFrame = 0;
 
-  window.addEventListener("pointerleave", () => halo.classList.remove("is-visible"));
-  render();
-}
+    const renderCursor = () => {
+      renderedX = lerp(renderedX, cursorX, 0.2);
+      renderedY = lerp(renderedY, cursorY, 0.2);
+      cursor?.style.setProperty("--cursor-x", `${renderedX.toFixed(1)}px`);
+      cursor?.style.setProperty("--cursor-y", `${renderedY.toFixed(1)}px`);
+      cursorFrame = window.requestAnimationFrame(renderCursor);
+    };
 
-function initInteractiveSurfaces() {
-  const canUsePointer = window.matchMedia("(pointer: fine)").matches;
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!canUsePointer || reduceMotion) return;
-
-  const selector = [
-    ".hero-console",
-    ".profile-card",
-    ".metric",
-    ".about-copy-panel",
-    ".about-media-panel",
-    ".about-principles article",
-    ".about-stats div",
-    ".about-hero-card",
-    ".about-page-card",
-    ".about-image-lab",
-    ".about-metrics div",
-    ".about-method-card",
-    ".about-cta",
-    ".process-step",
-    ".stack-card",
-    ".work-tile",
-    ".mood-stage",
-    ".contact-console",
-    ".contact-card",
-    ".article"
-  ].join(",");
-
-  document.querySelectorAll(selector).forEach((surface) => {
-    surface.classList.add("interactive-surface");
-    surface.addEventListener("pointermove", (event) => {
-      const rect = surface.getBoundingClientRect();
-      surface.style.setProperty("--surface-x", `${event.clientX - rect.left}px`);
-      surface.style.setProperty("--surface-y", `${event.clientY - rect.top}px`);
+    document.addEventListener("pointermove", (event) => {
+      cursorX = event.clientX;
+      cursorY = event.clientY;
+      cursor?.classList.add("is-visible");
     }, { passive: true });
-  });
-}
+    document.addEventListener("pointerleave", () => cursor?.classList.remove("is-visible"));
+    document.querySelectorAll("a, button, input, select, textarea").forEach((target) => {
+      target.addEventListener("pointerenter", () => cursor?.classList.add("is-active"));
+      target.addEventListener("pointerleave", () => cursor?.classList.remove("is-active"));
+    });
+    cursorFrame = window.requestAnimationFrame(renderCursor);
 
-function initClickRipples() {
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) return;
+    const heroVisual = document.querySelector("[data-hero-visual]");
+    heroVisual?.addEventListener("pointermove", (event) => {
+      const rect = heroVisual.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      heroVisual.style.transform = `rotateY(${(x * 4).toFixed(2)}deg) rotateX(${(-y * 3).toFixed(2)}deg)`;
+    });
+    heroVisual?.addEventListener("pointerleave", () => {
+      heroVisual.style.transform = "rotateY(0deg) rotateX(0deg)";
+    });
 
-  const selector = [
-    ".button",
-    ".nav-cta",
-    ".nav-link",
-    ".menu-toggle",
-    ".filter-bar button",
-    ".mood-controls button",
-    ".work-tile",
-    ".lightbox-close"
-  ].join(",");
+    document.querySelectorAll(".magnetic").forEach((element) => {
+      element.addEventListener("pointermove", (event) => {
+        const rect = element.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
+        element.style.transform = `translate3d(${(x * 0.08).toFixed(1)}px, ${(y * 0.12).toFixed(1)}px, 0)`;
+      });
+      element.addEventListener("pointerleave", () => {
+        element.style.transform = "translate3d(0, 0, 0)";
+      });
+    });
 
-  document.addEventListener("click", (event) => {
-    const target = event.target.closest(selector);
-    if (!target || target.disabled) return;
-
-    const rect = target.getBoundingClientRect();
-    const ripple = document.createElement("span");
-    ripple.className = "click-ripple";
-    ripple.style.left = `${event.clientX - rect.left}px`;
-    ripple.style.top = `${event.clientY - rect.top}px`;
-    ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height) * 1.25}px`;
-    target.appendChild(ripple);
-    window.setTimeout(() => ripple.remove(), 650);
-  });
-}
+    window.addEventListener("pagehide", () => window.cancelAnimationFrame(cursorFrame), { once: true });
+  }
+})();

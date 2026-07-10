@@ -10,18 +10,21 @@ const staticEntries = [
   "index.html",
   "about.html",
   "photography.html",
-  "writing.html",
   "contact.html",
   "styles.css",
   "script.js",
   "data/portfolio.json",
+  "data/gallery.json",
   "components-loader.js",
   "robots.txt",
   "sitemap.xml",
-  "CNAME"
+  "CNAME",
+  "public/og.png"
 ];
 
 const imageAssets = [
+  "images/gallery",
+  "images/kinetic",
   "images/logos/logo-black.png",
   "images/logos/logo-white.png",
   "images/thumbnails/about/personality-photo-1.jpg",

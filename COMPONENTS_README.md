@@ -27,7 +27,7 @@ The existing files in this folder are from the v2 design and use a different vis
 The plan to wire it up was on the redesign checklist but got deprioritized in favor of:
 
 - **Resilience over DRY**: Inlining the header/footer in each HTML page means no JS dependency for navigation. A failed loader script doesn't break the site.
-- **A 5-page site doesn't justify the complexity**: At 5 pages, the cost of "edit navigation in 5 places" is low enough that the runtime cost of a JS fetch-based component loader isn't worth the trade-off.
+- **A small static site doesn't justify the complexity**: At this scale, the cost of editing navigation in a few places is low enough that the runtime cost of a JS fetch-based component loader isn't worth the trade-off.
 - **No build-time include**: The repo now has an optional `npm run build` packaging step for OpenAI Sites, but it only copies static assets and writes a Worker entry. It does not compile HTML partials.
 
 ## When to revive this
