@@ -3,26 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CodeAayu Creatives — Photography, served with feeling</title>
-  <meta name="description" content="CodeAayu Creatives is Aayush Ahuja's Bangalore photography studio for portraits, celebrations, brands, travel stories, wildlife, and every honest moment in between.">
+  <title>CodeAayu Creatives — Bangalore Photography, served with feeling</title>
+  <meta name="description" content="Bangalore (Bengaluru) photography services by Aayush Ahuja for portraits, celebrations, brands, travel stories, wildlife, and honest moments.">
   <meta name="author" content="Aayush Ahuja">
   <meta name="theme-color" content="#1b0d18">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://codeaayucreatives.co.in/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://codeaayucreatives.co.in/">
-  <meta property="og:title" content="CodeAayu Creatives — Come as you are. I'll find the light.">
-  <meta property="og:description" content="A kinetic photography studio by Aayush Ahuja in Bangalore. Portraits, celebrations, brands, travel, wildlife, and moonlight.">
+  <meta property="og:title" content="CodeAayu Creatives — Bangalore Photography, served with feeling">
+  <meta property="og:description" content="Bangalore (Bengaluru) photography services by Aayush Ahuja—portraits, celebrations, brands, travel stories, wildlife, and moonlight.">
   <meta property="og:image" content="https://codeaayucreatives.co.in/public/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CodeAayu Creatives — Photography, served with feeling">
-  <meta name="twitter:description" content="Come as you are. I'll find the light.">
+  <meta name="twitter:title" content="CodeAayu Creatives — Bangalore Photography, served with feeling">
+  <meta name="twitter:description" content="Bangalore (Bengaluru) photography services, served with feeling: portraits, celebrations, brands, travel, wildlife, and honest moments by Aayush Ahuja.">
   <meta name="twitter:image" content="https://codeaayucreatives.co.in/public/og.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="preload" href="images/kinetic/aayush-shooting.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="styles.css?v=20260710-manali-a">
+  <link rel="stylesheet" href="css/celestial-effects.css?v=20260904-a">
   <link rel="icon" type="image/png" href="images/logos/logo-black.png">
   <script type="application/ld+json">
   {
@@ -31,7 +32,7 @@
     "name": "CodeAayu Creatives",
     "url": "https://codeaayucreatives.co.in/",
     "image": "https://codeaayucreatives.co.in/images/kinetic/aayush-shooting.webp",
-    "description": "Photography studio by Aayush Ahuja for portraits, celebrations, brands, travel stories, and wildlife.",
+    "description": "Bangalore (Bengaluru) photography services by Aayush Ahuja for portraits, celebrations, brands, travel stories, and wildlife.",
     "email": "codeaayu@gmail.com",
     "founder": { "@type": "Person", "name": "Aayush Ahuja" },
     "areaServed": { "@type": "City", "name": "Bangalore" },
@@ -69,7 +70,8 @@
       <a href="#about">Aayush</a>
     </nav>
 
-    <a class="header-cta magnetic" href="#reserve"><span>Reserve a frame</span><i aria-hidden="true">↗</i></a>
+    <a class="header-cta magnetic" href="#reserve"><span>Start an inquiry</span><i aria-hidden="true">↗</i></a>
+    <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">Pause motion</button>
 
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation" data-menu-toggle>
       <span></span><span></span>
@@ -86,13 +88,16 @@
       <a href="photography.html"><span>02</span>Gallery</a>
       <a href="#moon-room"><span>03</span>Moon room</a>
       <a href="#about"><span>04</span>Aayush</a>
-      <a href="#reserve"><span>05</span>Reserve a frame</a>
+      <a href="#reserve"><span>05</span>Start an inquiry</a>
     </nav>
     <p>Bangalore · available wherever the story goes</p>
   </div>
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="celestial-layer celestial-layer-hero" data-celestial-layer="hero" data-density="sparse" aria-hidden="true">
+        <canvas width="1" height="1" aria-hidden="true" tabindex="-1"></canvas>
+      </div>
       <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
       <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
 
@@ -317,6 +322,9 @@
 
     <section class="moon-room" id="moon-room" data-moon-room aria-labelledby="moon-title">
       <div class="moon-sticky">
+        <div class="celestial-layer celestial-layer-moon" data-celestial-layer="moon" data-density="dense" aria-hidden="true">
+          <canvas width="1" height="1" aria-hidden="true" tabindex="-1"></canvas>
+        </div>
         <div class="star-field" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="moon-copy moon-copy-top">
           <p class="section-index">06 / The moon room</p>
@@ -405,7 +413,7 @@
     <section class="reserve-section" id="reserve" aria-labelledby="reserve-title">
       <div class="reserve-glow" aria-hidden="true"></div>
       <div class="reserve-intro">
-        <p class="section-index reveal">09 / Reservations</p>
+        <p class="section-index reveal">09 / Inquiries</p>
         <h2 id="reserve-title" class="display-heading reveal">Your story has<br><em>a good side.</em></h2>
         <p class="reserve-lead reveal">Tell me what you are celebrating, building, remembering, or simply ready to see differently.</p>
         <a class="reserve-email reveal" href="mailto:codeaayu@gmail.com">codeaayu@gmail.com <span aria-hidden="true">↗</span></a>
@@ -413,7 +421,7 @@
 
       <form class="brief-form reveal" action="https://api.web3forms.com/submit" method="POST" data-brief-form>
         <input type="hidden" name="access_key" value="7fd97d1e-c924-4d77-b6f9-95943252cd3e">
-        <input type="hidden" name="subject" value="New studio reservation — CodeAayu Creatives">
+        <input type="hidden" name="subject" value="New photography inquiry — CodeAayu Creatives">
         <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
 
         <div class="form-row">
@@ -452,7 +460,7 @@
         </label>
 
         <button class="submit-button magnetic" type="submit">
-          <span data-submit-label>Send the reservation</span>
+          <span data-submit-label>Send an inquiry</span>
           <i aria-hidden="true">↗</i>
         </button>
         <p class="form-status" data-form-status role="status" aria-live="polite"></p>
@@ -484,6 +492,7 @@
   </dialog>
 
   <noscript><style>.loader{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <script src="js/celestial-effects.js?v=20260904-a"></script>
   <script src="script.js?v=20260710-manali-a"></script>
 </body>
 </html>

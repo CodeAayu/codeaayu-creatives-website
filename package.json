@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-sites.mjs"
+    "build": "node scripts/build-sites.mjs",
+    "validate": "node scripts/build-sites.mjs --check"
   }
 }

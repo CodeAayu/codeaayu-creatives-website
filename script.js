@@ -4,8 +4,18 @@
   const root = document.documentElement;
   const body = document.body;
   root.classList.add("has-js");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let prefersReducedMotion = motionPreference.matches;
+  let motionPaused = false;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
+  let stopCursorAnimation = () => {};
+  let startCursorAnimation = () => {};
+  let clearPointerMotion = () => {};
+
+  const motionDisabled = () => prefersReducedMotion || motionPaused;
+  root.classList.toggle("motion-reduced", prefersReducedMotion);
+  root.dataset.motionReduced = String(prefersReducedMotion);
+  root.dataset.motionPaused = "false";
 
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
   const lerp = (start, end, progress) => start + (end - start) * progress;
@@ -45,7 +55,7 @@
   };
 
   const updateStack = (forcedProgress = null) => {
-    if (!stackStory || !photoStack || !stackCards.length) return;
+    if (motionDisabled() || !stackStory || !photoStack || !stackCards.length) return;
     const progress = forcedProgress ?? sectionProgress(stackStory);
     const fan = smoothstep(0.07, 0.72, progress);
     const settle = smoothstep(0.72, 1, progress);
@@ -77,7 +87,7 @@
   };
 
   const updateMoon = (forcedProgress = null) => {
-    if (!moonRoom || !moonStage) return;
+    if (motionDisabled() || !moonRoom || !moonStage) return;
     const progress = forcedProgress ?? sectionProgress(moonRoom);
     const reveal = smoothstep(0.08, 0.58, progress);
     const orbit = smoothstep(0.25, 0.9, progress);
@@ -100,7 +110,7 @@
   };
 
   const updateKineticType = () => {
-    if (!kineticLines.length || prefersReducedMotion) return;
+    if (!kineticLines.length || motionDisabled()) return;
     const heading = kineticLines[0]?.closest(".kinetic-heading");
     if (!heading) return;
     const rect = heading.getBoundingClientRect();
@@ -111,7 +121,7 @@
   };
 
   const updateNightWindow = () => {
-    if (!nightWindow || prefersReducedMotion) return;
+    if (!nightWindow || motionDisabled()) return;
     const rect = nightWindow.getBoundingClientRect();
     if (rect.bottom < 0 || rect.top > window.innerHeight) return;
     const progress = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height));
@@ -143,8 +153,11 @@
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const total = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     header?.classList.toggle("is-scrolled", scrollTop > 24);
-    if (scrollMeter) scrollMeter.style.transform = `scaleY(${clamp(scrollTop / total).toFixed(4)})`;
-    if (!prefersReducedMotion) {
+    if (scrollMeter) {
+      if (motionDisabled()) scrollMeter.style.removeProperty("transform");
+      else scrollMeter.style.transform = `scaleY(${clamp(scrollTop / total).toFixed(4)})`;
+    }
+    if (!motionDisabled()) {
       updateStack();
       updateMoon();
     }
@@ -152,6 +165,27 @@
     updateNightWindow();
     updateCoursesOnScroll();
     ticking = false;
+  };
+
+  const resetMotionTransforms = () => {
+    stackCards.forEach((card) => {
+      ["--move-x", "--move-y", "--move-z", "--rotation", "--card-scale"].forEach((property) => {
+        card.style.removeProperty(property);
+      });
+    });
+    ["--center-y", "--center-turn", "--center-scale"].forEach((property) => {
+      stackCenter?.style.removeProperty(property);
+    });
+    stackProgress?.style.removeProperty("transform");
+    [
+      "--main-moon-scale", "--main-moon-rotate", "--halo-scale", "--halo-rotate", "--study-opacity",
+      "--study-one-x", "--study-one-y", "--study-one-r", "--study-two-x", "--study-two-y", "--study-two-r",
+      "--study-three-x", "--study-three-y", "--study-three-r"
+    ].forEach((property) => moonStage?.style.removeProperty(property));
+    kineticLines.forEach((line) => line.style.removeProperty("transform"));
+    nightWindow?.style.removeProperty("--night-shift");
+    document.querySelector("[data-hero-visual]")?.style.removeProperty("transform");
+    document.querySelectorAll(".magnetic").forEach((element) => element.style.removeProperty("transform"));
   };
 
   const requestPageUpdate = () => {
@@ -163,10 +197,6 @@
   window.addEventListener("scroll", requestPageUpdate, { passive: true });
   window.addEventListener("resize", requestPageUpdate, { passive: true });
   updatePage();
-  if (prefersReducedMotion) {
-    updateStack(0.78);
-    updateMoon(0.78);
-  }
 
   const reveals = [...document.querySelectorAll(".reveal")];
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {
@@ -186,6 +216,7 @@
   const mobileMenu = document.querySelector("[data-mobile-menu]");
   const menuClose = document.querySelector("[data-menu-close]");
   let menuReturnFocus = null;
+  let menuFocusTimer = 0;
 
   const getMenuFocusable = () => mobileMenu ? [...mobileMenu.querySelectorAll("a, button")].filter((item) => !item.hasAttribute("disabled")) : [];
 
@@ -197,17 +228,22 @@
     mobileMenu.setAttribute("aria-hidden", "false");
     menuToggle.setAttribute("aria-expanded", "true");
     menuToggle.setAttribute("aria-label", "Close navigation");
-    window.setTimeout(() => getMenuFocusable()[0]?.focus(), 150);
+    window.clearTimeout(menuFocusTimer);
+    menuFocusTimer = window.setTimeout(() => {
+      if (mobileMenu.classList.contains("is-open")) getMenuFocusable()[0]?.focus();
+    }, motionDisabled() ? 0 : 150);
   };
 
   const closeMenu = () => {
     if (!mobileMenu || !menuToggle) return;
+    window.clearTimeout(menuFocusTimer);
     body.classList.remove("menu-open");
     mobileMenu.classList.remove("is-open");
     mobileMenu.setAttribute("aria-hidden", "true");
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open navigation");
-    if (menuReturnFocus instanceof HTMLElement) menuReturnFocus.focus();
+    if (menuReturnFocus instanceof HTMLElement && menuReturnFocus.isConnected && !menuReturnFocus.disabled) menuReturnFocus.focus();
+    menuReturnFocus = null;
   };
 
   menuToggle?.addEventListener("click", () => mobileMenu?.classList.contains("is-open") ? closeMenu() : openMenu());
@@ -245,30 +281,58 @@
   const filmstrip = document.querySelector("[data-filmstrip]");
   if (filmstrip) {
     let dragging = false;
+    let axisLocked = false;
+    let gestureRejected = false;
+    let pointerId = null;
     let startX = 0;
+    let startY = 0;
     let startScroll = 0;
     let moved = false;
 
     filmstrip.addEventListener("pointerdown", (event) => {
+      if (!event.isPrimary) return;
       if (event.pointerType === "mouse" && event.button !== 0) return;
-      dragging = true;
+      dragging = event.pointerType === "mouse";
+      axisLocked = event.pointerType === "mouse";
+      gestureRejected = false;
+      pointerId = event.pointerId;
       moved = false;
       startX = event.clientX;
+      startY = event.clientY;
       startScroll = filmstrip.scrollLeft;
-      filmstrip.classList.add("is-dragging");
-      filmstrip.setPointerCapture(event.pointerId);
+      if (dragging) {
+        filmstrip.classList.add("is-dragging");
+        filmstrip.setPointerCapture(event.pointerId);
+      }
     });
 
     filmstrip.addEventListener("pointermove", (event) => {
-      if (!dragging) return;
+      if (pointerId !== event.pointerId || gestureRejected) return;
       const delta = event.clientX - startX;
+      const crossDelta = event.clientY - startY;
+      if (!axisLocked) {
+        if (Math.max(Math.abs(delta), Math.abs(crossDelta)) < 6) return;
+        if (Math.abs(crossDelta) > Math.abs(delta)) {
+          gestureRejected = true;
+          return;
+        }
+        axisLocked = true;
+        dragging = true;
+        filmstrip.classList.add("is-dragging");
+        filmstrip.setPointerCapture(event.pointerId);
+      }
+      if (!dragging) return;
       if (Math.abs(delta) > 4) moved = true;
+      if (event.pointerType !== "mouse") event.preventDefault();
       filmstrip.scrollLeft = startScroll - delta;
     });
 
     const endDrag = (event) => {
-      if (!dragging) return;
+      if (pointerId !== event.pointerId) return;
       dragging = false;
+      axisLocked = false;
+      gestureRejected = false;
+      pointerId = null;
       filmstrip.classList.remove("is-dragging");
       if (filmstrip.hasPointerCapture(event.pointerId)) filmstrip.releasePointerCapture(event.pointerId);
     };
@@ -289,10 +353,16 @@
   const lightboxClose = document.querySelector("[data-lightbox-close]");
   let lightboxReturnFocus = null;
 
+  const restoreLightboxFocus = () => {
+    if (lightboxReturnFocus instanceof HTMLElement && lightboxReturnFocus.isConnected && !lightboxReturnFocus.disabled) {
+      lightboxReturnFocus.focus();
+    }
+    lightboxReturnFocus = null;
+  };
+
   const closeLightbox = () => {
     if (!lightbox?.open) return;
     lightbox.close();
-    if (lightboxReturnFocus instanceof HTMLElement) lightboxReturnFocus.focus();
   };
 
   const openLightbox = (trigger) => {
@@ -306,12 +376,17 @@
   };
 
   document.addEventListener("click", (event) => {
-    const trigger = event.target.closest("[data-lightbox]");
+    const trigger = event.target instanceof Element ? event.target.closest("[data-lightbox]") : null;
     if (!trigger) return;
     openLightbox(trigger);
   });
 
   lightboxClose?.addEventListener("click", closeLightbox);
+  lightbox?.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeLightbox();
+  });
+  lightbox?.addEventListener("close", restoreLightboxFocus);
   lightbox?.addEventListener("click", (event) => {
     if (event.target === lightbox) closeLightbox();
   });
@@ -432,12 +507,16 @@
   const briefForm = document.querySelector("[data-brief-form]");
   const formStatus = document.querySelector("[data-form-status]");
   const submitLabel = document.querySelector("[data-submit-label]");
+  document.querySelectorAll(".botcheck, [name='botcheck']").forEach((honeypot) => {
+    honeypot.setAttribute("aria-hidden", "true");
+    honeypot.setAttribute("tabindex", "-1");
+  });
 
   briefForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const submitButton = briefForm.querySelector("button[type='submit']");
     if (submitButton) submitButton.disabled = true;
-    if (submitLabel) submitLabel.textContent = "Sending your reservation…";
+    if (submitLabel) submitLabel.textContent = "Sending your inquiry…";
     if (formStatus) formStatus.textContent = "";
 
     try {
@@ -449,16 +528,16 @@
       const result = await response.json();
       if (!response.ok || !result.success) throw new Error("Submission failed");
       briefForm.reset();
-      if (formStatus) formStatus.textContent = "Reservation received. I’ll be in touch soon.";
+      if (formStatus) formStatus.textContent = "Inquiry received. I’ll be in touch soon.";
     } catch (error) {
       if (formStatus) formStatus.innerHTML = "The form had a moment. Please email <a href=\"mailto:codeaayu@gmail.com\">codeaayu@gmail.com</a>.";
     } finally {
       if (submitButton) submitButton.disabled = false;
-      if (submitLabel) submitLabel.textContent = "Send the reservation";
+      if (submitLabel) submitLabel.textContent = "Send an inquiry";
     }
   });
 
-  if (finePointer && !prefersReducedMotion) {
+  if (finePointer) {
     const cursor = document.querySelector("[data-cursor]");
     let cursorX = -100;
     let cursorY = -100;
@@ -467,6 +546,10 @@
     let cursorFrame = 0;
 
     const renderCursor = () => {
+      if (motionDisabled() || document.hidden) {
+        cursorFrame = 0;
+        return;
+      }
       renderedX = lerp(renderedX, cursorX, 0.2);
       renderedY = lerp(renderedY, cursorY, 0.2);
       cursor?.style.setProperty("--cursor-x", `${renderedX.toFixed(1)}px`);
@@ -474,41 +557,130 @@
       cursorFrame = window.requestAnimationFrame(renderCursor);
     };
 
+    startCursorAnimation = () => {
+      if (motionDisabled() || document.hidden || cursorFrame) return;
+      cursorFrame = window.requestAnimationFrame(renderCursor);
+    };
+    stopCursorAnimation = () => {
+      if (cursorFrame) window.cancelAnimationFrame(cursorFrame);
+      cursorFrame = 0;
+      cursor?.classList.remove("is-visible", "is-active");
+    };
+    clearPointerMotion = () => {
+      cursor?.style.removeProperty("--cursor-x");
+      cursor?.style.removeProperty("--cursor-y");
+      document.querySelector("[data-hero-visual]")?.style.removeProperty("transform");
+      document.querySelectorAll(".magnetic").forEach((element) => element.style.removeProperty("transform"));
+    };
+
     document.addEventListener("pointermove", (event) => {
+      if (motionDisabled()) return;
       cursorX = event.clientX;
       cursorY = event.clientY;
       cursor?.classList.add("is-visible");
     }, { passive: true });
     document.addEventListener("pointerleave", () => cursor?.classList.remove("is-visible"));
     document.querySelectorAll("a, button, input, select, textarea").forEach((target) => {
-      target.addEventListener("pointerenter", () => cursor?.classList.add("is-active"));
+      target.addEventListener("pointerenter", () => {
+        if (!motionDisabled()) cursor?.classList.add("is-active");
+      });
       target.addEventListener("pointerleave", () => cursor?.classList.remove("is-active"));
     });
-    cursorFrame = window.requestAnimationFrame(renderCursor);
+    startCursorAnimation();
 
     const heroVisual = document.querySelector("[data-hero-visual]");
     heroVisual?.addEventListener("pointermove", (event) => {
+      if (motionDisabled()) return;
       const rect = heroVisual.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - 0.5;
       const y = (event.clientY - rect.top) / rect.height - 0.5;
       heroVisual.style.transform = `rotateY(${(x * 4).toFixed(2)}deg) rotateX(${(-y * 3).toFixed(2)}deg)`;
     });
     heroVisual?.addEventListener("pointerleave", () => {
-      heroVisual.style.transform = "rotateY(0deg) rotateX(0deg)";
+      heroVisual.style.removeProperty("transform");
     });
 
     document.querySelectorAll(".magnetic").forEach((element) => {
       element.addEventListener("pointermove", (event) => {
+        if (motionDisabled()) return;
         const rect = element.getBoundingClientRect();
         const x = event.clientX - rect.left - rect.width / 2;
         const y = event.clientY - rect.top - rect.height / 2;
         element.style.transform = `translate3d(${(x * 0.08).toFixed(1)}px, ${(y * 0.12).toFixed(1)}px, 0)`;
       });
       element.addEventListener("pointerleave", () => {
-        element.style.transform = "translate3d(0, 0, 0)";
+        element.style.removeProperty("transform");
       });
     });
 
-    window.addEventListener("pagehide", () => window.cancelAnimationFrame(cursorFrame), { once: true });
+    window.addEventListener("pagehide", stopCursorAnimation, { once: true });
   }
+
+  const updateMotionControls = () => {
+    document.querySelectorAll("[data-motion-toggle]").forEach((control) => {
+      control.setAttribute("aria-pressed", String(motionPaused));
+      control.textContent = motionPaused ? "Resume motion" : "Pause motion";
+    });
+  };
+
+  const applyMotionState = () => {
+    root.classList.toggle("motion-reduced", prefersReducedMotion);
+    root.classList.toggle("motion-paused", motionPaused);
+    root.dataset.motionReduced = String(prefersReducedMotion);
+    root.dataset.motionPaused = String(motionPaused);
+    if (motionDisabled()) {
+      stopCursorAnimation();
+      clearPointerMotion();
+      resetMotionTransforms();
+      updatePage();
+    } else {
+      startCursorAnimation();
+      requestPageUpdate();
+    }
+    updateMotionControls();
+    document.dispatchEvent(new CustomEvent("codeaayu:motionchange", {
+      detail: { prefersReducedMotion, paused: motionPaused, disabled: motionDisabled() }
+    }));
+  };
+
+  const setMotionPaused = (paused) => {
+    motionPaused = Boolean(paused);
+    applyMotionState();
+  };
+
+  window.CodeAayuMotion = {
+    pause: () => setMotionPaused(true),
+    resume: () => setMotionPaused(false),
+    toggle: () => setMotionPaused(!motionPaused),
+    get isPaused() { return motionPaused; },
+    get prefersReducedMotion() { return prefersReducedMotion; },
+    get isDisabled() { return motionDisabled(); }
+  };
+
+  document.querySelectorAll("[data-motion-toggle]").forEach((control) => {
+    control.addEventListener("click", () => setMotionPaused(!motionPaused));
+  });
+  document.querySelectorAll("[data-motion-pause]").forEach((control) => {
+    control.addEventListener("click", () => setMotionPaused(true));
+  });
+  document.querySelectorAll("[data-motion-resume]").forEach((control) => {
+    control.addEventListener("click", () => setMotionPaused(false));
+  });
+
+  const handleMotionPreferenceChange = (event) => {
+    prefersReducedMotion = event.matches;
+    applyMotionState();
+  };
+  if (typeof motionPreference.addEventListener === "function") {
+    motionPreference.addEventListener("change", handleMotionPreferenceChange);
+  } else if (typeof motionPreference.addListener === "function") {
+    motionPreference.addListener(handleMotionPreferenceChange);
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    root.classList.toggle("page-hidden", document.hidden);
+    if (document.hidden) stopCursorAnimation();
+    else startCursorAnimation();
+  });
+  applyMotionState();
 })();

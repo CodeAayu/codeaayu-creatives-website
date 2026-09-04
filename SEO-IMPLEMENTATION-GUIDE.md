@@ -1,176 +1,72 @@
 # SEO Implementation Guide - CodeAayu Creatives
 
-## Overview
+## Current status
 
-This guide documents the current SEO setup for [codeaayucreatives.co.in](https://codeaayucreatives.co.in). The site is a focused static photography portfolio for Aayush Ahuja, built around the studio experience, the complete gallery, and project briefs.
+- **Last reviewed**: 2026-09-04
+- **Deployment**: Framework-free static site served from the repository root on GitHub Pages.
+- **Canonical host**: `https://codeaayucreatives.co.in`
+- **Indexable pages**: `/` (`index.html`) and `/photography.html`
+- **Legacy compatibility stubs**: `about.html` and `contact.html` remain available for old links but are `noindex, follow` pages that redirect to the corresponding sections on the home page.
 
-## Current Status
+The visible site experience is intentionally concentrated in the home page and the full photography gallery. No new routes or capabilities are required for the current SEO setup.
 
-- **Last reviewed**: 2026-07-02
-- **Site version**: `20260701-redesign-g` cache-bust suffix
-- **Primary theme color**: `#050816`
-- **Primary typography**: Inter + IBM Plex Mono
+## Indexable pages
 
-The redesign currently includes:
+### Home page (`index.html`)
 
-- Canonical URLs on all published pages.
-- Page-specific titles, descriptions, keywords, author, robots, and theme color.
-- Open Graph title, description, type, and image on all published pages.
-- Twitter large-image card metadata on all published pages.
-- JSON-LD on `index.html` (`Person`) and `contact.html` (`ContactPage`).
-- `robots.txt` and `sitemap.xml`.
-- Lazy-loaded portfolio and about images where they are not first-paint critical.
+- **Focus**: CodeAayu Creatives photography services by Aayush Ahuja, based in Bangalore (Bengaluru), with a feeling-led brand voice.
+- **Title**: `CodeAayu Creatives — Bangalore Photography, served with feeling`
+- **Description signal**: Bangalore (Bengaluru) photography services for portraits, celebrations, brands, travel stories, wildlife, and honest moments.
+- **Social metadata**: Open Graph and Twitter titles/descriptions use the same location and service vocabulary as the page title and description.
+- **Structured data**: `ProfessionalService` JSON-LD with CodeAayu Creatives, Aayush Ahuja, email, Bangalore service area, and social profiles.
+- **Primary content signal**: Hero, service categories, selected work, photographer profile, process, and an inquiry form.
 
-## Technical SEO Files
+### Photography page (`photography.html`)
 
-### robots.txt
+- **Focus**: Bangalore photography portfolio and the complete CodeAayu Creatives archive.
+- **Title**: `Bangalore Photography Portfolio — CodeAayu Creatives`
+- **Description signal**: 178 frames by Aayush Ahuja across portraits, brands, wildlife, places, nature, and cosmos.
+- **Gallery source of truth**: `data/gallery.json` is the manifest consumed by `script.js`; its declared count is **178** and its category counts are 20 portraits, 11 brand, 55 wildlife, 55 places, 27 nature, and 10 cosmos.
+- **Primary content signal**: Gallery hero, manifest-driven archive, category filters, progressive loading, lightbox, and inquiry CTA.
 
-**Location**: `/robots.txt`
+## Legacy stubs
 
-Current behavior:
+- `about.html`: `noindex, follow`, canonical `https://codeaayucreatives.co.in/#about`, and a meta refresh to `./#about`.
+- `contact.html`: `noindex, follow`, canonical `https://codeaayucreatives.co.in/#reserve`, and a meta refresh to `./#reserve`.
 
-- Allows all crawlers.
-- Points to `https://codeaayucreatives.co.in/sitemap.xml`.
-- Uses `Crawl-delay: 1`.
+These files preserve old inbound links without creating additional indexable page targets. The current inquiry flow lives in the `#reserve` section of `index.html`.
 
-### sitemap.xml
+## Technical SEO files
 
-**Location**: `/sitemap.xml`
+### `sitemap.xml`
 
-Current coverage:
+The sitemap intentionally lists only the two indexable pages:
 
-- `/`
-- `/photography.html`
-- `/about.html`
-- `/contact.html`
+- `https://codeaayucreatives.co.in/`
+- `https://codeaayucreatives.co.in/photography.html`
 
-Update each page's `<lastmod>` date when page copy, structure, or portfolio content materially changes.
+Update `<lastmod>` when page copy, structure, or gallery content materially changes. The legacy stubs should not be added to the sitemap.
 
-## Page-Specific SEO
+### `robots.txt`
 
-### Home Page (`index.html`)
+The current file allows crawlers and points to the canonical sitemap. Keep it aligned with the two-page indexable information architecture.
 
-- **Focus**: CodeAayu Creatives brand, Aayush Ahuja, photography systems, portraits, brands, travel, and wildlife.
-- **Primary social image**: `images/thumbnails/portfolio/eagle_fly.jpg`.
-- **Structured data**: `Person` JSON-LD with name, URL, image, job title, email, Bangalore address, and social profiles.
-- **Current content signal**: Hero, selected work, 4-step production pipeline, and contact CTA.
+## Content and image guidance
 
-### Photography Page (`photography.html`)
+- Keep location wording consistent in search-facing metadata: use `Bangalore (Bengaluru)` when both the common search term and the official city name are useful.
+- Keep the inquiry wording clear: submitting the form starts a conversation and does not confirm a booking.
+- Use descriptive `alt` text for featured and manifest-driven gallery images.
+- Keep the gallery manifest, `script.js`, and any future gallery content changes synchronized. Do not hard-code a second gallery inventory in `photography.html`.
+- Preserve the existing canonical host, root deployment, social image, typography, and visual identity unless a focused change requires otherwise.
 
-- **Focus**: Curated photography gallery across Portrait, Wildlife, Travel, Scenic, and Texture categories.
-- **Current gallery count**: 16 inlined frames, mirrored in `script.js` and `data/portfolio.json`.
-- **Primary social image**: `images/thumbnails/portfolio/vivekanand_memorial.jpg`.
-- **Current content signal**: Use-case sub-nav, category filters, lightbox, and mood engine.
+## Focused verification
 
-### About Page (`about.html`)
-
-- **Focus**: Aayush Ahuja profile, Bangalore base, software-engineer background, photography operating style, and shoot protocol.
-- **Open Graph type**: `profile`.
-- **Primary social image**: `images/thumbnails/about/personality-photo-1.jpg`.
-- **Current content signal**: Profile summary, image lab, operating principles, and availability CTA.
-
-### Contact Page (`contact.html`)
-
-- **Focus**: Project brief submission for portraits, brand image sets, travel stories, events, and collaborations.
-- **Primary social image**: `images/thumbnails/about/personality-photo-1.jpg`.
-- **Structured data**: `ContactPage` JSON-LD.
-- **Current content signal**: Brief builder, Web3Forms form, and direct email/social details.
-
-## Metadata Checklist
-
-Every page should keep these tags current:
-
-```html
-<title>...</title>
-<meta name="description" content="...">
-<meta name="keywords" content="...">
-<meta name="author" content="Aayush Ahuja">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#050816">
-<link rel="canonical" href="https://codeaayucreatives.co.in/...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="...">
-<meta property="og:description" content="...">
-<meta property="og:image" content="https://codeaayucreatives.co.in/...">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://codeaayucreatives.co.in/...">
-```
-
-The home page currently also includes `og:url`, `twitter:title`, and `twitter:description`. Add those to the other pages if you want stricter parity across social previews.
-
-## Image SEO
-
-- Use descriptive `alt` text for portfolio, logo, and about-page content images.
-- Keep thumbnails in `images/thumbnails/portfolio/`.
-- Keep full-size lightbox images in `images/portfolio/`.
-- Keep `loading="lazy"` and `decoding="async"` on non-critical images.
-- When adding a portfolio image, update `photography.html`, `index.html` if featured, `script.js`, and `data/portfolio.json` together.
-
-## Structured Data
-
-Current JSON-LD is intentionally narrow:
-
-- `index.html`: `Person`
-- `contact.html`: `ContactPage`
-
-Potential future additions:
-
-- `WebSite` schema for the whole domain.
-- `ProfessionalService` schema if CodeAayu Creatives should rank more strongly as a local photography service.
-- `ImageGallery` or `CreativeWork` schema if portfolio indexing becomes a priority.
-
-## Verification Tools
-
-- Google Rich Results Test: https://search.google.com/test/rich-results
-- Schema Markup Validator: https://validator.schema.org/
-- PageSpeed Insights: https://pagespeed.web.dev/
-- Facebook Sharing Debugger: https://developers.facebook.com/tools/debug/
-- LinkedIn Post Inspector: https://www.linkedin.com/post-inspector/
-
-## Maintenance Checklist
-
-Run this checklist when changing page content, portfolio content, or social preview images:
-
-1. Update page title, description, and keywords if the page focus changed.
-2. Update Open Graph and Twitter images if the featured visual changed.
-3. Update `sitemap.xml` `<lastmod>` dates for touched pages.
-4. Bump `styles.css?v=...` and `script.js?v=...` when CSS or JS changes need cache busting.
-5. Run `npm run build` to verify the OpenAI Sites package output.
-6. Test a local static server with `python3 -m http.server 8080`.
-
-## Target Keywords by Page
-
-### Home Page
-
-- Aayush Ahuja photographer
-- CodeAayu Creatives
-- Bangalore photographer
-- portrait photography Bangalore
-- brand photography India
-
-### Photography Page
-
-- photography portfolio India
-- wildlife photography portfolio
-- portrait photography samples
-- travel photography India
-- professional photographer portfolio
-
-### About Page
-
-- Aayush Ahuja biography
-- software engineer photographer
-- IIT ISM photographer
-- Bangalore photographer profile
-
-### Contact Page
-
-- hire photographer Bangalore
-- photography project brief
-- book photographer India
-- brand photography contact
+- Parse both indexable documents and confirm one canonical, title, description, Open Graph title/description, and Twitter title/description per page.
+- Confirm `data/gallery.json` declares `count: 178` and contains 178 manifest items.
+- Confirm `about.html` and `contact.html` retain `noindex` and anchor redirects.
+- Run `npm run build` when packaging behavior needs verification, then test the generated static output with a local server such as `python3 -m http.server 8080`.
 
 ---
 
-- **Last Updated**: 2026-07-02
-- **Version**: 2.0
+- **Last updated**: 2026-09-04
+- **Version**: 3.0

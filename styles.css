@@ -86,6 +86,19 @@ img {
   outline-offset: 5px;
 }
 
+:root.page-hidden *,
+:root.page-hidden *::before,
+:root.page-hidden *::after {
+  animation-play-state: paused !important;
+}
+
+:root.motion-paused *,
+:root.motion-paused *::before,
+:root.motion-paused *::after {
+  animation-play-state: paused !important;
+  transition: none !important;
+}
+
 .skip-link {
   position: fixed;
   top: 12px;
@@ -358,6 +371,25 @@ img {
   font-style: normal;
 }
 
+.motion-toggle {
+  min-height: 38px;
+  padding: 8px 12px;
+  color: var(--cream);
+  background: transparent;
+  border: 1px solid var(--line-light);
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.motion-toggle:hover,
+.motion-toggle[aria-pressed="true"] {
+  color: var(--ink);
+  background: var(--yellow);
+  border-color: var(--yellow);
+}
+
 .menu-toggle {
   display: none;
   justify-self: end;
@@ -407,6 +439,8 @@ img {
 }
 
 .mobile-menu-top button {
+  min-width: 44px;
+  min-height: 44px;
   padding: 5px;
   background: transparent;
   border: 0;
@@ -1317,6 +1351,8 @@ img {
   overflow-x: auto;
   overflow-y: visible;
   overscroll-behavior-inline: contain;
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   cursor: grab;
   scroll-snap-type: x proximity;
@@ -2062,7 +2098,7 @@ img {
 
 .brief-form input::placeholder,
 .brief-form textarea::placeholder {
-  color: rgba(246, 236, 220, 0.35);
+  color: rgba(246, 236, 220, 0.68);
 }
 
 .brief-form input:focus,
@@ -2071,10 +2107,23 @@ img {
   border-color: var(--yellow);
 }
 
+.brief-form input:focus-visible,
+.brief-form select:focus-visible,
+.brief-form textarea:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 6px;
+  border-bottom-color: var(--yellow);
+}
+
 .botcheck {
+  display: none !important;
   position: absolute !important;
   left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
   opacity: 0 !important;
+  pointer-events: none !important;
+  clip-path: inset(50%) !important;
 }
 
 .submit-button {
@@ -2204,7 +2253,9 @@ img {
   top: 22px;
   right: var(--page-gutter);
   z-index: 2;
-  padding: 8px 0;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 4px;
   color: var(--cream);
   background: transparent;
   border: 0;
@@ -2716,6 +2767,7 @@ img {
 
   .desktop-nav,
   .header-cta { display: none; }
+  .motion-toggle { margin-left: auto; }
   .menu-toggle { display: block; }
 
   .hero {
@@ -3217,22 +3269,94 @@ img {
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation: none !important;
+    transition: none !important;
   }
-  .ambient-grain { animation: none; }
+  .ambient-grain,
+  .cursor-aura,
+  .lens-orbit,
+  .hero-scroll-cue i::after,
+  .star-field i,
+  .gallery-lens-lines { animation: none !important; }
   .reveal { opacity: 1; transform: none; }
   .stack-story,
   .moon-room { height: auto; }
   .stack-sticky,
   .moon-sticky { position: relative; }
+  .has-js .course-visuals { transform: none !important; }
   .stack-card {
     --card-scale: 1 !important;
+    --move-x: 0px !important;
+    --move-y: 0px !important;
+    --move-z: 0px !important;
+    --rotation: 0deg !important;
+    transform: translate(-50%, -50%) !important;
   }
+  .stack-center { transform: translate(-50%, -50%) !important; }
+  .stack-progress span { transform: none !important; }
   .moon-stage {
     --main-moon-scale: 1 !important;
+    --main-moon-rotate: 0deg !important;
     --halo-scale: 1 !important;
+    --halo-rotate: 0deg !important;
     --study-opacity: 1 !important;
+    transform: translate(-50%, -45%) !important;
   }
+  .moon-halo,
+  .main-moon,
+  .moon-study,
+  .night-window > img,
+  .kinetic-heading span { transform: none !important; }
+  .scroll-meter span { transform: none !important; }
+  .text-link:hover span,
+  .film-frame:hover img,
+  .film-frame:focus-visible img,
+  .field-card:hover img,
+  .field-card:focus-visible img,
+  .archive-item:hover img,
+  .archive-item:focus-visible img,
+  .about-photo:hover img { transform: none !important; }
+  .archive-item { opacity: 1; transform: none; }
 }
+
+:root.motion-paused .reveal,
+:root.motion-paused .archive-item {
+  opacity: 1;
+  transform: none !important;
+}
+
+:root.motion-paused .stack-story,
+:root.motion-paused .moon-room { height: auto; }
+
+:root.motion-paused .stack-sticky,
+:root.motion-paused .moon-sticky { position: relative; }
+
+:root.motion-paused .has-js .course-visuals { transform: none !important; }
+
+:root.motion-paused .stack-card {
+  --card-scale: 1 !important;
+  --move-x: 0px !important;
+  --move-y: 0px !important;
+  --move-z: 0px !important;
+  --rotation: 0deg !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+:root.motion-paused .stack-center { transform: translate(-50%, -50%) !important; }
+:root.motion-paused .stack-progress span { transform: none !important; }
+:root.motion-paused .moon-stage { transform: translate(-50%, -45%) !important; }
+:root.motion-paused .moon-halo,
+:root.motion-paused .main-moon,
+:root.motion-paused .moon-study,
+:root.motion-paused .night-window > img,
+:root.motion-paused .kinetic-heading span,
+:root.motion-paused .scroll-meter span { transform: none !important; }
+
+:root.motion-paused .text-link:hover span,
+:root.motion-paused .film-frame:hover img,
+:root.motion-paused .film-frame:focus-visible img,
+:root.motion-paused .field-card:hover img,
+:root.motion-paused .field-card:focus-visible img,
+:root.motion-paused .archive-item:hover img,
+:root.motion-paused .archive-item:focus-visible img,
+:root.motion-paused .about-photo:hover img { transform: none !important; }

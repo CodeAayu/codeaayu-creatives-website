@@ -1,0 +1,155 @@
+/*
+ * Celestial visual layer
+ *
+ * The gradients and rings below are the no-JS treatment. The canvas enhances
+ * them when js/celestial-effects.js is available, but is never required for
+ * the page content or its controls to be legible and usable.
+ */
+.celestial-layer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  opacity: 0.86;
+  background-repeat: repeat;
+}
+
+.celestial-layer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.has-celestial-js .celestial-layer canvas {
+  opacity: 1;
+}
+
+.celestial-layer::before,
+.celestial-layer::after {
+  content: "";
+  position: absolute;
+  display: block;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.celestial-layer-hero {
+  color: rgba(243, 166, 198, 0.2);
+  opacity: 0.68;
+  background-image:
+    radial-gradient(circle at 18% 23%, rgba(255, 250, 241, 0.72) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 41% 69%, rgba(243, 166, 198, 0.6) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 66% 18%, rgba(255, 250, 241, 0.78) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 88% 63%, rgba(255, 221, 115, 0.72) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 77% 86%, rgba(255, 250, 241, 0.44) 0 1px, transparent 1.5px);
+  background-size: 270px 240px;
+  mask-image: linear-gradient(110deg, black 8%, rgba(0, 0, 0, 0.7) 56%, transparent 94%);
+}
+
+.celestial-layer-hero::before {
+  top: 29%;
+  right: -8%;
+  width: 66%;
+  height: 25%;
+  transform: rotate(-15deg);
+}
+
+.celestial-layer-hero::after {
+  top: 37%;
+  right: 2%;
+  width: 44%;
+  height: 18%;
+  border-style: dashed;
+  transform: rotate(11deg);
+  opacity: 0.7;
+}
+
+.celestial-layer-moon {
+  color: rgba(190, 198, 255, 0.3);
+  opacity: 0.96;
+  background-image:
+    radial-gradient(circle at 7% 16%, rgba(255, 255, 255, 0.84) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 19% 74%, rgba(190, 198, 255, 0.72) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 34% 38%, rgba(255, 255, 255, 0.62) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 49% 84%, rgba(190, 198, 255, 0.74) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 67% 22%, rgba(255, 255, 255, 0.82) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 82% 67%, rgba(190, 198, 255, 0.68) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 94% 31%, rgba(255, 255, 255, 0.74) 0 1px, transparent 1.6px);
+  background-size: 188px 176px;
+  mask-image: radial-gradient(ellipse at 50% 52%, black 18%, rgba(0, 0, 0, 0.9) 62%, transparent 100%);
+}
+
+.celestial-layer-moon::before {
+  top: 27%;
+  left: 5%;
+  width: 90%;
+  height: 47%;
+  transform: rotate(-12deg);
+  box-shadow: 0 0 0 18px rgba(190, 198, 255, 0.025), 0 0 0 42px rgba(190, 198, 255, 0.018);
+}
+
+.celestial-layer-moon::after {
+  top: 34%;
+  left: 18%;
+  width: 64%;
+  height: 34%;
+  border-style: dashed;
+  transform: rotate(19deg);
+  opacity: 0.72;
+}
+
+@media (max-width: 620px) {
+  .celestial-layer {
+    opacity: 0.72;
+  }
+
+  .celestial-layer-hero {
+    background-size: 210px 190px;
+    mask-image: linear-gradient(110deg, black 10%, transparent 88%);
+  }
+
+  .celestial-layer-hero::before {
+    right: -27%;
+    width: 86%;
+    opacity: 0.62;
+  }
+
+  .celestial-layer-hero::after {
+    right: -10%;
+    width: 62%;
+    opacity: 0.42;
+  }
+
+  .celestial-layer-moon {
+    background-size: 142px 134px;
+  }
+
+  .celestial-layer-moon::before {
+    top: 32%;
+    left: -18%;
+    width: 136%;
+    height: 38%;
+  }
+
+  .celestial-layer-moon::after {
+    top: 37%;
+    left: 7%;
+    width: 86%;
+    height: 28%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celestial-layer canvas {
+    opacity: 0;
+  }
+
+  .has-celestial-js .celestial-layer canvas {
+    opacity: 0.34;
+  }
+}
