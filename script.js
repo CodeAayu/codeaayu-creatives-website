@@ -403,7 +403,7 @@
     let displayedItems = 0;
     const batchSize = window.innerWidth <= 620 ? 18 : window.innerWidth <= 900 ? 28 : 36;
 
-    const createGalleryItem = (item) => {
+    const createGalleryItem = (item, index) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "archive-item";
@@ -416,9 +416,13 @@
       image.alt = item.alt;
       image.width = item.width;
       image.height = item.height;
-      image.loading = "lazy";
+      // Prioritize only the first visible row; keep the long archive lazy.
+      image.loading = index < 6 ? "eager" : "lazy";
+      if (index < 6) image.fetchPriority = "high";
+      image.sizes = "(max-width: 620px) 50vw, (max-width: 900px) 33vw, 25vw";
       image.decoding = "async";
       image.addEventListener("load", () => button.classList.add("is-loaded"), { once: true });
+      image.addEventListener("error", () => button.classList.add("is-error"), { once: true });
       image.src = item.thumb;
 
       const caption = document.createElement("span");
@@ -451,8 +455,8 @@
         return;
       }
       const fragment = document.createDocumentFragment();
-      filteredItems.slice(displayedItems, displayedItems + batchSize).forEach((item) => {
-        fragment.append(createGalleryItem(item));
+      filteredItems.slice(displayedItems, displayedItems + batchSize).forEach((item, index) => {
+        fragment.append(createGalleryItem(item, displayedItems + index));
       });
       displayedItems += batchSize;
       galleryGrid.append(fragment);
