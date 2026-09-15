@@ -2612,6 +2612,12 @@ img {
   transform: translateY(0);
 }
 
+.archive-item.is-error {
+  opacity: 1;
+  transform: translateY(0);
+  background: rgba(255, 245, 226, 0.08);
+}
+
 .archive-item img {
   width: 100%;
   height: auto;
